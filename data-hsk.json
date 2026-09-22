@@ -1,0 +1,17 @@
+[
+  {
+    "topic": "Số đếm",
+    "words": [
+      { "word": "一", "type": "numeral", "phonetic": "yī", "meaning": "1", "example": "我着一本书。", "examplePhonetic": "Wǒ yǒu yī běn shū." },
+      { "word": "二", "type": "numeral", "phonetic": "èr", "meaning": "2", "example": "我有两个人。", "examplePhonetic": "Wǒmen yǒu èr gè rén." },
+      { "word": "三", "type": "numeral", "phonetic": "sān", "meaning": "3", "example": "这里有三个苹果。", "examplePhonetic": "Zhèlǐ yǒu sān gè píngguǒ." },
+      { "word": "四", "type": "numeral", "phonetic": "sì", "meaning": "4", "example": "一年有四个季节。", "examplePhonetic": "Yī nián yǒu sì gè jìjié." },
+      { "word": "五", "type": "numeral", "phonetic": "wǔ", "meaning": "5", "example": "今天星期五。", "examplePhonetic": "Jīntiān xīngqīwǔ." },
+      { "word": "六", "type": "numeral", "phonetic": "liù", "meaning": "6", "example": "桌上有六支笔。", "examplePhonetic": "Zhuō shàng yǒu liù zhī bǐ." },
+      { "word": "七", "type": "numeral", "phonetic": "qī", "meaning": "7", "example": "一周有七天。", "examplePhonetic": "Yī zhōu yǒu qī tiān." },
+      { "word": "八", "type": "numeral", "phonetic": "bā", "meaning": "8", "example": "他今年八岁。", "examplePhonetic": "Tā jīnnián bā suì." },
+      { "word": "九", "type": "numeral", "phonetic": "jiǔ", "meaning": "9", "example": "现在是九点。", "examplePhonetic": "Xiànzài shì jiǔ diǎn." },
+      { "word": "十", "type": "numeral", "phonetic": "shí", "meaning": "10", "example": "这里有十个人。", "examplePhonetic": "Zhèlǐ yǒu shí gè rén." }
+    ]
+  }
+]

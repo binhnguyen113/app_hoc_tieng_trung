@@ -1,0 +1,57 @@
+[
+  {
+    "topic": "Chào hỏi",
+    "words": [
+      { "word": "你好", "type": "phrase", "phonetic": "nǐ hǎo", "meaning": "xin chào", "example": "你好，很高兴认识你。", "examplePhonetic": "Nǐ hǎo, hěn gāoxìng rènshi nǐ." },
+      { "word": "谢谢", "type": "phrase", "phonetic": "xiè xie", "meaning": "cảm ơn", "example": "谢谢你的帮助。", "examplePhonetic": "Xièxie nǐ de bāngzhù." },
+      { "word": "再见", "type": "phrase", "phonetic": "zài jiàn", "meaning": "tạm biệt", "example": "明天见，再见！", "examplePhonetic": "Míngtiān jiàn, zàijiàn!" },
+      { "word": "对不起", "type": "phrase", "phonetic": "duì bu qǐ", "meaning": "xin lỗi", "example": "对不起，我迟到了。", "examplePhonetic": "Duìbuqǐ, wǒ chídào le." },
+      { "word": "没关系", "type": "phrase", "phonetic": "méi guān xi", "meaning": "không sao", "example": "没关系，请坐。", "examplePhonetic": "Méiguānxi, qǐng zuò." },
+      { "word": "请", "type": "verb", "phonetic": "qǐng", "meaning": "mời, xin vui lòng", "example": "请进！", "examplePhonetic": "Qǐng jìn!" }
+    ]
+  },
+  {
+    "topic": "Gia đình",
+    "words": [
+      { "word": "家", "type": "noun", "phonetic": "jiā", "meaning": "nhà, gia đình", "example": "我爱我的家。", "examplePhonetic": "Wǒ ài wǒ de jiā." },
+      { "word": "爸爸", "type": "noun", "phonetic": "bà ba", "meaning": "bố", "example": "我爸爸是医生。", "examplePhonetic": "Wǒ bàba shì yīshēng." },
+      { "word": "妈妈", "type": "noun", "phonetic": "mā ma", "meaning": "mẹ", "example": "我妈妈喜欢喝茶。", "examplePhonetic": "Wǒ māma xǐhuan hē chá." },
+      { "word": "哥哥", "type": "noun", "phonetic": "gē ge", "meaning": "anh trai", "example": "我哥哥在北京工作。", "examplePhonetic": "Wǒ gēge zài Běijīng gōngzuò." },
+      { "word": "姐姐", "type": "noun", "phonetic": "jiě jie", "meaning": "chị gái", "example": "我姐姐会说中文。", "examplePhonetic": "Wǒ jiějie huì shuō Zhōngwén." },
+      { "word": "朋友", "type": "noun", "phonetic": "péng you", "meaning": "bạn bè", "example": "他是我的好朋友。", "examplePhonetic": "Tā shì wǒ de hǎo péngyou." }
+    ]
+  },
+  {
+    "topic": "Sinh hoạt hằng ngày",
+    "words": [
+      { "word": "吃", "type": "verb", "phonetic": "chī", "meaning": "ăn", "example": "你吃饭了吗？", "examplePhonetic": "Nǐ chīfàn le ma?" },
+      { "word": "喝", "type": "verb", "phonetic": "hē", "meaning": "uống", "example": "我喜欢喝水。", "examplePhonetic": "Wǒ xǐhuan hē shuǐ." },
+      { "word": "看", "type": "verb", "phonetic": "kàn", "meaning": "xem, nhìn, đọc", "example": "我晚上看书。", "examplePhonetic": "Wǒ wǎnshang kàn shū." },
+      { "word": "学习", "type": "verb", "phonetic": "xué xí", "meaning": "học tập", "example": "我每天学习中文。", "examplePhonetic": "Wǒ měitiān xuéxí Zhōngwén." },
+      { "word": "工作", "type": "verb", "phonetic": "gōng zuò", "meaning": "làm việc", "example": "他在银行工作。", "examplePhonetic": "Tā zài yínháng gōngzuò." },
+      { "word": "睡觉", "type": "verb", "phonetic": "shuì jiào", "meaning": "ngủ", "example": "我十点睡觉。", "examplePhonetic": "Wǒ shí diǎn shuìjiào." }
+    ]
+  },
+  {
+    "topic": "Thời gian và số đếm",
+    "words": [
+      { "word": "今天", "type": "noun", "phonetic": "jīn tiān", "meaning": "hôm nay", "example": "今天是星期一。", "examplePhonetic": "Jīntiān shì xīngqī yī." },
+      { "word": "明天", "type": "noun", "phonetic": "míng tiān", "meaning": "ngày mai", "example": "明天我们去学校。", "examplePhonetic": "Míngtiān wǒmen qù xuéxiào." },
+      { "word": "昨天", "type": "noun", "phonetic": "zuó tiān", "meaning": "hôm qua", "example": "昨天我很忙。", "examplePhonetic": "Zuótiān wǒ hěn máng." },
+      { "word": "现在", "type": "noun", "phonetic": "xiàn zài", "meaning": "bây giờ", "example": "现在几点？", "examplePhonetic": "Xiànzài jǐ diǎn?" },
+      { "word": "一", "type": "number", "phonetic": "yī", "meaning": "một", "example": "我有一本书。", "examplePhonetic": "Wǒ yǒu yì běn shū." },
+      { "word": "十", "type": "number", "phonetic": "shí", "meaning": "mười", "example": "十个人在教室里。", "examplePhonetic": "Shí gè rén zài jiàoshì lǐ." }
+    ]
+  },
+  {
+    "topic": "Địa điểm và mua sắm",
+    "words": [
+      { "word": "学校", "type": "noun", "phonetic": "xué xiào", "meaning": "trường học", "example": "学校在前面。", "examplePhonetic": "Xuéxiào zài qiánmiàn." },
+      { "word": "医院", "type": "noun", "phonetic": "yī yuàn", "meaning": "bệnh viện", "example": "医院离这里很近。", "examplePhonetic": "Yīyuàn lí zhèlǐ hěn jìn." },
+      { "word": "商店", "type": "noun", "phonetic": "shāng diàn", "meaning": "cửa hàng", "example": "这家商店很大。", "examplePhonetic": "Zhè jiā shāngdiàn hěn dà." },
+      { "word": "钱", "type": "noun", "phonetic": "qián", "meaning": "tiền", "example": "这个多少钱？", "examplePhonetic": "Zhège duōshao qián?" },
+      { "word": "多少", "type": "pronoun", "phonetic": "duō shao", "meaning": "bao nhiêu", "example": "你买了多少？", "examplePhonetic": "Nǐ mǎi le duōshao?" },
+      { "word": "喜欢", "type": "verb", "phonetic": "xǐ huan", "meaning": "thích", "example": "我喜欢这件衣服。", "examplePhonetic": "Wǒ xǐhuan zhè jiàn yīfu." }
+    ]
+  }
+]

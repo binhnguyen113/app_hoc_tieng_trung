@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ứng Dụng Ôn Từ Vựng Tiếng Anh</title>
+  <title>Ứng Dụng Ôn Từ Vựng Tiếng Trung</title>
   <link rel="stylesheet" href="style.css">
   <!-- Google Fonts: Dùng font Inter cho giao diện hiện đại -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,21 +13,25 @@
   <div class="app-container">
     <header class="app-header">
       <div>
-        <p class="eyebrow">Vocabulary Lab</p>
-        <h1>Flashcard English</h1>  
+        <p class="eyebrow">Chinese Vocabulary Lab</p>
+        <h1>Nối từ tiếng Trung</h1>
       </div>
 
       <div class="header-actions">
         <button class="btn-toggle-mode" id="btn-toggle-mode">🎮 Làm Quiz</button>
         <button class="btn-primary small" id="typing-mode-btn">⌨️ Gõ từ</button>
+        <button class="btn-primary small" id="listening-mode-btn">🔊 Nghe</button>
       </div>
     </header>
 
     <div class="study-panel">
       <div class="panel-header">
         <span>Chế độ ôn tập</span>
-        <div class="stats">
-          <span>Từ số: <strong id="current-index">1</strong> / <strong id="total-words">0</strong></span>
+        <div class="panel-actions">
+          <div class="stats">
+            <span>Đã chọn: <strong id="selected-word-count">0</strong> từ</span>
+          </div>
+          <button class="btn-shuffle" id="btn-shuffle" type="button" title="Xáo trộn bộ từ hiện tại">🔀 Xáo trộn</button>
         </div>
       </div>
 
@@ -41,9 +45,12 @@
         <select id="study-mode">
           <option value="all">Ôn từ vựng</option>
           <option value="topic">Ôn theo chủ đề</option>
-          <option value="noun">Ôn theo noun</option>
-          <option value="verb">Ôn theo verb</option>
-          <option value="adjective">Ôn theo adjective</option>
+          <option value="noun">Ôn theo danh từ</option>
+          <option value="verb">Ôn theo động từ</option>
+          <option value="adjective">Ôn theo tính từ</option>
+          <option value="phrase">Ôn theo cụm từ</option>
+          <option value="number">Ôn theo số từ</option>
+          <option value="pronoun">Ôn theo đại từ</option>
         </select>
         <select id="topic-filter" class="hidden">
           <option value="all">Tất cả chủ đề</option>
@@ -51,49 +58,65 @@
       </div>
     </div>
 
-    <!-- MÀN HÌNH 1: FLASHCARD (Giữ nguyên cấu trúc cũ) -->
-    <div id="flashcard-screen" class="screen">
-      <main class="flashcard-container">
-        <div class="card" id="card">
-          <div class="card-face card-front">
-            <span class="type" id="word-type">noun</span>
-            <h2 class="word" id="word-text">Hello</h2>
-            <p class="phonetic" id="word-phonetic">/həˈləʊ/</p>
-            <button class="btn-audio" id="btn-speak" title="Phát âm">🔊</button>
+    <div id="matching-screen" class="screen hidden">
+      <div class="matching-box">
+        <div class="matching-header">
+          <div>
+            <p class="matching-kicker">Nối đúng bộ ba</p>
+            <h2 id="matching-progress">0 / 6 cặp đúng</h2>
           </div>
-          
-          <div class="card-face card-back">
-            <h3 class="meaning" id="word-meaning">Xin chào</h3>
-            <p class="example" id="word-example">"Hello, how are you today?"</p>
-          </div>
+          <p id="matching-feedback" class="matching-feedback" aria-live="polite"></p>
         </div>
-      </main>
 
-      <footer class="controls">
-        <button class="btn" id="btn-prev">⬅ Trước</button>
-        <button class="btn btn-primary" id="btn-flip">🔄 Lật thẻ</button>
-        <button class="btn" id="btn-next">Tiếp ➡</button>
-      </footer>
+        <div class="matching-grid">
+          <section class="matching-column">
+            <h3>Tiếng Trung</h3>
+            <div id="matching-chinese" class="matching-options"></div>
+          </section>
+          <section class="matching-column">
+            <h3>Pinyin</h3>
+            <div id="matching-pinyin" class="matching-options"></div>
+          </section>
+          <section class="matching-column">
+            <h3>Tiếng Việt</h3>
+            <div id="matching-vietnamese" class="matching-options"></div>
+          </section>
+        </div>
+
+        <button class="btn btn-primary btn-full" id="btn-next-matching" type="button">Bộ từ tiếp theo</button>
+      </div>
     </div>
 
-    <!-- MÀN HÌNH 2: QUIZ TRẮC NGHIỆM (Mới thêm) -->
-    <div id="quiz-screen" class="screen hidden">
+    <div id="quiz-screen" class="screen">
       <div class="quiz-box">
         <div class="quiz-header">
           <span>Điểm: <strong id="quiz-score">0</strong></span>
           <span id="quiz-progress">Câu 1/5</span>
         </div>
-        <h3 class="quiz-question-word" id="quiz-word">Vocabulary</h3>
-        <p class="quiz-question-type" id="quiz-word-type">noun</p>
-        <p class="quiz-phonetic" id="quiz-phonetic">/vəˈkæbjeleri/</p>
-        <p class="quiz-example" id="quiz-example">Reading books helps increase your vocabulary.</p>
+        <h3 class="quiz-question-word" id="quiz-word">你好</h3>
+        <p class="quiz-question-type" id="quiz-word-type">phrase</p>
+        <p class="quiz-phonetic" id="quiz-phonetic">nǐ hǎo</p>
+        <p class="quiz-example" id="quiz-example">你好，很高兴认识你。</p>
         <button class="btn btn-primary btn-full" id="btn-quiz-speak" type="button">🔊 Phát âm</button>
         
         <div class="quiz-options" id="quiz-options">
-          <!-- Các nút đáp án sẽ được JS render tự động vào đây -->
         </div>
 
         <button class="btn btn-primary btn-full" id="btn-next-quiz">Câu tiếp theo ➡</button>
+      </div>
+    </div>
+
+    <div id="listening-screen" class="screen hidden">
+      <div class="quiz-box">
+        <div class="quiz-header">
+          <span>Điểm: <strong id="listening-score">0</strong></span>
+          <span id="listening-progress">Câu 1/5</span>
+        </div>
+        <p class="typing-label">Nghe tiếng Trung và chọn nghĩa</p>
+        <div class="listening-icon" aria-hidden="true">🔊</div>
+        <button class="btn btn-primary btn-full" id="btn-replay-listening" type="button">🔊 Phát lại</button>
+        <div class="quiz-options" id="listening-options"></div>
+        <button class="btn btn-primary btn-full" id="btn-next-listening" type="button">Câu tiếp theo ➡</button>
       </div>
     </div>
 
@@ -104,10 +127,18 @@
           <span id="typing-progress">Câu 1/5</span>
         </div>
 
-        <p class="typing-label">Nghĩa tiếng Việt</p>
-        <h3 class="quiz-question-word" id="typing-meaning">Kiên trì</h3>
+        <label class="typing-label" for="typing-direction">Hướng luyện tập</label>
+        <select id="typing-direction" class="typing-direction">
+          <option value="chinese-to-vietnamese">Hiển thị tiếng Trung → Gõ tiếng Việt</option>
+          <option value="vietnamese-to-chinese">Hiển thị tiếng Việt → Gõ chữ Hán</option>
+        </select>
 
-        <input id="typing-input" type="text" class="typing-input" placeholder="Nhập từ tiếng Anh..." autocomplete="off" />
+        <p class="typing-label" id="typing-prompt">Từ tiếng Trung</p>
+        <h3 class="quiz-question-word" id="typing-word">你好</h3>
+        <p class="quiz-phonetic" id="typing-phonetic">nǐ hǎo</p>
+
+        <label class="typing-label" for="typing-input">Gõ nghĩa tiếng Việt</label>
+        <input id="typing-input" type="text" class="typing-input" placeholder="Nhập nghĩa tiếng Việt..." autocomplete="off" />
 
         <button class="btn btn-primary btn-full" id="btn-check-typing">Kiểm tra</button>
         <p id="typing-feedback" class="typing-feedback"></p>
