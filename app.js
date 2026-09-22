@@ -87,6 +87,7 @@ let quizRoundMistakes = [];
 let quizCorrectIds = new Set();
 let quizIsRetryRound = false;
 let currentQuizAnswered = false;
+let quizShouldShuffle = false;
 
 // DOM Elements - Common
 const btnToggleMode = document.getElementById("btn-toggle-mode");
@@ -144,6 +145,7 @@ let listeningRoundMistakes = [];
 let listeningCorrectIds = new Set();
 let listeningIsRetryRound = false;
 let listeningAnswered = false;
+let listeningShouldShuffle = false;
 
 // --- LOGIC MATCHING ---
 const MATCHING_SIZE = 6;
@@ -244,7 +246,7 @@ function updateSelectedWordCount() {
   selectedWordCountEl.textContent = getFilteredWords().length;
 }
 
-function startQuiz() {
+function startQuiz(shouldShuffle = false) {
   const filteredWords = getFilteredWords();
 
   if (filteredWords.length < 4) {
@@ -253,7 +255,8 @@ function startQuiz() {
   }
 
   quizOptionPool = [...filteredWords];
-  quizQuestions = [...filteredWords].sort(() => Math.random() - 0.5);
+  quizShouldShuffle = shouldShuffle;
+  quizQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
   quizTotalQuestions = filteredWords.length;
   quizRoundMistakes = [];
   quizCorrectIds = new Set();
@@ -277,18 +280,18 @@ function shuffleWords() {
   if (currentMode === "matching") {
     startMatching();
   } else if (currentMode === "quiz") {
-    startQuiz();
+    startQuiz(true);
   } else if (currentMode === "listening") {
-    startListeningPractice();
+    startListeningPractice(true);
   } else {
-    startTypingPractice();
+    startTypingPractice(true);
   }
 }
 
 function loadQuizQuestion() {
   if (currentQuizIndex >= quizQuestions.length) {
     if (quizRoundMistakes.length > 0) {
-      quizQuestions = [...quizRoundMistakes].sort(() => Math.random() - 0.5);
+      quizQuestions = quizShouldShuffle ? shuffleList(quizRoundMistakes) : [...quizRoundMistakes];
       quizRoundMistakes = [];
       quizIsRetryRound = true;
       currentQuizIndex = 0;
@@ -401,14 +404,15 @@ function speakChinese(text) {
   window.speechSynthesis.speak(utterance);
 }
 
-function startListeningPractice() {
+function startListeningPractice(shouldShuffle = false) {
   const filteredWords = getFilteredWords();
   if (filteredWords.length < 4) {
     alert("Cần ít nhất 4 từ vựng trong bộ lọc hiện tại để bắt đầu luyện nghe!");
     return;
   }
 
-  listeningQuestions = shuffleList(filteredWords);
+  listeningShouldShuffle = shouldShuffle;
+  listeningQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
   currentListeningIndex = 0;
   listeningScore = 0;
   listeningTotalQuestions = filteredWords.length;
@@ -423,7 +427,7 @@ function startListeningPractice() {
 function loadListeningQuestion() {
   if (currentListeningIndex >= listeningQuestions.length) {
     if (listeningRoundMistakes.length > 0) {
-      listeningQuestions = shuffleList(listeningRoundMistakes);
+      listeningQuestions = listeningShouldShuffle ? shuffleList(listeningRoundMistakes) : [...listeningRoundMistakes];
       listeningRoundMistakes = [];
       listeningIsRetryRound = true;
       currentListeningIndex = 0;
@@ -540,15 +544,17 @@ let typingRoundMistakes = [];
 let typingCorrectIds = new Set();
 let typingIsRetryRound = false;
 let typingAnswered = false;
+let typingShouldShuffle = false;
 
-function startTypingPractice() {
+function startTypingPractice(shouldShuffle = false) {
   const filteredWords = getFilteredWords();
   if (filteredWords.length === 0) {
     alert("Không có từ vựng nào trong bộ lọc hiện tại để luyện gõ!");
     return;
   }
 
-  typingQuestions = shuffleList(filteredWords);
+  typingShouldShuffle = shouldShuffle;
+  typingQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
 
   currentTypingIndex = 0;
   typingScore = 0;
@@ -621,7 +627,9 @@ btnCheckTyping.addEventListener("click", () => {
     if (!typingRoundMistakes.some(word => word.id === currentWord.id)) {
       typingRoundMistakes.push(currentWord);
     }
-    const correctAnswer = chineseToVietnamese ? currentWord.meaning : currentWord.word;
+    const correctAnswer = chineseToVietnamese
+      ? currentWord.meaning
+      : `${currentWord.word}${currentWord.phonetic ? ` (${currentWord.phonetic})` : ""}`;
     typingFeedbackEl.textContent = `❌ Sai. Đáp án đúng là: ${correctAnswer}`;
     typingFeedbackEl.style.color = "#991b1b";
   }
@@ -639,7 +647,7 @@ function advanceTypingQuestion() {
 
   if (currentTypingIndex >= typingQuestions.length) {
     if (typingRoundMistakes.length > 0) {
-      typingQuestions = [...typingRoundMistakes].sort(() => Math.random() - 0.5);
+      typingQuestions = typingShouldShuffle ? shuffleList(typingRoundMistakes) : [...typingRoundMistakes];
       typingRoundMistakes = [];
       typingIsRetryRound = true;
       currentTypingIndex = 0;
