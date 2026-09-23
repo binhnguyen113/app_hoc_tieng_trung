@@ -1,17 +1,19 @@
 [
   {
-    "topic": "Số đếm",
+    "topic": "Lesson 1",
     "words": [
-      { "word": "一", "type": "numeral", "phonetic": "yī", "meaning": "1", "example": "我着一本书。", "examplePhonetic": "Wǒ yǒu yī běn shū." },
-      { "word": "二", "type": "numeral", "phonetic": "èr", "meaning": "2", "example": "我有两个人。", "examplePhonetic": "Wǒmen yǒu èr gè rén." },
-      { "word": "三", "type": "numeral", "phonetic": "sān", "meaning": "3", "example": "这里有三个苹果。", "examplePhonetic": "Zhèlǐ yǒu sān gè píngguǒ." },
-      { "word": "四", "type": "numeral", "phonetic": "sì", "meaning": "4", "example": "一年有四个季节。", "examplePhonetic": "Yī nián yǒu sì gè jìjié." },
-      { "word": "五", "type": "numeral", "phonetic": "wǔ", "meaning": "5", "example": "今天星期五。", "examplePhonetic": "Jīntiān xīngqīwǔ." },
-      { "word": "六", "type": "numeral", "phonetic": "liù", "meaning": "6", "example": "桌上有六支笔。", "examplePhonetic": "Zhuō shàng yǒu liù zhī bǐ." },
-      { "word": "七", "type": "numeral", "phonetic": "qī", "meaning": "7", "example": "一周有七天。", "examplePhonetic": "Yī zhōu yǒu qī tiān." },
-      { "word": "八", "type": "numeral", "phonetic": "bā", "meaning": "8", "example": "他今年八岁。", "examplePhonetic": "Tā jīnnián bā suì." },
-      { "word": "九", "type": "numeral", "phonetic": "jiǔ", "meaning": "9", "example": "现在是九点。", "examplePhonetic": "Xiànzài shì jiǔ diǎn." },
-      { "word": "十", "type": "numeral", "phonetic": "shí", "meaning": "10", "example": "这里有十个人。", "examplePhonetic": "Zhèlǐ yǒu shí gè rén." }
+      { "word": "你好", "type": "expression", "phonetic": "nǐ hǎo", "meaning": "Xin chào", "example": "你好！很高兴认识你。", "examplePhonetic": "Nǐ hǎo! Hěn gāoxìng rènshí nǐ." },
+      { "word": "大家", "type": "pronoun", "phonetic": "dàjiā", "meaning": "Mọi người", "example": "大家早上好！", "examplePhonetic": "Dàjiā zǎoshang hǎo!" },
+      { "word": "好", "type": "adjective", "phonetic": "hǎo", "meaning": "Tốt, đẹp, hay", "example": "今天天气很好。", "examplePhonetic": "Jīntiān tiānqì hěn hǎo." },
+      { "word": "学生", "type": "noun", "phonetic": "xuéshēng", "meaning": "Học sinh, sinh viên", "example": "我是汉语学生。", "examplePhonetic": "Wǒ shì Hànyǔ xuéshēng." },
+      { "word": "们", "type": "suffix", "phonetic": "men", "meaning": "Các (hậu tố chỉ số nhiều cho người)", "example": "我们都是学生。", "examplePhonetic": "Wǒmen dōu shì xuéshēng." },
+      { "word": "老师", "type": "noun", "phonetic": "lǎoshī", "meaning": "Thầy/Cô giáo", "example": "张老师是我们的汉语老师。", "examplePhonetic": "Zhāng lǎoshī shì wǒmen de Hànyǔ lǎoshī." },
+      { "word": "您", "type": "pronoun", "phonetic": "nín", "meaning": "Ngài, ông, bà, thầy, cô (ngôi thứ hai trang trọng)", "example": "您好，请进！", "examplePhonetic": "Nín hǎo, qǐng jìn!" },
+      { "word": "你们", "type": "pronoun", "phonetic": "nǐmen", "meaning": "Các bạn, các anh, các chị", "example": "你们去哪儿？", "examplePhonetic": "Nǐmen qù nǎr?" },
+      { "word": "谢谢", "type": "verb / expression", "phonetic": "xièxie", "meaning": "Cảm ơn", "example": "谢谢你的帮助。", "examplePhonetic": "Xièxie nǐ de bāngzhù." },
+      { "word": "不客气", "type": "expression", "phonetic": "bú kèqi", "meaning": "Không có gì, đừng khách khí", "example": "不客气，这是我应该做的。", "examplePhonetic": "Bú kèqi, zhè shì wǒ yīnggāi zuò de." },
+      { "word": "同学", "type": "noun", "phonetic": "tóngxué", "meaning": "Bạn học", "example": "他是我的大学同学。", "examplePhonetic": "Tā shì wǒ de dàxué tóngxué." },
+      { "word": "再见", "type": "expression", "phonetic": "zàijiàn", "meaning": "Tạm biệt", "example": "明天见，再见！", "examplePhonetic": "Míngtiān jiàn, zàijiàn!" }
     ]
   }
 ]

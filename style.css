@@ -297,6 +297,19 @@ input {
   transition: all 0.2s ease;
 }
 
+.matching-option-chinese,
+.quiz-question-word {
+  font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+}
+
+.matching-option-chinese {
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding-inline: 8px;
+}
+
 .matching-option:hover,
 .matching-option.selected {
   border-color: var(--primary-color);
@@ -373,6 +386,7 @@ input {
   max-width: 100%;
   overflow-wrap: anywhere;
   word-break: break-word;
+  line-height: 1.35;
 }
 
 .quiz-question-type {
@@ -390,11 +404,14 @@ input {
 }
 
 .quiz-example {
+  font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.82rem;
   color: var(--text-sub);
   line-height: 1.5;
   min-height: 38px;
   font-style: italic;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .listening-icon {

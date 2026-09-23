@@ -1,7 +1,7 @@
 const DATA_SOURCES = [
   { id: "topic", label: "Tiếng Trung chủ đề", file: "./data-topic.json" },
-  { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" },
-  { id: "bothu", label: "Bộ thủ", file: "./data-bothu.json" }
+  { id: "bothu", label: "Bộ thủ", file: "./data-bothu.json" },
+  { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" }
 
 ];
 
@@ -180,7 +180,7 @@ function renderMatchingBoard() {
     container.innerHTML = "";
     shuffleList(matchingWords).forEach(word => {
       const button = document.createElement("button");
-      button.className = "matching-option";
+      button.className = `matching-option${field === "word" ? " matching-option-chinese" : ""}`;
       button.dataset.id = word.id;
       button.textContent = word[field];
       button.disabled = matchingCorrectIds.has(word.id);
