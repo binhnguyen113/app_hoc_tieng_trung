@@ -3,20 +3,20 @@
 	{
 		"topic": "Bộ thủ cơ bản",
 		"words": [
-			{ "word": "人", "type": "radical", "phonetic": "rén", "meaning": "bộ nhân, người", "example": "你、他、休", "examplePhonetic": "nǐ, tā, xiū" },
-			{ "word": "口", "type": "radical", "phonetic": "kǒu", "meaning": "bộ khẩu, miệng, liên quan đến hoạt động của miệng", "example": "吃、喝、唱", "examplePhonetic": "chī, hē, chàng" },
-			{ "word": "土", "type": "radical", "phonetic": "tǔ", "meaning": "bộ thổ, đất", "example": "地、城、块", "examplePhonetic": "dì, chéng, kuài" },
-			{ "word": "大", "type": "radical", "phonetic": "dà", "meaning": "bộ đại, to lớn", "example": "天、太、夫", "examplePhonetic": "tiān, tài, fū" },
-			{ "word": "女", "type": "radical", "phonetic": "nǚ", "meaning": "bộ nữ, phụ nữ, con gái, đàn bà", "example": "妈、姐、好", "examplePhonetic": "mā, jiě, hǎo" },
-			{ "word": "宀", "type": "radical", "phonetic": "mián", "meaning": "bộ miên, mái nhà, mái che", "example": "家、安、室", "examplePhonetic": "jiā, ān, shì" },
-			{ "word": "力", "type": "radical", "phonetic": "lì", "meaning": "bộ lực, sức mạnh", "example": "加、动、助", "examplePhonetic": "jiā, dòng, zhù" },
-			{ "word": "心", "type": "radical", "phonetic": "xīn", "meaning": "bộ tâm, tim,tấm lòng, tâm ", "example": "想、思、意", "examplePhonetic": "xiǎng, sī, yì" },
-			{ "word": "日", "type": "radical", "phonetic": "rì", "meaning": "bộ nhật, ngày, mặt trời", "example": "明、时、早", "examplePhonetic": "míng, shí, zǎo" },
-			{ "word": "木", "type": "radical", "phonetic": "mù", "meaning": "bộ mộc, cây, gỗ", "example": "林、森、校", "examplePhonetic": "lín, sēn, xiào" },
-			{ "word": "门", "type": "radical", "phonetic": "mén", "meaning": "bộ môn,  cửa", "example": "问、间、闭", "examplePhonetic": "wèn, jiān, bì" },
-			{ "word": "目", "type": "radical", "phonetic": "mù", "meaning": "bộ mục, mắt", "example": "眼、看、睡", "examplePhonetic": "yǎn, kàn, shuì" },
-			{ "word": "儿", "type": "radical", "phonetic": "ér", "meaning": "bộ nhi, trẻ nhỏ", "example": "兄、先、元", "examplePhonetic": "xiōng, xiān, yuán" },
-			{ "word": "勹", "type": "radical", "phonetic": "bāo", "meaning": "bộ bao, bao bọc", "example": "包、句、勺", "examplePhonetic": "bāo, jù, sháo" }
+			{ "word": "人", "type": "radical", "phonetic": "rén", "meaning": "bộ nhân, người", "example": "你、他、休", "examplePhonetic": "nǐ, tā, xiū", "exampleMeaning": "Bạn, anh ấy, nghỉ ngơi" },
+			{ "word": "口", "type": "radical", "phonetic": "kǒu", "meaning": "bộ khẩu, miệng, liên quan đến hoạt động của miệng", "example": "吃、喝、唱", "examplePhonetic": "chī, hē, chàng", "exampleMeaning": "Ăn, uống, hát" },
+			{ "word": "土", "type": "radical", "phonetic": "tǔ", "meaning": "bộ thổ, đất", "example": "地、城、块", "examplePhonetic": "dì, chéng, kuài", "exampleMeaning": "Đất, thành phố, khối" },
+			{ "word": "大", "type": "radical", "phonetic": "dà", "meaning": "bộ đại, to lớn", "example": "天、太、夫", "examplePhonetic": "tiān, tài, fū", "exampleMeaning": "Trời, quá, chồng" },
+			{ "word": "女", "type": "radical", "phonetic": "nǚ", "meaning": "bộ nữ, phụ nữ, con gái, đàn bà", "example": "妈、姐、好", "examplePhonetic": "mā, jiě, hǎo", "exampleMeaning": "Mẹ, chị gái, tốt" },
+			{ "word": "宀", "type": "radical", "phonetic": "mián", "meaning": "bộ miên, mái nhà, mái che", "example": "家、安、室", "examplePhonetic": "jiā, ān, shì", "exampleMeaning": "Nhà, yên ổn, phòng" },
+			{ "word": "力", "type": "radical", "phonetic": "lì", "meaning": "bộ lực, sức mạnh", "example": "加、动、助", "examplePhonetic": "jiā, dòng, zhù", "exampleMeaning": "Thêm, chuyển động, giúp đỡ" },
+			{ "word": "心", "type": "radical", "phonetic": "xīn", "meaning": "bộ tâm, tim,tấm lòng, tâm ", "example": "想、思、意", "examplePhonetic": "xiǎng, sī, yì", "exampleMeaning": "Nghĩ, suy nghĩ, ý định" },
+			{ "word": "日", "type": "radical", "phonetic": "rì", "meaning": "bộ nhật, ngày, mặt trời", "example": "明、时、早", "examplePhonetic": "míng, shí, zǎo", "exampleMeaning": "Sáng, thời gian, sớm" },
+			{ "word": "木", "type": "radical", "phonetic": "mù", "meaning": "bộ mộc, cây, gỗ", "example": "林、森、校", "examplePhonetic": "lín, sēn, xiào", "exampleMeaning": "Rừng, rừng cây, trường học" },
+			{ "word": "门", "type": "radical", "phonetic": "mén", "meaning": "bộ môn,  cửa", "example": "问、间、闭", "examplePhonetic": "wèn, jiān, bì", "exampleMeaning": "Hỏi, khoảng/phòng, đóng" },
+			{ "word": "目", "type": "radical", "phonetic": "mù", "meaning": "bộ mục, mắt", "example": "眼、看、睡", "examplePhonetic": "yǎn, kàn, shuì", "exampleMeaning": "Mắt, nhìn, ngủ" },
+			{ "word": "儿", "type": "radical", "phonetic": "ér", "meaning": "bộ nhi, trẻ nhỏ", "example": "兄、先、元", "examplePhonetic": "xiōng, xiān, yuán", "exampleMeaning": "Anh/em trai, trước, nguyên" },
+			{ "word": "勹", "type": "radical", "phonetic": "bāo", "meaning": "bộ bao, bao bọc", "example": "包、句、勺", "examplePhonetic": "bāo, jù, sháo", "exampleMeaning": "Bọc, câu, cái thìa" }
 		]
 	}
 ]

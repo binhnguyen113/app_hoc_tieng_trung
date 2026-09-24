@@ -2,18 +2,18 @@
   {
     "topic": "Lesson 1",
     "words": [
-      { "word": "你好", "type": "expression", "phonetic": "nǐ hǎo", "meaning": "Xin chào", "example": "你好！很高兴认识你。", "examplePhonetic": "Nǐ hǎo! Hěn gāoxìng rènshí nǐ." },
-      { "word": "大家", "type": "pronoun", "phonetic": "dàjiā", "meaning": "Mọi người", "example": "大家早上好！", "examplePhonetic": "Dàjiā zǎoshang hǎo!" },
-      { "word": "好", "type": "adjective", "phonetic": "hǎo", "meaning": "Tốt, đẹp, hay", "example": "今天天气很好。", "examplePhonetic": "Jīntiān tiānqì hěn hǎo." },
-      { "word": "学生", "type": "noun", "phonetic": "xuéshēng", "meaning": "Học sinh, sinh viên", "example": "我是汉语学生。", "examplePhonetic": "Wǒ shì Hànyǔ xuéshēng." },
-      { "word": "们", "type": "suffix", "phonetic": "men", "meaning": "Các (hậu tố chỉ số nhiều cho người)", "example": "我们都是学生。", "examplePhonetic": "Wǒmen dōu shì xuéshēng." },
-      { "word": "老师", "type": "noun", "phonetic": "lǎoshī", "meaning": "Thầy/Cô giáo", "example": "张老师是我们的汉语老师。", "examplePhonetic": "Zhāng lǎoshī shì wǒmen de Hànyǔ lǎoshī." },
-      { "word": "您", "type": "pronoun", "phonetic": "nín", "meaning": "Ngài, ông, bà, thầy, cô (ngôi thứ hai trang trọng)", "example": "您好，请进！", "examplePhonetic": "Nín hǎo, qǐng jìn!" },
-      { "word": "你们", "type": "pronoun", "phonetic": "nǐmen", "meaning": "Các bạn, các anh, các chị", "example": "你们去哪儿？", "examplePhonetic": "Nǐmen qù nǎr?" },
-      { "word": "谢谢", "type": "verb / expression", "phonetic": "xièxie", "meaning": "Cảm ơn", "example": "谢谢你的帮助。", "examplePhonetic": "Xièxie nǐ de bāngzhù." },
-      { "word": "不客气", "type": "expression", "phonetic": "bú kèqi", "meaning": "Không có gì, đừng khách khí", "example": "不客气，这是我应该做的。", "examplePhonetic": "Bú kèqi, zhè shì wǒ yīnggāi zuò de." },
-      { "word": "同学", "type": "noun", "phonetic": "tóngxué", "meaning": "Bạn học", "example": "他是我的大学同学。", "examplePhonetic": "Tā shì wǒ de dàxué tóngxué." },
-      { "word": "再见", "type": "expression", "phonetic": "zàijiàn", "meaning": "Tạm biệt", "example": "明天见，再见！", "examplePhonetic": "Míngtiān jiàn, zàijiàn!" }
+      { "word": "你好", "type": "expression", "phonetic": "nǐ hǎo", "meaning": "Xin chào", "example": "你好！很高兴认识你。", "examplePhonetic": "Nǐ hǎo! Hěn gāoxìng rènshí nǐ.", "exampleMeaning": "Xin chào! Rất vui được làm quen với bạn." },
+      { "word": "大家", "type": "pronoun", "phonetic": "dàjiā", "meaning": "Mọi người", "example": "大家早上好！", "examplePhonetic": "Dàjiā zǎoshang hǎo!", "exampleMeaning": "Chào buổi sáng mọi người!" },
+      { "word": "好", "type": "adjective", "phonetic": "hǎo", "meaning": "Tốt, đẹp, hay", "example": "今天天气很好。", "examplePhonetic": "Jīntiān tiānqì hěn hǎo.", "exampleMeaning": "Thời tiết hôm nay rất đẹp." },
+      { "word": "学生", "type": "noun", "phonetic": "xuéshēng", "meaning": "Học sinh, sinh viên", "example": "我是汉语学生。", "examplePhonetic": "Wǒ shì Hànyǔ xuéshēng.", "exampleMeaning": "Tôi là học sinh tiếng Trung." },
+      { "word": "们", "type": "suffix", "phonetic": "men", "meaning": "Các (hậu tố chỉ số nhiều cho người)", "example": "我们都是学生。", "examplePhonetic": "Wǒmen dōu shì xuéshēng.", "exampleMeaning": "Chúng tôi đều là học sinh." },
+      { "word": "老师", "type": "noun", "phonetic": "lǎoshī", "meaning": "Thầy/Cô giáo", "example": "张老师是我们的汉语老师。", "examplePhonetic": "Zhāng lǎoshī shì wǒmen de Hànyǔ lǎoshī.", "exampleMeaning": "Thầy/cô Trương là giáo viên tiếng Trung của chúng tôi." },
+      { "word": "您", "type": "pronoun", "phonetic": "nín", "meaning": "Ngài, ông, bà, thầy, cô (ngôi thứ hai trang trọng)", "example": "您好，请进！", "examplePhonetic": "Nín hǎo, qǐng jìn!", "exampleMeaning": "Xin chào ngài, mời vào!" },
+      { "word": "你们", "type": "pronoun", "phonetic": "nǐmen", "meaning": "Các bạn, các anh, các chị", "example": "你们去哪儿？", "examplePhonetic": "Nǐmen qù nǎr?", "exampleMeaning": "Các bạn đi đâu?" },
+      { "word": "谢谢", "type": "verb / expression", "phonetic": "xièxie", "meaning": "Cảm ơn", "example": "谢谢你的帮助。", "examplePhonetic": "Xièxie nǐ de bāngzhù.", "exampleMeaning": "Cảm ơn sự giúp đỡ của bạn." },
+      { "word": "不客气", "type": "expression", "phonetic": "bú kèqi", "meaning": "Không có gì, đừng khách khí", "example": "不客气，这是我应该做的。", "examplePhonetic": "Bú kèqi, zhè shì wǒ yīnggāi zuò de.", "exampleMeaning": "Không có gì, đây là việc tôi nên làm." },
+      { "word": "同学", "type": "noun", "phonetic": "tóngxué", "meaning": "Bạn học", "example": "他是我的大学同学。", "examplePhonetic": "Tā shì wǒ de dàxué tóngxué.", "exampleMeaning": "Anh ấy là bạn học đại học của tôi." },
+      { "word": "再见", "type": "expression", "phonetic": "zàijiàn", "meaning": "Tạm biệt", "example": "明天见，再见！", "examplePhonetic": "Míngtiān jiàn, zàijiàn!", "exampleMeaning": "Hẹn gặp ngày mai, tạm biệt!" }
     ]
   }
 ]

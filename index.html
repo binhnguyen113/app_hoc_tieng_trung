@@ -98,6 +98,11 @@
         <p class="quiz-phonetic" id="quiz-phonetic">nǐ hǎo</p>
         <p class="quiz-example" id="quiz-example">你好，很高兴认识你。</p>
         <button class="btn btn-primary btn-full" id="btn-quiz-speak" type="button">🔊 Phát âm</button>
+        <label class="typing-label" for="quiz-practice-mode">Chế độ Quiz</label>
+        <select id="quiz-practice-mode" class="typing-direction">
+          <option value="word">Từ vựng: chọn nghĩa của từ</option>
+          <option value="example">Example: chọn nghĩa của example</option>
+        </select>
         
         <div class="quiz-options" id="quiz-options">
         </div>
@@ -112,9 +117,21 @@
           <span>Điểm: <strong id="listening-score">0</strong></span>
           <span id="listening-progress">Câu 1/5</span>
         </div>
-        <p class="typing-label">Nghe tiếng Trung và chọn nghĩa</p>
+        <p class="typing-label" id="listening-prompt">Nghe ví dụ rồi chọn nghĩa của ví dụ</p>
         <div class="listening-icon" aria-hidden="true">🔊</div>
         <button class="btn btn-primary btn-full" id="btn-replay-listening" type="button">🔊 Phát lại</button>
+        <label class="typing-label" for="listening-answer-mode">Kiểu trả lời</label>
+        <select id="listening-answer-mode" class="typing-direction">
+          <option value="multiple-choice">Nghe ví dụ rồi chọn nghĩa ví dụ</option>
+          <option value="chinese">Nghe rồi gõ chữ Hán</option>
+          <option value="vietnamese">Nghe rồi gõ tiếng Việt</option>
+        </select>
+        <div id="listening-typing-area" class="hidden">
+          <label class="typing-label" for="listening-input" id="listening-input-label">Nhập câu trả lời</label>
+          <input id="listening-input" type="text" class="typing-input" placeholder="Nhập câu trả lời..." autocomplete="off" />
+          <button class="btn btn-primary btn-full" id="btn-check-listening" type="button">Kiểm tra</button>
+          <p id="listening-feedback" class="typing-feedback"></p>
+        </div>
         <div class="quiz-options" id="listening-options"></div>
         <button class="btn btn-primary btn-full" id="btn-next-listening" type="button">Câu tiếp theo ➡</button>
       </div>
