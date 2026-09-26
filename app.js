@@ -140,6 +140,7 @@ const btnCheckListening = document.getElementById("btn-check-listening");
 const listeningFeedbackEl = document.getElementById("listening-feedback");
 const typingScoreEl = document.getElementById("typing-score");
 const typingProgressEl = document.getElementById("typing-progress");
+const typingContentModeEl = document.getElementById("typing-content-mode");
 const typingDirectionEl = document.getElementById("typing-direction");
 const typingPromptEl = document.getElementById("typing-prompt");
 const typingWordEl = document.getElementById("typing-word");
@@ -694,12 +695,21 @@ function renderTypingQuestion() {
 
   const currentWord = typingQuestions[currentTypingIndex];
   const chineseToVietnamese = typingDirectionEl.value === "chinese-to-vietnamese";
-  typingPromptEl.textContent = chineseToVietnamese ? "Từ tiếng Trung" : "Nghĩa tiếng Việt";
-  typingWordEl.textContent = chineseToVietnamese ? currentWord.word : currentWord.meaning;
-  typingPhoneticEl.textContent = chineseToVietnamese ? (currentWord.phonetic || "") : "";
+  const isExampleMode = typingContentModeEl.value === "example";
+  const chineseText = isExampleMode ? currentWord.example : currentWord.word;
+  const vietnameseText = isExampleMode
+    ? (currentWord.exampleMeaning || currentWord.meaning)
+    : currentWord.meaning;
+  const chinesePhonetic = isExampleMode ? currentWord.examplePhonetic : currentWord.phonetic;
+
+  typingPromptEl.textContent = chineseToVietnamese
+    ? (isExampleMode ? "Example tiếng Trung" : "Từ tiếng Trung")
+    : (isExampleMode ? "Nghĩa tiếng Việt của example" : "Nghĩa tiếng Việt");
+  typingWordEl.textContent = chineseToVietnamese ? chineseText : vietnameseText;
+  typingPhoneticEl.textContent = chineseToVietnamese ? (chinesePhonetic || "") : "";
   typingInputEl.placeholder = chineseToVietnamese
-    ? "Nhập nghĩa tiếng Việt..."
-    : "Nhập chữ Hán...";
+    ? (isExampleMode ? "Nhập nghĩa tiếng Việt của example..." : "Nhập nghĩa tiếng Việt...")
+    : (isExampleMode ? "Nhập example tiếng Trung..." : "Nhập từ tiếng Trung...");
   typingProgressEl.textContent = typingIsRetryRound
     ? `Còn sai: ${typingTotalQuestions - typingCorrectIds.size} câu`
     : `Câu ${currentTypingIndex + 1} / ${typingQuestions.length}`;
@@ -731,8 +741,13 @@ btnCheckTyping.addEventListener("click", () => {
 
   const currentWord = typingQuestions[currentTypingIndex];
   const chineseToVietnamese = typingDirectionEl.value === "chinese-to-vietnamese";
+  const isExampleMode = typingContentModeEl.value === "example";
   const inputValue = normalizeTypingAnswer(typingInputEl.value);
-  const correctValues = (chineseToVietnamese ? currentWord.meaning : currentWord.word)
+  const chineseText = isExampleMode ? currentWord.example : currentWord.word;
+  const vietnameseText = isExampleMode
+    ? (currentWord.exampleMeaning || currentWord.meaning)
+    : currentWord.meaning;
+  const correctValues = (chineseToVietnamese ? vietnameseText : chineseText)
     .split(",")
     .map(normalizeTypingAnswer);
 
@@ -747,8 +762,8 @@ btnCheckTyping.addEventListener("click", () => {
       typingRoundMistakes.push(currentWord);
     }
     const correctAnswer = chineseToVietnamese
-      ? currentWord.meaning
-      : `${currentWord.word}${currentWord.phonetic ? ` (${currentWord.phonetic})` : ""}`;
+      ? vietnameseText
+      : `${chineseText}${isExampleMode ? (currentWord.examplePhonetic ? ` (${currentWord.examplePhonetic})` : "") : (currentWord.phonetic ? ` (${currentWord.phonetic})` : "")}`;
     typingFeedbackEl.textContent = `❌ Sai. Đáp án đúng là: ${correctAnswer}`;
     typingFeedbackEl.style.color = "#991b1b";
   }
@@ -788,6 +803,7 @@ function advanceTypingQuestion() {
   renderTypingQuestion();
 }
 
+typingContentModeEl.addEventListener("change", startTypingPractice);
 typingDirectionEl.addEventListener("change", startTypingPractice);
 
 function applyStudyMode() {
@@ -939,7 +955,12 @@ document.addEventListener("keydown", (event) => {
       if (currentWord) speakChinese(currentWord.word);
     } else if (currentMode === "typing") {
       const currentWord = typingQuestions[currentTypingIndex];
-      if (currentWord) speakChinese(currentWord.word);
+      if (currentWord) {
+        const typingText = typingContentModeEl.value === "example"
+          ? currentWord.example
+          : currentWord.word;
+        speakChinese(typingText);
+      }
     }
 
     return;

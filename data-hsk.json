@@ -15,5 +15,24 @@
       { "word": "同学", "type": "noun", "phonetic": "tóngxué", "meaning": "Bạn học", "example": "他是我的大学同学。", "examplePhonetic": "Tā shì wǒ de dàxué tóngxué.", "exampleMeaning": "Anh ấy là bạn học đại học của tôi." },
       { "word": "再见", "type": "expression", "phonetic": "zàijiàn", "meaning": "Tạm biệt", "example": "明天见，再见！", "examplePhonetic": "Míngtiān jiàn, zàijiàn!", "exampleMeaning": "Hẹn gặp ngày mai, tạm biệt!" }
     ]
+  },
+  {
+    "topic": "Lesson 2",
+    "words": [
+      { "word": "请问", "type": "expression", "phonetic": "qǐngwèn", "meaning": "Xin hỏi", "example": "请问，洗手间在哪里？", "examplePhonetic": "Qǐngwèn, xǐshǒujiān zài nǎli?" },
+      { "word": "叫", "type": "verb", "phonetic": "jiào", "meaning": "Tên là, gọi là", "example": "我叫李明。", "examplePhonetic": "Wǒ jiào Lǐ Míng." },
+      { "word": "什么", "type": "pronoun", "phonetic": "shénme", "meaning": "Cái gì, gì", "example": "这是什么东西？", "examplePhonetic": "Zhè shì shénme dōngxi?" },
+      { "word": "名字", "type": "noun", "phonetic": "míngzi", "meaning": "Tên", "example": "你的名字叫什么？", "examplePhonetic": "Nǐ de míngzi jiào shénme?" },
+      { "word": "我", "type": "pronoun", "phonetic": "wǒ", "meaning": "Tôi, tớ, mình", "example": "我是中国学人。", "examplePhonetic": "Wǒ shì Zhōngguó rén." },
+      { "word": "不", "type": "adverb", "phonetic": "bù/bú", "meaning": "Không", "example": "我不吃辣的。", "examplePhonetic": "Wǒ bù chī là de." },
+      { "word": "是", "type": "verb", "phonetic": "shì", "meaning": "Là, đúng", "example": "他是我的朋友。", "examplePhonetic": "Tā shì wǒ de péngyou." },
+      { "word": "对不起", "type": "expression", "phonetic": "duìbuqǐ", "meaning": "Xin lỗi", "example": "对不起，我迟到了。", "examplePhonetic": "Duìbuqǐ, wǒ chídào le." },
+      { "word": "没关系", "type": "expression", "phonetic": "méi guānxi", "meaning": "Không sao, không có gì", "example": "没关系，慢慢来。", "examplePhonetic": "Méi guānxi, mànman lái." },
+      { "word": "没事", "type": "expression", "phonetic": "méi shì", "meaning": "Không sao, không có chuyện gì", "example": "不用担心，我没事。", "examplePhonetic": "Bùyòng dānxīn, wǒ méi shì." },
+      { "word": "很", "type": "adverb", "phonetic": "hěn", "meaning": "Rất", "example": "这个苹果很好吃。", "examplePhonetic": "Zhè gè píngguǒ hěn hǎochī." },
+      { "word": "高兴", "type": "adjective", "phonetic": "gāoxìng", "meaning": "Vui vẻ, mừng", "example": "今天大家都很高兴。", "examplePhonetic": "Jīntiān dàjiā dōu hěn gāoxìng." },
+      { "word": "认识", "type": "verb", "phonetic": "rènshi", "meaning": "Quen biết, biết", "example": "很高兴认识你！", "examplePhonetic": "Hěn gāoxìng rènshi nǐ!" },
+      { "word": "也", "type": "adverb", "phonetic": "yě", "meaning": "Cũng", "example": "我也很高兴认识你。", "examplePhonetic": "Wǒ yě hěn gāoxìng rènshi nǐ." }
+    ]
   }
 ]
