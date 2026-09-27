@@ -11,7 +11,6 @@
   --primary-soft: #eef2ff;
   --text-main: #1f2937;
   --text-sub: #5b6475;
-  --success: #10b981;
   --danger: #ef4444;
   --shadow-soft: 0 18px 38px rgba(79, 70, 229, 0.12);
   --shadow-card: 0 12px 28px rgba(15, 23, 42, 0.08);
@@ -476,13 +475,25 @@ input {
   font-weight: 800;
 }
 
+.typing-pronunciation-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.typing-pronunciation-option input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--primary-color);
+}
+
 .typing-input {
-  width: 100%;
-  border: 1px solid #dfe6f5;
-  border-radius: 12px;
   font-size: 1rem;
-  outline: none;
-  background: #fff;
 }
 
 .typing-direction {
@@ -497,11 +508,7 @@ input {
   outline: none;
 }
 
-.typing-direction:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
-}
-
+.typing-direction:focus,
 .typing-input:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);

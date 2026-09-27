@@ -1,57 +1,43 @@
 const DATA_SOURCES = [
-  //{ id: "topic", label: "Tiếng Trung chủ đề", file: "./data-topic.json" },
-  { id: "bothu", label: "Bộ thủ", file: "./data-bothu.json" },
+  { id: "214bothu", label: "214 Bộ thủ", file: "./data-214bothu.json" },
   { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" }
-
 ];
+
+function normalizeWordRecord(item, topic, id) {
+  return {
+    id,
+    topic,
+    word: item.word || "Unknown",
+    type: String(item.type || "noun").toLowerCase(),
+    phonetic: item.phonetic || "",
+    meaning: item.meaning || "",
+    example: item.example || "",
+    examplePhonetic: item.examplePhonetic || "",
+    exampleMeaning: item.exampleMeaning || ""
+  };
+}
 
 function normalizeWordRecords(data) {
   if (!Array.isArray(data)) return [];
 
-  const flatRecords = [];
+  return data.flatMap((item, index) => {
+    if (!item || typeof item !== "object") return [];
 
-  data.forEach((item, index) => {
-    if (!item || typeof item !== 'object') return;
-
-    const topicName = item.topic || item.label || 'General';
-
+    const topic = item.topic || item.label || "General";
     if (Array.isArray(item.words)) {
-      item.words.forEach((wordItem, wordIndex) => {
-        if (!wordItem || typeof wordItem !== 'object') return;
+      return item.words.flatMap((wordItem, wordIndex) => {
+        if (!wordItem || typeof wordItem !== "object") return [];
 
-        const word = wordItem.word || 'Unknown';
-        flatRecords.push({
-          id: `${topicName}-${wordIndex}-${word}`,
-          topic: topicName,
-          word,
-          type: String(wordItem.type || 'noun').toLowerCase(),
-          phonetic: wordItem.phonetic || '',
-          meaning: wordItem.meaning || '',
-          example: wordItem.example || '',
-          examplePhonetic: wordItem.examplePhonetic || '',
-          exampleMeaning: wordItem.exampleMeaning || ''
-        });
-      });
-      return;
-    }
-
-    if (item.word) {
-      const word = item.word || 'Unknown';
-      flatRecords.push({
-        id: item.id || `${topicName}-${index}-${word}`,
-        topic: topicName,
-        word,
-        type: String(item.type || 'noun').toLowerCase(),
-        phonetic: item.phonetic || '',
-        meaning: item.meaning || '',
-        example: item.example || '',
-        examplePhonetic: item.examplePhonetic || '',
-        exampleMeaning: item.exampleMeaning || ''
+        const word = wordItem.word || "Unknown";
+        return [normalizeWordRecord(wordItem, topic, `${topic}-${wordIndex}-${word}`)];
       });
     }
+
+    if (!item.word) return [];
+
+    const id = item.id || `${topic}-${index}-${item.word}`;
+    return [normalizeWordRecord(item, topic, id)];
   });
-
-  return flatRecords;
 }
 
 async function loadWords() {
@@ -65,8 +51,7 @@ async function loadWords() {
       const records = normalizeWordRecords(await response.json());
       return records.map(record => ({
         ...record,
-        sourceId: source.id,
-        sourceLabel: source.label
+        sourceId: source.id
       }));
     } catch (error) {
       console.warn(`Không load được ${source.file}:`, error);
@@ -145,7 +130,9 @@ const typingDirectionEl = document.getElementById("typing-direction");
 const typingPromptEl = document.getElementById("typing-prompt");
 const typingWordEl = document.getElementById("typing-word");
 const typingPhoneticEl = document.getElementById("typing-phonetic");
+const typingInputLabelEl = document.getElementById("typing-input-label");
 const typingInputEl = document.getElementById("typing-input");
+const typingPronunciationEnabledEl = document.getElementById("typing-pronunciation-enabled");
 const btnCheckTyping = document.getElementById("btn-check-typing");
 const typingFeedbackEl = document.getElementById("typing-feedback");
 
@@ -166,7 +153,25 @@ let matchingSelections = {};
 let matchingCorrectIds = new Set();
 
 function shuffleList(list) {
-  return [...list].sort(() => Math.random() - 0.5);
+  const shuffled = [...list];
+  for (let index = shuffled.length - 1; index > 0; index--) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  }
+  return shuffled;
+}
+
+function normalizeAnswer(value) {
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function renderRestartButton(container, label, onClick) {
+  const button = document.createElement("button");
+  button.className = "btn btn-primary btn-full";
+  button.type = "button";
+  button.textContent = label;
+  button.addEventListener("click", onClick);
+  container.replaceChildren(button);
 }
 
 function startMatching() {
@@ -248,7 +253,10 @@ function getFilteredWords() {
   }
 
   if (["noun", "verb", "adjective", "phrase", "number", "pronoun"].includes(mode)) {
-    return availableWords.filter(word => word.type.toLowerCase() === mode);
+    const matchingTypes = mode === "number" ? ["number", "numeral"] : [mode];
+    return availableWords.filter(word =>
+      word.type.toLowerCase().split(/\s*\/\s*/).some(type => matchingTypes.includes(type))
+    );
   }
 
   return [...availableWords];
@@ -319,7 +327,7 @@ function loadQuizQuestion() {
       quizPhoneticEl.textContent = "";
       quizExampleEl.textContent = "";
       quizProgressEl.textContent = "Đã hoàn thành";
-      quizOptionsEl.innerHTML = `<button class="btn btn-primary btn-full" onclick="startQuiz()">Làm lại Quiz</button>`;
+      renderRestartButton(quizOptionsEl, "Làm lại Quiz", () => startQuiz());
       btnNextQuiz.classList.add("hidden");
       return;
     }
@@ -341,12 +349,8 @@ function loadQuizQuestion() {
     ? `Còn sai: ${quizTotalQuestions - quizCorrectIds.size} câu`
     : `Câu ${currentQuizIndex + 1} / ${quizQuestions.length}`;
 
-  const wrongOptions = quizOptionPool
-    .filter(w => w.id !== currentQ.id)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
-
-  const options = [...wrongOptions, currentQ].sort(() => Math.random() - 0.5);
+  const wrongOptions = shuffleList(quizOptionPool.filter(word => word.id !== currentQ.id)).slice(0, 3);
+  const options = shuffleList([...wrongOptions, currentQ]);
 
   // Render các nút đáp án
   quizOptionsEl.innerHTML = "";
@@ -462,7 +466,7 @@ function loadListeningQuestion() {
       currentListeningIndex = 0;
     } else {
       listeningProgressEl.textContent = "Đã hoàn thành";
-      listeningOptionsEl.innerHTML = `<button class="btn btn-primary btn-full" onclick="startListeningPractice()">Làm lại luyện nghe</button>`;
+      renderRestartButton(listeningOptionsEl, "Làm lại luyện nghe", () => startListeningPractice());
       listeningTypingAreaEl.classList.add("hidden");
       btnNextListening.classList.add("hidden");
       return;
@@ -504,11 +508,8 @@ function loadListeningQuestion() {
     listeningInputEl.focus();
   }
 
-  const wrongOptions = getFilteredWords()
-    .filter(word => word.id !== currentWord.id)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
   if (!isTypingAnswer) {
+    const wrongOptions = shuffleList(getFilteredWords().filter(word => word.id !== currentWord.id)).slice(0, 3);
     shuffleList([...wrongOptions, currentWord]).forEach(option => {
       const button = document.createElement("button");
       button.className = "quiz-option-btn";
@@ -557,10 +558,6 @@ function selectListeningAnswer(selectedId, correctId, selectedButton) {
   btnNextListening.classList.remove("hidden");
 }
 
-function normalizeListeningAnswer(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ");
-}
-
 function getListeningChoiceText(word) {
   return word.exampleMeaning || word.meaning;
 }
@@ -577,8 +574,8 @@ btnCheckListening.addEventListener("click", () => {
   const isChineseAnswer = listeningAnswerModeEl.value === "chinese";
   const correctValues = (isChineseAnswer ? currentWord.word : currentWord.meaning)
     .split(",")
-    .map(normalizeListeningAnswer);
-  const inputValue = normalizeListeningAnswer(listeningInputEl.value);
+    .map(normalizeAnswer);
+  const inputValue = normalizeAnswer(listeningInputEl.value);
   const isCorrect = correctValues.includes(inputValue);
 
   if (isCorrect) {
@@ -705,6 +702,9 @@ function renderTypingQuestion() {
   typingPromptEl.textContent = chineseToVietnamese
     ? (isExampleMode ? "Example tiếng Trung" : "Từ tiếng Trung")
     : (isExampleMode ? "Nghĩa tiếng Việt của example" : "Nghĩa tiếng Việt");
+  typingInputLabelEl.textContent = chineseToVietnamese
+    ? "Gõ nghĩa tiếng Việt"
+    : (isExampleMode ? "Gõ example tiếng Trung" : "Gõ từ tiếng Trung");
   typingWordEl.textContent = chineseToVietnamese ? chineseText : vietnameseText;
   typingPhoneticEl.textContent = chineseToVietnamese ? (chinesePhonetic || "") : "";
   typingInputEl.placeholder = chineseToVietnamese
@@ -727,10 +727,6 @@ function updateTypingRetryCount() {
   typingProgressEl.textContent = `Còn sai: ${remainingQuestions} câu`;
 }
 
-function normalizeTypingAnswer(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ");
-}
-
 btnCheckTyping.addEventListener("click", () => {
   if (typingAnswered) {
     advanceTypingQuestion();
@@ -742,14 +738,18 @@ btnCheckTyping.addEventListener("click", () => {
   const currentWord = typingQuestions[currentTypingIndex];
   const chineseToVietnamese = typingDirectionEl.value === "chinese-to-vietnamese";
   const isExampleMode = typingContentModeEl.value === "example";
-  const inputValue = normalizeTypingAnswer(typingInputEl.value);
   const chineseText = isExampleMode ? currentWord.example : currentWord.word;
   const vietnameseText = isExampleMode
     ? (currentWord.exampleMeaning || currentWord.meaning)
     : currentWord.meaning;
   const correctValues = (chineseToVietnamese ? vietnameseText : chineseText)
     .split(",")
-    .map(normalizeTypingAnswer);
+    .map(normalizeAnswer);
+  const inputValue = normalizeAnswer(typingInputEl.value);
+
+  if (typingPronunciationEnabledEl.checked) {
+    speakChinese(chineseText);
+  }
 
   if (correctValues.includes(inputValue)) {
     typingCorrectIds.add(currentWord.id);
@@ -803,8 +803,8 @@ function advanceTypingQuestion() {
   renderTypingQuestion();
 }
 
-typingContentModeEl.addEventListener("change", startTypingPractice);
-typingDirectionEl.addEventListener("change", startTypingPractice);
+typingContentModeEl.addEventListener("change", () => startTypingPractice());
+typingDirectionEl.addEventListener("change", () => startTypingPractice());
 
 function applyStudyMode() {
   const mode = studyModeEl.value;
