@@ -34,5 +34,33 @@
   { "word": "认识", "type": "verb", "phonetic": "rènshi", "meaning": "Quen biết, biết", "example": "很高兴认识你！", "examplePhonetic": "Hěn gāoxìng rènshi nǐ!", "exampleMeaning": "Rất vui được quen biết bạn!" },
   { "word": "也", "type": "adverb", "phonetic": "yě", "meaning": "Cũng", "example": "我也很高兴认识你。", "examplePhonetic": "Wǒ yě hěn gāoxìng rènshi nǐ.", "exampleMeaning": "Tôi cũng rất vui được quen biết bạn." }
      ]
+  },
+  {
+    "topic": "Lesson 3",
+    "words": [
+  { "word": "人", "type": "noun", "phonetic": "rén", "meaning": "Người", "example": "他是中国人。", "examplePhonetic": "Tā shì Zhōngguó rén.", "exampleMeaning": "Anh ấy là người Trung Quốc." },
+  { "word": "的", "type": "particle", "phonetic": "de", "meaning": "Của (trợ từ sở hữu)", "example": "这是我的书。", "examplePhonetic": "Zhè shì wǒ de shū.", "exampleMeaning": "Đây là sách của tôi." },
+  { "word": "中国", "type": "noun", "phonetic": "Zhōngguó", "meaning": "Trung Quốc", "example": "我想去中国旅游。", "examplePhonetic": "Wǒ xiǎng qù Zhōngguó lǚyóu.", "exampleMeaning": "Tôi muốn đi du lịch Trung Quốc." },
+  { "word": "法国", "type": "noun", "phonetic": "Fǎguó", "meaning": "Nước Pháp", "example": "她是法国人。", "examplePhonetic": "Tā shì Fǎguó rén.", "exampleMeaning": "Cô ấy là người Pháp." },
+  { "word": "中文", "type": "noun", "phonetic": "Zhōngwén", "meaning": "Tiếng Trung", "example": "我会说中文。", "examplePhonetic": "Wǒ huì shuō Zhōngwén.", "exampleMeaning": "Tôi biết nói tiếng Trung." },
+  { "word": "这", "type": "pronoun", "phonetic": "zhè", "meaning": "Đây, này", "example": "这是什么？", "examplePhonetic": "Zhè shì shénme?", "exampleMeaning": "Đây là cái gì?" },
+  { "word": "谁", "type": "pronoun", "phonetic": "shéi", "meaning": "Ai", "example": "他是谁？", "examplePhonetic": "Tā shì shéi?", "exampleMeaning": "Anh ấy là ai?" },
+  { "word": "女朋友", "type": "noun", "phonetic": "nǚpéngyou", "meaning": "Bạn gái", "example": "她是我的女朋友。", "examplePhonetic": "Tā shì wǒ de nǚpéngyou.", "exampleMeaning": "Cô ấy là bạn gái của tôi." },
+  { "word": "那", "type": "pronoun", "phonetic": "nà", "meaning": "Kia, đó", "example": "那是谁的书？", "examplePhonetic": "Nà shì shéi de shū?", "exampleMeaning": "Kia là sách của ai?" },
+  { "word": "国", "type": "noun", "phonetic": "guó", "meaning": "Nước, quốc gia", "example": "你是哪国人？", "examplePhonetic": "Nǐ shì nǎ guó rén?", "exampleMeaning": "Bạn là người nước nào?" },
+  { "word": "她", "type": "pronoun", "phonetic": "tā", "meaning": "Cô ấy, bà ấy, chị ấy", "example": "她是我的老师。", "examplePhonetic": "Tā shì wǒ de lǎoshī.", "exampleMeaning": "Cô ấy là giáo viên của tôi." },
+  { "word": "泰国", "type": "noun", "phonetic": "Tàiguó", "meaning": "Thái Lan", "example": "他去泰国工作了。", "examplePhonetic": "Tā qù Tàiguó gōngzuò le.", "exampleMeaning": "Anh ấy đã đi Thái Lan làm việc rồi." },
+  { "word": "喂", "type": "interjection", "phonetic": "wèi", "meaning": "Alo (khi nghe điện thoại)", "example": "喂，请问你找谁？", "examplePhonetic": "Wèi, qǐngwèn nǐ zhǎo shéi?", "exampleMeaning": "Alo, xin hỏi bạn tìm ai vậy?" },
+  { "word": "姐姐", "type": "noun", "phonetic": "jiějie", "meaning": "Chị gái", "example": "我有一个姐姐。", "examplePhonetic": "Wǒ yǒu yí gè jiějie.", "exampleMeaning": "Tôi có một người chị gái." },
+  { "word": "工作", "type": "noun / verb", "phonetic": "gōngzuò", "meaning": "Công việc / Làm việc", "example": "我的工作很忙。", "examplePhonetic": "Wǒ de gōngzuò hěn máng.", "exampleMeaning": "Công việc của tôi rất bận." },
+  { "word": "还", "type": "adverb", "phonetic": "hái", "meaning": "Vẫn, còn", "example": "我还在工作。", "examplePhonetic": "Wǒ hái zài gōngzuò.", "exampleMeaning": "Tôi vẫn đang làm việc." },
+  { "word": "忙", "type": "adjective", "phonetic": "máng", "meaning": "Bận, bận rộn", "example": "你今天忙吗？", "examplePhonetic": "Nǐ jīntiān máng ma?", "exampleMeaning": "Hôm nay bạn có bận không?" },
+  { "word": "吗", "type": "particle", "phonetic": "ma", "meaning": "Không (trợ từ nghi vấn)", "example": "你是学生吗？", "examplePhonetic": "Nǐ shì xuéshēng ma?", "exampleMeaning": "Bạn là học sinh phải không?" },
+  { "word": "对", "type": "adjective", "phonetic": "duì", "meaning": "Đúng, chính xác", "example": "你说得很对。", "examplePhonetic": "Nǐ shuō de hěn duì.", "exampleMeaning": "Bạn nói rất đúng." },
+  { "word": "太", "type": "adverb", "phonetic": "tài", "meaning": "Quá, lắm", "example": "太好了！", "examplePhonetic": "Tài hǎo le!", "exampleMeaning": "Tốt quá rồi!" },
+  { "word": "我们", "type": "pronoun", "phonetic": "wǒmen", "meaning": "Chúng tôi, chúng ta", "example": "我们都是朋友。", "examplePhonetic": "Wǒmen dōu shì péngyou.", "exampleMeaning": "Chúng ta đều là bạn bè." },
+  { "word": "想", "type": "verb / auxiliary verb", "phonetic": "xiǎng", "meaning": "Muốn, nhớ, nghĩ", "example": "我想学中文。", "examplePhonetic": "Wǒ xiǎng xué Zhōngwén.", "exampleMeaning": "Tôi muốn học tiếng Trung." }
+]
+
   }
 ]
