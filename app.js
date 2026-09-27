@@ -1,5 +1,5 @@
 const DATA_SOURCES = [
-  { id: "topic", label: "Tiếng Trung chủ đề", file: "./data-topic.json" },
+  //{ id: "topic", label: "Tiếng Trung chủ đề", file: "./data-topic.json" },
   { id: "bothu", label: "Bộ thủ", file: "./data-bothu.json" },
   { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" }
 
@@ -96,10 +96,15 @@ let quizPracticeMode = "word";
 const btnToggleMode = document.getElementById("btn-toggle-mode");
 const typingModeBtn = document.getElementById("typing-mode-btn");
 const listeningModeBtn = document.getElementById("listening-mode-btn");
+const speakingModeBtn = document.getElementById("speaking-mode-btn");
 const matchingScreen = document.getElementById("matching-screen");
 const quizScreen = document.getElementById("quiz-screen");
 const listeningScreen = document.getElementById("listening-screen");
 const typingScreen = document.getElementById("typing-screen");
+const speakingScreen = document.getElementById("speaking-screen");
+const speakingContentModeEl = document.getElementById("speaking-content-mode");
+const speakingPromptEl = document.getElementById("speaking-prompt");
+const btnSpeakingSpeak = document.getElementById("btn-speaking-speak");
 
 const selectedWordCountEl = document.getElementById("selected-word-count");
 const btnShuffle = document.getElementById("btn-shuffle");
@@ -146,8 +151,16 @@ const typingPromptEl = document.getElementById("typing-prompt");
 const typingWordEl = document.getElementById("typing-word");
 const typingPhoneticEl = document.getElementById("typing-phonetic");
 const typingInputEl = document.getElementById("typing-input");
+const typingReadPinyinEl = document.getElementById("typing-read-pinyin");
 const btnCheckTyping = document.getElementById("btn-check-typing");
 const typingFeedbackEl = document.getElementById("typing-feedback");
+const speakingScoreEl = document.getElementById("speaking-score");
+const speakingProgressEl = document.getElementById("speaking-progress");
+const speakingWordEl = document.getElementById("speaking-word");
+const speakingPhoneticEl = document.getElementById("speaking-phonetic");
+const speakingFeedbackEl = document.getElementById("speaking-feedback");
+const btnStartSpeaking = document.getElementById("btn-start-speaking");
+const btnNextSpeaking = document.getElementById("btn-next-speaking");
 
 let listeningQuestions = [];
 let currentListeningIndex = 0;
@@ -295,6 +308,8 @@ function shuffleWords() {
     startQuiz(true);
   } else if (currentMode === "listening") {
     startListeningPractice(true);
+  } else if (currentMode === "speaking") {
+    startSpeakingPractice(true);
   } else {
     startTypingPractice(true);
   }
@@ -645,6 +660,211 @@ function updateTopicOptions() {
   });
 }
 
+let speakingQuestions = [];
+let currentSpeakingIndex = 0;
+let speakingScore = 0;
+let speakingTotalQuestions = 0;
+let speakingRoundMistakes = [];
+let speakingCorrectIds = new Set();
+let speakingIsRetryRound = false;
+let speakingAnswered = false;
+let speakingShouldShuffle = false;
+let activeSpeechRecognition = null;
+
+function normalizeSpokenChinese(value) {
+  return value.normalize("NFKC").replace(/[\s\p{P}\p{S}]/gu, "");
+}
+
+function getSpeechRecognitionConstructor() {
+  return window.SpeechRecognition || window.webkitSpeechRecognition;
+}
+
+function addSpeakingMistake(word) {
+  if (word && !speakingRoundMistakes.some(mistake => mistake.id === word.id)) {
+    speakingRoundMistakes.push(word);
+  }
+}
+
+function getSpeakingText(word) {
+  return speakingContentModeEl.value === "example" ? word.example : word.word;
+}
+
+function getSpeakingPhonetic(word) {
+  return speakingContentModeEl.value === "example" ? word.examplePhonetic : word.phonetic;
+}
+
+function stopSpeechRecognition() {
+  if (!activeSpeechRecognition) return;
+  activeSpeechRecognition.abort();
+  activeSpeechRecognition = null;
+}
+
+function startSpeakingPractice(shouldShuffle = false) {
+  stopSpeechRecognition();
+  const filteredWords = getFilteredWords()
+    .filter(word => String(getSpeakingText(word) || "").trim());
+  if (filteredWords.length === 0) {
+    alert("Không có từ vựng nào trong bộ lọc hiện tại để luyện nói!");
+    return;
+  }
+
+  speakingShouldShuffle = shouldShuffle;
+  speakingQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
+  currentSpeakingIndex = 0;
+  speakingScore = 0;
+  speakingTotalQuestions = filteredWords.length;
+  speakingRoundMistakes = [];
+  speakingCorrectIds = new Set();
+  speakingIsRetryRound = false;
+  speakingScoreEl.textContent = speakingScore;
+  renderSpeakingQuestion();
+}
+
+function completeSpeakingPractice() {
+  speakingProgressEl.textContent = "Đã hoàn thành";
+  speakingWordEl.textContent = "Hoàn thành!";
+  speakingPhoneticEl.textContent = "";
+  speakingFeedbackEl.textContent = `Bạn đã đọc đúng ${speakingScore} từ.`;
+  btnStartSpeaking.classList.add("hidden");
+  btnSpeakingSpeak.classList.add("hidden");
+  btnNextSpeaking.classList.add("hidden");
+}
+
+function startSpeakingRetryRound() {
+  speakingQuestions = speakingShouldShuffle ? shuffleList(speakingRoundMistakes) : [...speakingRoundMistakes];
+  speakingRoundMistakes = [];
+  speakingIsRetryRound = true;
+  currentSpeakingIndex = 0;
+}
+
+function renderSpeakingQuestion() {
+  if (currentSpeakingIndex >= speakingQuestions.length) {
+    if (speakingRoundMistakes.length === 0) {
+      completeSpeakingPractice();
+      return;
+    }
+    startSpeakingRetryRound();
+  }
+
+  const currentWord = speakingQuestions[currentSpeakingIndex];
+  const isExamplePractice = speakingContentModeEl.value === "example";
+  speakingAnswered = false;
+  speakingPromptEl.textContent = isExamplePractice ? "Hãy đọc câu ví dụ" : "Hãy đọc chữ Hán sau";
+  speakingWordEl.textContent = getSpeakingText(currentWord);
+  speakingPhoneticEl.textContent = getSpeakingPhonetic(currentWord) || "Chưa có pinyin";
+  speakingProgressEl.textContent = speakingIsRetryRound
+    ? `Còn sai: ${speakingTotalQuestions - speakingCorrectIds.size} câu`
+    : `Câu ${currentSpeakingIndex + 1} / ${speakingQuestions.length}`;
+  speakingFeedbackEl.textContent = "Nhấn nút và đọc nội dung đang hiển thị.";
+  speakingFeedbackEl.style.color = "";
+  btnNextSpeaking.classList.remove("hidden");
+  btnStartSpeaking.classList.remove("hidden");
+  btnSpeakingSpeak.classList.remove("hidden");
+  btnStartSpeaking.disabled = false;
+  btnStartSpeaking.textContent = "🎙️ Bắt đầu đọc";
+
+  if (!getSpeechRecognitionConstructor()) {
+    btnStartSpeaking.disabled = true;
+    speakingFeedbackEl.textContent = "Trình duyệt này chưa hỗ trợ nhận diện giọng nói. Hãy thử Chrome hoặc Edge.";
+  }
+}
+
+speakingContentModeEl.addEventListener("change", () => startSpeakingPractice());
+
+btnSpeakingSpeak.addEventListener("click", () => {
+  const currentWord = speakingQuestions[currentSpeakingIndex];
+  if (currentWord) speakChinese(getSpeakingText(currentWord));
+});
+
+function updateSpeakingRetryCount() {
+  if (!speakingIsRetryRound) return;
+  speakingProgressEl.textContent = `Còn sai: ${speakingTotalQuestions - speakingCorrectIds.size} câu`;
+}
+
+function handleSpeakingTranscript(transcript) {
+  const currentWord = speakingQuestions[currentSpeakingIndex];
+  if (!currentWord) return;
+
+  const isCorrect = normalizeSpokenChinese(transcript)
+    === normalizeSpokenChinese(getSpeakingText(currentWord));
+  if (isCorrect) {
+    speakingCorrectIds.add(currentWord.id);
+    speakingRoundMistakes = speakingRoundMistakes.filter(word => word.id !== currentWord.id);
+    speakingScore = speakingCorrectIds.size;
+    speakingScoreEl.textContent = speakingScore;
+    speakingFeedbackEl.textContent = `Chính xác! Hệ thống nghe được: ${transcript}`;
+    speakingFeedbackEl.style.color = "#065f46";
+    speakingAnswered = true;
+  } else {
+    addSpeakingMistake(currentWord);
+    speakingFeedbackEl.textContent = `Chưa đúng. Hệ thống nghe được: ${transcript || "(không nhận diện được)"}. Hãy thử lại.`;
+    speakingFeedbackEl.style.color = "#991b1b";
+  }
+
+  updateSpeakingRetryCount();
+  btnStartSpeaking.disabled = speakingAnswered;
+  btnStartSpeaking.textContent = speakingAnswered ? "Đã đọc đúng" : "🎙️ Thử lại";
+}
+
+function handleSpeakingRecognitionError(event) {
+  const errorMessages = {
+    "not-allowed": "Bạn cần cho phép truy cập micro để luyện nói.",
+    "no-speech": "Chưa nghe thấy giọng nói. Hãy thử lại."
+  };
+  speakingFeedbackEl.textContent = errorMessages[event.error]
+    || `Không thể nhận diện giọng nói (${event.error}). Hãy thử lại.`;
+  btnStartSpeaking.disabled = false;
+  btnStartSpeaking.textContent = "🎙️ Thử lại";
+}
+
+btnStartSpeaking.addEventListener("click", () => {
+  const SpeechRecognition = getSpeechRecognitionConstructor();
+  if (!SpeechRecognition || speakingAnswered) return;
+
+  stopSpeechRecognition();
+  const recognition = new SpeechRecognition();
+  activeSpeechRecognition = recognition;
+  recognition.lang = "zh-CN";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  let receivedResult = false;
+
+  btnStartSpeaking.disabled = true;
+  btnStartSpeaking.textContent = "Đang nghe...";
+  speakingFeedbackEl.textContent = "Đang nghe, hãy đọc ngay bây giờ.";
+  recognition.onresult = event => {
+    receivedResult = true;
+    handleSpeakingTranscript(event.results[0][0].transcript);
+  };
+  recognition.onerror = handleSpeakingRecognitionError;
+  recognition.onend = () => {
+    if (activeSpeechRecognition === recognition) activeSpeechRecognition = null;
+    if (!receivedResult && !speakingAnswered) {
+      btnStartSpeaking.disabled = false;
+      btnStartSpeaking.textContent = "🎙️ Thử lại";
+    }
+  };
+
+  try {
+    recognition.start();
+  } catch {
+    activeSpeechRecognition = null;
+    btnStartSpeaking.disabled = false;
+    btnStartSpeaking.textContent = "🎙️ Thử lại";
+    speakingFeedbackEl.textContent = "Không mở được micro. Hãy kiểm tra quyền truy cập rồi thử lại.";
+  }
+});
+
+function advanceSpeakingQuestion() {
+  const currentWord = speakingQuestions[currentSpeakingIndex];
+  stopSpeechRecognition();
+  if (!speakingAnswered) addSpeakingMistake(currentWord);
+  currentSpeakingIndex++;
+  renderSpeakingQuestion();
+}
+
+btnNextSpeaking.addEventListener("click", advanceSpeakingQuestion);
+
 function updateDataSourceOptions() {
   dataSourceEl.innerHTML = '<option value="all">Tất cả bộ từ</option>';
 
@@ -744,6 +964,8 @@ btnCheckTyping.addEventListener("click", () => {
   const isExampleMode = typingContentModeEl.value === "example";
   const inputValue = normalizeTypingAnswer(typingInputEl.value);
   const chineseText = isExampleMode ? currentWord.example : currentWord.word;
+  if (typingReadPinyinEl.checked) speakChinese(chineseText);
+
   const vietnameseText = isExampleMode
     ? (currentWord.exampleMeaning || currentWord.meaning)
     : currentWord.meaning;
@@ -836,6 +1058,11 @@ function applyStudyMode() {
 
   if (currentMode === "typing") {
     startTypingPractice();
+    return;
+  }
+
+  if (currentMode === "speaking") {
+    startSpeakingPractice();
   }
 }
 
@@ -857,11 +1084,13 @@ btnShuffle.addEventListener("click", shuffleWords);
 let currentMode = "quiz";
 
 function showMatchingScreen() {
+  stopSpeechRecognition();
   currentMode = "matching";
   matchingScreen.classList.remove("hidden");
   quizScreen.classList.add("hidden");
   listeningScreen.classList.add("hidden");
   typingScreen.classList.add("hidden");
+  speakingScreen.classList.add("hidden");
   btnToggleMode.textContent = "🎮 Làm Quiz";
   startMatching();
 }
@@ -874,10 +1103,12 @@ function showQuizScreen() {
   }
 
   currentMode = "quiz";
+  stopSpeechRecognition();
   matchingScreen.classList.add("hidden");
   quizScreen.classList.remove("hidden");
   listeningScreen.classList.add("hidden");
   typingScreen.classList.add("hidden");
+  speakingScreen.classList.add("hidden");
   btnToggleMode.textContent = "📖 Về nối từ";
   startQuiz();
 }
@@ -890,10 +1121,12 @@ function showListeningScreen() {
   }
 
   currentMode = "listening";
+  stopSpeechRecognition();
   matchingScreen.classList.add("hidden");
   quizScreen.classList.add("hidden");
   listeningScreen.classList.remove("hidden");
   typingScreen.classList.add("hidden");
+  speakingScreen.classList.add("hidden");
   btnToggleMode.textContent = "📖 Về nối từ";
   startListeningPractice();
 }
@@ -906,12 +1139,32 @@ function showTypingScreen() {
   }
 
   currentMode = "typing";
+  stopSpeechRecognition();
   matchingScreen.classList.add("hidden");
   quizScreen.classList.add("hidden");
   listeningScreen.classList.add("hidden");
+  speakingScreen.classList.add("hidden");
   typingScreen.classList.remove("hidden");
   btnToggleMode.textContent = "📖 Về nối từ";
   startTypingPractice();
+}
+
+function showSpeakingScreen() {
+  const filteredWords = getFilteredWords();
+  if (filteredWords.length === 0) {
+    alert("Không có từ vựng nào trong bộ lọc hiện tại để luyện nói!");
+    return;
+  }
+
+  currentMode = "speaking";
+  stopSpeechRecognition();
+  matchingScreen.classList.add("hidden");
+  quizScreen.classList.add("hidden");
+  listeningScreen.classList.add("hidden");
+  typingScreen.classList.add("hidden");
+  speakingScreen.classList.remove("hidden");
+  btnToggleMode.textContent = "📖 Về nối từ";
+  startSpeakingPractice();
 }
 
 btnToggleMode.addEventListener("click", () => {
@@ -939,6 +1192,15 @@ listeningModeBtn.addEventListener("click", () => {
   }
 
   showListeningScreen();
+});
+
+speakingModeBtn.addEventListener("click", () => {
+  if (currentMode === "speaking") {
+    showMatchingScreen();
+    return;
+  }
+
+  showSpeakingScreen();
 });
 
 document.addEventListener("keydown", (event) => {
