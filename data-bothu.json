@@ -16,7 +16,25 @@
 			{ "word": "门", "type": "radical", "phonetic": "mén", "meaning": "bộ môn,  cửa", "example": "问、间、闭", "examplePhonetic": "wèn, jiān, bì", "exampleMeaning": "Hỏi, khoảng/phòng, đóng" },
 			{ "word": "目", "type": "radical", "phonetic": "mù", "meaning": "bộ mục, mắt", "example": "眼、看、睡", "examplePhonetic": "yǎn, kàn, shuì", "exampleMeaning": "Mắt, nhìn, ngủ" },
 			{ "word": "儿", "type": "radical", "phonetic": "ér", "meaning": "bộ nhi, trẻ nhỏ", "example": "兄、先、元", "examplePhonetic": "xiōng, xiān, yuán", "exampleMeaning": "Anh/em trai, trước, nguyên" },
-			{ "word": "勹", "type": "radical", "phonetic": "bāo", "meaning": "bộ bao, bao bọc", "example": "包、句、勺", "examplePhonetic": "bāo, jù, sháo", "exampleMeaning": "Bọc,- câu, cái thìa" }
+			{ "word": "勹", "type": "radical", "phonetic": "bāo", "meaning": "bộ bao, bao bọc", "example": "包、句、勺", "examplePhonetic": "bāo, jù, sháo", "exampleMeaning": "Bọc,- câu, cái thìa" },
+  { "word": "水", "type": "radical", "phonetic": "shuǐ", "meaning": "bộ thủy, nước", "example": "江、河、海", "examplePhonetic": "jiāng, hé, hǎi", "exampleMeaning": "Sông lớn, sông, biển" },
+  { "word": "火", "type": "radical", "phonetic": "huǒ", "meaning": "bộ hỏa, lửa", "example": "热、烧、点", "examplePhonetic": "rè, shāo, diǎn", "exampleMeaning": "Nóng, đốt, điểm/chút" },
+  { "word": "手", "type": "radical", "phonetic": "shǒu", "meaning": "bộ thủ, tay", "example": "打、提、拿", "examplePhonetic": "dǎ, tí, ná", "exampleMeaning": "Đánh, nhấc, cầm/nắm" },
+  { "word": "言", "type": "radical", "phonetic": "yán", "meaning": "bộ ngôn, lời nói", "example": "话、说、谢", "examplePhonetic": "huà, shuō, xiè", "exampleMeaning": "Lời nói, nói, cảm ơn" },
+  { "word": "金", "type": "radical", "phonetic": "jīn", "meaning": "bộ kim, kim loại, vàng", "example": "钱、银、铁", "examplePhonetic": "qián, yín, tiě", "exampleMeaning": "Tiền, bạc, sắt" },
+  { "word": "竹", "type": "radical", "phonetic": "zhú", "meaning": "bộ trúc, tre trúc", "example": "笔、等、笑", "examplePhonetic": "bǐ, děng, xiào", "exampleMeaning": "Bút, đợi, cười" },
+  { "word": "草", "type": "radical", "phonetic": "cǎo", "meaning": "bộ thảo, cỏ, cây cỏ", "example": "茶、花、药", "examplePhonetic": "chá, huā, yào", "exampleMeaning": "Trà, hoa, thuốc" },
+  { "word": "走", "type": "radical", "phonetic": "zǒu", "meaning": "bộ tẩu, đi, chạy", "example": "起、超、越", "examplePhonetic": "qǐ, chāo, yuè", "exampleMeaning": "Dậy/khởi, vượt quá, vượt qua" },
+  { "word": "辶", "type": "radical", "phonetic": "chuò", "meaning": "bộ quai sước, di chuyển, chợt đi chợt dừng", "example": "近、远、进", "examplePhonetic": "jìn, yuǎn, jìn", "exampleMeaning": "Gần, xa, vào" },
+  { "word": "疒", "type": "radical", "phonetic": "nè", "meaning": "bộ nạch, bệnh tật", "example": "病、痛、疯", "examplePhonetic": "bìng, tòng, fēng", "exampleMeaning": "Bệnh, đau, điên" },
+  { "word": "贝", "type": "radical", "phonetic": "bèi", "meaning": "bộ bối, vỏ sò, liên quan đến tiền tài, của cải", "example": "贵、买、卖", "examplePhonetic": "guì, mǎi, mài", "exampleMeaning": "Đắt/quý, mua, bán" },
+  { "word": "食", "type": "radical", "phonetic": "shí", "meaning": "bộ thực, ăn, thực phẩm", "example": "饭、饱、饿", "examplePhonetic": "fàn, bǎo, è", "exampleMeaning": "Cơm, no, đói" },
+  { "word": "车", "type": "radical", "phonetic": "chē", "meaning": "bộ xa, xe cộ", "example": "较、转、轮", "examplePhonetic": "jiào, zhuǎn, lún", "exampleMeaning": "So sánh, xoay/chuyển, bánh xe" },
+  { "word": "讠", "type": "radical", "phonetic": "yán", "meaning": "bộ ngôn (dạng giản thể của 言), lời nói", "example": "语、请、读", "examplePhonetic": "yǔ, qǐng, dú", "exampleMeaning": "Ngôn ngữ, mời/xin, đọc" },
+  { "word": "忄", "type": "radical", "phonetic": "xīn", "meaning": "bộ tâm (dạng đứng của 心), tâm trí, cảm xúc", "example": "快、慢、情", "examplePhonetic": "kuài, màn, qíng", "exampleMeaning": "Nhanh, chậm, tình cảm" },
+  { "word": "氵", "type": "radical", "phonetic": "shuǐ", "meaning": "bộ thủy (dạng ba chấm thủy của 水), chất lỏng, nước", "example": "洗、海、满", "examplePhonetic": "xǐ, hǎi, mǎn", "exampleMeaning": "Rửa, biển, đầy" },
+  { "word": "犭", "type": "radical", "phonetic": "quǎn", "meaning": "bộ khuyển (dạng đứng), thú bốn chân, động vật", "example": "狗、猫、猪", "examplePhonetic": "gǒu, māo, zhū", "exampleMeaning": "Chó, mèo, heo/lợn" },
+  { "word": "亻", "type": "radical", "phonetic": "rén", "meaning": "bộ nhân (dạng đứng của 人), con người", "example": "做、保、作", "examplePhonetic": "zuò, bǎo, zuò", "exampleMeaning": "Làm, bảo vệ, tác phẩm/làm" }
 		]
 	}
 ]
