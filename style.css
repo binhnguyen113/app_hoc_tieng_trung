@@ -476,22 +476,6 @@ input {
   font-weight: 800;
 }
 
-.typing-audio-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 12px 0;
-  color: var(--text-sub);
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-.typing-audio-toggle input {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--primary-color);
-}
-
 .typing-input {
   width: 100%;
   border: 1px solid #dfe6f5;

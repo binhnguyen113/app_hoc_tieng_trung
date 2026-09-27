@@ -21,7 +21,6 @@
         <button class="btn-toggle-mode" id="btn-toggle-mode">🎮 Làm Quiz</button>
         <button class="btn-primary small" id="typing-mode-btn">⌨️ Gõ từ</button>
         <button class="btn-primary small" id="listening-mode-btn">🔊 Nghe</button>
-        <button class="btn-primary small" id="speaking-mode-btn">🎙️ Luyện nói</button>
       </div>
     </header>
 
@@ -164,33 +163,8 @@
         <label class="typing-label" for="typing-input">Gõ nghĩa tiếng Việt</label>
         <input id="typing-input" type="text" class="typing-input" placeholder="Nhập nghĩa tiếng Việt..." autocomplete="off" />
 
-        <label class="typing-audio-toggle">
-          <input id="typing-read-pinyin" type="checkbox" />
-          <span>Đọc pinyin khi kiểm tra</span>
-        </label>
         <button class="btn btn-primary btn-full" id="btn-check-typing">Kiểm tra</button>
         <p id="typing-feedback" class="typing-feedback"></p>
-      </div>
-    </div>
-
-    <div id="speaking-screen" class="screen hidden">
-      <div class="quiz-box">
-        <div class="quiz-header">
-          <span>Điểm: <strong id="speaking-score">0</strong></span>
-          <span id="speaking-progress">Câu 1/5</span>
-        </div>
-        <label class="typing-label" for="speaking-content-mode">Nội dung luyện nói</label>
-        <select id="speaking-content-mode" class="typing-direction">
-          <option value="word">Từ vựng</option>
-          <option value="example">Ví dụ</option>
-        </select>
-        <p class="typing-label" id="speaking-prompt">Hãy đọc chữ Hán sau</p>
-        <h3 class="quiz-question-word" id="speaking-word">你好</h3>
-        <p class="quiz-phonetic" id="speaking-phonetic">nǐ hǎo</p>
-        <button class="btn btn-primary btn-full" id="btn-speaking-speak" type="button">🔊 Phát âm</button>
-        <button class="btn btn-primary btn-full" id="btn-start-speaking" type="button">🎙️ Bắt đầu đọc</button>
-        <p id="speaking-feedback" class="typing-feedback" aria-live="polite">Nhấn nút và đọc rõ chữ Hán.</p>
-        <button class="btn btn-primary btn-full hidden" id="btn-next-speaking" type="button">Câu tiếp theo ➡</button>
       </div>
     </div>
 
