@@ -87,6 +87,33 @@
         { "word": "大", "type": "vocabulary", "phonetic": "dà", "meaning": "to, lớn", "example": "这个学校很大。", "examplePhonetic": "Zhè gè xuéxiào hěn dà.", "exampleMeaning": "Trường học này rất lớn." },
         { "word": "多", "type": "vocabulary", "phonetic": "duō", "meaning": "nhiều; bao nhiêu (khi đứng trước tính từ hỏi mức độ)", "example": "你今年多大？", "examplePhonetic": "Nǐ jīnnián duō dà?", "exampleMeaning": "Năm nay bạn bao nhiêu tuổi?" }
       ]
+  },
+  {
+    "topic": "Lesson 5",
+    "words": [
+        { "word": "今天", "type": "vocabulary", "phonetic": "jīntiān", "meaning": "hôm nay", "example": "今天是星期一。", "examplePhonetic": "Jīntiān shì xīngqīyī.", "exampleMeaning": "Hôm nay là thứ Hai." },
+        { "word": "月", "type": "vocabulary", "phonetic": "yuè", "meaning": "tháng; mặt trăng", "example": "一月有三十一天。", "examplePhonetic": "Yīyuè yǒu sānshíyī tiān.", "exampleMeaning": "Tháng một có 31 ngày." },
+        { "word": "号", "type": "vocabulary", "phonetic": "hào", "meaning": "ngày (dùng trong văn nói); số", "example": "今天是十号。", "examplePhonetic": "Jīntiān shì shí hào.", "exampleMeaning": "Hôm nay là ngày 10." },
+        { "word": "日", "type": "vocabulary", "phonetic": "rì", "meaning": "ngày (dùng trong văn viết); mặt trời", "example": "十月一日是国庆节。", "examplePhonetic": "Shíyuè yī rì shì Guóqìngjié.", "exampleMeaning": "Ngày 1 tháng 10 là ngày Quốc khánh." },
+        { "word": "星期", "type": "vocabulary", "phonetic": "xīngqī", "meaning": "thứ, tuần", "example": "一个星期有七天。", "examplePhonetic": "Yí gè xīngqī yǒu qī tiān.", "exampleMeaning": "Một tuần có 7 ngày." },
+        { "word": "星期日", "type": "vocabulary", "phonetic": "xīngqīrì", "meaning": "Chủ Nhật (văn viết/trang trọng)", "example": "星期日我们不去学校。", "examplePhonetic": "Xīngqīrì wǒmen bù qù xuéxiào.", "exampleMeaning": "Chủ Nhật chúng tôi không đến trường." },
+        { "word": "星期天", "type": "vocabulary", "phonetic": "xīngqītiān", "meaning": "Chủ Nhật (văn nói/phổ biến)", "example": "星期天你想做什么？", "examplePhonetic": "Xīngqītiān nǐ xiǎng zuò shénme?", "exampleMeaning": "Chủ Nhật bạn muốn làm gì?" },
+        { "word": "休息", "type": "vocabulary", "phonetic": "xiūxi", "meaning": "nghỉ ngơi", "example": "太累了，我想休息一下。", "examplePhonetic": "Tài lèi le, wǒ xiǎng xiūxi yíxià.", "exampleMeaning": "Mệt quá, tôi muốn nghỉ ngơi một chút." },
+        { "word": "会", "type": "vocabulary", "phonetic": "huì", "meaning": "biết (qua học tập); sẽ", "example": "我会说汉语。", "examplePhonetic": "Wǒ huì shuō Hànyǔ.", "exampleMeaning": "Tôi biết nói tiếng Trung." },
+        { "word": "做", "type": "vocabulary", "phonetic": "zuò", "meaning": "làm", "example": "你在做什么呢？", "examplePhonetic": "Nǐ zài zuò shénme ne?", "exampleMeaning": "Bạn đang làm gì thế?" },
+        { "word": "做饭", "type": "vocabulary", "phonetic": "zuòfàn", "meaning": "nấu cơm, nấu ăn", "example": "妈妈在厨房做饭。", "examplePhonetic": "Māma zài chúfáng zuòfàn.", "exampleMeaning": "Mẹ đang nấu ăn trong bếp." },
+        { "word": "菜", "type": "vocabulary", "phonetic": "cài", "meaning": "món ăn; rau", "example": "中国菜很好吃。", "examplePhonetic": "Zhōngguó cài hěn hǎochī.", "exampleMeaning": "Món ăn Trung Quốc rất ngon." },
+        { "word": "一些", "type": "vocabulary", "phonetic": "yìxiē", "meaning": "một số, một vài, một ít", "example": "我买了一些水果。", "examplePhonetic": "Wǒ mǎi le yìxiē shuǐguǒ.", "exampleMeaning": "Tôi đã mua một ít trái cây." },
+        { "word": "面条儿", "type": "vocabulary", "phonetic": "miàntiáor", "meaning": "mì, sợi mì", "example": "中午我们吃面条儿吧。", "examplePhonetic": "Zhōngwǔ wǒmen chī miàntiáor ba.", "exampleMeaning": "Buổi trưa chúng ta ăn mì nhé." },
+        { "word": "饺子", "type": "vocabulary", "phonetic": "jiǎozi", "meaning": "bánh sủi cảo", "example": "北方人喜欢吃饺子。", "examplePhonetic": "Běifāngrén xǐhuan chī jiǎozi.", "exampleMeaning": "Người miền Bắc thích ăn sủi cảo." },
+        { "word": "下班", "type": "vocabulary", "phonetic": "xiàbān", "meaning": "tan làm, tan sở", "example": "我下午五点半下班。", "examplePhonetic": "Wǒ xiàwǔ wǔ diǎn bàn xiàbān.", "exampleMeaning": "Tôi tan làm lúc 5 giờ rưỡi chiều." },
+        { "word": "新", "type": "vocabulary", "phonetic": "xīn", "meaning": "mới", "example": "这是我的新手机。", "examplePhonetic": "Zhè shì wǒ de xīn shǒujī.", "exampleMeaning": "Đây là điện thoại mới của tôi." },
+        { "word": "电脑", "type": "vocabulary", "phonetic": "diànnǎo", "meaning": "máy tính", "example": "他在用电脑工作。", "examplePhonetic": "Tā zài yòng diànnǎo gōngzuò.", "exampleMeaning": "Anh ấy đang làm việc bằng máy tính." },
+        { "word": "真", "type": "vocabulary", "phonetic": "zhēn", "meaning": "thật, thật là", "example": "今天天气真好！", "examplePhonetic": "Jīntiān tiānqì zhēn hǎo!", "exampleMeaning": "Hôm nay thời tiết thật là đẹp!" },
+        { "word": "好看", "type": "vocabulary", "phonetic": "hǎokàn", "meaning": "đẹp, dễ nhìn, hay (phim/sách)", "example": "这本衣服很好看。", "examplePhonetic": "Zhè jiàn yīfu hěn hǎokàn.", "exampleMeaning": "Bộ quần áo này rất đẹp." },
+        { "word": "喜欢", "type": "vocabulary", "phonetic": "xǐhuan", "meaning": "thích", "example": "我喜欢听音乐。", "examplePhonetic": "Wǒ xǐhuan tīng yīnyuè.", "exampleMeaning": "Tôi thích nghe nhạc." },
+        { "word": "它", "type": "vocabulary", "phonetic": "tā", "meaning": "nó (chỉ đồ vật, con vật)", "example": "这只猫很可爱，我喜欢它。", "examplePhonetic": "Zhè zhī māo hěn kě'ài, wǒ xǐhuan tā.", "exampleMeaning": "Con mèo này rất đáng yêu, tôi thích nó." }
+      ]
   }
 
 ]

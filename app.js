@@ -202,7 +202,7 @@ function renderMatchingBoard() {
   btnNextMatching.classList.toggle("hidden", matchingWords.length === 0 || matchingCorrectIds.size !== matchingWords.length);
 
   columns.forEach(([container, field]) => {
-    container.innerHTML = "";
+    container.replaceChildren();
     shuffleList(matchingWords).forEach(word => {
       const button = document.createElement("button");
       button.className = `matching-option${field === "word" ? " matching-option-chinese" : ""}`;
@@ -351,9 +351,17 @@ function loadQuizQuestion() {
   quizPhoneticEl.textContent = isExamplePractice
     ? (currentQ.examplePhonetic || "")
     : (currentQ.phonetic || "");
-  quizExampleEl.innerHTML = !isExamplePractice && currentQ.example
-    ? `Ví dụ: "${currentQ.example}"${currentQ.examplePhonetic ? `<br><span class="example-pinyin">${currentQ.examplePhonetic}</span>` : ""}`
-    : "";
+  quizExampleEl.replaceChildren();
+  if (!isExamplePractice && currentQ.example) {
+    quizExampleEl.append(`Ví dụ: "${currentQ.example}"`);
+    if (currentQ.examplePhonetic) {
+      const lineBreak = document.createElement("br");
+      const examplePinyin = document.createElement("span");
+      examplePinyin.className = "example-pinyin";
+      examplePinyin.textContent = currentQ.examplePhonetic;
+      quizExampleEl.append(lineBreak, examplePinyin);
+    }
+  }
   quizExampleEl.classList.toggle("quiz-example-hidden", isExamplePractice);
   quizProgressEl.textContent = quizIsRetryRound
     ? `Còn sai: ${quizTotalQuestions - quizCorrectIds.size} câu`
@@ -363,7 +371,7 @@ function loadQuizQuestion() {
   const options = shuffleList([...wrongOptions, currentQ]);
 
   // Render các nút đáp án
-  quizOptionsEl.innerHTML = "";
+  quizOptionsEl.replaceChildren();
   options.forEach(opt => {
     const btn = document.createElement("button");
     btn.className = "quiz-option-btn";
@@ -468,6 +476,12 @@ function formatChineseAnswer(chineseText, phoneticText) {
   return `${chineseText}${phoneticText ? ` (${phoneticText})` : ""}`;
 }
 
+function setFeedback(element, message, isCorrect) {
+  element.textContent = message;
+  element.classList.toggle("is-correct", isCorrect === true);
+  element.classList.toggle("is-wrong", isCorrect === false);
+}
+
 function startListeningPractice(shouldShuffle = false) {
   const filteredWords = getFilteredWords();
   if (filteredWords.length < 4) {
@@ -509,9 +523,8 @@ function loadListeningQuestion() {
   listeningProgressEl.textContent = listeningIsRetryRound
     ? `Còn sai: ${listeningTotalQuestions - listeningCorrectIds.size} câu`
     : `Câu ${currentListeningIndex + 1} / ${listeningQuestions.length}`;
-  listeningOptionsEl.innerHTML = "";
-  listeningFeedbackEl.textContent = "";
-  listeningFeedbackEl.style.color = "";
+  listeningOptionsEl.replaceChildren();
+  setFeedback(listeningFeedbackEl, "");
 
   const typingAnswerMode = listeningAnswerModeEl.value;
   const isTypingAnswer = typingAnswerMode !== "multiple-choice";
@@ -608,22 +621,18 @@ btnCheckListening.addEventListener("click", () => {
     .map(normalizeAnswer);
   const inputValue = normalizeAnswer(listeningInputEl.value);
   const isCorrect = correctValues.includes(inputValue);
+  const correctAnswer = `${currentWord.word}${currentWord.phonetic ? ` (${currentWord.phonetic})` : ""}`;
 
   if (isCorrect) {
     listeningCorrectIds.add(currentWord.id);
     listeningScore = listeningCorrectIds.size;
     listeningScoreEl.textContent = listeningScore;
-    listeningFeedbackEl.textContent = "✅ Đúng!";
-    listeningFeedbackEl.style.color = "#065f46";
+    setFeedback(listeningFeedbackEl, `✅ Đúng! ${correctAnswer}`, true);
   } else {
     if (!listeningRoundMistakes.some(word => word.id === currentWord.id)) {
       listeningRoundMistakes.push(currentWord);
     }
-    const correctAnswer = isChineseAnswer
-      ? `${currentWord.word}${currentWord.phonetic ? ` (${currentWord.phonetic})` : ""}`
-      : currentWord.meaning;
-    listeningFeedbackEl.textContent = `❌ Sai. Đáp án đúng là: ${correctAnswer}`;
-    listeningFeedbackEl.style.color = "#991b1b";
+    setFeedback(listeningFeedbackEl, `❌ Sai. Đáp án đúng là: ${correctAnswer}`, false);
   }
 
   listeningAnswered = true;
@@ -663,7 +672,7 @@ listeningAnswerModeEl.addEventListener("change", () => {
 function updateTopicOptions() {
   const availableWords = getAvailableWords();
   const topics = [...new Set(availableWords.map(item => item.topic).filter(Boolean))];
-  topicFilterEl.innerHTML = '<option value="all">Tất cả chủ đề</option>';
+  topicFilterEl.replaceChildren(new Option("Tất cả chủ đề", "all"));
 
   topics.forEach(topic => {
     const option = document.createElement("option");
@@ -674,7 +683,7 @@ function updateTopicOptions() {
 }
 
 function updateDataSourceOptions() {
-  dataSourceEl.innerHTML = '<option value="all">Tất cả bộ từ</option>';
+  dataSourceEl.replaceChildren(new Option("Tất cả bộ từ", "all"));
 
   DATA_SOURCES.forEach(({ id: sourceId, label: sourceLabel }) => {
     const option = document.createElement("option");
@@ -711,8 +720,7 @@ function startTypingPractice(shouldShuffle = false) {
   typingCorrectIds = new Set();
   typingIsRetryRound = false;
   typingScoreEl.textContent = typingScore;
-  typingFeedbackEl.textContent = "";
-  typingFeedbackEl.style.color = "";
+  setFeedback(typingFeedbackEl, "");
   typingInputEl.value = "";
   renderTypingQuestion();
 }
@@ -748,7 +756,7 @@ function renderTypingQuestion() {
   btnCheckTyping.disabled = false;
   btnCheckTyping.textContent = "Kiểm tra";
   typingAnswered = false;
-  typingFeedbackEl.textContent = "";
+  setFeedback(typingFeedbackEl, "");
 }
 
 function updateTypingRetryCount() {
@@ -783,14 +791,12 @@ btnCheckTyping.addEventListener("click", () => {
     typingCorrectIds.add(currentWord.id);
     typingScore = typingCorrectIds.size;
     typingScoreEl.textContent = typingScore;
-    typingFeedbackEl.textContent = `✅ Đúng! Đáp án: ${formatChineseAnswer(chineseText, phoneticText)}`;
-    typingFeedbackEl.style.color = "#065f46";
+    setFeedback(typingFeedbackEl, `✅ Đúng! Đáp án: ${formatChineseAnswer(chineseText, phoneticText)}`, true);
   } else {
     if (!typingRoundMistakes.some(word => word.id === currentWord.id)) {
       typingRoundMistakes.push(currentWord);
     }
-    typingFeedbackEl.textContent = `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(chineseText, phoneticText)}`;
-    typingFeedbackEl.style.color = "#991b1b";
+    setFeedback(typingFeedbackEl, `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(chineseText, phoneticText)}`, false);
   }
 
   if (typingPronunciationEnabledEl.checked) {
@@ -819,8 +825,7 @@ function advanceTypingQuestion() {
       typingPromptEl.textContent = "Hoàn thành!";
       typingWordEl.textContent = `Bạn đã đúng hết ${typingScore} câu.`;
       typingPhoneticEl.textContent = "";
-      typingFeedbackEl.textContent = "Bạn có thể bấm Xáo trộn để ôn lại theo thứ tự mới.";
-      typingFeedbackEl.style.color = "#065f46";
+      setFeedback(typingFeedbackEl, "Bạn có thể bấm Xáo trộn để ôn lại theo thứ tự mới.", true);
       typingInputEl.value = "";
       typingInputEl.disabled = true;
       btnCheckTyping.disabled = true;
@@ -872,8 +877,14 @@ function renderReadingQuestion() {
   const currentWord = readingQuestions[currentReadingIndex];
   if (!currentWord) return;
 
-  const blankedSentence = currentWord.example.replace(currentWord.word, '<span class="reading-blank"></span>');
-  readingSentenceEl.innerHTML = blankedSentence;
+  const blankIndex = currentWord.example.indexOf(currentWord.word);
+  const readingBlank = document.createElement("span");
+  readingBlank.className = "reading-blank";
+  readingSentenceEl.replaceChildren(
+    document.createTextNode(currentWord.example.slice(0, blankIndex)),
+    readingBlank,
+    document.createTextNode(currentWord.example.slice(blankIndex + currentWord.word.length))
+  );
   readingProgressEl.textContent = readingIsRetryRound
     ? `Còn sai: ${readingTotalQuestions - readingCorrectIds.size} câu`
     : `Câu ${currentReadingIndex + 1} / ${readingQuestions.length}`;
@@ -881,8 +892,7 @@ function renderReadingQuestion() {
   readingInputEl.disabled = false;
   btnCheckReading.disabled = false;
   btnCheckReading.textContent = "Kiểm tra";
-  readingFeedbackEl.textContent = "";
-  readingFeedbackEl.style.color = "";
+  setFeedback(readingFeedbackEl, "");
   readingAnswered = false;
   readingInputEl.focus();
 }
@@ -922,14 +932,12 @@ btnCheckReading.addEventListener("click", () => {
     readingCorrectIds.add(currentWord.id);
     readingScore = readingCorrectIds.size;
     readingScoreEl.textContent = readingScore;
-    readingFeedbackEl.textContent = `✅ Đúng! Đáp án: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`;
-    readingFeedbackEl.style.color = "#065f46";
+    setFeedback(readingFeedbackEl, `✅ Đúng! Đáp án: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`, true);
   } else {
     if (!readingRoundMistakes.some(word => word.id === currentWord.id)) {
       readingRoundMistakes.push(currentWord);
     }
-    readingFeedbackEl.textContent = `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`;
-    readingFeedbackEl.style.color = "#991b1b";
+    setFeedback(readingFeedbackEl, `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`, false);
   }
 
   if (readingPronunciationEnabledEl.checked) {
@@ -1087,9 +1095,10 @@ readingModeBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-  const isWindowsSpeakShortcut = event.metaKey && (event.key === "." || event.code === "Period");
+  const isSpeakShortcut = (event.ctrlKey || event.metaKey)
+    && (event.key === "." || event.code === "Period");
 
-  if (isWindowsSpeakShortcut) {
+  if (isSpeakShortcut) {
     event.preventDefault();
 
     if (currentMode === "quiz") {
