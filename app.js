@@ -1,5 +1,4 @@
 const DATA_SOURCES = [
-  { id: "214bothu", label: "214 Bộ thủ", file: "./data-214bothu.json" },
   { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" }
 ];
 
@@ -81,10 +80,12 @@ let quizPracticeMode = "word";
 const btnToggleMode = document.getElementById("btn-toggle-mode");
 const typingModeBtn = document.getElementById("typing-mode-btn");
 const listeningModeBtn = document.getElementById("listening-mode-btn");
+const readingModeBtn = document.getElementById("reading-mode-btn");
 const matchingScreen = document.getElementById("matching-screen");
 const quizScreen = document.getElementById("quiz-screen");
 const listeningScreen = document.getElementById("listening-screen");
 const typingScreen = document.getElementById("typing-screen");
+const readingScreen = document.getElementById("reading-screen");
 
 const selectedWordCountEl = document.getElementById("selected-word-count");
 const btnShuffle = document.getElementById("btn-shuffle");
@@ -135,6 +136,13 @@ const typingInputEl = document.getElementById("typing-input");
 const typingPronunciationEnabledEl = document.getElementById("typing-pronunciation-enabled");
 const btnCheckTyping = document.getElementById("btn-check-typing");
 const typingFeedbackEl = document.getElementById("typing-feedback");
+const readingScoreEl = document.getElementById("reading-score");
+const readingProgressEl = document.getElementById("reading-progress");
+const readingSentenceEl = document.getElementById("reading-sentence");
+const readingInputEl = document.getElementById("reading-input");
+const readingPronunciationEnabledEl = document.getElementById("reading-pronunciation-enabled");
+const btnCheckReading = document.getElementById("btn-check-reading");
+const readingFeedbackEl = document.getElementById("reading-feedback");
 
 let listeningQuestions = [];
 let currentListeningIndex = 0;
@@ -303,6 +311,8 @@ function shuffleWords() {
     startQuiz(true);
   } else if (currentMode === "listening") {
     startListeningPractice(true);
+  } else if (currentMode === "reading") {
+    startReadingPractice(true);
   } else {
     startTypingPractice(true);
   }
@@ -427,6 +437,21 @@ quizPracticeModeEl.addEventListener("change", () => {
   startQuiz();
 });
 
+const MALE_MANDARIN_VOICE_HINTS = ["yunxi", "yunyang", "yunfeng", "kangkang"];
+
+function getMandarinVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  const mandarinVoices = voices.filter(voice => voice.lang.toLowerCase().startsWith("zh"));
+  const chineseVoices = mandarinVoices.filter(voice =>
+    voice.lang.toLowerCase() === "zh-cn"
+  );
+
+  return chineseVoices.find(voice => {
+    const voiceName = voice.name.toLowerCase();
+    return MALE_MANDARIN_VOICE_HINTS.some(hint => voiceName.includes(hint));
+  }) || chineseVoices[0] || mandarinVoices[0];
+}
+
 function speakChinese(text) {
   if (!('speechSynthesis' in window)) return;
 
@@ -434,7 +459,13 @@ function speakChinese(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "zh-CN";
   utterance.rate = 0.8;
+  const chineseVoice = getMandarinVoice();
+  if (chineseVoice) utterance.voice = chineseVoice;
   window.speechSynthesis.speak(utterance);
+}
+
+function formatChineseAnswer(chineseText, phoneticText) {
+  return `${chineseText}${phoneticText ? ` (${phoneticText})` : ""}`;
 }
 
 function startListeningPractice(shouldShuffle = false) {
@@ -742,30 +773,28 @@ btnCheckTyping.addEventListener("click", () => {
   const vietnameseText = isExampleMode
     ? (currentWord.exampleMeaning || currentWord.meaning)
     : currentWord.meaning;
+  const phoneticText = isExampleMode ? currentWord.examplePhonetic : currentWord.phonetic;
   const correctValues = (chineseToVietnamese ? vietnameseText : chineseText)
     .split(",")
     .map(normalizeAnswer);
   const inputValue = normalizeAnswer(typingInputEl.value);
 
-  if (typingPronunciationEnabledEl.checked) {
-    speakChinese(chineseText);
-  }
-
   if (correctValues.includes(inputValue)) {
     typingCorrectIds.add(currentWord.id);
     typingScore = typingCorrectIds.size;
     typingScoreEl.textContent = typingScore;
-    typingFeedbackEl.textContent = "✅ Đúng!";
+    typingFeedbackEl.textContent = `✅ Đúng! Đáp án: ${formatChineseAnswer(chineseText, phoneticText)}`;
     typingFeedbackEl.style.color = "#065f46";
   } else {
     if (!typingRoundMistakes.some(word => word.id === currentWord.id)) {
       typingRoundMistakes.push(currentWord);
     }
-    const correctAnswer = chineseToVietnamese
-      ? vietnameseText
-      : `${chineseText}${isExampleMode ? (currentWord.examplePhonetic ? ` (${currentWord.examplePhonetic})` : "") : (currentWord.phonetic ? ` (${currentWord.phonetic})` : "")}`;
-    typingFeedbackEl.textContent = `❌ Sai. Đáp án đúng là: ${correctAnswer}`;
+    typingFeedbackEl.textContent = `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(chineseText, phoneticText)}`;
     typingFeedbackEl.style.color = "#991b1b";
+  }
+
+  if (typingPronunciationEnabledEl.checked) {
+    speakChinese(chineseText);
   }
 
   updateTypingRetryCount();
@@ -806,6 +835,115 @@ function advanceTypingQuestion() {
 typingContentModeEl.addEventListener("change", () => startTypingPractice());
 typingDirectionEl.addEventListener("change", () => startTypingPractice());
 
+let readingQuestions = [];
+let currentReadingIndex = 0;
+let readingScore = 0;
+let readingTotalQuestions = 0;
+let readingRoundMistakes = [];
+let readingCorrectIds = new Set();
+let readingIsRetryRound = false;
+let readingAnswered = false;
+let readingShouldShuffle = false;
+
+function getReadingQuestions(words) {
+  return words.filter(word => word.example && word.example.includes(word.word));
+}
+
+function startReadingPractice(shouldShuffle = false) {
+  const filteredWords = getReadingQuestions(getFilteredWords());
+  if (filteredWords.length === 0) {
+    alert("Bộ từ hiện tại chưa có câu ví dụ phù hợp để luyện đọc điền từ!");
+    return;
+  }
+
+  readingShouldShuffle = shouldShuffle;
+  readingQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
+  currentReadingIndex = 0;
+  readingScore = 0;
+  readingTotalQuestions = filteredWords.length;
+  readingRoundMistakes = [];
+  readingCorrectIds = new Set();
+  readingIsRetryRound = false;
+  readingScoreEl.textContent = readingScore;
+  renderReadingQuestion();
+}
+
+function renderReadingQuestion() {
+  const currentWord = readingQuestions[currentReadingIndex];
+  if (!currentWord) return;
+
+  const blankedSentence = currentWord.example.replace(currentWord.word, '<span class="reading-blank"></span>');
+  readingSentenceEl.innerHTML = blankedSentence;
+  readingProgressEl.textContent = readingIsRetryRound
+    ? `Còn sai: ${readingTotalQuestions - readingCorrectIds.size} câu`
+    : `Câu ${currentReadingIndex + 1} / ${readingQuestions.length}`;
+  readingInputEl.value = "";
+  readingInputEl.disabled = false;
+  btnCheckReading.disabled = false;
+  btnCheckReading.textContent = "Kiểm tra";
+  readingFeedbackEl.textContent = "";
+  readingFeedbackEl.style.color = "";
+  readingAnswered = false;
+  readingInputEl.focus();
+}
+
+function advanceReadingQuestion() {
+  currentReadingIndex++;
+  if (currentReadingIndex >= readingQuestions.length) {
+    if (readingRoundMistakes.length > 0) {
+      readingQuestions = readingShouldShuffle ? shuffleList(readingRoundMistakes) : [...readingRoundMistakes];
+      readingRoundMistakes = [];
+      readingIsRetryRound = true;
+      currentReadingIndex = 0;
+    } else {
+      readingProgressEl.textContent = "Đã hoàn thành";
+      readingSentenceEl.textContent = `Bạn đã đúng hết ${readingScore} câu.`;
+      readingInputEl.value = "";
+      readingInputEl.disabled = true;
+      btnCheckReading.disabled = true;
+      btnCheckReading.textContent = "Hoàn thành";
+      return;
+    }
+  }
+  renderReadingQuestion();
+}
+
+btnCheckReading.addEventListener("click", () => {
+  if (readingAnswered) {
+    advanceReadingQuestion();
+    return;
+  }
+
+  const currentWord = readingQuestions[currentReadingIndex];
+  if (!currentWord) return;
+
+  const isCorrect = normalizeAnswer(readingInputEl.value) === normalizeAnswer(currentWord.word);
+  if (isCorrect) {
+    readingCorrectIds.add(currentWord.id);
+    readingScore = readingCorrectIds.size;
+    readingScoreEl.textContent = readingScore;
+    readingFeedbackEl.textContent = `✅ Đúng! Đáp án: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`;
+    readingFeedbackEl.style.color = "#065f46";
+  } else {
+    if (!readingRoundMistakes.some(word => word.id === currentWord.id)) {
+      readingRoundMistakes.push(currentWord);
+    }
+    readingFeedbackEl.textContent = `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`;
+    readingFeedbackEl.style.color = "#991b1b";
+  }
+
+  if (readingPronunciationEnabledEl.checked) {
+    speakChinese(currentWord.word);
+  }
+
+  readingAnswered = true;
+  readingInputEl.disabled = true;
+  btnCheckReading.textContent = "Câu tiếp theo ➡";
+  if (readingIsRetryRound) {
+    readingProgressEl.textContent = `Còn sai: ${readingTotalQuestions - readingCorrectIds.size} câu`;
+  }
+});
+
 function applyStudyMode() {
   const mode = studyModeEl.value;
   topicFilterEl.classList.toggle("hidden", mode !== "topic");
@@ -836,6 +974,11 @@ function applyStudyMode() {
 
   if (currentMode === "typing") {
     startTypingPractice();
+    return;
+  }
+
+  if (currentMode === "reading") {
+    startReadingPractice();
   }
 }
 
@@ -856,13 +999,16 @@ btnShuffle.addEventListener("click", shuffleWords);
 
 let currentMode = "quiz";
 
+const studyScreens = [matchingScreen, quizScreen, listeningScreen, typingScreen, readingScreen];
+
+function setActiveScreen(activeScreen, mode, toggleLabel) {
+  currentMode = mode;
+  studyScreens.forEach(screen => screen.classList.toggle("hidden", screen !== activeScreen));
+  btnToggleMode.textContent = toggleLabel;
+}
+
 function showMatchingScreen() {
-  currentMode = "matching";
-  matchingScreen.classList.remove("hidden");
-  quizScreen.classList.add("hidden");
-  listeningScreen.classList.add("hidden");
-  typingScreen.classList.add("hidden");
-  btnToggleMode.textContent = "🎮 Làm Quiz";
+  setActiveScreen(matchingScreen, "matching", "🎮 Làm Quiz");
   startMatching();
 }
 
@@ -873,12 +1019,7 @@ function showQuizScreen() {
     return;
   }
 
-  currentMode = "quiz";
-  matchingScreen.classList.add("hidden");
-  quizScreen.classList.remove("hidden");
-  listeningScreen.classList.add("hidden");
-  typingScreen.classList.add("hidden");
-  btnToggleMode.textContent = "📖 Về nối từ";
+  setActiveScreen(quizScreen, "quiz", "📖 Về nối từ");
   startQuiz();
 }
 
@@ -889,12 +1030,7 @@ function showListeningScreen() {
     return;
   }
 
-  currentMode = "listening";
-  matchingScreen.classList.add("hidden");
-  quizScreen.classList.add("hidden");
-  listeningScreen.classList.remove("hidden");
-  typingScreen.classList.add("hidden");
-  btnToggleMode.textContent = "📖 Về nối từ";
+  setActiveScreen(listeningScreen, "listening", "📖 Về nối từ");
   startListeningPractice();
 }
 
@@ -905,13 +1041,13 @@ function showTypingScreen() {
     return;
   }
 
-  currentMode = "typing";
-  matchingScreen.classList.add("hidden");
-  quizScreen.classList.add("hidden");
-  listeningScreen.classList.add("hidden");
-  typingScreen.classList.remove("hidden");
-  btnToggleMode.textContent = "📖 Về nối từ";
+  setActiveScreen(typingScreen, "typing", "📖 Về nối từ");
   startTypingPractice();
+}
+
+function showReadingScreen() {
+  setActiveScreen(readingScreen, "reading", "📖 Về nối từ");
+  startReadingPractice();
 }
 
 btnToggleMode.addEventListener("click", () => {
@@ -941,6 +1077,15 @@ listeningModeBtn.addEventListener("click", () => {
   showListeningScreen();
 });
 
+readingModeBtn.addEventListener("click", () => {
+  if (currentMode === "reading") {
+    showMatchingScreen();
+    return;
+  }
+
+  showReadingScreen();
+});
+
 document.addEventListener("keydown", (event) => {
   const isWindowsSpeakShortcut = event.metaKey && (event.key === "." || event.code === "Period");
 
@@ -961,6 +1106,9 @@ document.addEventListener("keydown", (event) => {
           : currentWord.word;
         speakChinese(typingText);
       }
+    } else if (currentMode === "reading") {
+      const currentWord = readingQuestions[currentReadingIndex];
+      if (currentWord) speakChinese(currentWord.example);
     }
 
     return;
@@ -999,6 +1147,14 @@ document.addEventListener("keydown", (event) => {
       if (!listeningInputEl.disabled) {
         requestAnimationFrame(() => listeningInputEl.focus());
       }
+    }
+  }
+
+  if (currentMode === "reading" && !btnCheckReading.disabled) {
+    event.preventDefault();
+    btnCheckReading.click();
+    if (!readingInputEl.disabled) {
+      requestAnimationFrame(() => readingInputEl.focus());
     }
   }
 });

@@ -21,6 +21,7 @@
         <button class="btn-toggle-mode" id="btn-toggle-mode" type="button">🎮 Làm Quiz</button>
         <button class="btn-primary small" id="typing-mode-btn" type="button">⌨️ Gõ từ</button>
         <button class="btn-primary small" id="listening-mode-btn" type="button">🔊 Nghe</button>
+        <button class="btn-primary small" id="reading-mode-btn" type="button">📖 Đọc</button>
       </div>
     </header>
 
@@ -165,10 +166,28 @@
 
         <label class="typing-pronunciation-option">
           <input id="typing-pronunciation-enabled" type="checkbox" />
-          Đọc pinyin sau khi kiểm tra
+          Phát âm đáp án sau khi kiểm tra
         </label>
         <button class="btn btn-primary btn-full" id="btn-check-typing" type="button">Kiểm tra</button>
         <p id="typing-feedback" class="typing-feedback"></p>
+      </div>
+    </div>
+
+    <div id="reading-screen" class="screen hidden">
+      <div class="quiz-box reading-box">
+        <div class="quiz-header">
+          <span>Điểm: <strong id="reading-score">0</strong></span>
+          <span id="reading-progress">Câu 1/5</span>
+        </div>
+        <p class="typing-label">Đọc câu tiếng Trung và điền từ còn thiếu</p>
+        <p class="reading-sentence" id="reading-sentence"></p>
+        <input id="reading-input" type="text" class="typing-input reading-input" placeholder="Nhập từ tiếng Trung..." autocomplete="off" />
+        <label class="typing-pronunciation-option">
+          <input id="reading-pronunciation-enabled" type="checkbox" />
+          Phát âm đáp án sau khi kiểm tra
+        </label>
+        <button class="btn btn-primary btn-full" id="btn-check-reading" type="button">Kiểm tra</button>
+        <p id="reading-feedback" class="typing-feedback"></p>
       </div>
     </div>
 
