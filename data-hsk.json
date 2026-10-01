@@ -69,15 +69,15 @@
         { "word": "多少", "type": "vocabulary", "phonetic": "duōshao", "meaning": "bao nhiêu", "example": "这里有多少人？", "examplePhonetic": "Zhèlǐ yǒu duōshao rén?", "exampleMeaning": "Ở đây có bao nhiêu người?" },
         { "word": "个", "type": "vocabulary", "phonetic": "gè", "meaning": "cái, chiếc, con (lượng từ phổ biến nhất)", "example": "我有一个苹果。", "examplePhonetic": "Wǒ yǒu yí gè píngguǒ.", "exampleMeaning": "Tôi có một quả táo." },
         { "word": "没有", "type": "vocabulary", "phonetic": "méiyǒu", "meaning": "không có, chưa", "example": "我没有妹妹。", "examplePhonetic": "Wǒ méiyǒu mèimei.", "exampleMeaning": "Tôi không có em gái." },
-        { "word": "几", "type": "vocabulary", "phonetic": "jǐ", "meaning": "mấy (dùng cho số lượng nhỏ < 10)", "example": "你有几个哥哥？", "examplePhonetic": "Nǐ yǒu jǐ gè gēge?", "exampleMeaning": "Bạn có mấy người anh trai?" },
-        { "word": "口", "type": "vocabulary", "phonetic": "kǒu", "meaning": "miệng; lượng từ chỉ số thành viên gia đình", "example": "我家有五口人。", "examplePhonetic": "Wǒ jiā yǒu wǔ kǒu rén.", "exampleMeaning": "Nhà tôi có 5 người." },
+        { "word": "几", "type": "vocabulary", "phonetic": "jǐ", "meaning": "mấy (dùng cho số lượng nhỏ hơn 10)", "example": "你有几个哥哥？", "examplePhonetic": "Nǐ yǒu jǐ gè gēge?", "exampleMeaning": "Bạn có mấy người anh trai?" },
+        { "word": "口", "type": "vocabulary", "phonetic": "kǒu", "meaning": "miệng(lượng từ chỉ số thành viên gia đình)", "example": "我家有五口人。", "examplePhonetic": "Wǒ jiā yǒu wǔ kǒu rén.", "exampleMeaning": "Nhà tôi có 5 người." },
         { "word": "加", "type": "vocabulary", "phonetic": "jiā", "meaning": "cộng, thêm", "example": "一加一等于二。", "examplePhonetic": "Yī jiā yī děngyú èr.", "exampleMeaning": "Một cộng một bằng hai." },
         { "word": "爸爸", "type": "vocabulary", "phonetic": "bàba", "meaning": "bố, ba", "example": "我的爸爸是医生。", "examplePhonetic": "Wǒ de bàba shì yīshēng.", "exampleMeaning": "Bố của tôi là bác sĩ." },
         { "word": "妈妈", "type": "vocabulary", "phonetic": "māma", "meaning": "mẹ, má", "example": "妈妈喜欢看书。", "examplePhonetic": "Māma xǐhuan kàn shū.", "exampleMeaning": "Mẹ thích đọc sách." },
         { "word": "哥哥", "type": "vocabulary", "phonetic": "gēge", "meaning": "anh trai", "example": "他哥哥很忙。", "examplePhonetic": "Tā gēge hěn máng.", "exampleMeaning": "Anh trai của anh ấy rất bận." },
         { "word": "妹妹", "type": "vocabulary", "phonetic": "mèimei", "meaning": "em gái", "example": "我是她的妹妹。", "examplePhonetic": "Wǒ shì tā de mèimei.", "exampleMeaning": "Tôi là em gái của cô ấy." },
         { "word": "和", "type": "vocabulary", "phonetic": "hé", "meaning": "và, cùng", "example": "爸爸和妈妈都在家。", "examplePhonetic": "Bàba hé māma dōu zài jiā.", "exampleMeaning": "Bố và mẹ đều ở nhà." },
-        { "word": "呢", "type": "vocabulary", "phonetic": "ne", "meaning": "trợ từ nghi vấn: ...thì sao? / đang (hành động)", "example": "你呢？", "examplePhonetic": "Nǐ ne?", "exampleMeaning": "Còn bạn thì sao?" },
+        { "word": "呢", "type": "vocabulary", "phonetic": "ne", "meaning": " thì sao, đang ( trợ từ nghi vấn)", "example": "你呢？", "examplePhonetic": "Nǐ ne?", "exampleMeaning": "Còn bạn thì sao?" },
         { "word": "孩子", "type": "vocabulary", "phonetic": "háizi", "meaning": "con cái, đứa trẻ", "example": "这个孩子很聪明。", "examplePhonetic": "Zhè gè háizi hěn cōngmíng.", "exampleMeaning": "Đứa trẻ này rất thông minh." },
         { "word": "儿子", "type": "vocabulary", "phonetic": "érzi", "meaning": "con trai", "example": "他有两个儿子。", "examplePhonetic": "Tā yǒu liǎng gè érzi.", "exampleMeaning": "Anh ấy có hai người con trai." },
         { "word": "女儿", "type": "vocabulary", "phonetic": "nǚ'ér", "meaning": "con gái", "example": "我的女儿四岁了。", "examplePhonetic": "Wǒ de nǚ'ér sì suì le.", "exampleMeaning": "Con gái của tôi 4 tuổi rồi." },
@@ -85,7 +85,7 @@
         { "word": "他", "type": "vocabulary", "phonetic": "tā", "meaning": "anh ấy, ông ấy, nó (nam)", "example": "他是我的好朋友。", "examplePhonetic": "Tā shì wǒ de hǎo péngyou.", "exampleMeaning": "Anh ấy là bạn tốt của tôi." },
         { "word": "今年", "type": "vocabulary", "phonetic": "jīnnián", "meaning": "năm nay", "example": "你今年几岁了？", "examplePhonetic": "Nǐ jīnnián jǐ suì le?", "exampleMeaning": "Năm nay bạn mấy tuổi rồi?" },
         { "word": "大", "type": "vocabulary", "phonetic": "dà", "meaning": "to, lớn", "example": "这个学校很大。", "examplePhonetic": "Zhè gè xuéxiào hěn dà.", "exampleMeaning": "Trường học này rất lớn." },
-        { "word": "多", "type": "vocabulary", "phonetic": "duō", "meaning": "nhiều; bao nhiêu (khi đứng trước tính từ hỏi mức độ)", "example": "你今年多大？", "examplePhonetic": "Nǐ jīnnián duō dà?", "exampleMeaning": "Năm nay bạn bao nhiêu tuổi?" }
+        { "word": "多", "type": "vocabulary", "phonetic": "duō", "meaning": "nhiều / bao nhiêu (hỏi mức độ)", "example": "你今年多大？", "examplePhonetic": "Nǐ jīnnián duō dà?", "exampleMeaning": "Năm nay bạn bao nhiêu tuổi?" }
       ]
   },
   {
