@@ -157,13 +157,13 @@ select:focus-visible {
   transform: translateY(-1px);
 }
 
-.header-actions > .btn-toggle-mode {
+.header-actions > button.is-active {
   border-color: var(--gold);
   color: #263d2f;
   background: var(--gold);
 }
 
-.header-actions > .btn-toggle-mode:hover {
+.header-actions > button.is-active:hover {
   border-color: #ffdf91;
   background: #ffdf91;
 }
@@ -393,8 +393,7 @@ select:focus-visible {
 }
 
 .btn,
-.btn-primary,
-.btn-toggle-mode {
+.btn-primary {
   min-height: 44px;
   padding: 11px 15px;
   border: 1px solid transparent;
@@ -426,8 +425,7 @@ select:focus-visible {
 }
 
 .btn:disabled,
-.btn-primary:disabled,
-.btn-toggle-mode:disabled {
+.btn-primary:disabled {
   opacity: 0.56;
   box-shadow: none;
   cursor: not-allowed;

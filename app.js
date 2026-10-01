@@ -77,7 +77,8 @@ let quizShouldShuffle = false;
 let quizPracticeMode = "word";
 
 // DOM Elements - Common
-const btnToggleMode = document.getElementById("btn-toggle-mode");
+const matchingModeBtn = document.getElementById("matching-mode-btn");
+const quizModeBtn = document.getElementById("quiz-mode-btn");
 const typingModeBtn = document.getElementById("typing-mode-btn");
 const listeningModeBtn = document.getElementById("listening-mode-btn");
 const readingModeBtn = document.getElementById("reading-mode-btn");
@@ -511,6 +512,7 @@ function loadListeningQuestion() {
       currentListeningIndex = 0;
     } else {
       listeningProgressEl.textContent = "Đã hoàn thành";
+      listeningOptionsEl.classList.remove("hidden");
       renderRestartButton(listeningOptionsEl, "Làm lại luyện nghe", () => startListeningPractice());
       listeningTypingAreaEl.classList.add("hidden");
       btnNextListening.classList.add("hidden");
@@ -588,6 +590,12 @@ function selectListeningAnswer(selectedId, correctId, selectedButton) {
   } else {
     selectedButton.classList.add("wrong");
     const missedWord = listeningQuestions.find(word => word.id === correctId);
+    const meaning = missedWord
+      ? (listeningAnswerModeEl.value === "multiple-choice"
+        ? missedWord.exampleMeaning || missedWord.meaning
+        : missedWord.meaning)
+      : "";
+    setFeedback(listeningFeedbackEl, `❌ Sai. Nghĩa tiếng Việt: ${meaning}`, false);
     if (missedWord && !listeningRoundMistakes.some(word => word.id === correctId)) {
       listeningRoundMistakes.push(missedWord);
     }
@@ -632,7 +640,10 @@ btnCheckListening.addEventListener("click", () => {
     if (!listeningRoundMistakes.some(word => word.id === currentWord.id)) {
       listeningRoundMistakes.push(currentWord);
     }
-    setFeedback(listeningFeedbackEl, `❌ Sai. Đáp án đúng là: ${correctAnswer}`, false);
+    const correction = isChineseAnswer
+      ? `Đáp án đúng là: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`
+      : `Nghĩa tiếng Việt: ${currentWord.meaning}`;
+    setFeedback(listeningFeedbackEl, `❌ Sai. ${correction}`, false);
   }
 
   listeningAnswered = true;
@@ -796,7 +807,10 @@ btnCheckTyping.addEventListener("click", () => {
     if (!typingRoundMistakes.some(word => word.id === currentWord.id)) {
       typingRoundMistakes.push(currentWord);
     }
-    setFeedback(typingFeedbackEl, `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(chineseText, phoneticText)}`, false);
+    const correction = chineseToVietnamese
+      ? `Nghĩa tiếng Việt: ${vietnameseText}`
+      : `Đáp án đúng là: ${formatChineseAnswer(chineseText, phoneticText)}`;
+    setFeedback(typingFeedbackEl, `❌ Sai. ${correction}`, false);
   }
 
   if (typingPronunciationEnabledEl.checked) {
@@ -1008,15 +1022,26 @@ btnShuffle.addEventListener("click", shuffleWords);
 let currentMode = "quiz";
 
 const studyScreens = [matchingScreen, quizScreen, listeningScreen, typingScreen, readingScreen];
+const studyModeButtons = [
+  [matchingModeBtn, "matching"],
+  [quizModeBtn, "quiz"],
+  [typingModeBtn, "typing"],
+  [listeningModeBtn, "listening"],
+  [readingModeBtn, "reading"]
+];
 
-function setActiveScreen(activeScreen, mode, toggleLabel) {
+function setActiveScreen(activeScreen, mode) {
   currentMode = mode;
   studyScreens.forEach(screen => screen.classList.toggle("hidden", screen !== activeScreen));
-  btnToggleMode.textContent = toggleLabel;
+  studyModeButtons.forEach(([button, buttonMode]) => {
+    const isActive = buttonMode === mode;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
 }
 
 function showMatchingScreen() {
-  setActiveScreen(matchingScreen, "matching", "🎮 Làm Quiz");
+  setActiveScreen(matchingScreen, "matching");
   startMatching();
 }
 
@@ -1027,7 +1052,7 @@ function showQuizScreen() {
     return;
   }
 
-  setActiveScreen(quizScreen, "quiz", "📖 Về nối từ");
+  setActiveScreen(quizScreen, "quiz");
   startQuiz();
 }
 
@@ -1038,7 +1063,7 @@ function showListeningScreen() {
     return;
   }
 
-  setActiveScreen(listeningScreen, "listening", "📖 Về nối từ");
+  setActiveScreen(listeningScreen, "listening");
   startListeningPractice();
 }
 
@@ -1049,50 +1074,20 @@ function showTypingScreen() {
     return;
   }
 
-  setActiveScreen(typingScreen, "typing", "📖 Về nối từ");
+  setActiveScreen(typingScreen, "typing");
   startTypingPractice();
 }
 
 function showReadingScreen() {
-  setActiveScreen(readingScreen, "reading", "📖 Về nối từ");
+  setActiveScreen(readingScreen, "reading");
   startReadingPractice();
 }
 
-btnToggleMode.addEventListener("click", () => {
-  if (currentMode === "matching") {
-    showQuizScreen();
-    return;
-  }
-
-  showMatchingScreen();
-});
-
-typingModeBtn.addEventListener("click", () => {
-  if (currentMode === "typing") {
-    showMatchingScreen();
-    return;
-  }
-
-  showTypingScreen();
-});
-
-listeningModeBtn.addEventListener("click", () => {
-  if (currentMode === "listening") {
-    showMatchingScreen();
-    return;
-  }
-
-  showListeningScreen();
-});
-
-readingModeBtn.addEventListener("click", () => {
-  if (currentMode === "reading") {
-    showMatchingScreen();
-    return;
-  }
-
-  showReadingScreen();
-});
+matchingModeBtn.addEventListener("click", showMatchingScreen);
+quizModeBtn.addEventListener("click", showQuizScreen);
+typingModeBtn.addEventListener("click", showTypingScreen);
+listeningModeBtn.addEventListener("click", showListeningScreen);
+readingModeBtn.addEventListener("click", showReadingScreen);
 
 document.addEventListener("keydown", (event) => {
   const isSpeakShortcut = (event.ctrlKey || event.metaKey)
@@ -1174,7 +1169,6 @@ async function initApp() {
   updateTopicOptions();
   updateSelectedWordCount();
   topicFilterEl.classList.toggle("hidden", studyModeEl.value !== "topic");
-  btnToggleMode.textContent = "📖 Về nối từ";
   startQuiz();
 }
 
