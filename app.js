@@ -1,8 +1,6 @@
 const DATA_SOURCES = [
   { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" }
 ];
-const AI_API_BASE_URL = "https://hsk-chinese-tutor-api.hsk-chinese-tutor-admin-20261003.workers.dev";
-const AI_ACCESS_TOKEN_KEY = "hsk-study-ai-access-token";
 
 function normalizeWordRecord(item, topic, id) {
   return {
@@ -91,12 +89,6 @@ const typingScreen = document.getElementById("typing-screen");
 const readingScreen = document.getElementById("reading-screen");
 const speakingModeBtn = document.getElementById("speaking-mode-btn");
 const speakingScreen = document.getElementById("speaking-screen");
-const aiChatModeBtn = document.getElementById("ai-chat-mode-btn");
-const aiChatScreen = document.getElementById("ai-chat-screen");
-const aiConnectionPanel = document.getElementById("ai-connection-panel");
-const aiAccessTokenEl = document.getElementById("ai-access-token");
-const aiConnectionStatusEl = document.getElementById("ai-connection-status");
-const btnSaveAiAccessToken = document.getElementById("btn-save-ai-access-token");
 
 const selectedWordCountEl = document.getElementById("selected-word-count");
 const btnShuffle = document.getElementById("btn-shuffle");
@@ -168,12 +160,6 @@ const btnSpeakSpeakingAnswer = document.getElementById("btn-speak-speaking-answe
 const btnStartSpeakingRecording = document.getElementById("btn-start-speaking-recording");
 const btnStopSpeakingRecording = document.getElementById("btn-stop-speaking-recording");
 const btnNextSpeaking = document.getElementById("btn-next-speaking");
-const aiChatMessagesEl = document.getElementById("ai-chat-messages");
-const aiChatFormEl = document.getElementById("ai-chat-form");
-const aiChatInputEl = document.getElementById("ai-chat-input");
-const aiChatStatusEl = document.getElementById("ai-chat-status");
-const btnSendAiChat = document.getElementById("btn-send-ai-chat");
-const btnClearAiChat = document.getElementById("btn-clear-ai-chat");
 
 let listeningQuestions = [];
 let currentListeningIndex = 0;
@@ -328,8 +314,6 @@ function startQuiz(shouldShuffle = false) {
 }
 
 function shuffleWords() {
-  if (currentMode === "ai-chat") return;
-
   const filteredWords = getFilteredWords();
   if (filteredWords.length === 0) {
     alert("Không có từ vựng nào trong bộ lọc hiện tại để xáo trộn!");
@@ -906,7 +890,6 @@ let speakingChunks = [];
 let speakingAudioUrl = "";
 let speakingRecordingVersion = 0;
 let speakingRecordingTimer = null;
-let aiChatHistory = [];
 
 function getReadingQuestions(words) {
   return words.filter(word => word.example && word.example.includes(word.word));
@@ -1156,143 +1139,6 @@ btnNextSpeaking.addEventListener("click", () => {
   renderSpeakingQuestion();
 });
 
-function readAiAccessToken() {
-  try {
-    return sessionStorage.getItem(AI_ACCESS_TOKEN_KEY) || "";
-  } catch {
-    return "";
-  }
-}
-
-function initializeAiAccessToken() {
-  aiAccessTokenEl.value = readAiAccessToken();
-  aiConnectionStatusEl.textContent = aiAccessTokenEl.value
-    ? "Đã lưu mã truy cập trong tab này."
-    : "Mã chỉ được giữ trong tab hiện tại.";
-}
-
-function saveAiAccessToken() {
-  const token = aiAccessTokenEl.value.trim();
-  if (!token) {
-    aiConnectionStatusEl.textContent = "Nhập mã truy cập trước khi lưu.";
-    return;
-  }
-
-  try {
-    sessionStorage.setItem(AI_ACCESS_TOKEN_KEY, token);
-    aiConnectionStatusEl.textContent = "Đã lưu mã truy cập trong tab này.";
-  } catch {
-    aiConnectionStatusEl.textContent = "Không lưu được trong tab này. Hãy thử mở Safari bình thường.";
-  }
-}
-
-async function requestAiApi(path, options) {
-  const baseUrl = AI_API_BASE_URL.replace(/\/+$/, "");
-  if (!baseUrl || baseUrl.includes("YOUR-WORKER")) {
-    throw new Error("Chưa cấu hình AI_API_BASE_URL trong app.js theo URL Worker của m.");
-  }
-
-  const token = readAiAccessToken();
-  if (!token) {
-    throw new Error("Nhập và lưu mã truy cập riêng ở phía trên trước nhé.");
-  }
-
-  const headers = new Headers(options.headers || {});
-  headers.set("Authorization", `Bearer ${token}`);
-  let response;
-  try {
-    response = await fetch(`${baseUrl}${path}`, { ...options, headers });
-  } catch {
-    throw new Error("Không kết nối được Worker. Kiểm tra URL và cấu hình CORS.");
-  }
-
-  let result;
-  try {
-    result = await response.json();
-  } catch {
-    throw new Error("Worker trả dữ liệu không đọc được.");
-  }
-  if (!response.ok) throw new Error(result.error || "Yêu cầu chưa thành công.");
-  return result;
-}
-
-function renderAiChatMessages() {
-  aiChatMessagesEl.replaceChildren();
-  if (aiChatHistory.length === 0) {
-    const welcome = document.createElement("p");
-    welcome.className = "ai-chat-welcome";
-    welcome.textContent = "你好！M muốn luyện nói về chủ đề gì hôm nay?";
-    aiChatMessagesEl.appendChild(welcome);
-    return;
-  }
-
-  aiChatHistory.forEach(message => {
-    const bubble = document.createElement("article");
-    bubble.className = `ai-chat-message ${message.role === "user" ? "from-user" : "from-ai"}`;
-    const label = document.createElement("span");
-    label.className = "ai-chat-role";
-    label.textContent = message.role === "user" ? "M" : "Gia sư AI";
-    const text = document.createElement("p");
-    text.textContent = message.text;
-    bubble.append(label, text);
-    aiChatMessagesEl.appendChild(bubble);
-  });
-  aiChatMessagesEl.scrollTop = aiChatMessagesEl.scrollHeight;
-}
-
-async function submitAiChat(event) {
-  event.preventDefault();
-  const userText = aiChatInputEl.value.trim();
-  if (!userText || btnSendAiChat.disabled) return;
-
-  aiChatHistory.push({ role: "user", text: userText });
-  aiChatHistory = aiChatHistory.slice(-20);
-  aiChatInputEl.value = "";
-  renderAiChatMessages();
-  btnSendAiChat.disabled = true;
-  btnClearAiChat.disabled = true;
-  aiChatStatusEl.textContent = "Gia sư đang trả lời…";
-
-  try {
-    const vocabulary = getFilteredWords().slice(0, 12).map(word => ({
-      word: word.word,
-      pinyin: word.phonetic,
-      meaning: word.meaning
-    }));
-    const result = await requestAiApi("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: aiChatHistory.slice(-12), vocabulary })
-    });
-    aiChatHistory.push({ role: "model", text: result.reply });
-    aiChatHistory = aiChatHistory.slice(-20);
-    renderAiChatMessages();
-    aiChatStatusEl.textContent = "";
-  } catch (error) {
-    const lastMessage = aiChatHistory[aiChatHistory.length - 1];
-    if (lastMessage?.role === "user" && lastMessage.text === userText) {
-      aiChatHistory.pop();
-      renderAiChatMessages();
-    }
-    if (!aiChatInputEl.value) aiChatInputEl.value = userText;
-    aiChatStatusEl.textContent = error.message || "Chưa gửi được tin nhắn.";
-  } finally {
-    btnSendAiChat.disabled = false;
-    btnClearAiChat.disabled = false;
-    aiChatInputEl.focus();
-  }
-}
-
-function clearAiChat() {
-  aiChatHistory = [];
-  renderAiChatMessages();
-  aiChatStatusEl.textContent = "";
-}
-
-btnSaveAiAccessToken.addEventListener("click", saveAiAccessToken);
-aiChatFormEl.addEventListener("submit", submitAiChat);
-btnClearAiChat.addEventListener("click", clearAiChat);
-
 function applyStudyMode() {
   const mode = studyModeEl.value;
   topicFilterEl.classList.toggle("hidden", mode !== "topic");
@@ -1353,21 +1199,19 @@ btnShuffle.addEventListener("click", shuffleWords);
 
 let currentMode = "quiz";
 
-const studyScreens = [matchingScreen, quizScreen, listeningScreen, typingScreen, readingScreen, speakingScreen, aiChatScreen];
+const studyScreens = [matchingScreen, quizScreen, listeningScreen, typingScreen, readingScreen, speakingScreen];
 const studyModeButtons = [
   [matchingModeBtn, "matching"],
   [quizModeBtn, "quiz"],
   [typingModeBtn, "typing"],
   [listeningModeBtn, "listening"],
   [readingModeBtn, "reading"],
-  [speakingModeBtn, "speaking"],
-  [aiChatModeBtn, "ai-chat"]
+  [speakingModeBtn, "speaking"]
 ];
 
 function setActiveScreen(activeScreen, mode) {
   if (currentMode === "speaking" && mode !== "speaking") stopSpeakingRecording();
   currentMode = mode;
-  aiConnectionPanel.classList.toggle("hidden", mode !== "speaking" && mode !== "ai-chat");
   studyScreens.forEach(screen => screen.classList.toggle("hidden", screen !== activeScreen));
   studyModeButtons.forEach(([button, buttonMode]) => {
     const isActive = buttonMode === mode;
@@ -1424,17 +1268,12 @@ function showSpeakingScreen() {
   startSpeakingPractice();
 }
 
-function showAiChatScreen() {
-  setActiveScreen(aiChatScreen, "ai-chat");
-}
-
 matchingModeBtn.addEventListener("click", showMatchingScreen);
 quizModeBtn.addEventListener("click", showQuizScreen);
 typingModeBtn.addEventListener("click", showTypingScreen);
 listeningModeBtn.addEventListener("click", showListeningScreen);
 readingModeBtn.addEventListener("click", showReadingScreen);
 speakingModeBtn.addEventListener("click", showSpeakingScreen);
-aiChatModeBtn.addEventListener("click", showAiChatScreen);
 
 document.addEventListener("keydown", (event) => {
   const isSpeakShortcut = (event.ctrlKey || event.metaKey)
@@ -1515,7 +1354,6 @@ document.addEventListener("keydown", (event) => {
 
 async function initApp() {
   allWords = await loadWords();
-  initializeAiAccessToken();
   updateDataSourceOptions();
   updateTopicOptions();
   updateSelectedWordCount();

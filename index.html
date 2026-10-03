@@ -24,7 +24,6 @@
         <button class="btn-primary small" id="listening-mode-btn" type="button" aria-pressed="false">4. 🔊 Nghe</button>
         <button class="btn-primary small" id="reading-mode-btn" type="button" aria-pressed="false">5. 📖 Đọc</button>
         <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">6. 🎙️ Luyện nói</button>
-        <button class="btn-primary small" id="ai-chat-mode-btn" type="button" aria-pressed="false">7. 💬 AI Chat</button>
       </div>
     </header>
 
@@ -61,15 +60,6 @@
         </select>
       </div>
     </div>
-
-    <section id="ai-connection-panel" class="ai-connection-panel hidden" aria-label="Kết nối dịch vụ AI">
-      <label for="ai-access-token">Mã truy cập riêng</label>
-      <div class="ai-connection-controls">
-        <input id="ai-access-token" class="typing-input" type="password" autocomplete="off" placeholder="Nhập mã Worker đã cấu hình" />
-        <button id="btn-save-ai-access-token" class="btn" type="button">Lưu trong tab</button>
-      </div>
-      <p id="ai-connection-status" class="ai-connection-status" aria-live="polite">Mã chỉ được giữ trong tab hiện tại.</p>
-    </section>
 
     <div id="matching-screen" class="screen hidden">
       <div class="matching-box">
@@ -224,28 +214,9 @@
           <button class="btn" id="btn-stop-speaking-recording" type="button" disabled>Dừng ghi âm</button>
         </div>
         <p id="speaking-status" class="typing-feedback" aria-live="polite">Bấm ghi âm, nói câu tiếng Trung rồi nghe lại.</p>
-        <p class="ai-data-note">Bản ghi chỉ được giữ tạm trong tab để nghe lại, không gửi lên dịch vụ.</p>
+        <p class="speaking-privacy-note">Bản ghi chỉ được giữ tạm trong tab để nghe lại, không gửi lên dịch vụ.</p>
         <audio id="speaking-playback" class="speaking-playback hidden" controls playsinline></audio>
         <button class="btn btn-primary btn-full" id="btn-next-speaking" type="button">Câu tiếp theo ➡</button>
-      </div>
-    </div>
-
-    <div id="ai-chat-screen" class="screen hidden">
-      <div class="quiz-box ai-chat-box">
-        <div class="quiz-header">
-          <span>Gia sư tiếng Trung HSK 1-2</span>
-          <button id="btn-clear-ai-chat" class="btn ai-clear-button" type="button" title="Xóa cuộc trò chuyện">Xóa chat</button>
-        </div>
-        <div id="ai-chat-messages" class="ai-chat-messages" aria-live="polite">
-          <p class="ai-chat-welcome">你好！M muốn luyện nói về chủ đề gì hôm nay?</p>
-        </div>
-        <p class="ai-data-note">Tin nhắn được gửi đến Gemini. Free tier có thể dùng dữ liệu để cải thiện dịch vụ.</p>
-        <form id="ai-chat-form" class="ai-chat-form">
-          <label class="typing-label" for="ai-chat-input">Tin nhắn</label>
-          <textarea id="ai-chat-input" class="typing-input ai-chat-input" rows="2" maxlength="500" placeholder="Nhắn bằng tiếng Trung hoặc tiếng Việt..."></textarea>
-          <button id="btn-send-ai-chat" class="btn btn-primary btn-full" type="submit">Gửi</button>
-        </form>
-        <p id="ai-chat-status" class="typing-feedback" aria-live="polite"></p>
       </div>
     </div>
 
