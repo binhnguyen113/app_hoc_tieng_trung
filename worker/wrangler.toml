@@ -1,0 +1,7 @@
+name = "hsk-chinese-tutor-api"
+main = "index.js"
+compatibility_date = "2026-10-03"
+
+[vars]
+GEMINI_MODEL = "gemini-3.8-flash"
+ALLOWED_ORIGINS = "http://localhost:8000,https://binhnguyen113.github.io"
