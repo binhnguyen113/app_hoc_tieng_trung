@@ -110,7 +110,7 @@
         { "word": "新", "type": "vocabulary", "phonetic": "xīn", "meaning": "mới", "example": "这是我的新手机。", "examplePhonetic": "Zhè shì wǒ de xīn shǒujī.", "exampleMeaning": "Đây là điện thoại mới của tôi." },
         { "word": "电脑", "type": "vocabulary", "phonetic": "diànnǎo", "meaning": "máy tính", "example": "他在用电脑工作。", "examplePhonetic": "Tā zài yòng diànnǎo gōngzuò.", "exampleMeaning": "Anh ấy đang làm việc bằng máy tính." },
         { "word": "真", "type": "vocabulary", "phonetic": "zhēn", "meaning": "thật, thật là", "example": "今天天气真好！", "examplePhonetic": "Jīntiān tiānqì zhēn hǎo!", "exampleMeaning": "Hôm nay thời tiết thật là đẹp!" },
-        { "word": "好看", "type": "vocabulary", "phonetic": "hǎokàn", "meaning": "đẹp, dễ nhìn, hay (phim/sách)", "example": "这本衣服很好看。", "examplePhonetic": "Zhè jiàn yīfu hěn hǎokàn.", "exampleMeaning": "Bộ quần áo này rất đẹp." },
+        { "word": "好看", "type": "vocabulary", "phonetic": "hǎokàn", "meaning": "đẹp, dễ nhìn, hay (phim/sách)", "example": "这件衣服很好看。", "examplePhonetic": "Zhè jiàn yīfu hěn hǎokàn.", "exampleMeaning": "Bộ quần áo này rất đẹp." },
         { "word": "喜欢", "type": "vocabulary", "phonetic": "xǐhuan", "meaning": "thích", "example": "我喜欢听音乐。", "examplePhonetic": "Wǒ xǐhuan tīng yīnyuè.", "exampleMeaning": "Tôi thích nghe nhạc." },
         { "word": "它", "type": "vocabulary", "phonetic": "tā", "meaning": "nó (chỉ đồ vật, con vật)", "example": "这只猫很可爱，我喜欢它。", "examplePhonetic": "Zhè zhī māo hěn kě'ài, wǒ xǐhuan tā.", "exampleMeaning": "Con mèo này rất đáng yêu, tôi thích nó." }
       ]

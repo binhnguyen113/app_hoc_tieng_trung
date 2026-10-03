@@ -1,0 +1,118 @@
+[
+  {
+    "topic": "Lesson 1",
+    "questions": [
+      {"targetWord":"你好","question":"你好！你好吗？","questionPinyin":"Nǐ hǎo! Nǐ hǎo ma?","questionMeaning":"Xin chào! Bạn khỏe không?","answerChinese":"我很好，谢谢！","answerPinyin":"Wǒ hěn hǎo, xièxie!","answerMeaning":"Tôi rất khỏe, cảm ơn!"},
+      {"targetWord":"大家","question":"大家今天都好吗？","questionPinyin":"Dàjiā jīntiān dōu hǎo ma?","questionMeaning":"Hôm nay mọi người đều khỏe chứ?","answerChinese":"大家都很好。","answerPinyin":"Dàjiā dōu hěn hǎo.","answerMeaning":"Mọi người đều rất khỏe."},
+      {"targetWord":"好","question":"今天天气好吗？","questionPinyin":"Jīntiān tiānqì hǎo ma?","questionMeaning":"Thời tiết hôm nay đẹp chứ?","answerChinese":"天气很好。","answerPinyin":"Tiānqì hěn hǎo.","answerMeaning":"Thời tiết rất đẹp."},
+      {"targetWord":"学生","question":"你是学生吗？","questionPinyin":"Nǐ shì xuéshēng ma?","questionMeaning":"Bạn là học sinh phải không?","answerChinese":"是，我是学生。","answerPinyin":"Shì, wǒ shì xuéshēng.","answerMeaning":"Phải, tôi là học sinh."},
+      {"targetWord":"们","question":"你们是学生吗？","questionPinyin":"Nǐmen shì xuéshēng ma?","questionMeaning":"Các bạn là học sinh phải không?","answerChinese":"是，我们都是学生。","answerPinyin":"Shì, wǒmen dōu shì xuéshēng.","answerMeaning":"Phải, chúng tôi đều là học sinh."},
+      {"targetWord":"老师","question":"她是谁？","questionPinyin":"Tā shì shéi?","questionMeaning":"Cô ấy là ai?","answerChinese":"她是我们的老师。","answerPinyin":"Tā shì wǒmen de lǎoshī.","answerMeaning":"Cô ấy là giáo viên của chúng tôi."},
+      {"targetWord":"您","question":"您好，您是王老师吗？","questionPinyin":"Nín hǎo, nín shì Wáng lǎoshī ma?","questionMeaning":"Xin chào, thầy/cô là thầy/cô giáo Vương phải không ạ?","answerChinese":"是，我是王老师。","answerPinyin":"Shì, wǒ shì Wáng lǎoshī.","answerMeaning":"Phải, tôi là thầy/cô giáo Vương."},
+      {"targetWord":"你们","question":"你们去哪儿？","questionPinyin":"Nǐmen qù nǎr?","questionMeaning":"Các bạn đi đâu?","answerChinese":"我们去学校。","answerPinyin":"Wǒmen qù xuéxiào.","answerMeaning":"Chúng tôi đi đến trường."},
+      {"targetWord":"谢谢","question":"谢谢你帮我！","questionPinyin":"Xièxie nǐ bāng wǒ!","questionMeaning":"Cảm ơn bạn đã giúp tôi!","answerChinese":"不客气！","answerPinyin":"Bú kèqi!","answerMeaning":"Không có gì!"},
+      {"targetWord":"不客气","question":"谢谢老师！","questionPinyin":"Xièxie lǎoshī!","questionMeaning":"Cảm ơn thầy/cô!","answerChinese":"不客气。","answerPinyin":"Bú kèqi.","answerMeaning":"Không có gì."},
+      {"targetWord":"同学","question":"他是你的同学吗？","questionPinyin":"Tā shì nǐ de tóngxué ma?","questionMeaning":"Cậu ấy là bạn học của bạn phải không?","answerChinese":"是，他是我的同学。","answerPinyin":"Shì, tā shì wǒ de tóngxué.","answerMeaning":"Phải, cậu ấy là bạn học của tôi."},
+      {"targetWord":"再见","question":"我们明天见，好吗？","questionPinyin":"Wǒmen míngtiān jiàn, hǎo ma?","questionMeaning":"Ngày mai chúng ta gặp nhau nhé?","answerChinese":"好，再见！","answerPinyin":"Hǎo, zàijiàn!","answerMeaning":"Được, tạm biệt!"}
+    ]
+  },
+  {
+    "topic": "Lesson 2",
+    "questions": [
+      {"targetWord":"请问","question":"请问，洗手间在哪儿？","questionPinyin":"Qǐngwèn, xǐshǒujiān zài nǎr?","questionMeaning":"Xin hỏi, nhà vệ sinh ở đâu?","answerChinese":"洗手间在那儿。","answerPinyin":"Xǐshǒujiān zài nàr.","answerMeaning":"Nhà vệ sinh ở đằng kia."},
+      {"targetWord":"叫","question":"你叫什么？","questionPinyin":"Nǐ jiào shénme?","questionMeaning":"Bạn tên là gì?","answerChinese":"我叫李明。","answerPinyin":"Wǒ jiào Lǐ Míng.","answerMeaning":"Tôi tên là Lý Minh."},
+      {"targetWord":"什么","question":"你想吃什么？","questionPinyin":"Nǐ xiǎng chī shénme?","questionMeaning":"Bạn muốn ăn gì?","answerChinese":"我想吃米饭。","answerPinyin":"Wǒ xiǎng chī mǐfàn.","answerMeaning":"Tôi muốn ăn cơm."},
+      {"targetWord":"名字","question":"你的名字是什么？","questionPinyin":"Nǐ de míngzi shì shénme?","questionMeaning":"Tên của bạn là gì?","answerChinese":"我的名字叫小明。","answerPinyin":"Wǒ de míngzi jiào Xiǎomíng.","answerMeaning":"Tên tôi là Tiểu Minh."},
+      {"targetWord":"我","question":"谁是学生？","questionPinyin":"Shéi shì xuéshēng?","questionMeaning":"Ai là học sinh?","answerChinese":"我是学生。","answerPinyin":"Wǒ shì xuéshēng.","answerMeaning":"Tôi là học sinh."},
+      {"targetWord":"不","question":"你吃辣的吗？","questionPinyin":"Nǐ chī là de ma?","questionMeaning":"Bạn có ăn đồ cay không?","answerChinese":"我不吃辣的。","answerPinyin":"Wǒ bù chī là de.","answerMeaning":"Tôi không ăn đồ cay."},
+      {"targetWord":"是","question":"他是你的朋友吗？","questionPinyin":"Tā shì nǐ de péngyou ma?","questionMeaning":"Anh ấy là bạn của bạn phải không?","answerChinese":"是，他是我的朋友。","answerPinyin":"Shì, tā shì wǒ de péngyou.","answerMeaning":"Phải, anh ấy là bạn của tôi."},
+      {"targetWord":"对不起","question":"对不起，我来晚了。","questionPinyin":"Duìbuqǐ, wǒ lái wǎn le.","questionMeaning":"Xin lỗi, tôi đến muộn rồi.","answerChinese":"没关系。","answerPinyin":"Méi guānxi.","answerMeaning":"Không sao."},
+      {"targetWord":"没关系","question":"对不起，我迟到了。","questionPinyin":"Duìbuqǐ, wǒ chídào le.","questionMeaning":"Xin lỗi, tôi đến muộn rồi.","answerChinese":"没关系，下次早点来。","answerPinyin":"Méi guānxi, xià cì zǎodiǎn lái.","answerMeaning":"Không sao, lần sau đến sớm hơn nhé."},
+      {"targetWord":"没事","question":"你怎么了？","questionPinyin":"Nǐ zěnme le?","questionMeaning":"Bạn bị sao vậy?","answerChinese":"我没事，别担心。","answerPinyin":"Wǒ méi shì, bié dānxīn.","answerMeaning":"Tôi không sao, đừng lo."},
+      {"targetWord":"很","question":"这个苹果怎么样？","questionPinyin":"Zhè ge píngguǒ zěnmeyàng?","questionMeaning":"Quả táo này thế nào?","answerChinese":"这个苹果很好吃。","answerPinyin":"Zhè ge píngguǒ hěn hǎochī.","answerMeaning":"Quả táo này rất ngon."},
+      {"targetWord":"高兴","question":"今天见到朋友，你高兴吗？","questionPinyin":"Jīntiān jiàndào péngyou, nǐ gāoxìng ma?","questionMeaning":"Hôm nay gặp bạn bè, bạn có vui không?","answerChinese":"我很高兴！","answerPinyin":"Wǒ hěn gāoxìng!","answerMeaning":"Tôi rất vui!"},
+      {"targetWord":"认识","question":"你认识王老师吗？","questionPinyin":"Nǐ rènshi Wáng lǎoshī ma?","questionMeaning":"Bạn có quen thầy/cô giáo Vương không?","answerChinese":"认识，他是我的老师。","answerPinyin":"Rènshi, tā shì wǒ de lǎoshī.","answerMeaning":"Có, thầy/cô ấy là giáo viên của tôi."},
+      {"targetWord":"也","question":"我喜欢学中文，你呢？","questionPinyin":"Wǒ xǐhuan xué Zhōngwén, nǐ ne?","questionMeaning":"Tôi thích học tiếng Trung, còn bạn thì sao?","answerChinese":"我也喜欢学中文。","answerPinyin":"Wǒ yě xǐhuan xué Zhōngwén.","answerMeaning":"Tôi cũng thích học tiếng Trung."}
+    ]
+  },
+  {
+    "topic": "Lesson 3",
+    "questions": [
+      {"targetWord":"人","question":"他是哪国人？","questionPinyin":"Tā shì nǎ guó rén?","questionMeaning":"Anh ấy là người nước nào?","answerChinese":"他是中国人。","answerPinyin":"Tā shì Zhōngguó rén.","answerMeaning":"Anh ấy là người Trung Quốc."},
+      {"targetWord":"的","question":"这是谁的书？","questionPinyin":"Zhè shì shéi de shū?","questionMeaning":"Đây là sách của ai?","answerChinese":"这是我的书。","answerPinyin":"Zhè shì wǒ de shū.","answerMeaning":"Đây là sách của tôi."},
+      {"targetWord":"中国","question":"你想去哪儿旅游？","questionPinyin":"Nǐ xiǎng qù nǎr lǚyóu?","questionMeaning":"Bạn muốn đi du lịch ở đâu?","answerChinese":"我想去中国旅游。","answerPinyin":"Wǒ xiǎng qù Zhōngguó lǚyóu.","answerMeaning":"Tôi muốn đi du lịch Trung Quốc."},
+      {"targetWord":"法国","question":"她是哪国人？","questionPinyin":"Tā shì nǎ guó rén?","questionMeaning":"Cô ấy là người nước nào?","answerChinese":"她是法国人。","answerPinyin":"Tā shì Fǎguó rén.","answerMeaning":"Cô ấy là người Pháp."},
+      {"targetWord":"中文","question":"你会说中文吗？","questionPinyin":"Nǐ huì shuō Zhōngwén ma?","questionMeaning":"Bạn biết nói tiếng Trung không?","answerChinese":"会，我会说中文。","answerPinyin":"Huì, wǒ huì shuō Zhōngwén.","answerMeaning":"Có, tôi biết nói tiếng Trung."},
+      {"targetWord":"这","question":"这是什么？","questionPinyin":"Zhè shì shénme?","questionMeaning":"Đây là cái gì?","answerChinese":"这是一本书。","answerPinyin":"Zhè shì yì běn shū.","answerMeaning":"Đây là một quyển sách."},
+      {"targetWord":"谁","question":"他是谁？","questionPinyin":"Tā shì shéi?","questionMeaning":"Anh ấy là ai?","answerChinese":"他是我的朋友。","answerPinyin":"Tā shì wǒ de péngyou.","answerMeaning":"Anh ấy là bạn của tôi."},
+      {"targetWord":"女朋友","question":"她是你的什么人？","questionPinyin":"Tā shì nǐ de shénme rén?","questionMeaning":"Cô ấy là gì của bạn?","answerChinese":"她是我的女朋友。","answerPinyin":"Tā shì wǒ de nǚpéngyou.","answerMeaning":"Cô ấy là bạn gái của tôi."},
+      {"targetWord":"那","question":"那是谁的书？","questionPinyin":"Nà shì shéi de shū?","questionMeaning":"Kia là sách của ai?","answerChinese":"那是老师的书。","answerPinyin":"Nà shì lǎoshī de shū.","answerMeaning":"Kia là sách của giáo viên."},
+      {"targetWord":"国","question":"你是哪国人？","questionPinyin":"Nǐ shì nǎ guó rén?","questionMeaning":"Bạn là người nước nào?","answerChinese":"我是越南人。","answerPinyin":"Wǒ shì Yuènán rén.","answerMeaning":"Tôi là người Việt Nam."},
+      {"targetWord":"她","question":"她是做什么的？","questionPinyin":"Tā shì zuò shénme de?","questionMeaning":"Cô ấy làm nghề gì?","answerChinese":"她是老师。","answerPinyin":"Tā shì lǎoshī.","answerMeaning":"Cô ấy là giáo viên."},
+      {"targetWord":"泰国","question":"他去哪儿工作了？","questionPinyin":"Tā qù nǎr gōngzuò le?","questionMeaning":"Anh ấy đã đi đâu làm việc?","answerChinese":"他去泰国工作了。","answerPinyin":"Tā qù Tàiguó gōngzuò le.","answerMeaning":"Anh ấy đã đến Thái Lan làm việc."},
+      {"targetWord":"喂","question":"喂，请问你找谁？","questionPinyin":"Wèi, qǐngwèn nǐ zhǎo shéi?","questionMeaning":"Alo, xin hỏi bạn muốn tìm ai?","answerChinese":"我找王老师。","answerPinyin":"Wǒ zhǎo Wáng lǎoshī.","answerMeaning":"Tôi tìm thầy/cô giáo Vương."},
+      {"targetWord":"姐姐","question":"你有姐姐吗？","questionPinyin":"Nǐ yǒu jiějie ma?","questionMeaning":"Bạn có chị gái không?","answerChinese":"有，我有一个姐姐。","answerPinyin":"Yǒu, wǒ yǒu yí ge jiějie.","answerMeaning":"Có, tôi có một chị gái."},
+      {"targetWord":"工作","question":"你的工作怎么样？","questionPinyin":"Nǐ de gōngzuò zěnmeyàng?","questionMeaning":"Công việc của bạn thế nào?","answerChinese":"我的工作很有意思。","answerPinyin":"Wǒ de gōngzuò hěn yǒu yìsi.","answerMeaning":"Công việc của tôi rất thú vị."},
+      {"targetWord":"还","question":"你下班了吗？","questionPinyin":"Nǐ xiàbān le ma?","questionMeaning":"Bạn tan làm chưa?","answerChinese":"还没有，我还在工作。","answerPinyin":"Hái méiyǒu, wǒ hái zài gōngzuò.","answerMeaning":"Vẫn chưa, tôi vẫn đang làm việc."},
+      {"targetWord":"忙","question":"你今天忙吗？","questionPinyin":"Nǐ jīntiān máng ma?","questionMeaning":"Hôm nay bạn có bận không?","answerChinese":"我今天不太忙。","answerPinyin":"Wǒ jīntiān bú tài máng.","answerMeaning":"Hôm nay tôi không bận lắm."},
+      {"targetWord":"吗","question":"你是中国人吗？","questionPinyin":"Nǐ shì Zhōngguó rén ma?","questionMeaning":"Bạn là người Trung Quốc phải không?","answerChinese":"不是，我是越南人。","answerPinyin":"Bú shì, wǒ shì Yuènán rén.","answerMeaning":"Không, tôi là người Việt Nam."},
+      {"targetWord":"对","question":"我说得对吗？","questionPinyin":"Wǒ shuō de duì ma?","questionMeaning":"Tôi nói đúng không?","answerChinese":"对，你说得对。","answerPinyin":"Duì, nǐ shuō de duì.","answerMeaning":"Đúng, bạn nói đúng."},
+      {"targetWord":"太","question":"这个菜好吃吗？","questionPinyin":"Zhè ge cài hǎochī ma?","questionMeaning":"Món này có ngon không?","answerChinese":"太好吃了！","answerPinyin":"Tài hǎochī le!","answerMeaning":"Ngon quá!"},
+      {"targetWord":"我们","question":"谁是好朋友？","questionPinyin":"Shéi shì hǎo péngyou?","questionMeaning":"Ai là bạn tốt?","answerChinese":"我们都是好朋友。","answerPinyin":"Wǒmen dōu shì hǎo péngyou.","answerMeaning":"Chúng tôi đều là bạn tốt."},
+      {"targetWord":"想","question":"你想学什么？","questionPinyin":"Nǐ xiǎng xué shénme?","questionMeaning":"Bạn muốn học gì?","answerChinese":"我想学中文。","answerPinyin":"Wǒ xiǎng xué Zhōngwén.","answerMeaning":"Tôi muốn học tiếng Trung."}
+    ]
+  },
+  {
+    "topic": "Lesson 4",
+    "questions": [
+      {"targetWord":"有","question":"你有书吗？","questionPinyin":"Nǐ yǒu shū ma?","questionMeaning":"Bạn có sách không?","answerChinese":"有，我有三本书。","answerPinyin":"Yǒu, wǒ yǒu sān běn shū.","answerMeaning":"Có, tôi có ba quyển sách."},
+      {"targetWord":"多少","question":"你家有多少人？","questionPinyin":"Nǐ jiā yǒu duōshao rén?","questionMeaning":"Nhà bạn có bao nhiêu người?","answerChinese":"我家有五口人。","answerPinyin":"Wǒ jiā yǒu wǔ kǒu rén.","answerMeaning":"Nhà tôi có năm người."},
+      {"targetWord":"个","question":"你有几个苹果？","questionPinyin":"Nǐ yǒu jǐ ge píngguǒ?","questionMeaning":"Bạn có mấy quả táo?","answerChinese":"我有一个苹果。","answerPinyin":"Wǒ yǒu yí ge píngguǒ.","answerMeaning":"Tôi có một quả táo."},
+      {"targetWord":"没有","question":"你有妹妹吗？","questionPinyin":"Nǐ yǒu mèimei ma?","questionMeaning":"Bạn có em gái không?","answerChinese":"没有，我没有妹妹。","answerPinyin":"Méiyǒu, wǒ méiyǒu mèimei.","answerMeaning":"Không, tôi không có em gái."},
+      {"targetWord":"几","question":"你有几个哥哥？","questionPinyin":"Nǐ yǒu jǐ ge gēge?","questionMeaning":"Bạn có mấy anh trai?","answerChinese":"我有两个哥哥。","answerPinyin":"Wǒ yǒu liǎng ge gēge.","answerMeaning":"Tôi có hai anh trai."},
+      {"targetWord":"口","question":"你家有几口人？","questionPinyin":"Nǐ jiā yǒu jǐ kǒu rén?","questionMeaning":"Nhà bạn có mấy người?","answerChinese":"我家有四口人。","answerPinyin":"Wǒ jiā yǒu sì kǒu rén.","answerMeaning":"Nhà tôi có bốn người."},
+      {"targetWord":"加","question":"一加一等于几？","questionPinyin":"Yī jiā yī děngyú jǐ?","questionMeaning":"Một cộng một bằng mấy?","answerChinese":"一加一等于二。","answerPinyin":"Yī jiā yī děngyú èr.","answerMeaning":"Một cộng một bằng hai."},
+      {"targetWord":"爸爸","question":"你爸爸是做什么的？","questionPinyin":"Nǐ bàba shì zuò shénme de?","questionMeaning":"Bố bạn làm nghề gì?","answerChinese":"我爸爸是医生。","answerPinyin":"Wǒ bàba shì yīshēng.","answerMeaning":"Bố tôi là bác sĩ."},
+      {"targetWord":"妈妈","question":"你妈妈喜欢做什么？","questionPinyin":"Nǐ māma xǐhuan zuò shénme?","questionMeaning":"Mẹ bạn thích làm gì?","answerChinese":"我妈妈喜欢看书。","answerPinyin":"Wǒ māma xǐhuan kàn shū.","answerMeaning":"Mẹ tôi thích đọc sách."},
+      {"targetWord":"哥哥","question":"你哥哥忙吗？","questionPinyin":"Nǐ gēge máng ma?","questionMeaning":"Anh trai bạn có bận không?","answerChinese":"我哥哥很忙。","answerPinyin":"Wǒ gēge hěn máng.","answerMeaning":"Anh trai tôi rất bận."},
+      {"targetWord":"妹妹","question":"你是她的什么人？","questionPinyin":"Nǐ shì tā de shénme rén?","questionMeaning":"Bạn là gì của cô ấy?","answerChinese":"我是她的妹妹。","answerPinyin":"Wǒ shì tā de mèimei.","answerMeaning":"Tôi là em gái của cô ấy."},
+      {"targetWord":"和","question":"谁在家？","questionPinyin":"Shéi zài jiā?","questionMeaning":"Ai đang ở nhà?","answerChinese":"爸爸和妈妈都在家。","answerPinyin":"Bàba hé māma dōu zài jiā.","answerMeaning":"Bố và mẹ đều ở nhà."},
+      {"targetWord":"呢","question":"我很好，你呢？","questionPinyin":"Wǒ hěn hǎo, nǐ ne?","questionMeaning":"Tôi khỏe, còn bạn thì sao?","answerChinese":"我也很好。","answerPinyin":"Wǒ yě hěn hǎo.","answerMeaning":"Tôi cũng rất khỏe."},
+      {"targetWord":"孩子","question":"这个孩子怎么样？","questionPinyin":"Zhè ge háizi zěnmeyàng?","questionMeaning":"Đứa trẻ này thế nào?","answerChinese":"这个孩子很聪明。","answerPinyin":"Zhè ge háizi hěn cōngming.","answerMeaning":"Đứa trẻ này rất thông minh."},
+      {"targetWord":"儿子","question":"他有几个儿子？","questionPinyin":"Tā yǒu jǐ ge érzi?","questionMeaning":"Anh ấy có mấy con trai?","answerChinese":"他有两个儿子。","answerPinyin":"Tā yǒu liǎng ge érzi.","answerMeaning":"Anh ấy có hai con trai."},
+      {"targetWord":"女儿","question":"你的女儿几岁了？","questionPinyin":"Nǐ de nǚ'ér jǐ suì le?","questionMeaning":"Con gái bạn mấy tuổi rồi?","answerChinese":"我的女儿四岁了。","answerPinyin":"Wǒ de nǚ'ér sì suì le.","answerMeaning":"Con gái tôi bốn tuổi rồi."},
+      {"targetWord":"岁","question":"你今年几岁？","questionPinyin":"Nǐ jīnnián jǐ suì?","questionMeaning":"Năm nay bạn mấy tuổi?","answerChinese":"我今年二十岁。","answerPinyin":"Wǒ jīnnián èrshí suì.","answerMeaning":"Năm nay tôi hai mươi tuổi."},
+      {"targetWord":"他","question":"他是你的朋友吗？","questionPinyin":"Tā shì nǐ de péngyou ma?","questionMeaning":"Anh ấy là bạn của bạn phải không?","answerChinese":"是，他是我的好朋友。","answerPinyin":"Shì, tā shì wǒ de hǎo péngyou.","answerMeaning":"Phải, anh ấy là bạn tốt của tôi."},
+      {"targetWord":"今年","question":"你今年几岁了？","questionPinyin":"Nǐ jīnnián jǐ suì le?","questionMeaning":"Năm nay bạn bao nhiêu tuổi rồi?","answerChinese":"我今年二十岁了。","answerPinyin":"Wǒ jīnnián èrshí suì le.","answerMeaning":"Năm nay tôi hai mươi tuổi."},
+      {"targetWord":"大","question":"你们的学校大吗？","questionPinyin":"Nǐmen de xuéxiào dà ma?","questionMeaning":"Trường của các bạn có lớn không?","answerChinese":"我们的学校很大。","answerPinyin":"Wǒmen de xuéxiào hěn dà.","answerMeaning":"Trường của chúng tôi rất lớn."},
+      {"targetWord":"多","question":"你今年多大？","questionPinyin":"Nǐ jīnnián duō dà?","questionMeaning":"Năm nay bạn bao nhiêu tuổi?","answerChinese":"我今年二十岁。","answerPinyin":"Wǒ jīnnián èrshí suì.","answerMeaning":"Năm nay tôi hai mươi tuổi."}
+    ]
+  },
+  {
+    "topic": "Lesson 5",
+    "questions": [
+      {"targetWord":"今天","question":"今天星期几？","questionPinyin":"Jīntiān xīngqī jǐ?","questionMeaning":"Hôm nay là thứ mấy?","answerChinese":"今天星期一。","answerPinyin":"Jīntiān xīngqīyī.","answerMeaning":"Hôm nay là thứ Hai."},
+      {"targetWord":"月","question":"一年有几个月？","questionPinyin":"Yì nián yǒu jǐ ge yuè?","questionMeaning":"Một năm có mấy tháng?","answerChinese":"一年有十二个月。","answerPinyin":"Yì nián yǒu shí'èr ge yuè.","answerMeaning":"Một năm có mười hai tháng."},
+      {"targetWord":"号","question":"今天几号？","questionPinyin":"Jīntiān jǐ hào?","questionMeaning":"Hôm nay là ngày mấy?","answerChinese":"今天十号。","answerPinyin":"Jīntiān shí hào.","answerMeaning":"Hôm nay là ngày mười."},
+      {"targetWord":"日","question":"十月一日是什么节日？","questionPinyin":"Shíyuè yī rì shì shénme jiérì?","questionMeaning":"Ngày 1 tháng 10 là ngày lễ gì?","answerChinese":"十月一日是国庆节。","answerPinyin":"Shíyuè yī rì shì Guóqìngjié.","answerMeaning":"Ngày 1 tháng 10 là Quốc khánh."},
+      {"targetWord":"星期","question":"一个星期有几天？","questionPinyin":"Yí ge xīngqī yǒu jǐ tiān?","questionMeaning":"Một tuần có mấy ngày?","answerChinese":"一个星期有七天。","answerPinyin":"Yí ge xīngqī yǒu qī tiān.","answerMeaning":"Một tuần có bảy ngày."},
+      {"targetWord":"星期日","question":"星期日你去学校吗？","questionPinyin":"Xīngqīrì nǐ qù xuéxiào ma?","questionMeaning":"Chủ Nhật bạn có đi học không?","answerChinese":"星期日我不去学校。","answerPinyin":"Xīngqīrì wǒ bú qù xuéxiào.","answerMeaning":"Chủ Nhật tôi không đến trường."},
+      {"targetWord":"星期天","question":"星期天你想做什么？","questionPinyin":"Xīngqītiān nǐ xiǎng zuò shénme?","questionMeaning":"Chủ Nhật bạn muốn làm gì?","answerChinese":"星期天我想在家休息。","answerPinyin":"Xīngqītiān wǒ xiǎng zài jiā xiūxi.","answerMeaning":"Chủ Nhật tôi muốn nghỉ ngơi ở nhà."},
+      {"targetWord":"休息","question":"你累了吗？","questionPinyin":"Nǐ lèi le ma?","questionMeaning":"Bạn mệt chưa?","answerChinese":"我有点儿累，想休息一下。","answerPinyin":"Wǒ yǒudiǎnr lèi, xiǎng xiūxi yíxià.","answerMeaning":"Tôi hơi mệt, muốn nghỉ ngơi một chút."},
+      {"targetWord":"会","question":"你会说汉语吗？","questionPinyin":"Nǐ huì shuō Hànyǔ ma?","questionMeaning":"Bạn biết nói tiếng Trung không?","answerChinese":"会，我会说一点儿汉语。","answerPinyin":"Huì, wǒ huì shuō yìdiǎnr Hànyǔ.","answerMeaning":"Có, tôi biết nói một chút tiếng Trung."},
+      {"targetWord":"做","question":"你现在在做什么？","questionPinyin":"Nǐ xiànzài zài zuò shénme?","questionMeaning":"Bây giờ bạn đang làm gì?","answerChinese":"我在做饭。","answerPinyin":"Wǒ zài zuòfàn.","answerMeaning":"Tôi đang nấu ăn."},
+      {"targetWord":"做饭","question":"谁在厨房做饭？","questionPinyin":"Shéi zài chúfáng zuòfàn?","questionMeaning":"Ai đang nấu ăn trong bếp?","answerChinese":"妈妈在厨房做饭。","answerPinyin":"Māma zài chúfáng zuòfàn.","answerMeaning":"Mẹ đang nấu ăn trong bếp."},
+      {"targetWord":"菜","question":"中国菜怎么样？","questionPinyin":"Zhōngguó cài zěnmeyàng?","questionMeaning":"Món ăn Trung Quốc thế nào?","answerChinese":"中国菜很好吃。","answerPinyin":"Zhōngguó cài hěn hǎochī.","answerMeaning":"Món ăn Trung Quốc rất ngon."},
+      {"targetWord":"一些","question":"你买了什么水果？","questionPinyin":"Nǐ mǎi le shénme shuǐguǒ?","questionMeaning":"Bạn đã mua những loại trái cây gì?","answerChinese":"我买了一些苹果和香蕉。","answerPinyin":"Wǒ mǎi le yìxiē píngguǒ hé xiāngjiāo.","answerMeaning":"Tôi đã mua một ít táo và chuối."},
+      {"targetWord":"面条儿","question":"中午我们吃什么？","questionPinyin":"Zhōngwǔ wǒmen chī shénme?","questionMeaning":"Buổi trưa chúng ta ăn gì?","answerChinese":"中午我们吃面条儿吧。","answerPinyin":"Zhōngwǔ wǒmen chī miàntiáor ba.","answerMeaning":"Buổi trưa chúng ta ăn mì nhé."},
+      {"targetWord":"饺子","question":"你喜欢吃饺子吗？","questionPinyin":"Nǐ xǐhuan chī jiǎozi ma?","questionMeaning":"Bạn có thích ăn sủi cảo không?","answerChinese":"喜欢，我很喜欢吃饺子。","answerPinyin":"Xǐhuan, wǒ hěn xǐhuan chī jiǎozi.","answerMeaning":"Thích, tôi rất thích ăn sủi cảo."},
+      {"targetWord":"下班","question":"你几点下班？","questionPinyin":"Nǐ jǐ diǎn xiàbān?","questionMeaning":"Mấy giờ bạn tan làm?","answerChinese":"我下午五点半下班。","answerPinyin":"Wǒ xiàwǔ wǔ diǎn bàn xiàbān.","answerMeaning":"Tôi tan làm lúc năm giờ rưỡi chiều."},
+      {"targetWord":"新","question":"这是你的手机吗？","questionPinyin":"Zhè shì nǐ de shǒujī ma?","questionMeaning":"Đây là điện thoại của bạn phải không?","answerChinese":"是，这是我的新手机。","answerPinyin":"Shì, zhè shì wǒ de xīn shǒujī.","answerMeaning":"Phải, đây là điện thoại mới của tôi."},
+      {"targetWord":"电脑","question":"他用什么工作？","questionPinyin":"Tā yòng shénme gōngzuò?","questionMeaning":"Anh ấy dùng gì để làm việc?","answerChinese":"他用电脑工作。","answerPinyin":"Tā yòng diànnǎo gōngzuò.","answerMeaning":"Anh ấy dùng máy tính để làm việc."},
+      {"targetWord":"真","question":"今天天气怎么样？","questionPinyin":"Jīntiān tiānqì zěnmeyàng?","questionMeaning":"Thời tiết hôm nay thế nào?","answerChinese":"今天天气真好！","answerPinyin":"Jīntiān tiānqì zhēn hǎo!","answerMeaning":"Hôm nay thời tiết thật đẹp!"},
+      {"targetWord":"好看","question":"你觉得这件衣服怎么样？","questionPinyin":"Nǐ juéde zhè jiàn yīfu zěnmeyàng?","questionMeaning":"Bạn thấy bộ quần áo này thế nào?","answerChinese":"这件衣服很好看。","answerPinyin":"Zhè jiàn yīfu hěn hǎokàn.","answerMeaning":"Bộ quần áo này rất đẹp."},
+      {"targetWord":"喜欢","question":"你喜欢听音乐吗？","questionPinyin":"Nǐ xǐhuan tīng yīnyuè ma?","questionMeaning":"Bạn có thích nghe nhạc không?","answerChinese":"喜欢，我很喜欢听音乐。","answerPinyin":"Xǐhuan, wǒ hěn xǐhuan tīng yīnyuè.","answerMeaning":"Thích, tôi rất thích nghe nhạc."},
+      {"targetWord":"它","question":"你喜欢这只猫吗？","questionPinyin":"Nǐ xǐhuan zhè zhī māo ma?","questionMeaning":"Bạn có thích con mèo này không?","answerChinese":"喜欢，它很可爱。","answerPinyin":"Xǐhuan, tā hěn kě'ài.","answerMeaning":"Thích, nó rất đáng yêu."}
+    ]
+  }
+]

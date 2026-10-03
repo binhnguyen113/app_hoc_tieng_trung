@@ -13,8 +13,8 @@
   <div class="app-container">
     <header class="app-header">
       <div>
-        <p class="eyebrow">Chinese Vocabulary Lab</p>
-        <h1>Nối từ tiếng Trung</h1>
+        <p class="eyebrow">每日习汉语</p>
+        <h1>练习汉语</h1>
       </div>
 
       <div class="header-actions">
@@ -22,8 +22,9 @@
         <button class="btn-primary small is-active" id="quiz-mode-btn" type="button" aria-pressed="true">2. 🎮 Quiz</button>
         <button class="btn-primary small" id="typing-mode-btn" type="button" aria-pressed="false">3. ⌨️ Gõ từ</button>
         <button class="btn-primary small" id="listening-mode-btn" type="button" aria-pressed="false">4. 🔊 Nghe</button>
-        <button class="btn-primary small" id="reading-mode-btn" type="button" aria-pressed="false">5. 📖 Đọc</button>
-        <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">6. 🎙️ Luyện nói</button>
+        <button class="btn-primary small" id="question-answer-mode-btn" type="button" aria-pressed="false">5. 💬 Hỏi đáp</button>
+        <button class="btn-primary small" id="reading-mode-btn" type="button" aria-pressed="false">6. 📖 Đọc</button>
+        <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">7. 🎙️ Luyện nói</button>
       </div>
     </header>
 
@@ -97,14 +98,14 @@
           <span id="quiz-progress">Câu 1/5</span>
         </div>
         <h3 class="quiz-question-word" id="quiz-word">你好</h3>
-        <p class="quiz-question-type" id="quiz-word-type">phrase</p>
+        <p class="quiz-question-type" id="quiz-word-type">Cụm từ</p>
         <p class="quiz-phonetic" id="quiz-phonetic">nǐ hǎo</p>
         <p class="quiz-example" id="quiz-example">你好，很高兴认识你。</p>
         <button class="btn btn-primary btn-full" id="btn-quiz-speak" type="button">🔊 Phát âm</button>
         <label class="typing-label" for="quiz-practice-mode">Chế độ Quiz</label>
         <select id="quiz-practice-mode" class="typing-direction">
           <option value="word">Từ vựng: chọn nghĩa của từ</option>
-          <option value="example">Example: chọn nghĩa của example</option>
+          <option value="example">Ví dụ: chọn nghĩa của câu</option>
         </select>
         
         <div class="quiz-options" id="quiz-options">
@@ -120,23 +121,49 @@
           <span>Điểm: <strong id="listening-score">0</strong></span>
           <span id="listening-progress">Câu 1/5</span>
         </div>
-        <p class="typing-label" id="listening-prompt">Nghe ví dụ rồi chọn nghĩa của ví dụ</p>
+        <p class="typing-label" id="listening-prompt">Nghe từ tiếng Trung rồi gõ chữ Hán</p>
+        <label class="typing-label" for="listening-content-mode">Nội dung luyện nghe</label>
+        <select id="listening-content-mode" class="typing-direction">
+          <option value="word">Từ vựng</option>
+          <option value="example">Ví dụ</option>
+        </select>
         <div class="listening-icon" aria-hidden="true">🔊</div>
         <button class="btn btn-primary btn-full" id="btn-replay-listening" type="button">🔊 Phát lại</button>
-        <label class="typing-label" for="listening-answer-mode">Kiểu trả lời</label>
-        <select id="listening-answer-mode" class="typing-direction">
-          <option value="multiple-choice">Nghe ví dụ rồi chọn nghĩa ví dụ</option>
-          <option value="chinese">Nghe rồi gõ chữ Hán</option>
-          <option value="vietnamese">Nghe rồi gõ tiếng Việt</option>
-        </select>
-        <div id="listening-typing-area" class="hidden">
-          <label class="typing-label" for="listening-input" id="listening-input-label">Nhập câu trả lời</label>
-          <input id="listening-input" type="text" class="typing-input" placeholder="Nhập câu trả lời..." autocomplete="off" />
-          <button class="btn btn-primary btn-full" id="btn-check-listening" type="button">Kiểm tra</button>
-        </div>
-        <div class="quiz-options" id="listening-options"></div>
+        <label class="typing-label" for="listening-input" id="listening-input-label">Gõ chữ Hán vừa nghe</label>
+        <input id="listening-input" type="text" class="typing-input" placeholder="Nhập chữ Hán..." autocomplete="off" />
+        <button class="btn btn-primary btn-full" id="btn-check-listening" type="button">Kiểm tra</button>
         <p id="listening-feedback" class="typing-feedback"></p>
-        <button class="btn btn-primary btn-full" id="btn-next-listening" type="button">Câu tiếp theo ➡</button>
+        <div class="quiz-options hidden" id="listening-options"></div>
+      </div>
+    </div>
+
+    <div id="question-answer-screen" class="screen hidden">
+      <div class="quiz-box">
+        <div class="quiz-header">
+          <span>Điểm: <strong id="question-answer-score">0</strong></span>
+          <span id="question-answer-progress">Câu 1/5</span>
+        </div>
+        <p class="typing-label" id="question-answer-prompt">Nghe câu hỏi tiếng Trung rồi trả lời</p>
+        <div id="question-answer-question-review" class="question-answer-question-review hidden" aria-live="polite">
+          <p id="question-answer-question-text" class="quiz-question-word"></p>
+          <p id="question-answer-question-pinyin" class="quiz-phonetic"></p>
+          <p id="question-answer-question-meaning" class="quiz-meaning"></p>
+        </div>
+        <div class="listening-icon" aria-hidden="true">🔊</div>
+        <button class="btn btn-primary btn-full" id="btn-replay-question-answer" type="button">🔊 Nghe lại câu hỏi</button>
+        <label class="typing-label" for="question-answer-mode">Kiểu trả lời</label>
+        <select id="question-answer-mode" class="typing-direction">
+          <option value="multiple-choice">Chọn nghĩa tiếng Việt của câu trả lời</option>
+          <option value="chinese">Gõ câu trả lời bằng tiếng Trung</option>
+        </select>
+        <div id="question-answer-typing-area" class="hidden">
+          <label class="typing-label" for="question-answer-input">Gõ câu trả lời bằng tiếng Trung</label>
+          <input id="question-answer-input" type="text" class="typing-input" placeholder="Nhập câu trả lời tiếng Trung..." autocomplete="off" />
+          <button class="btn btn-primary btn-full" id="btn-check-question-answer" type="button">Kiểm tra</button>
+        </div>
+        <div class="quiz-options" id="question-answer-options"></div>
+        <p id="question-answer-feedback" class="typing-feedback"></p>
+        <button class="btn btn-primary btn-full" id="btn-next-question-answer" type="button">Câu tiếp theo ➡</button>
       </div>
     </div>
 
@@ -147,24 +174,18 @@
           <span id="typing-progress">Câu 1/5</span>
         </div>
 
+        <p class="typing-label" id="typing-prompt">Nhìn nghĩa tiếng Việt rồi gõ chữ Hán</p>
         <label class="typing-label" for="typing-content-mode">Nội dung luyện gõ</label>
         <select id="typing-content-mode" class="typing-direction">
           <option value="word">Từ vựng</option>
           <option value="example">Ví dụ</option>
         </select>
 
-        <label class="typing-label" for="typing-direction">Hướng luyện tập</label>
-        <select id="typing-direction" class="typing-direction">
-          <option value="chinese-to-vietnamese">Hiển thị tiếng Trung → Gõ tiếng Việt</option>
-          <option value="vietnamese-to-chinese">Hiển thị tiếng Việt → Gõ tiếng Trung</option>
-        </select>
-
-        <p class="typing-label" id="typing-prompt">Từ tiếng Trung</p>
         <h3 class="quiz-question-word" id="typing-word">你好</h3>
         <p class="quiz-phonetic" id="typing-phonetic">nǐ hǎo</p>
 
-        <label class="typing-label" id="typing-input-label" for="typing-input">Gõ nghĩa tiếng Việt</label>
-        <input id="typing-input" type="text" class="typing-input" placeholder="Nhập nghĩa tiếng Việt..." autocomplete="off" />
+        <label class="typing-label" id="typing-input-label" for="typing-input">Gõ chữ Hán</label>
+        <input id="typing-input" type="text" class="typing-input" placeholder="Nhập chữ Hán..." autocomplete="off" />
 
         <label class="typing-pronunciation-option">
           <input id="typing-pronunciation-enabled" type="checkbox" />
