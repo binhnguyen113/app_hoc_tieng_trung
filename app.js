@@ -1,6 +1,8 @@
 const DATA_SOURCES = [
   { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" }
 ];
+const AI_API_BASE_URL = "https://hsk-chinese-tutor-api.hsk-chinese-tutor-admin-20261003.workers.dev";
+const AI_ACCESS_TOKEN_KEY = "hsk-study-ai-access-token";
 
 function normalizeWordRecord(item, topic, id) {
   return {
@@ -87,6 +89,14 @@ const quizScreen = document.getElementById("quiz-screen");
 const listeningScreen = document.getElementById("listening-screen");
 const typingScreen = document.getElementById("typing-screen");
 const readingScreen = document.getElementById("reading-screen");
+const speakingModeBtn = document.getElementById("speaking-mode-btn");
+const speakingScreen = document.getElementById("speaking-screen");
+const aiChatModeBtn = document.getElementById("ai-chat-mode-btn");
+const aiChatScreen = document.getElementById("ai-chat-screen");
+const aiConnectionPanel = document.getElementById("ai-connection-panel");
+const aiAccessTokenEl = document.getElementById("ai-access-token");
+const aiConnectionStatusEl = document.getElementById("ai-connection-status");
+const btnSaveAiAccessToken = document.getElementById("btn-save-ai-access-token");
 
 const selectedWordCountEl = document.getElementById("selected-word-count");
 const btnShuffle = document.getElementById("btn-shuffle");
@@ -144,6 +154,26 @@ const readingInputEl = document.getElementById("reading-input");
 const readingPronunciationEnabledEl = document.getElementById("reading-pronunciation-enabled");
 const btnCheckReading = document.getElementById("btn-check-reading");
 const readingFeedbackEl = document.getElementById("reading-feedback");
+const speakingProgressEl = document.getElementById("speaking-progress");
+const speakingPromptEl = document.getElementById("speaking-prompt");
+const speakingTargetEl = document.getElementById("speaking-target");
+const speakingPhoneticEl = document.getElementById("speaking-phonetic");
+const speakingAnswerEl = document.getElementById("speaking-answer");
+const speakingSampleEl = document.getElementById("speaking-sample");
+const speakingSamplePhoneticEl = document.getElementById("speaking-sample-phonetic");
+const speakingStatusEl = document.getElementById("speaking-status");
+const speakingPlaybackEl = document.getElementById("speaking-playback");
+const btnRevealSpeakingAnswer = document.getElementById("btn-reveal-speaking-answer");
+const btnSpeakSpeakingAnswer = document.getElementById("btn-speak-speaking-answer");
+const btnStartSpeakingRecording = document.getElementById("btn-start-speaking-recording");
+const btnStopSpeakingRecording = document.getElementById("btn-stop-speaking-recording");
+const btnNextSpeaking = document.getElementById("btn-next-speaking");
+const aiChatMessagesEl = document.getElementById("ai-chat-messages");
+const aiChatFormEl = document.getElementById("ai-chat-form");
+const aiChatInputEl = document.getElementById("ai-chat-input");
+const aiChatStatusEl = document.getElementById("ai-chat-status");
+const btnSendAiChat = document.getElementById("btn-send-ai-chat");
+const btnClearAiChat = document.getElementById("btn-clear-ai-chat");
 
 let listeningQuestions = [];
 let currentListeningIndex = 0;
@@ -298,12 +328,13 @@ function startQuiz(shouldShuffle = false) {
 }
 
 function shuffleWords() {
+  if (currentMode === "ai-chat") return;
+
   const filteredWords = getFilteredWords();
   if (filteredWords.length === 0) {
     alert("Không có từ vựng nào trong bộ lọc hiện tại để xáo trộn!");
     return;
   }
-
   updateSelectedWordCount();
 
   if (currentMode === "matching") {
@@ -314,6 +345,8 @@ function shuffleWords() {
     startListeningPractice(true);
   } else if (currentMode === "reading") {
     startReadingPractice(true);
+  } else if (currentMode === "speaking") {
+    startSpeakingPractice(true);
   } else {
     startTypingPractice(true);
   }
@@ -863,6 +896,17 @@ let readingCorrectIds = new Set();
 let readingIsRetryRound = false;
 let readingAnswered = false;
 let readingShouldShuffle = false;
+let speakingQuestions = [];
+let currentSpeakingIndex = 0;
+let speakingShouldShuffle = false;
+let speakingIsComplete = false;
+let speakingRecorder = null;
+let speakingStream = null;
+let speakingChunks = [];
+let speakingAudioUrl = "";
+let speakingRecordingVersion = 0;
+let speakingRecordingTimer = null;
+let aiChatHistory = [];
 
 function getReadingQuestions(words) {
   return words.filter(word => word.example && word.example.includes(word.word));
@@ -966,6 +1010,289 @@ btnCheckReading.addEventListener("click", () => {
   }
 });
 
+function startSpeakingPractice(shouldShuffle = false) {
+  stopSpeakingRecording();
+  speakingShouldShuffle = shouldShuffle;
+  const filteredWords = getFilteredWords();
+  speakingQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
+  currentSpeakingIndex = 0;
+  speakingIsComplete = false;
+  btnNextSpeaking.textContent = "Câu tiếp theo ➡";
+  btnNextSpeaking.disabled = false;
+  renderSpeakingQuestion();
+}
+
+function clearSpeakingRecording() {
+  speakingRecordingVersion++;
+  if (speakingAudioUrl) {
+    URL.revokeObjectURL(speakingAudioUrl);
+    speakingAudioUrl = "";
+  }
+
+  speakingPlaybackEl.pause();
+  speakingPlaybackEl.removeAttribute("src");
+  speakingPlaybackEl.load();
+  speakingPlaybackEl.classList.add("hidden");
+}
+
+function renderSpeakingQuestion() {
+  clearSpeakingRecording();
+  speakingAnswerEl.classList.add("hidden");
+  btnRevealSpeakingAnswer.textContent = "Hiện câu mẫu";
+
+  const currentWord = speakingQuestions[currentSpeakingIndex];
+  if (!currentWord) {
+    speakingIsComplete = true;
+    speakingProgressEl.textContent = "Đã hoàn thành";
+    speakingPromptEl.textContent = speakingQuestions.length
+      ? "M đã luyện xong bộ từ này."
+      : "Không có từ nào trong bộ lọc hiện tại.";
+    speakingTargetEl.textContent = "";
+    speakingPhoneticEl.textContent = "";
+    speakingSampleEl.textContent = "";
+    speakingSamplePhoneticEl.textContent = "";
+    btnStartSpeakingRecording.disabled = true;
+    btnStopSpeakingRecording.disabled = true;
+    btnNextSpeaking.textContent = speakingQuestions.length ? "Luyện lại" : "Thử lại";
+    speakingStatusEl.textContent = "Chọn bộ từ khác hoặc luyện lại để tiếp tục.";
+    return;
+  }
+
+  speakingIsComplete = false;
+  speakingProgressEl.textContent = `Câu ${currentSpeakingIndex + 1} / ${speakingQuestions.length}`;
+  speakingPromptEl.textContent = `Hãy nói một câu tiếng Trung có nghĩa: ${currentWord.exampleMeaning || currentWord.meaning}`;
+  speakingTargetEl.textContent = currentWord.word;
+  speakingPhoneticEl.textContent = currentWord.phonetic || "";
+  speakingSampleEl.textContent = currentWord.example || currentWord.word;
+  speakingSamplePhoneticEl.textContent = currentWord.examplePhonetic || currentWord.phonetic || "";
+  speakingStatusEl.textContent = "Bấm ghi âm, nói câu tiếng Trung rồi nghe lại.";
+  btnStartSpeakingRecording.disabled = false;
+  btnStopSpeakingRecording.disabled = true;
+}
+
+async function startSpeakingRecording() {
+  if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
+    speakingStatusEl.textContent = "Trình duyệt này chưa hỗ trợ ghi âm. Hãy thử mở app bằng Safari trên iPhone.";
+    return;
+  }
+
+  clearSpeakingRecording();
+
+  try {
+    speakingStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    speakingChunks = [];
+    const supportedType = ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"]
+      .find(type => MediaRecorder.isTypeSupported?.(type));
+    speakingRecorder = supportedType
+      ? new MediaRecorder(speakingStream, { mimeType: supportedType })
+      : new MediaRecorder(speakingStream);
+    const recordingVersion = speakingRecordingVersion;
+
+    speakingRecorder.addEventListener("dataavailable", event => {
+      if (event.data.size > 0) speakingChunks.push(event.data);
+    });
+    speakingRecorder.addEventListener("stop", () => {
+      if (recordingVersion === speakingRecordingVersion && speakingChunks.length > 0) {
+        const recording = new Blob(speakingChunks, { type: speakingRecorder.mimeType || "audio/mp4" });
+        speakingAudioUrl = URL.createObjectURL(recording);
+        speakingPlaybackEl.src = speakingAudioUrl;
+        speakingPlaybackEl.classList.remove("hidden");
+        speakingStatusEl.textContent = "Ghi âm xong. Bản ghi chỉ ở trong tab này; nghe lại bên dưới.";
+      }
+
+      clearTimeout(speakingRecordingTimer);
+      speakingRecordingTimer = null;
+      speakingStream?.getTracks().forEach(track => track.stop());
+      speakingStream = null;
+      btnStartSpeakingRecording.disabled = false;
+      btnStopSpeakingRecording.disabled = true;
+      btnNextSpeaking.disabled = false;
+    });
+
+    speakingRecorder.start();
+    speakingRecordingTimer = setTimeout(stopSpeakingRecording, 25000);
+    btnStartSpeakingRecording.disabled = true;
+    btnStopSpeakingRecording.disabled = false;
+    btnNextSpeaking.disabled = true;
+    speakingStatusEl.textContent = "Đang ghi âm… Nói câu tiếng Trung rồi bấm Dừng ghi âm.";
+  } catch (error) {
+    speakingStream?.getTracks().forEach(track => track.stop());
+    speakingStream = null;
+    btnStartSpeakingRecording.disabled = false;
+    btnStopSpeakingRecording.disabled = true;
+    speakingStatusEl.textContent = error.name === "NotAllowedError"
+      ? "Chưa được cấp quyền micro. Hãy cho phép Safari sử dụng micro rồi thử lại."
+      : "Không mở được micro. Hãy kiểm tra quyền truy cập và thử lại.";
+  }
+}
+
+function stopSpeakingRecording() {
+  clearTimeout(speakingRecordingTimer);
+  speakingRecordingTimer = null;
+  if (speakingRecorder?.state === "recording") {
+    speakingRecorder.stop();
+  }
+}
+
+btnRevealSpeakingAnswer.addEventListener("click", () => {
+  const isHidden = speakingAnswerEl.classList.toggle("hidden");
+  btnRevealSpeakingAnswer.textContent = isHidden ? "Hiện câu mẫu" : "Ẩn câu mẫu";
+});
+
+btnSpeakSpeakingAnswer.addEventListener("click", () => {
+  const currentWord = speakingQuestions[currentSpeakingIndex];
+  if (currentWord) speakChinese(currentWord.example || currentWord.word);
+});
+
+btnStartSpeakingRecording.addEventListener("click", startSpeakingRecording);
+btnStopSpeakingRecording.addEventListener("click", stopSpeakingRecording);
+btnNextSpeaking.addEventListener("click", () => {
+  if (speakingIsComplete) {
+    startSpeakingPractice(speakingShouldShuffle);
+    return;
+  }
+
+  currentSpeakingIndex++;
+  renderSpeakingQuestion();
+});
+
+function readAiAccessToken() {
+  try {
+    return sessionStorage.getItem(AI_ACCESS_TOKEN_KEY) || "";
+  } catch {
+    return "";
+  }
+}
+
+function initializeAiAccessToken() {
+  aiAccessTokenEl.value = readAiAccessToken();
+  aiConnectionStatusEl.textContent = aiAccessTokenEl.value
+    ? "Đã lưu mã truy cập trong tab này."
+    : "Mã chỉ được giữ trong tab hiện tại.";
+}
+
+function saveAiAccessToken() {
+  const token = aiAccessTokenEl.value.trim();
+  if (!token) {
+    aiConnectionStatusEl.textContent = "Nhập mã truy cập trước khi lưu.";
+    return;
+  }
+
+  try {
+    sessionStorage.setItem(AI_ACCESS_TOKEN_KEY, token);
+    aiConnectionStatusEl.textContent = "Đã lưu mã truy cập trong tab này.";
+  } catch {
+    aiConnectionStatusEl.textContent = "Không lưu được trong tab này. Hãy thử mở Safari bình thường.";
+  }
+}
+
+async function requestAiApi(path, options) {
+  const baseUrl = AI_API_BASE_URL.replace(/\/+$/, "");
+  if (!baseUrl || baseUrl.includes("YOUR-WORKER")) {
+    throw new Error("Chưa cấu hình AI_API_BASE_URL trong app.js theo URL Worker của m.");
+  }
+
+  const token = readAiAccessToken();
+  if (!token) {
+    throw new Error("Nhập và lưu mã truy cập riêng ở phía trên trước nhé.");
+  }
+
+  const headers = new Headers(options.headers || {});
+  headers.set("Authorization", `Bearer ${token}`);
+  let response;
+  try {
+    response = await fetch(`${baseUrl}${path}`, { ...options, headers });
+  } catch {
+    throw new Error("Không kết nối được Worker. Kiểm tra URL và cấu hình CORS.");
+  }
+
+  let result;
+  try {
+    result = await response.json();
+  } catch {
+    throw new Error("Worker trả dữ liệu không đọc được.");
+  }
+  if (!response.ok) throw new Error(result.error || "Yêu cầu chưa thành công.");
+  return result;
+}
+
+function renderAiChatMessages() {
+  aiChatMessagesEl.replaceChildren();
+  if (aiChatHistory.length === 0) {
+    const welcome = document.createElement("p");
+    welcome.className = "ai-chat-welcome";
+    welcome.textContent = "你好！M muốn luyện nói về chủ đề gì hôm nay?";
+    aiChatMessagesEl.appendChild(welcome);
+    return;
+  }
+
+  aiChatHistory.forEach(message => {
+    const bubble = document.createElement("article");
+    bubble.className = `ai-chat-message ${message.role === "user" ? "from-user" : "from-ai"}`;
+    const label = document.createElement("span");
+    label.className = "ai-chat-role";
+    label.textContent = message.role === "user" ? "M" : "Gia sư AI";
+    const text = document.createElement("p");
+    text.textContent = message.text;
+    bubble.append(label, text);
+    aiChatMessagesEl.appendChild(bubble);
+  });
+  aiChatMessagesEl.scrollTop = aiChatMessagesEl.scrollHeight;
+}
+
+async function submitAiChat(event) {
+  event.preventDefault();
+  const userText = aiChatInputEl.value.trim();
+  if (!userText || btnSendAiChat.disabled) return;
+
+  aiChatHistory.push({ role: "user", text: userText });
+  aiChatHistory = aiChatHistory.slice(-20);
+  aiChatInputEl.value = "";
+  renderAiChatMessages();
+  btnSendAiChat.disabled = true;
+  btnClearAiChat.disabled = true;
+  aiChatStatusEl.textContent = "Gia sư đang trả lời…";
+
+  try {
+    const vocabulary = getFilteredWords().slice(0, 12).map(word => ({
+      word: word.word,
+      pinyin: word.phonetic,
+      meaning: word.meaning
+    }));
+    const result = await requestAiApi("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: aiChatHistory.slice(-12), vocabulary })
+    });
+    aiChatHistory.push({ role: "model", text: result.reply });
+    aiChatHistory = aiChatHistory.slice(-20);
+    renderAiChatMessages();
+    aiChatStatusEl.textContent = "";
+  } catch (error) {
+    const lastMessage = aiChatHistory[aiChatHistory.length - 1];
+    if (lastMessage?.role === "user" && lastMessage.text === userText) {
+      aiChatHistory.pop();
+      renderAiChatMessages();
+    }
+    if (!aiChatInputEl.value) aiChatInputEl.value = userText;
+    aiChatStatusEl.textContent = error.message || "Chưa gửi được tin nhắn.";
+  } finally {
+    btnSendAiChat.disabled = false;
+    btnClearAiChat.disabled = false;
+    aiChatInputEl.focus();
+  }
+}
+
+function clearAiChat() {
+  aiChatHistory = [];
+  renderAiChatMessages();
+  aiChatStatusEl.textContent = "";
+}
+
+btnSaveAiAccessToken.addEventListener("click", saveAiAccessToken);
+aiChatFormEl.addEventListener("submit", submitAiChat);
+btnClearAiChat.addEventListener("click", clearAiChat);
+
 function applyStudyMode() {
   const mode = studyModeEl.value;
   topicFilterEl.classList.toggle("hidden", mode !== "topic");
@@ -1001,6 +1328,11 @@ function applyStudyMode() {
 
   if (currentMode === "reading") {
     startReadingPractice();
+    return;
+  }
+
+  if (currentMode === "speaking") {
+    startSpeakingPractice();
   }
 }
 
@@ -1021,17 +1353,21 @@ btnShuffle.addEventListener("click", shuffleWords);
 
 let currentMode = "quiz";
 
-const studyScreens = [matchingScreen, quizScreen, listeningScreen, typingScreen, readingScreen];
+const studyScreens = [matchingScreen, quizScreen, listeningScreen, typingScreen, readingScreen, speakingScreen, aiChatScreen];
 const studyModeButtons = [
   [matchingModeBtn, "matching"],
   [quizModeBtn, "quiz"],
   [typingModeBtn, "typing"],
   [listeningModeBtn, "listening"],
-  [readingModeBtn, "reading"]
+  [readingModeBtn, "reading"],
+  [speakingModeBtn, "speaking"],
+  [aiChatModeBtn, "ai-chat"]
 ];
 
 function setActiveScreen(activeScreen, mode) {
+  if (currentMode === "speaking" && mode !== "speaking") stopSpeakingRecording();
   currentMode = mode;
+  aiConnectionPanel.classList.toggle("hidden", mode !== "speaking" && mode !== "ai-chat");
   studyScreens.forEach(screen => screen.classList.toggle("hidden", screen !== activeScreen));
   studyModeButtons.forEach(([button, buttonMode]) => {
     const isActive = buttonMode === mode;
@@ -1083,11 +1419,22 @@ function showReadingScreen() {
   startReadingPractice();
 }
 
+function showSpeakingScreen() {
+  setActiveScreen(speakingScreen, "speaking");
+  startSpeakingPractice();
+}
+
+function showAiChatScreen() {
+  setActiveScreen(aiChatScreen, "ai-chat");
+}
+
 matchingModeBtn.addEventListener("click", showMatchingScreen);
 quizModeBtn.addEventListener("click", showQuizScreen);
 typingModeBtn.addEventListener("click", showTypingScreen);
 listeningModeBtn.addEventListener("click", showListeningScreen);
 readingModeBtn.addEventListener("click", showReadingScreen);
+speakingModeBtn.addEventListener("click", showSpeakingScreen);
+aiChatModeBtn.addEventListener("click", showAiChatScreen);
 
 document.addEventListener("keydown", (event) => {
   const isSpeakShortcut = (event.ctrlKey || event.metaKey)
@@ -1113,6 +1460,9 @@ document.addEventListener("keydown", (event) => {
     } else if (currentMode === "reading") {
       const currentWord = readingQuestions[currentReadingIndex];
       if (currentWord) speakChinese(currentWord.example);
+    } else if (currentMode === "speaking") {
+      const currentWord = speakingQuestions[currentSpeakingIndex];
+      if (currentWord) speakChinese(currentWord.example || currentWord.word);
     }
 
     return;
@@ -1165,6 +1515,7 @@ document.addEventListener("keydown", (event) => {
 
 async function initApp() {
   allWords = await loadWords();
+  initializeAiAccessToken();
   updateDataSourceOptions();
   updateTopicOptions();
   updateSelectedWordCount();
