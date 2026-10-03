@@ -137,6 +137,20 @@ select:focus-visible {
   gap: 8px;
 }
 
+.header-menu-toggle {
+  display: none;
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: var(--radius-small);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .header-actions > button {
   min-width: 104px;
   min-height: 42px;
@@ -732,20 +746,49 @@ select:focus-visible {
   }
 
   .app-header {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 18px;
-    padding: 20px;
+    z-index: 2;
+    align-items: center;
+    gap: 12px;
+    overflow: visible;
+    padding: 16px;
+  }
+
+  .app-header::after {
+    display: none;
   }
 
   .app-header h1 {
-    font-size: 1.55rem;
+    font-size: 1.35rem;
+  }
+
+  .app-header > div {
+    flex: 1;
+  }
+
+  .header-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
   }
 
   .header-actions {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    z-index: 2;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    justify-content: stretch;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius);
+    background: linear-gradient(125deg, #123f36 0%, #176b57 100%);
+    box-shadow: 0 18px 36px rgba(16, 75, 62, 0.25);
+  }
+
+  .header-actions:not(.is-open) {
+    display: none;
   }
 
   .header-actions > button {

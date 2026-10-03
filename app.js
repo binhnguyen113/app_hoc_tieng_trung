@@ -109,6 +109,8 @@ let quizShouldShuffle = false;
 let quizPracticeMode = "word";
 
 // DOM Elements - Common
+const headerMenuToggle = document.getElementById("header-menu-toggle");
+const headerActions = document.getElementById("header-actions");
 const matchingModeBtn = document.getElementById("matching-mode-btn");
 const quizModeBtn = document.getElementById("quiz-mode-btn");
 const typingModeBtn = document.getElementById("typing-mode-btn");
@@ -1440,7 +1442,7 @@ dataSourceEl.addEventListener("change", () => {
 
 btnShuffle.addEventListener("click", shuffleWords);
 
-let currentMode = "quiz";
+let currentMode = "matching";
 
 const studyScreens = [
   matchingScreen,
@@ -1460,6 +1462,29 @@ const studyModeButtons = [
   [readingModeBtn, "reading"],
   [speakingModeBtn, "speaking"]
 ];
+
+function setHeaderMenuOpen(isOpen) {
+  headerMenuToggle.setAttribute("aria-expanded", String(isOpen));
+  headerActions.classList.toggle("is-open", isOpen);
+}
+
+headerMenuToggle.addEventListener("click", () => {
+  setHeaderMenuOpen(headerMenuToggle.getAttribute("aria-expanded") !== "true");
+});
+
+headerActions.addEventListener("click", event => {
+  if (event.target.closest("button")) setHeaderMenuOpen(false);
+});
+
+document.addEventListener("click", event => {
+  if (!headerMenuToggle.contains(event.target) && !headerActions.contains(event.target)) {
+    setHeaderMenuOpen(false);
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") setHeaderMenuOpen(false);
+});
 
 function setActiveScreen(activeScreen, mode) {
   if (currentMode === "speaking" && mode !== "speaking") stopSpeakingRecording();
@@ -1639,7 +1664,7 @@ async function initApp() {
   updateStudyModeAvailability();
   updateSelectedWordCount();
   topicFilterEl.classList.toggle("hidden", studyModeEl.value !== "topic");
-  startQuiz();
+  showMatchingScreen();
 }
 
 // Khởi chạy ứng dụng lần đầu

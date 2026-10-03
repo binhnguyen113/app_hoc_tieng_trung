@@ -17,15 +17,19 @@
         <h1>练习汉语</h1>
       </div>
 
-      <div class="header-actions">
-        <button class="btn-primary small" id="matching-mode-btn" type="button" aria-pressed="false">1. 🔗 Nối từ</button>
-        <button class="btn-primary small is-active" id="quiz-mode-btn" type="button" aria-pressed="true">2. 🎮 Quiz</button>
+      <button class="header-menu-toggle" id="header-menu-toggle" type="button" aria-expanded="false" aria-controls="header-actions">
+        ☰ Chế độ
+      </button>
+
+      <nav class="header-actions" id="header-actions" aria-label="Chọn chế độ ôn tập">
+        <button class="btn-primary small is-active" id="matching-mode-btn" type="button" aria-pressed="true">1. 🔗 Nối từ</button>
+        <button class="btn-primary small" id="quiz-mode-btn" type="button" aria-pressed="false">2. 🎮 Quiz</button>
         <button class="btn-primary small" id="typing-mode-btn" type="button" aria-pressed="false">3. ⌨️ Gõ từ</button>
         <button class="btn-primary small" id="listening-mode-btn" type="button" aria-pressed="false">4. 🔊 Nghe</button>
         <button class="btn-primary small" id="question-answer-mode-btn" type="button" aria-pressed="false">5. 💬 Hỏi đáp</button>
         <button class="btn-primary small" id="reading-mode-btn" type="button" aria-pressed="false">6. 📖 Đọc</button>
         <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">7. 🎙️ Luyện nói</button>
-      </div>
+      </nav>
     </header>
 
     <div class="study-panel">
@@ -62,7 +66,7 @@
       </div>
     </div>
 
-    <div id="matching-screen" class="screen hidden">
+    <div id="matching-screen" class="screen">
       <div class="matching-box">
         <div class="matching-header">
           <div>
@@ -91,7 +95,7 @@
       </div>
     </div>
 
-    <div id="quiz-screen" class="screen">
+    <div id="quiz-screen" class="screen hidden">
       <div class="quiz-box">
         <div class="quiz-header">
           <span>Điểm: <strong id="quiz-score">0</strong></span>
