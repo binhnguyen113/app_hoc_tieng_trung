@@ -4,4 +4,4 @@ compatibility_date = "2026-10-03"
 
 [vars]
 GEMINI_MODEL = "gemini-3.8-flash"
-ALLOWED_ORIGINS = "http://localhost:8000,https://binhnguyen113.github.io"
+ALLOWED_ORIGINS = "http://localhost:8000,https://binhnguyen113.github.io/app_hoc_tieng_trung/"
