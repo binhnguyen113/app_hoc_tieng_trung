@@ -157,6 +157,8 @@ const listeningPromptEl = document.getElementById("listening-prompt");
 const listeningOptionsEl = document.getElementById("listening-options");
 const btnReplayListening = document.getElementById("btn-replay-listening");
 const listeningContentModeEl = document.getElementById("listening-content-mode");
+const listeningAnswerModeContainerEl = document.getElementById("listening-answer-mode-container");
+const listeningAnswerModeEl = document.getElementById("listening-answer-mode");
 const listeningInputLabelEl = document.getElementById("listening-input-label");
 const listeningInputEl = document.getElementById("listening-input");
 const btnCheckListening = document.getElementById("btn-check-listening");
@@ -164,7 +166,7 @@ const listeningFeedbackEl = document.getElementById("listening-feedback");
 const questionAnswerScoreEl = document.getElementById("question-answer-score");
 const questionAnswerProgressEl = document.getElementById("question-answer-progress");
 const questionAnswerPromptEl = document.getElementById("question-answer-prompt");
-const questionAnswerQuestionReviewEl = document.getElementById("question-answer-question-review");
+const questionAnswerReviewEl = document.getElementById("question-answer-review");
 const questionAnswerQuestionTextEl = document.getElementById("question-answer-question-text");
 const questionAnswerQuestionPinyinEl = document.getElementById("question-answer-question-pinyin");
 const questionAnswerQuestionMeaningEl = document.getElementById("question-answer-question-meaning");
@@ -657,6 +659,7 @@ function loadListeningQuestion() {
       listeningProgressEl.textContent = "Đã hoàn thành";
       listeningOptionsEl.classList.remove("hidden");
       renderRestartButton(listeningOptionsEl, "Làm lại luyện nghe", () => startListeningPractice());
+      listeningAnswerModeContainerEl.classList.add("hidden");
       listeningInputLabelEl.classList.add("hidden");
       listeningInputEl.classList.add("hidden");
       btnCheckListening.classList.add("hidden");
@@ -673,17 +676,28 @@ function loadListeningQuestion() {
   setFeedback(listeningFeedbackEl, "");
 
   const isExampleMode = listeningContentModeEl.value === "example";
+  const isVietnameseAnswer = !isExampleMode && listeningAnswerModeEl.value === "vietnamese";
   listeningPromptEl.textContent = isExampleMode
     ? "Nghe câu ví dụ tiếng Trung rồi gõ lại bằng chữ Hán"
-    : "Nghe từ tiếng Trung rồi gõ chữ Hán";
+    : isVietnameseAnswer
+      ? "Nghe từ tiếng Trung rồi nhập nghĩa tiếng Việt"
+      : "Nghe từ tiếng Trung rồi gõ chữ Hán";
   listeningOptionsEl.classList.add("hidden");
-  listeningInputLabelEl.textContent = isExampleMode
-    ? "Gõ chữ Hán của câu ví dụ vừa nghe"
-    : "Gõ chữ Hán vừa nghe";
+  listeningAnswerModeContainerEl.classList.toggle("hidden", isExampleMode);
+  listeningInputLabelEl.textContent = isVietnameseAnswer
+    ? "Nhập nghĩa tiếng Việt của từ vừa nghe"
+    : isExampleMode
+      ? "Gõ chữ Hán của câu ví dụ vừa nghe"
+      : "Gõ chữ Hán vừa nghe";
   listeningInputLabelEl.classList.remove("hidden");
   listeningInputEl.classList.remove("hidden");
   btnCheckListening.classList.remove("hidden");
-  listeningInputEl.placeholder = isExampleMode ? "Nhập câu ví dụ bằng chữ Hán..." : "Nhập chữ Hán...";
+  listeningInputEl.placeholder = isVietnameseAnswer
+    ? "Nhập nghĩa tiếng Việt..."
+    : isExampleMode
+      ? "Nhập câu ví dụ bằng chữ Hán..."
+      : "Nhập chữ Hán...";
+  listeningInputEl.lang = isVietnameseAnswer ? "vi" : "zh";
   listeningInputEl.value = "";
   listeningInputEl.disabled = false;
   btnCheckListening.disabled = false;
@@ -710,13 +724,24 @@ btnCheckListening.addEventListener("click", () => {
   if (!currentWord) return;
 
   const isExampleMode = listeningContentModeEl.value === "example";
-  const expectedAnswer = isExampleMode ? currentWord.example : currentWord.word;
-  const correctValues = expectedAnswer.split(",").map(normalizeChineseAnswer);
-  const inputValue = normalizeChineseAnswer(listeningInputEl.value);
+  const isVietnameseAnswer = !isExampleMode && listeningAnswerModeEl.value === "vietnamese";
+  const expectedAnswer = isVietnameseAnswer
+    ? currentWord.meaning
+    : isExampleMode
+      ? currentWord.example
+      : currentWord.word;
+  const correctValues = isVietnameseAnswer
+    ? [expectedAnswer, ...expectedAnswer.split(/[,，;；/]/)].map(normalizeAnswer).filter(Boolean)
+    : expectedAnswer.split(",").map(normalizeChineseAnswer);
+  const inputValue = isVietnameseAnswer
+    ? normalizeAnswer(listeningInputEl.value)
+    : normalizeChineseAnswer(listeningInputEl.value);
   const isCorrect = correctValues.includes(inputValue);
-  const correctAnswer = isExampleMode
-    ? formatChineseAnswer(currentWord.example, currentWord.examplePhonetic)
-    : formatChineseAnswer(currentWord.word, currentWord.phonetic);
+  const correctAnswer = isVietnameseAnswer
+    ? currentWord.meaning
+    : isExampleMode
+      ? formatChineseAnswer(currentWord.example, currentWord.examplePhonetic)
+      : formatChineseAnswer(currentWord.word, currentWord.phonetic);
 
   if (isCorrect) {
     listeningCorrectIds.add(currentWord.id);
@@ -758,6 +783,9 @@ function advanceListeningQuestion() {
 }
 
 listeningContentModeEl.addEventListener("change", () => {
+  loadListeningQuestion();
+});
+listeningAnswerModeEl.addEventListener("change", () => {
   loadListeningQuestion();
 });
 
@@ -819,7 +847,7 @@ function loadQuestionAnswer() {
   questionAnswerTypingAreaEl.classList.toggle("hidden", !isTypingAnswer);
   questionAnswerOptionsEl.classList.toggle("hidden", isTypingAnswer);
   btnNextQuestionAnswer.classList.add("hidden");
-  questionAnswerQuestionReviewEl.classList.add("hidden");
+  questionAnswerReviewEl.classList.add("hidden");
   questionAnswerQuestionTextEl.textContent = "";
   questionAnswerQuestionPinyinEl.textContent = "";
   questionAnswerQuestionMeaningEl.textContent = "";
@@ -876,17 +904,17 @@ function recordQuestionAnswer(isCorrect) {
     if (!questionAnswerRoundMistakes.some(question => question.id === currentQuestion.id)) {
       questionAnswerRoundMistakes.push(currentQuestion);
     }
-    questionAnswerQuestionTextEl.textContent = currentQuestion.question;
-    questionAnswerQuestionPinyinEl.textContent = currentQuestion.questionPinyin;
-    questionAnswerQuestionMeaningEl.textContent = currentQuestion.questionMeaning;
-    questionAnswerQuestionReviewEl.classList.remove("hidden");
     setFeedback(
       questionAnswerFeedbackEl,
-      `❌ Sai. Đáp án: ${formatChineseAnswer(currentQuestion.answerChinese, currentQuestion.answerPinyin)} — ${currentQuestion.answerMeaning}`,
+      `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(currentQuestion.answerChinese, currentQuestion.answerPinyin)} — ${currentQuestion.answerMeaning}`,
       false
     );
   }
 
+  questionAnswerQuestionTextEl.textContent = currentQuestion.question;
+  questionAnswerQuestionPinyinEl.textContent = currentQuestion.questionPinyin;
+  questionAnswerQuestionMeaningEl.textContent = currentQuestion.questionMeaning;
+  questionAnswerReviewEl.classList.remove("hidden");
   questionAnswerAnswered = true;
   updateQuestionAnswerRetryCount();
 }
@@ -1267,7 +1295,7 @@ function renderSpeakingQuestion() {
     speakingIsComplete = true;
     speakingProgressEl.textContent = "Đã hoàn thành";
     speakingPromptEl.textContent = speakingQuestions.length
-      ? "M đã luyện xong bộ từ này."
+      ? "Bạn đã luyện xong bộ từ này."
       : "Không có từ nào trong bộ lọc hiện tại.";
     speakingTargetEl.textContent = "";
     speakingPhoneticEl.textContent = "";
@@ -1546,6 +1574,11 @@ function showTypingScreen() {
 }
 
 function showReadingScreen() {
+  if (getReadingQuestions(getFilteredWords()).length === 0) {
+    alert("Bộ từ hiện tại chưa có câu ví dụ phù hợp để luyện đọc điền từ!");
+    return;
+  }
+
   setActiveScreen(readingScreen, "reading");
   startReadingPractice();
 }

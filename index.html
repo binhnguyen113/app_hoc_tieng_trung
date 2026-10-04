@@ -131,12 +131,19 @@
           <option value="word">Từ vựng</option>
           <option value="example">Ví dụ</option>
         </select>
+        <div id="listening-answer-mode-container" class="listening-answer-mode-container">
+          <label class="typing-label" for="listening-answer-mode">Cách trả lời từ vựng</label>
+          <select id="listening-answer-mode" class="typing-direction">
+            <option value="chinese">Gõ chữ Hán</option>
+            <option value="vietnamese">Nhập nghĩa tiếng Việt</option>
+          </select>
+        </div>
         <div class="listening-icon" aria-hidden="true">🔊</div>
         <button class="btn btn-primary btn-full" id="btn-replay-listening" type="button">🔊 Phát lại</button>
         <label class="typing-label" for="listening-input" id="listening-input-label">Gõ chữ Hán vừa nghe</label>
         <input id="listening-input" type="text" class="typing-input" placeholder="Nhập chữ Hán..." autocomplete="off" />
         <button class="btn btn-primary btn-full" id="btn-check-listening" type="button">Kiểm tra</button>
-        <p id="listening-feedback" class="typing-feedback"></p>
+        <p id="listening-feedback" class="typing-feedback" aria-live="polite"></p>
         <div class="quiz-options hidden" id="listening-options"></div>
       </div>
     </div>
@@ -148,10 +155,13 @@
           <span id="question-answer-progress">Câu 1/5</span>
         </div>
         <p class="typing-label" id="question-answer-prompt">Nghe câu hỏi tiếng Trung rồi trả lời</p>
-        <div id="question-answer-question-review" class="question-answer-question-review hidden" aria-live="polite">
-          <p id="question-answer-question-text" class="quiz-question-word"></p>
-          <p id="question-answer-question-pinyin" class="quiz-phonetic"></p>
-          <p id="question-answer-question-meaning" class="quiz-meaning"></p>
+        <div id="question-answer-review" class="question-answer-review hidden" aria-live="polite">
+          <section class="question-answer-review-item">
+            <h3 class="question-answer-review-label">Câu hỏi</h3>
+            <p id="question-answer-question-text" class="quiz-question-word"></p>
+            <p id="question-answer-question-pinyin" class="quiz-phonetic"></p>
+            <p id="question-answer-question-meaning" class="quiz-meaning"></p>
+          </section>
         </div>
         <div class="listening-icon" aria-hidden="true">🔊</div>
         <button class="btn btn-primary btn-full" id="btn-replay-question-answer" type="button">🔊 Nghe lại câu hỏi</button>
@@ -166,8 +176,8 @@
           <button class="btn btn-primary btn-full" id="btn-check-question-answer" type="button">Kiểm tra</button>
         </div>
         <div class="quiz-options" id="question-answer-options"></div>
-        <p id="question-answer-feedback" class="typing-feedback"></p>
         <button class="btn btn-primary btn-full" id="btn-next-question-answer" type="button">Câu tiếp theo ➡</button>
+        <p id="question-answer-feedback" class="typing-feedback" aria-live="polite"></p>
       </div>
     </div>
 

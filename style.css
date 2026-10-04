@@ -523,6 +523,33 @@ select:focus-visible {
   font-weight: 600;
 }
 
+.question-answer-review {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.question-answer-review-item {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--green-wash);
+}
+
+.question-answer-review-label {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.question-answer-review-item .quiz-question-word {
+  font-size: 1.8rem;
+}
+
 .quiz-example {
   max-width: 100%;
   min-height: 38px;
@@ -742,6 +769,7 @@ select:focus-visible {
   }
 
   .app-container {
+    width: 100%;
     gap: 12px;
   }
 
@@ -780,11 +808,16 @@ select:focus-visible {
     z-index: 2;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 70vh;
+    max-height: min(70svh, 420px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 12px;
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: var(--radius);
     background: linear-gradient(125deg, #123f36 0%, #176b57 100%);
     box-shadow: 0 18px 36px rgba(16, 75, 62, 0.25);
+    scrollbar-width: thin;
   }
 
   .header-actions:not(.is-open) {
@@ -794,6 +827,9 @@ select:focus-visible {
   .header-actions > button {
     width: 100%;
     min-width: 0;
+    padding: 9px 8px;
+    font-size: 0.76rem;
+    overflow-wrap: anywhere;
   }
 
   .study-panel {
@@ -805,13 +841,56 @@ select:focus-visible {
   }
 
   .quiz-box {
+    align-items: stretch;
+    justify-content: flex-start;
     min-height: 0;
     gap: 13px;
     padding: 22px 18px;
   }
+
+  .matching-header,
+  .quiz-header {
+    flex-wrap: wrap;
+  }
+
+  .quiz-header {
+    font-size: 0.78rem;
+  }
+
+  .quiz-header > span {
+    padding: 7px 9px;
+  }
+
+  .typing-input,
+  .typing-direction,
+  .filter-stack select {
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  .btn,
+  .btn-primary {
+    min-height: 48px;
+  }
 }
 
 @media (max-width: 420px) {
+  .app-header {
+    padding: 14px;
+  }
+
+  .study-panel {
+    padding: 15px;
+  }
+
+  .matching-box {
+    padding: 17px 14px;
+  }
+
+  .quiz-box {
+    padding: 19px 14px;
+  }
+
   .panel-header {
     align-items: flex-start;
     flex-direction: column;
@@ -823,9 +902,17 @@ select:focus-visible {
     justify-content: space-between;
   }
 
+  .panel-actions .stats {
+    font-size: 0.78rem;
+  }
+
   .filter-stack {
     grid-template-columns: 1fr;
     gap: 7px;
+  }
+
+  .filter-stack select {
+    margin-bottom: 3px;
   }
 
   .filter-stack label:not(:first-child) {
@@ -844,25 +931,45 @@ select:focus-visible {
   }
 
   .matching-grid {
-    gap: 6px;
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .matching-column h3 {
-    font-size: 0.64rem;
+    margin-bottom: 7px;
+    text-align: left;
+  }
+
+  .matching-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .matching-option {
-    min-height: 46px;
-    padding: 8px 4px;
-    font-size: 0.76rem;
+    min-height: 50px;
+    padding: 9px 8px;
+    font-size: 0.82rem;
   }
 
   .matching-option-chinese {
-    font-size: 0.9rem;
+    font-size: 0.96rem;
   }
 
   .quiz-question-word {
     font-size: 2.15rem;
+  }
+
+  .question-answer-review-item {
+    padding: 13px 12px;
+  }
+
+  .question-answer-review-item .quiz-question-word {
+    font-size: 1.55rem;
+  }
+
+  .speaking-record-controls {
+    grid-template-columns: 1fr;
   }
 
   .reading-sentence {
@@ -871,18 +978,24 @@ select:focus-visible {
 }
 
 @media (max-width: 360px) {
+  body {
+    padding-right: max(10px, env(safe-area-inset-right));
+    padding-left: max(10px, env(safe-area-inset-left));
+  }
+
   .matching-box {
-    padding: 14px 8px;
+    padding: 15px 12px;
   }
+}
 
-  .matching-grid {
-    gap: 4px;
-  }
-
-  .matching-option {
-    min-height: 48px;
-    padding: 7px 3px;
-    font-size: 0.72rem;
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary:hover,
+  .btn:hover,
+  .btn-shuffle:hover,
+  .matching-option:hover,
+  .quiz-option-btn:hover,
+  .header-actions > button:hover {
+    transform: none;
   }
 }
 
