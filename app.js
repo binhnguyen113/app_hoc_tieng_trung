@@ -12,7 +12,10 @@ function normalizeWordRecord(item, topic, id) {
     meaning: item.meaning || "",
     example: item.example || "",
     examplePhonetic: item.examplePhonetic || "",
-    exampleMeaning: item.exampleMeaning || ""
+    exampleMeaning: item.exampleMeaning || "",
+    answerChinese: item.answerChinese || "",
+    answerPinyin: item.answerPinyin || "",
+    answerMeaning: item.answerMeaning || ""
   };
 }
 
@@ -61,35 +64,23 @@ async function loadWords() {
   return loadedSources.flat();
 }
 
-async function loadQuestionAnswers() {
-  try {
-    const response = await fetch("./data-hoi-dap.json");
-    if (!response.ok) {
-      throw new Error("Không đọc được ./data-hoi-dap.json");
-    }
+function loadQuestionAnswers(words) {
+  return words.flatMap((word, index) => {
+    if (!word.answerChinese || !word.example) return [];
 
-    const groups = await response.json();
-    if (!Array.isArray(groups)) {
-      throw new Error("Dữ liệu hỏi đáp phải là một mảng");
-    }
-
-    return groups.flatMap(group => {
-      if (!group || typeof group.topic !== "string" || !Array.isArray(group.questions)) return [];
-
-      return group.questions.flatMap((question, index) => {
-        if (!question || typeof question !== "object") return [];
-
-        return [{
-          ...question,
-          id: `${group.topic}-${index}-${question.targetWord || "question"}`,
-          topic: group.topic
-        }];
-      });
-    });
-  } catch (error) {
-    console.warn("Không load được dữ liệu hỏi đáp:", error);
-    return [];
-  }
+    return [{
+      id: `${word.topic}-${index}-${word.word}`,
+      wordId: word.id,
+      topic: word.topic,
+      targetWord: word.word,
+      question: word.example,
+      questionPinyin: word.examplePhonetic,
+      questionMeaning: word.exampleMeaning,
+      answerChinese: word.answerChinese,
+      answerPinyin: word.answerPinyin,
+      answerMeaning: word.answerMeaning
+    }];
+  });
 }
 
 let allWords = [];
@@ -130,6 +121,10 @@ const selectedWordCountEl = document.getElementById("selected-word-count");
 const btnShuffle = document.getElementById("btn-shuffle");
 const studyModeEl = document.getElementById("study-mode");
 const topicFilterEl = document.getElementById("topic-filter");
+const topicFilterLabelEl = document.getElementById("topic-filter-label");
+const topicFilterToggleEl = document.getElementById("topic-filter-toggle");
+const topicFilterSelectionEl = document.getElementById("topic-filter-selection");
+const topicFilterOptionsEl = document.getElementById("topic-filter-options");
 const dataSourceEl = document.getElementById("data-source");
 
 // DOM Elements - Matching
@@ -268,7 +263,23 @@ function startMatching() {
   clearTimeout(matchingResetTimeout);
   matchingIsLocked = false;
   const filteredWords = getFilteredWords();
-  matchingWords = shuffleList(filteredWords).slice(0, MATCHING_SIZE);
+  matchingWords = [];
+  const usedValues = {
+    word: new Set(),
+    phonetic: new Set(),
+    meaning: new Set()
+  };
+
+  for (const word of shuffleList(filteredWords)) {
+    const values = [word.word, word.phonetic, word.meaning];
+    const fields = ["word", "phonetic", "meaning"];
+    if (fields.some((field, index) => usedValues[field].has(values[index]))) continue;
+
+    matchingWords.push(word);
+    fields.forEach((field, index) => usedValues[field].add(values[index]));
+    if (matchingWords.length === MATCHING_SIZE) break;
+  }
+
   matchingSelections = {};
   matchingCorrectIds = new Set();
   renderMatchingBoard();
@@ -341,13 +352,13 @@ function getAvailableWords() {
 
 function getFilteredWords() {
   const mode = studyModeEl.value;
-  const selectedTopic = topicFilterEl.value;
   const availableWords = getAvailableWords();
 
   if (mode === "topic") {
-    return selectedTopic === "all"
+    const selectedTopics = getSelectedTopics();
+    return selectedTopics === null
       ? [...availableWords]
-      : availableWords.filter(word => word.topic === selectedTopic);
+      : availableWords.filter(word => selectedTopics.has(word.topic));
   }
 
   if (["noun", "verb", "adjective", "phrase", "number", "pronoun"].includes(mode)) {
@@ -790,14 +801,26 @@ listeningAnswerModeEl.addEventListener("change", () => {
 });
 
 function getFilteredQuestionAnswers() {
-  const allowedWords = new Set(getFilteredWords().map(word => word.word));
-  return allQuestionAnswers.filter(question => allowedWords.has(question.targetWord));
+  const allowedWordIds = new Set(getFilteredWords().map(word => word.id));
+  return allQuestionAnswers.filter(question => allowedWordIds.has(question.wordId));
 }
 
-function startQuestionAnswerPractice(shouldShuffle = false) {
+function startQuestionAnswerPractice(shouldShuffle = false, showAlert = true) {
   const filteredQuestions = getFilteredQuestionAnswers();
   if (filteredQuestions.length < 4) {
-    alert("Cần ít nhất 4 cặp hỏi đáp trong bộ lọc hiện tại để bắt đầu luyện hỏi đáp!");
+    if (showAlert) {
+      alert("Cần ít nhất 4 cặp hỏi đáp trong bộ lọc hiện tại để bắt đầu luyện hỏi đáp!");
+    } else {
+      questionAnswerProgressEl.textContent = "Chưa đủ câu hỏi";
+      questionAnswerPromptEl.textContent = "Chọn chủ đề có ít nhất 4 cặp hỏi đáp để tiếp tục.";
+      questionAnswerOptionsEl.replaceChildren();
+      questionAnswerOptionsEl.classList.remove("hidden");
+      questionAnswerTypingAreaEl.classList.add("hidden");
+      questionAnswerReviewEl.classList.add("hidden");
+      btnNextQuestionAnswer.classList.add("hidden");
+      questionAnswerInputEl.disabled = true;
+      btnCheckQuestionAnswer.disabled = true;
+    }
     return;
   }
 
@@ -969,20 +992,126 @@ function advanceQuestionAnswer() {
 }
 
 btnNextQuestionAnswer.addEventListener("click", advanceQuestionAnswer);
-questionAnswerModeEl.addEventListener("change", loadQuestionAnswer);
+questionAnswerModeEl.addEventListener("change", () => {
+  if (getFilteredQuestionAnswers().length < 4) {
+    startQuestionAnswerPractice(false, false);
+    return;
+  }
+  loadQuestionAnswer();
+});
 
 function updateTopicOptions() {
   const availableWords = getAvailableWords();
   const topics = [...new Set(availableWords.map(item => item.topic).filter(Boolean))];
-  topicFilterEl.replaceChildren(new Option("Tất cả chủ đề", "all"));
+  const previousSelectAll = topicFilterOptionsEl.querySelector("[data-topic-all]");
+  const previousTopics = new Set(
+    [...topicFilterOptionsEl.querySelectorAll("[data-topic-value]:checked")]
+      .map(input => input.value)
+  );
+  const selectAll = document.createElement("input");
+  selectAll.type = "checkbox";
+  selectAll.dataset.topicAll = "";
+  const selectAllOption = document.createElement("label");
+  selectAllOption.className = "topic-filter-option";
+  selectAllOption.append(selectAll, document.createElement("span"));
+  selectAllOption.lastElementChild.textContent = "Tất cả chủ đề";
+
+  topicFilterOptionsEl.replaceChildren(selectAllOption);
 
   topics.forEach(topic => {
-    const option = document.createElement("option");
-    option.value = topic;
-    option.textContent = topic;
-    topicFilterEl.appendChild(option);
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = topic;
+    checkbox.dataset.topicValue = "";
+    checkbox.checked = previousSelectAll
+      ? previousSelectAll.checked || previousTopics.has(topic)
+      : true;
+
+    const option = document.createElement("label");
+    option.className = "topic-filter-option";
+    option.append(checkbox, document.createElement("span"));
+    option.lastElementChild.textContent = topic;
+    topicFilterOptionsEl.appendChild(option);
   });
+
+  const checkedCount = topicFilterOptionsEl.querySelectorAll("[data-topic-value]:checked").length;
+  if (!previousSelectAll || (!previousSelectAll.checked && checkedCount === 0)) {
+    topicFilterOptionsEl.querySelectorAll("[data-topic-value]").forEach(input => {
+      input.checked = true;
+    });
+  }
+  updateSelectAllTopicOption();
+  updateTopicFilterSelection();
 }
+
+function getSelectedTopics() {
+  const selectAll = topicFilterOptionsEl.querySelector("[data-topic-all]");
+  if (!selectAll || selectAll.checked) return null;
+
+  return new Set(
+    [...topicFilterOptionsEl.querySelectorAll("[data-topic-value]:checked")]
+      .map(input => input.value)
+  );
+}
+
+function updateSelectAllTopicOption() {
+  const selectAll = topicFilterOptionsEl.querySelector("[data-topic-all]");
+  if (!selectAll) return;
+
+  const topics = topicFilterOptionsEl.querySelectorAll("[data-topic-value]");
+  const selectedCount = topicFilterOptionsEl.querySelectorAll("[data-topic-value]:checked").length;
+  selectAll.checked = topics.length > 0 && selectedCount === topics.length;
+}
+
+function updateTopicFilterSelection() {
+  const selectAll = topicFilterOptionsEl.querySelector("[data-topic-all]");
+  const selectedTopics = [...topicFilterOptionsEl.querySelectorAll("[data-topic-value]:checked")];
+
+  if (selectAll?.checked || selectedTopics.length === 0) {
+    topicFilterSelectionEl.textContent = "Tất cả chủ đề";
+    return;
+  }
+
+  topicFilterSelectionEl.textContent = selectedTopics.length === 1
+    ? selectedTopics[0].value
+    : `${selectedTopics.length} chủ đề đã chọn`;
+}
+
+topicFilterToggleEl.addEventListener("click", () => {
+  const isOpen = topicFilterToggleEl.getAttribute("aria-expanded") === "true";
+  topicFilterToggleEl.setAttribute("aria-expanded", String(!isOpen));
+  topicFilterOptionsEl.classList.toggle("hidden", isOpen);
+});
+
+document.addEventListener("click", event => {
+  if (!topicFilterEl.contains(event.target)) {
+    topicFilterToggleEl.setAttribute("aria-expanded", "false");
+    topicFilterOptionsEl.classList.add("hidden");
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    topicFilterToggleEl.setAttribute("aria-expanded", "false");
+    topicFilterOptionsEl.classList.add("hidden");
+  }
+});
+
+topicFilterOptionsEl.addEventListener("change", event => {
+  const target = event.target;
+  if (!(target instanceof HTMLInputElement)) return;
+
+  if (target.matches("[data-topic-all]")) {
+    topicFilterOptionsEl.querySelectorAll("[data-topic-value]").forEach(input => {
+      input.checked = target.checked;
+    });
+  } else {
+    updateSelectAllTopicOption();
+  }
+
+  updateTopicFilterSelection();
+  applyStudyMode();
+});
 
 function updateDataSourceOptions() {
   dataSourceEl.replaceChildren(new Option("Tất cả bộ từ", "all"));
@@ -1409,13 +1538,7 @@ btnNextSpeaking.addEventListener("click", () => {
 function applyStudyMode() {
   const mode = studyModeEl.value;
   topicFilterEl.classList.toggle("hidden", mode !== "topic");
-
-  if (mode === "topic") {
-    const topics = [...new Set(allWords.map(item => item.topic).filter(Boolean))];
-    if (!topics.includes(topicFilterEl.value)) {
-      topicFilterEl.value = "all";
-    }
-  }
+  topicFilterLabelEl.classList.toggle("hidden", mode !== "topic");
 
   updateSelectedWordCount();
 
@@ -1435,7 +1558,7 @@ function applyStudyMode() {
   }
 
   if (currentMode === "question-answer") {
-    startQuestionAnswerPractice();
+    startQuestionAnswerPractice(false, false);
     return;
   }
 
@@ -1688,15 +1811,14 @@ document.addEventListener("keydown", (event) => {
 });
 
 async function initApp() {
-  [allWords, allQuestionAnswers] = await Promise.all([
-    loadWords(),
-    loadQuestionAnswers()
-  ]);
+  allWords = await loadWords();
+  allQuestionAnswers = loadQuestionAnswers(allWords);
   updateDataSourceOptions();
   updateTopicOptions();
   updateStudyModeAvailability();
   updateSelectedWordCount();
   topicFilterEl.classList.toggle("hidden", studyModeEl.value !== "topic");
+  topicFilterLabelEl.classList.toggle("hidden", studyModeEl.value !== "topic");
   showMatchingScreen();
 }
 

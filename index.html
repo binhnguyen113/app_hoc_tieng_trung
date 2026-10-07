@@ -60,9 +60,19 @@
           <option value="number">Ôn theo số từ</option>
           <option value="pronoun">Ôn theo đại từ</option>
         </select>
-        <select id="topic-filter" class="hidden">
-          <option value="all">Tất cả chủ đề</option>
-        </select>
+        <span id="topic-filter-label" class="topic-filter-label">Chủ đề</span>
+        <div id="topic-filter" class="topic-filter hidden">
+          <button id="topic-filter-toggle" class="topic-filter-toggle" type="button" aria-expanded="false" aria-controls="topic-filter-options">
+            <span id="topic-filter-selection">Tất cả chủ đề</span>
+            <span class="topic-filter-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div id="topic-filter-options" class="topic-filter-options hidden" role="group" aria-labelledby="topic-filter-label">
+            <label class="topic-filter-option">
+              <input type="checkbox" data-topic-all checked>
+              <span>Tất cả chủ đề</span>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
 
