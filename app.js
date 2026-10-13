@@ -3,11 +3,21 @@ const DATA_SOURCES = [
 ];
 
 function normalizeWordRecord(item, topic, id) {
+  if (typeof item.word !== "string" || !item.word.trim()) {
+    throw new TypeError(`Bản ghi ${id} thiếu từ vựng hợp lệ.`);
+  }
+  if (typeof item.type !== "string" || !item.type.trim()) {
+    throw new TypeError(`Bản ghi ${id} thiếu loại từ hợp lệ.`);
+  }
+  if (typeof item.meaning !== "string" || !item.meaning.trim()) {
+    throw new TypeError(`Bản ghi ${id} thiếu nghĩa tiếng Việt hợp lệ.`);
+  }
+
   return {
     id,
     topic,
-    word: item.word || "Unknown",
-    type: String(item.type || "noun").toLowerCase(),
+    word: item.word,
+    type: item.type.toLowerCase(),
     phonetic: item.phonetic || "",
     meaning: item.meaning || "",
     example: item.example || "",
@@ -20,22 +30,26 @@ function normalizeWordRecord(item, topic, id) {
 }
 
 function normalizeWordRecords(data) {
-  if (!Array.isArray(data)) return [];
+  if (!Array.isArray(data)) {
+    throw new TypeError("Dữ liệu từ vựng phải là một danh sách.");
+  }
 
   return data.flatMap((item, index) => {
-    if (!item || typeof item !== "object") return [];
+    if (!item || typeof item !== "object" || Array.isArray(item)) {
+      throw new TypeError(`Bản ghi từ vựng thứ ${index + 1} không hợp lệ.`);
+    }
 
     const topic = item.topic || item.label || "General";
     if (Array.isArray(item.words)) {
-      return item.words.flatMap((wordItem, wordIndex) => {
-        if (!wordItem || typeof wordItem !== "object") return [];
+      return item.words.map((wordItem, wordIndex) => {
+        if (!wordItem || typeof wordItem !== "object" || Array.isArray(wordItem)) {
+          throw new TypeError(`Từ thứ ${wordIndex + 1} trong chủ đề ${topic} không hợp lệ.`);
+        }
 
-        const word = wordItem.word || "Unknown";
-        return [normalizeWordRecord(wordItem, topic, `${topic}-${wordIndex}-${word}`)];
+        const id = `${topic}-${wordIndex}-${wordItem.word || "invalid"}`;
+        return normalizeWordRecord(wordItem, topic, id);
       });
     }
-
-    if (!item.word) return [];
 
     const id = item.id || `${topic}-${index}-${item.word}`;
     return [normalizeWordRecord(item, topic, id)];
@@ -44,21 +58,16 @@ function normalizeWordRecords(data) {
 
 async function loadWords() {
   const loadedSources = await Promise.all(DATA_SOURCES.map(async source => {
-    try {
-      const response = await fetch(source.file);
-      if (!response.ok) {
-        throw new Error(`Không đọc được ${source.file}`);
-      }
-
-      const records = normalizeWordRecords(await response.json());
-      return records.map(record => ({
-        ...record,
-        sourceId: source.id
-      }));
-    } catch (error) {
-      console.warn(`Không load được ${source.file}:`, error);
-      return [];
+    const response = await fetch(source.file);
+    if (!response.ok) {
+      throw new Error(`Không đọc được ${source.file} (HTTP ${response.status})`);
     }
+
+    const records = normalizeWordRecords(await response.json());
+    return records.map(record => ({
+      ...record,
+      sourceId: source.id
+    }));
   }));
 
   return loadedSources.flat();
@@ -118,6 +127,7 @@ const speakingModeBtn = document.getElementById("speaking-mode-btn");
 const speakingScreen = document.getElementById("speaking-screen");
 
 const selectedWordCountEl = document.getElementById("selected-word-count");
+const appLoadErrorEl = document.getElementById("app-load-error");
 const btnShuffle = document.getElementById("btn-shuffle");
 const studyModeEl = document.getElementById("study-mode");
 const topicFilterEl = document.getElementById("topic-filter");
@@ -133,6 +143,9 @@ const matchingFeedbackEl = document.getElementById("matching-feedback");
 const matchingChineseEl = document.getElementById("matching-chinese");
 const matchingPinyinEl = document.getElementById("matching-pinyin");
 const matchingVietnameseEl = document.getElementById("matching-vietnamese");
+const matchingPinyinColumnEl = document.getElementById("matching-pinyin-column");
+const matchingGridEl = document.getElementById("matching-grid");
+const btnToggleMatchingPinyin = document.getElementById("btn-toggle-matching-pinyin");
 const btnNextMatching = document.getElementById("btn-next-matching");
 
 // DOM Elements - Quiz
@@ -166,6 +179,7 @@ const questionAnswerQuestionTextEl = document.getElementById("question-answer-qu
 const questionAnswerQuestionPinyinEl = document.getElementById("question-answer-question-pinyin");
 const questionAnswerQuestionMeaningEl = document.getElementById("question-answer-question-meaning");
 const questionAnswerModeEl = document.getElementById("question-answer-mode");
+const btnToggleQuestionAnswerPinyin = document.getElementById("btn-toggle-question-answer-pinyin");
 const questionAnswerTypingAreaEl = document.getElementById("question-answer-typing-area");
 const questionAnswerInputEl = document.getElementById("question-answer-input");
 const btnCheckQuestionAnswer = document.getElementById("btn-check-question-answer");
@@ -187,7 +201,11 @@ const typingFeedbackEl = document.getElementById("typing-feedback");
 const readingScoreEl = document.getElementById("reading-score");
 const readingProgressEl = document.getElementById("reading-progress");
 const readingSentenceEl = document.getElementById("reading-sentence");
+const readingPinyinEl = document.getElementById("reading-pinyin");
+const btnToggleReadingPinyin = document.getElementById("btn-toggle-reading-pinyin");
+const readingAnswerModeEl = document.getElementById("reading-answer-mode");
 const readingInputEl = document.getElementById("reading-input");
+const readingOptionsEl = document.getElementById("reading-options");
 const readingPronunciationEnabledEl = document.getElementById("reading-pronunciation-enabled");
 const btnCheckReading = document.getElementById("btn-check-reading");
 const readingFeedbackEl = document.getElementById("reading-feedback");
@@ -232,6 +250,9 @@ let matchingSelections = {};
 let matchingCorrectIds = new Set();
 let matchingIsLocked = false;
 let matchingResetTimeout = null;
+let matchingPinyinVisible = true;
+let questionAnswerPinyinVisible = true;
+let readingPinyinVisible = true;
 
 function shuffleList(list) {
   const shuffled = [...list];
@@ -292,8 +313,13 @@ function renderMatchingBoard() {
     [matchingVietnameseEl, "meaning"]
   ];
 
-  matchingProgressEl.textContent = `${matchingCorrectIds.size} / ${matchingWords.length} cặp đúng`;
-  matchingFeedbackEl.textContent = matchingWords.length ? "Chọn một ô ở mỗi cột" : "Không có từ phù hợp";
+  matchingProgressEl.textContent = `${matchingCorrectIds.size} / ${matchingWords.length} bộ đúng`;
+  matchingFeedbackEl.textContent = matchingWords.length
+    ? (matchingPinyinVisible ? "Chọn một ô ở mỗi cột" : "Chọn một ô ở mỗi cột đang hiện")
+    : "Không có từ phù hợp";
+  matchingPinyinColumnEl.classList.toggle("hidden", !matchingPinyinVisible);
+  matchingGridEl.classList.toggle("matching-grid-without-pinyin", !matchingPinyinVisible);
+  btnToggleMatchingPinyin.textContent = matchingPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
   btnNextMatching.classList.toggle("hidden", matchingWords.length === 0 || matchingCorrectIds.size !== matchingWords.length);
 
   columns.forEach(([container, field]) => {
@@ -317,9 +343,12 @@ function selectMatchingOption(field, id, button) {
   button.parentElement.querySelectorAll(".matching-option").forEach(option => option.classList.remove("selected"));
   button.classList.add("selected");
 
-  if (!matchingSelections.word || !matchingSelections.phonetic || !matchingSelections.meaning) return;
+  const requiredFields = matchingPinyinVisible
+    ? ["word", "phonetic", "meaning"]
+    : ["word", "meaning"];
+  if (requiredFields.some(requiredField => !matchingSelections[requiredField])) return;
 
-  const selectedIds = Object.values(matchingSelections);
+  const selectedIds = requiredFields.map(requiredField => matchingSelections[requiredField]);
   if (new Set(selectedIds).size === 1) {
     matchingCorrectIds.add(id);
     matchingFeedbackEl.textContent = "Đúng rồi! Chọn bộ tiếp theo.";
@@ -341,8 +370,31 @@ function selectMatchingOption(field, id, button) {
 }
 
 btnNextMatching.addEventListener("click", startMatching);
+btnToggleMatchingPinyin.addEventListener("click", () => {
+  matchingPinyinVisible = !matchingPinyinVisible;
+  btnToggleMatchingPinyin.textContent = matchingPinyinVisible ? "Ẩn cột pinyin" : "Hiện cột pinyin";
+  btnToggleMatchingPinyin.setAttribute("aria-expanded", String(matchingPinyinVisible));
+  matchingSelections = {};
+  renderMatchingBoard();
+});
 
 // --- FILTERS & QUIZ ---
+const STUDY_TYPE_FILTERS = {
+  noun: ["noun"],
+  verb: ["verb"],
+  adjective: ["adjective"],
+  phrase: ["phrase", "expression"],
+  number: ["number", "numeral"],
+  pronoun: ["pronoun"],
+  adverb: ["adverb"],
+  particle: ["particle"],
+  "measure-word": ["measure word"],
+  conjunction: ["conjunction"],
+  interjection: ["interjection"],
+  prefix: ["prefix"],
+  suffix: ["suffix"]
+};
+
 function getAvailableWords() {
   const selectedSource = dataSourceEl.value;
   return selectedSource === "all"
@@ -361,7 +413,7 @@ function getFilteredWords() {
       : availableWords.filter(word => selectedTopics.has(word.topic));
   }
 
-  if (["noun", "verb", "adjective", "phrase", "number", "pronoun"].includes(mode)) {
+  if (STUDY_TYPE_FILTERS[mode]) {
     const matchingTypes = getMatchingTypes(mode);
     return availableWords.filter(word =>
       word.type.toLowerCase().split(/\s*\/\s*/).some(type => matchingTypes.includes(type))
@@ -372,14 +424,12 @@ function getFilteredWords() {
 }
 
 function getMatchingTypes(mode) {
-  if (mode === "phrase") return ["phrase", "expression"];
-  if (mode === "number") return ["number", "numeral"];
-  return [mode];
+  return STUDY_TYPE_FILTERS[mode] || [mode];
 }
 
 function updateStudyModeAvailability() {
   const availableWords = getAvailableWords();
-  const categoryModes = ["noun", "verb", "adjective", "phrase", "number", "pronoun"];
+  const categoryModes = Object.keys(STUDY_TYPE_FILTERS);
 
   [...studyModeEl.options].forEach(option => {
     if (!categoryModes.includes(option.value)) return;
@@ -523,13 +573,16 @@ function formatWordType(type) {
     adjective: "Tính từ",
     "auxiliary verb": "Trợ động từ",
     adverb: "Phó từ",
+    conjunction: "Liên từ",
     expression: "Cụm từ",
     interjection: "Thán từ",
+    "measure word": "Lượng từ",
     noun: "Danh từ",
     number: "Số từ",
     numeral: "Số từ",
     particle: "Trợ từ",
     phrase: "Cụm từ",
+    prefix: "Tiền tố",
     pronoun: "Đại từ",
     suffix: "Hậu tố",
     verb: "Động từ",
@@ -816,6 +869,7 @@ function startQuestionAnswerPractice(shouldShuffle = false, showAlert = true) {
       questionAnswerOptionsEl.replaceChildren();
       questionAnswerOptionsEl.classList.remove("hidden");
       questionAnswerTypingAreaEl.classList.add("hidden");
+      btnToggleQuestionAnswerPinyin.classList.add("hidden");
       questionAnswerReviewEl.classList.add("hidden");
       btnNextQuestionAnswer.classList.add("hidden");
       questionAnswerInputEl.disabled = true;
@@ -851,6 +905,7 @@ function loadQuestionAnswer() {
       questionAnswerPromptEl.textContent = "Bạn đã hoàn thành lượt hỏi đáp!";
       questionAnswerTypingAreaEl.classList.add("hidden");
       questionAnswerOptionsEl.classList.remove("hidden");
+      btnToggleQuestionAnswerPinyin.classList.add("hidden");
       renderRestartButton(questionAnswerOptionsEl, "Làm lại hỏi đáp", () => startQuestionAnswerPractice());
       btnNextQuestionAnswer.classList.add("hidden");
       return;
@@ -859,16 +914,22 @@ function loadQuestionAnswer() {
 
   const currentQuestion = questionAnswerQuestions[currentQuestionAnswerIndex];
   const isTypingAnswer = questionAnswerModeEl.value === "chinese";
+  const isChineseChoice = questionAnswerModeEl.value === "chinese-choice";
   questionAnswerAnswered = false;
   questionAnswerProgressEl.textContent = questionAnswerIsRetryRound
     ? `Còn sai: ${questionAnswerTotalQuestions - questionAnswerCorrectIds.size} câu`
     : `Câu ${currentQuestionAnswerIndex + 1} / ${questionAnswerQuestions.length}`;
   questionAnswerPromptEl.textContent = isTypingAnswer
     ? "Nghe câu hỏi tiếng Trung rồi gõ câu trả lời bằng tiếng Trung"
-    : "Nghe câu hỏi tiếng Trung rồi chọn nghĩa tiếng Việt của câu trả lời";
+    : isChineseChoice
+      ? "Nghe câu hỏi tiếng Trung rồi chọn câu trả lời bằng tiếng Trung"
+      : "Nghe câu hỏi tiếng Trung rồi chọn nghĩa tiếng Việt của câu trả lời";
   questionAnswerOptionsEl.replaceChildren();
   questionAnswerTypingAreaEl.classList.toggle("hidden", !isTypingAnswer);
   questionAnswerOptionsEl.classList.toggle("hidden", isTypingAnswer);
+  btnToggleQuestionAnswerPinyin.classList.toggle("hidden", !isChineseChoice);
+  btnToggleQuestionAnswerPinyin.textContent = questionAnswerPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
+  btnToggleQuestionAnswerPinyin.setAttribute("aria-pressed", String(questionAnswerPinyinVisible));
   btnNextQuestionAnswer.classList.add("hidden");
   questionAnswerReviewEl.classList.add("hidden");
   questionAnswerQuestionTextEl.textContent = "";
@@ -883,19 +944,38 @@ function loadQuestionAnswer() {
     btnCheckQuestionAnswer.textContent = "Kiểm tra";
     questionAnswerInputEl.focus();
   } else {
-    const distractors = [...new Set(getFilteredQuestionAnswers()
+    const answerField = isChineseChoice ? "answerChinese" : "answerMeaning";
+    const correctAnswer = currentQuestion[answerField];
+    const distractors = [...new Map(getFilteredQuestionAnswers()
       .filter(question => question.id !== currentQuestion.id)
-      .map(question => question.answerMeaning)
-      .filter(meaning => meaning && meaning !== currentQuestion.answerMeaning))];
+      .filter(question => question[answerField] && question[answerField] !== correctAnswer)
+      .map(question => [question[answerField], question])).values()];
     const options = shuffleList([
       ...shuffleList(distractors).slice(0, 3),
-      currentQuestion.answerMeaning
+      currentQuestion
     ]);
-    options.forEach(answerMeaning => {
+    options.forEach(option => {
+      const answer = option[answerField];
       const button = document.createElement("button");
       button.className = "quiz-option-btn";
-      button.textContent = answerMeaning;
-      button.addEventListener("click", () => selectQuestionAnswer(answerMeaning, button));
+      button.dataset.answer = answer;
+      if (isChineseChoice) {
+        const chinese = document.createElement("span");
+        chinese.className = "answer-option-chinese";
+        chinese.textContent = option.answerChinese;
+        button.appendChild(chinese);
+
+        if (option.answerPinyin) {
+          const pinyin = document.createElement("span");
+          pinyin.className = "answer-option-pinyin";
+          pinyin.classList.toggle("hidden", !questionAnswerPinyinVisible);
+          pinyin.textContent = option.answerPinyin;
+          button.appendChild(pinyin);
+        }
+      } else {
+        button.textContent = answer;
+      }
+      button.addEventListener("click", () => selectQuestionAnswer(answer, button));
       questionAnswerOptionsEl.appendChild(button);
     });
   }
@@ -942,17 +1022,19 @@ function recordQuestionAnswer(isCorrect) {
   updateQuestionAnswerRetryCount();
 }
 
-function selectQuestionAnswer(answerMeaning, selectedButton) {
+function selectQuestionAnswer(answer, selectedButton) {
   if (questionAnswerAnswered) return;
 
+  const answerField = questionAnswerModeEl.value === "chinese-choice" ? "answerChinese" : "answerMeaning";
+  const correctAnswer = questionAnswerQuestions[currentQuestionAnswerIndex][answerField];
   questionAnswerOptionsEl.querySelectorAll(".quiz-option-btn").forEach(button => {
     button.disabled = true;
-    if (button.textContent === questionAnswerQuestions[currentQuestionAnswerIndex].answerMeaning) {
+    if (button.dataset.answer === correctAnswer) {
       button.classList.add("correct");
     }
   });
 
-  const isCorrect = answerMeaning === questionAnswerQuestions[currentQuestionAnswerIndex].answerMeaning;
+  const isCorrect = answer === correctAnswer;
   if (!isCorrect) selectedButton.classList.add("wrong");
   recordQuestionAnswer(isCorrect);
   btnNextQuestionAnswer.classList.remove("hidden");
@@ -992,6 +1074,14 @@ function advanceQuestionAnswer() {
 }
 
 btnNextQuestionAnswer.addEventListener("click", advanceQuestionAnswer);
+btnToggleQuestionAnswerPinyin.addEventListener("click", () => {
+  questionAnswerPinyinVisible = !questionAnswerPinyinVisible;
+  btnToggleQuestionAnswerPinyin.textContent = questionAnswerPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
+  btnToggleQuestionAnswerPinyin.setAttribute("aria-pressed", String(questionAnswerPinyinVisible));
+  questionAnswerOptionsEl.querySelectorAll(".answer-option-pinyin").forEach(pinyin => {
+    pinyin.classList.toggle("hidden", !questionAnswerPinyinVisible);
+  });
+});
 questionAnswerModeEl.addEventListener("change", () => {
   if (getFilteredQuestionAnswers().length < 4) {
     startQuestionAnswerPractice(false, false);
@@ -1067,8 +1157,13 @@ function updateTopicFilterSelection() {
   const selectAll = topicFilterOptionsEl.querySelector("[data-topic-all]");
   const selectedTopics = [...topicFilterOptionsEl.querySelectorAll("[data-topic-value]:checked")];
 
-  if (selectAll?.checked || selectedTopics.length === 0) {
+  if (selectAll?.checked) {
     topicFilterSelectionEl.textContent = "Tất cả chủ đề";
+    return;
+  }
+
+  if (selectedTopics.length === 0) {
+    topicFilterSelectionEl.textContent = "Không có chủ đề";
     return;
   }
 
@@ -1276,6 +1371,7 @@ let readingCorrectIds = new Set();
 let readingIsRetryRound = false;
 let readingAnswered = false;
 let readingShouldShuffle = false;
+let readingAnswerWasCorrect = null;
 let speakingQuestions = [];
 let currentSpeakingIndex = 0;
 let speakingShouldShuffle = false;
@@ -1286,15 +1382,107 @@ let speakingChunks = [];
 let speakingAudioUrl = "";
 let speakingRecordingVersion = 0;
 let speakingRecordingTimer = null;
+let speakingPermissionRequestId = 0;
+let speakingIsRequestingPermission = false;
 
 function getReadingQuestions(words) {
-  return words.filter(word => word.example && word.example.includes(word.word));
+  return words.flatMap(word => [
+    {
+      id: `${word.id}-example`,
+      sentence: word.example,
+      sentencePinyin: word.examplePhonetic
+    },
+    {
+      id: `${word.id}-answer`,
+      sentence: word.answerChinese,
+      sentencePinyin: word.answerPinyin
+    }
+  ]
+    .filter(question => question.sentence && question.sentence.includes(word.word))
+    .map(question => ({
+      ...word,
+      id: question.id,
+      sentence: question.sentence,
+      sentencePinyin: question.sentencePinyin
+    })));
+}
+
+function normalizePinyinForMatch(value) {
+  return [...value.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase()]
+    .filter(character => /[a-z]/.test(character))
+    .join("");
+}
+
+function getPinyinRangeForWord(sentencePinyin, wordPinyin) {
+  const sourceCharacters = [];
+  for (let offset = 0; offset < sentencePinyin.length;) {
+    const character = String.fromCodePoint(sentencePinyin.codePointAt(offset));
+    const normalizedCharacters = normalizePinyinForMatch(character);
+    for (const normalizedCharacter of normalizedCharacters) {
+      sourceCharacters.push({
+        character: normalizedCharacter,
+        start: offset,
+        end: offset + character.length
+      });
+    }
+    offset += character.length;
+  }
+
+  const normalizedSource = sourceCharacters.map(item => item.character).join("");
+  const normalizedTarget = normalizePinyinForMatch(wordPinyin);
+  const startIndex = normalizedSource.indexOf(normalizedTarget);
+  if (startIndex < 0 || !normalizedTarget) return null;
+
+  let start = sourceCharacters[startIndex].start;
+  let end = sourceCharacters[startIndex + normalizedTarget.length - 1].end;
+  while (start > 0 && /\s/.test(sentencePinyin[start - 1])) start--;
+  while (end < sentencePinyin.length && /\s/.test(sentencePinyin[end])) end++;
+
+  return {
+    start,
+    end,
+    width: Math.max(1.2, normalizedTarget.length * 0.48)
+  };
+}
+
+function renderReadingPinyin(currentWord) {
+  const pinyinRange = getPinyinRangeForWord(currentWord.sentencePinyin, currentWord.phonetic);
+  const canShowPinyin = Boolean(currentWord.sentencePinyin && pinyinRange);
+  readingPinyinEl.replaceChildren();
+
+  if (canShowPinyin) {
+    const pinyinBlank = document.createElement("span");
+    pinyinBlank.className = "reading-pinyin-blank";
+    pinyinBlank.setAttribute("aria-hidden", "true");
+    pinyinBlank.style.setProperty("--reading-pinyin-blank-width", `${pinyinRange.width}em`);
+    readingPinyinEl.append(
+      document.createTextNode(currentWord.sentencePinyin.slice(0, pinyinRange.start)),
+      pinyinBlank,
+      document.createTextNode(currentWord.sentencePinyin.slice(pinyinRange.end))
+    );
+  }
+
+  readingPinyinEl.classList.toggle("hidden", !readingPinyinVisible || !canShowPinyin);
+  btnToggleReadingPinyin.classList.toggle("hidden", !canShowPinyin);
+}
+
+function updateReadingAnswerFeedback() {
+  const currentWord = readingQuestions[currentReadingIndex];
+  if (!currentWord || readingAnswerWasCorrect === null) return;
+
+  const pinyin = readingPinyinVisible ? currentWord.phonetic : "";
+  const prefix = readingAnswerWasCorrect ? "✅ Đúng! Đáp án: " : "❌ Sai. Đáp án đúng là: ";
+  setFeedback(
+    readingFeedbackEl,
+    `${prefix}${formatChineseAnswer(currentWord.word, pinyin)}`,
+    readingAnswerWasCorrect
+  );
 }
 
 function startReadingPractice(shouldShuffle = false) {
   const filteredWords = getReadingQuestions(getFilteredWords());
   if (filteredWords.length === 0) {
-    alert("Bộ từ hiện tại chưa có câu ví dụ phù hợp để luyện đọc điền từ!");
+    alert("Bộ từ hiện tại chưa có câu ví dụ hoặc câu trả lời phù hợp để luyện đọc điền từ!");
     return;
   }
 
@@ -1314,24 +1502,104 @@ function renderReadingQuestion() {
   const currentWord = readingQuestions[currentReadingIndex];
   if (!currentWord) return;
 
-  const blankIndex = currentWord.example.indexOf(currentWord.word);
+  const blankIndex = currentWord.sentence.indexOf(currentWord.word);
   const readingBlank = document.createElement("span");
   readingBlank.className = "reading-blank";
   readingSentenceEl.replaceChildren(
-    document.createTextNode(currentWord.example.slice(0, blankIndex)),
+    document.createTextNode(currentWord.sentence.slice(0, blankIndex)),
     readingBlank,
-    document.createTextNode(currentWord.example.slice(blankIndex + currentWord.word.length))
+    document.createTextNode(currentWord.sentence.slice(blankIndex + currentWord.word.length))
   );
+  renderReadingPinyin(currentWord);
+  btnToggleReadingPinyin.textContent = readingPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
+  btnToggleReadingPinyin.setAttribute("aria-expanded", String(readingPinyinVisible));
   readingProgressEl.textContent = readingIsRetryRound
     ? `Còn sai: ${readingTotalQuestions - readingCorrectIds.size} câu`
     : `Câu ${currentReadingIndex + 1} / ${readingQuestions.length}`;
+  readingOptionsEl.replaceChildren();
+  const isChoiceMode = readingAnswerModeEl.value === "choice";
+  readingInputEl.classList.toggle("hidden", isChoiceMode);
+  readingOptionsEl.classList.toggle("hidden", !isChoiceMode);
   readingInputEl.value = "";
   readingInputEl.disabled = false;
+  if (isChoiceMode) {
+    const choicesByWord = new Map(getFilteredWords()
+      .filter(word => word.word !== currentWord.word)
+      .map(word => [word.word, word]));
+    const options = shuffleList([
+      ...shuffleList([...choicesByWord.values()]).slice(0, 3),
+      currentWord
+    ]);
+    options.forEach(option => {
+      const button = document.createElement("button");
+      button.className = "quiz-option-btn";
+      button.dataset.answer = option.word;
+      const chinese = document.createElement("span");
+      chinese.className = "answer-option-chinese";
+      chinese.textContent = option.word;
+      button.appendChild(chinese);
+
+      if (option.phonetic) {
+        const pinyin = document.createElement("span");
+        pinyin.className = "answer-option-pinyin reading-option-pinyin";
+        pinyin.classList.toggle("hidden", !readingPinyinVisible);
+        pinyin.textContent = option.phonetic;
+        button.appendChild(pinyin);
+      }
+      button.addEventListener("click", () => selectReadingAnswer(option.word, button));
+      readingOptionsEl.appendChild(button);
+    });
+  }
   btnCheckReading.disabled = false;
   btnCheckReading.textContent = "Kiểm tra";
+  btnCheckReading.classList.toggle("hidden", isChoiceMode);
+  readingAnswerWasCorrect = null;
   setFeedback(readingFeedbackEl, "");
   readingAnswered = false;
-  readingInputEl.focus();
+  if (!isChoiceMode) readingInputEl.focus();
+}
+
+function checkReadingAnswer(answer) {
+  const currentWord = readingQuestions[currentReadingIndex];
+  if (!currentWord || readingAnswered) return;
+
+  const isCorrect = normalizeAnswer(answer) === normalizeAnswer(currentWord.word);
+  readingAnswerWasCorrect = isCorrect;
+  if (isCorrect) {
+    readingCorrectIds.add(currentWord.id);
+    readingScore = readingCorrectIds.size;
+    readingScoreEl.textContent = readingScore;
+  } else {
+    if (!readingRoundMistakes.some(word => word.id === currentWord.id)) {
+      readingRoundMistakes.push(currentWord);
+    }
+  }
+  updateReadingAnswerFeedback();
+
+  if (readingPronunciationEnabledEl.checked) {
+    speakChinese(currentWord.word);
+  }
+
+  readingAnswered = true;
+  readingInputEl.disabled = true;
+  readingOptionsEl.querySelectorAll(".quiz-option-btn").forEach(button => {
+    button.disabled = true;
+    if (button.dataset.answer === currentWord.word) button.classList.add("correct");
+  });
+  btnCheckReading.textContent = "Câu tiếp theo ➡";
+  btnCheckReading.classList.remove("hidden");
+  if (readingIsRetryRound) {
+    readingProgressEl.textContent = `Còn sai: ${readingTotalQuestions - readingCorrectIds.size} câu`;
+  }
+}
+
+function selectReadingAnswer(answer, selectedButton) {
+  if (readingAnswered) return;
+
+  checkReadingAnswer(answer);
+  if (answer !== readingQuestions[currentReadingIndex]?.word) {
+    selectedButton.classList.add("wrong");
+  }
 }
 
 function advanceReadingQuestion() {
@@ -1347,6 +1615,8 @@ function advanceReadingQuestion() {
       readingSentenceEl.textContent = `Bạn đã đúng hết ${readingScore} câu.`;
       readingInputEl.value = "";
       readingInputEl.disabled = true;
+      readingInputEl.classList.add("hidden");
+      readingOptionsEl.classList.add("hidden");
       btnCheckReading.disabled = true;
       btnCheckReading.textContent = "Hoàn thành";
       return;
@@ -1361,32 +1631,22 @@ btnCheckReading.addEventListener("click", () => {
     return;
   }
 
+  if (readingAnswerModeEl.value === "choice") return;
+  checkReadingAnswer(readingInputEl.value);
+});
+
+readingAnswerModeEl.addEventListener("change", renderReadingQuestion);
+
+btnToggleReadingPinyin.addEventListener("click", () => {
+  readingPinyinVisible = !readingPinyinVisible;
   const currentWord = readingQuestions[currentReadingIndex];
-  if (!currentWord) return;
-
-  const isCorrect = normalizeAnswer(readingInputEl.value) === normalizeAnswer(currentWord.word);
-  if (isCorrect) {
-    readingCorrectIds.add(currentWord.id);
-    readingScore = readingCorrectIds.size;
-    readingScoreEl.textContent = readingScore;
-    setFeedback(readingFeedbackEl, `✅ Đúng! Đáp án: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`, true);
-  } else {
-    if (!readingRoundMistakes.some(word => word.id === currentWord.id)) {
-      readingRoundMistakes.push(currentWord);
-    }
-    setFeedback(readingFeedbackEl, `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(currentWord.word, currentWord.phonetic)}`, false);
-  }
-
-  if (readingPronunciationEnabledEl.checked) {
-    speakChinese(currentWord.word);
-  }
-
-  readingAnswered = true;
-  readingInputEl.disabled = true;
-  btnCheckReading.textContent = "Câu tiếp theo ➡";
-  if (readingIsRetryRound) {
-    readingProgressEl.textContent = `Còn sai: ${readingTotalQuestions - readingCorrectIds.size} câu`;
-  }
+  if (currentWord) renderReadingPinyin(currentWord);
+  readingOptionsEl.querySelectorAll(".reading-option-pinyin").forEach(pinyin => {
+    pinyin.classList.toggle("hidden", !readingPinyinVisible);
+  });
+  updateReadingAnswerFeedback();
+  btnToggleReadingPinyin.textContent = readingPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
+  btnToggleReadingPinyin.setAttribute("aria-expanded", String(readingPinyinVisible));
 });
 
 function startSpeakingPractice(shouldShuffle = false) {
@@ -1447,6 +1707,7 @@ function renderSpeakingQuestion() {
   speakingStatusEl.textContent = "Bấm ghi âm, nói câu tiếng Trung rồi nghe lại.";
   btnStartSpeakingRecording.disabled = false;
   btnStopSpeakingRecording.disabled = true;
+  btnStopSpeakingRecording.textContent = "Dừng ghi âm";
 }
 
 async function startSpeakingRecording() {
@@ -1455,10 +1716,26 @@ async function startSpeakingRecording() {
     return;
   }
 
+  if (speakingIsRequestingPermission) return;
+
   clearSpeakingRecording();
+  const requestId = ++speakingPermissionRequestId;
+  speakingIsRequestingPermission = true;
+  btnStartSpeakingRecording.disabled = true;
+  btnStopSpeakingRecording.disabled = false;
+  btnStopSpeakingRecording.textContent = "Hủy yêu cầu";
+  btnNextSpeaking.disabled = true;
+  speakingStatusEl.textContent = "Đang chờ quyền truy cập micro…";
 
   try {
-    speakingStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    if (requestId !== speakingPermissionRequestId) {
+      stream.getTracks().forEach(track => track.stop());
+      return;
+    }
+
+    speakingIsRequestingPermission = false;
+    speakingStream = stream;
     speakingChunks = [];
     const supportedType = ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"]
       .find(type => MediaRecorder.isTypeSupported?.(type));
@@ -1485,6 +1762,7 @@ async function startSpeakingRecording() {
       speakingStream = null;
       btnStartSpeakingRecording.disabled = false;
       btnStopSpeakingRecording.disabled = true;
+      btnStopSpeakingRecording.textContent = "Dừng ghi âm";
       btnNextSpeaking.disabled = false;
     });
 
@@ -1492,13 +1770,19 @@ async function startSpeakingRecording() {
     speakingRecordingTimer = setTimeout(stopSpeakingRecording, 25000);
     btnStartSpeakingRecording.disabled = true;
     btnStopSpeakingRecording.disabled = false;
+    btnStopSpeakingRecording.textContent = "Dừng ghi âm";
     btnNextSpeaking.disabled = true;
     speakingStatusEl.textContent = "Đang ghi âm… Nói câu tiếng Trung rồi bấm Dừng ghi âm.";
   } catch (error) {
+    if (requestId !== speakingPermissionRequestId) return;
+
+    speakingIsRequestingPermission = false;
     speakingStream?.getTracks().forEach(track => track.stop());
     speakingStream = null;
     btnStartSpeakingRecording.disabled = false;
     btnStopSpeakingRecording.disabled = true;
+    btnStopSpeakingRecording.textContent = "Dừng ghi âm";
+    btnNextSpeaking.disabled = false;
     speakingStatusEl.textContent = error.name === "NotAllowedError"
       ? "Chưa được cấp quyền micro. Hãy cho phép Safari sử dụng micro rồi thử lại."
       : "Không mở được micro. Hãy kiểm tra quyền truy cập và thử lại.";
@@ -1508,6 +1792,17 @@ async function startSpeakingRecording() {
 function stopSpeakingRecording() {
   clearTimeout(speakingRecordingTimer);
   speakingRecordingTimer = null;
+  if (speakingIsRequestingPermission) {
+    speakingPermissionRequestId++;
+    speakingIsRequestingPermission = false;
+    btnStartSpeakingRecording.disabled = false;
+    btnStopSpeakingRecording.disabled = true;
+    btnStopSpeakingRecording.textContent = "Dừng ghi âm";
+    btnNextSpeaking.disabled = false;
+    speakingStatusEl.textContent = "Đã hủy yêu cầu truy cập micro.";
+    return;
+  }
+
   if (speakingRecorder?.state === "recording") {
     speakingRecorder.stop();
   }
@@ -1584,7 +1879,6 @@ studyModeEl.addEventListener("change", () => {
   applyStudyMode();
 });
 
-topicFilterEl.addEventListener("change", applyStudyMode);
 dataSourceEl.addEventListener("change", () => {
   updateTopicOptions();
   updateStudyModeAvailability();
@@ -1698,7 +1992,7 @@ function showTypingScreen() {
 
 function showReadingScreen() {
   if (getReadingQuestions(getFilteredWords()).length === 0) {
-    alert("Bộ từ hiện tại chưa có câu ví dụ phù hợp để luyện đọc điền từ!");
+    alert("Bộ từ hiện tại chưa có câu ví dụ hoặc câu trả lời phù hợp để luyện đọc điền từ!");
     return;
   }
 
@@ -1739,7 +2033,7 @@ document.addEventListener("keydown", (event) => {
       if (currentQuestion) speakChinese(currentQuestion.question);
     } else if (currentMode === "reading") {
       const currentWord = readingQuestions[currentReadingIndex];
-      if (currentWord) speakChinese(currentWord.example);
+      if (currentWord) speakChinese(currentWord.sentence);
     } else if (currentMode === "speaking") {
       const currentWord = speakingQuestions[currentSpeakingIndex];
       if (currentWord) speakChinese(currentWord.example || currentWord.word);
@@ -1788,7 +2082,7 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (currentMode === "question-answer" && questionAnswerAnswered
-    && questionAnswerModeEl.value === "multiple-choice") {
+    && ["multiple-choice", "chinese-choice"].includes(questionAnswerModeEl.value)) {
     event.preventDefault();
     btnNextQuestionAnswer.click();
     return;
@@ -1801,25 +2095,39 @@ document.addEventListener("keydown", (event) => {
     return;
   }
 
-  if (currentMode === "reading" && !btnCheckReading.disabled) {
+  if (currentMode === "reading" && readingAnswered && !btnCheckReading.disabled) {
     event.preventDefault();
     btnCheckReading.click();
-    if (!readingInputEl.disabled) {
-      requestAnimationFrame(() => readingInputEl.focus());
-    }
+    return;
+  }
+
+  if (currentMode === "reading" && readingAnswerModeEl.value === "typing"
+    && document.activeElement === readingInputEl && !btnCheckReading.disabled) {
+    event.preventDefault();
+    btnCheckReading.click();
   }
 });
 
 async function initApp() {
-  allWords = await loadWords();
-  allQuestionAnswers = loadQuestionAnswers(allWords);
-  updateDataSourceOptions();
-  updateTopicOptions();
-  updateStudyModeAvailability();
-  updateSelectedWordCount();
-  topicFilterEl.classList.toggle("hidden", studyModeEl.value !== "topic");
-  topicFilterLabelEl.classList.toggle("hidden", studyModeEl.value !== "topic");
-  showMatchingScreen();
+  try {
+    allWords = await loadWords();
+    if (allWords.length === 0) {
+      throw new Error("Không tìm thấy dữ liệu từ vựng.");
+    }
+
+    allQuestionAnswers = loadQuestionAnswers(allWords);
+    updateDataSourceOptions();
+    updateTopicOptions();
+    updateStudyModeAvailability();
+    updateSelectedWordCount();
+    topicFilterEl.classList.toggle("hidden", studyModeEl.value !== "topic");
+    topicFilterLabelEl.classList.toggle("hidden", studyModeEl.value !== "topic");
+    showMatchingScreen();
+  } catch (error) {
+    console.error("Không thể khởi chạy ứng dụng:", error);
+    appLoadErrorEl.textContent = "Không thể tải dữ liệu từ vựng. Hãy kiểm tra dữ liệu hoặc kết nối rồi tải lại trang.";
+    appLoadErrorEl.classList.remove("hidden");
+  }
 }
 
 // Khởi chạy ứng dụng lần đầu

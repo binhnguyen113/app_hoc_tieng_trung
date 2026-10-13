@@ -11,6 +11,8 @@
 <body>
 
   <div class="app-container">
+    <p id="app-load-error" class="app-load-error hidden" role="alert"></p>
+
     <header class="app-header">
       <div>
         <p class="eyebrow">每日习汉语</p>
@@ -59,6 +61,13 @@
           <option value="phrase">Ôn theo cụm từ</option>
           <option value="number">Ôn theo số từ</option>
           <option value="pronoun">Ôn theo đại từ</option>
+          <option value="adverb">Ôn theo trạng từ</option>
+          <option value="particle">Ôn theo trợ từ</option>
+          <option value="measure-word">Ôn theo lượng từ</option>
+          <option value="conjunction">Ôn theo liên từ</option>
+          <option value="interjection">Ôn theo thán từ</option>
+          <option value="prefix">Ôn theo tiền tố</option>
+          <option value="suffix">Ôn theo hậu tố</option>
         </select>
         <span id="topic-filter-label" class="topic-filter-label">Chủ đề</span>
         <div id="topic-filter" class="topic-filter hidden">
@@ -84,14 +93,15 @@
             <h2 id="matching-progress">0 / 6 cặp đúng</h2>
           </div>
           <p id="matching-feedback" class="matching-feedback" aria-live="polite"></p>
+          <button class="btn pinyin-toggle" id="btn-toggle-matching-pinyin" type="button" aria-controls="matching-pinyin-column" aria-expanded="true">Ẩn pinyin</button>
         </div>
 
-        <div class="matching-grid">
+        <div class="matching-grid" id="matching-grid">
           <section class="matching-column">
             <h3>Tiếng Trung</h3>
             <div id="matching-chinese" class="matching-options"></div>
           </section>
-          <section class="matching-column">
+          <section class="matching-column" id="matching-pinyin-column">
             <h3>Pinyin</h3>
             <div id="matching-pinyin" class="matching-options"></div>
           </section>
@@ -177,9 +187,11 @@
         <button class="btn btn-primary btn-full" id="btn-replay-question-answer" type="button">🔊 Nghe lại câu hỏi</button>
         <label class="typing-label" for="question-answer-mode">Kiểu trả lời</label>
         <select id="question-answer-mode" class="typing-direction">
-          <option value="multiple-choice">Chọn nghĩa tiếng Việt của câu trả lời</option>
+          <option value="multiple-choice">Chọn câu trả lời tiếng Việt</option>
+          <option value="chinese-choice">Chọn câu trả lời tiếng Trung</option>
           <option value="chinese">Gõ câu trả lời bằng tiếng Trung</option>
         </select>
+        <button class="btn pinyin-toggle hidden" id="btn-toggle-question-answer-pinyin" type="button" aria-controls="question-answer-options" aria-pressed="true">Ẩn pinyin</button>
         <div id="question-answer-typing-area" class="hidden">
           <label class="typing-label" for="question-answer-input">Gõ câu trả lời bằng tiếng Trung</label>
           <input id="question-answer-input" type="text" class="typing-input" placeholder="Nhập câu trả lời tiếng Trung..." autocomplete="off" />
@@ -228,7 +240,15 @@
         </div>
         <p class="typing-label">Đọc câu tiếng Trung và điền từ còn thiếu</p>
         <p class="reading-sentence" id="reading-sentence"></p>
+        <p class="quiz-phonetic reading-pinyin" id="reading-pinyin"></p>
+        <button class="btn pinyin-toggle" id="btn-toggle-reading-pinyin" type="button" aria-controls="reading-pinyin" aria-expanded="true">Ẩn pinyin</button>
+        <label class="typing-label" for="reading-answer-mode">Cách trả lời</label>
+        <select id="reading-answer-mode" class="typing-direction">
+          <option value="choice">Chọn đáp án vào chỗ trống</option>
+          <option value="typing">Gõ từ còn thiếu</option>
+        </select>
         <input id="reading-input" type="text" class="typing-input reading-input" placeholder="Nhập từ tiếng Trung..." autocomplete="off" />
+        <div class="quiz-options hidden" id="reading-options"></div>
         <label class="typing-pronunciation-option">
           <input id="reading-pronunciation-enabled" type="checkbox" />
           Phát âm đáp án sau khi kiểm tra
