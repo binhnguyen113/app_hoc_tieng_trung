@@ -159,6 +159,9 @@ const quizProgressEl = document.getElementById("quiz-progress");
 const btnNextQuiz = document.getElementById("btn-next-quiz");
 const btnQuizSpeak = document.getElementById("btn-quiz-speak");
 const quizPracticeModeEl = document.getElementById("quiz-practice-mode");
+const quizPinyinVisibleEl = document.getElementById("quiz-pinyin-visible");
+const quizExampleVisibleEl = document.getElementById("quiz-example-visible");
+const quizExampleOptionEl = document.getElementById("quiz-example-option");
 const listeningScoreEl = document.getElementById("listening-score");
 const listeningProgressEl = document.getElementById("listening-progress");
 const listeningPromptEl = document.getElementById("listening-prompt");
@@ -179,6 +182,7 @@ const questionAnswerQuestionTextEl = document.getElementById("question-answer-qu
 const questionAnswerQuestionPinyinEl = document.getElementById("question-answer-question-pinyin");
 const questionAnswerQuestionMeaningEl = document.getElementById("question-answer-question-meaning");
 const questionAnswerModeEl = document.getElementById("question-answer-mode");
+const btnToggleQuestionAnswerQuestion = document.getElementById("btn-toggle-question-answer-question");
 const btnToggleQuestionAnswerPinyin = document.getElementById("btn-toggle-question-answer-pinyin");
 const questionAnswerTypingAreaEl = document.getElementById("question-answer-typing-area");
 const questionAnswerInputEl = document.getElementById("question-answer-input");
@@ -252,7 +256,8 @@ let matchingIsLocked = false;
 let matchingResetTimeout = null;
 let matchingPinyinVisible = true;
 let questionAnswerPinyinVisible = true;
-let readingPinyinVisible = true;
+let questionAnswerQuestionVisible = false;
+let readingPinyinVisible = false;
 
 function shuffleList(list) {
   const shuffled = [...list];
@@ -502,6 +507,18 @@ function getQuizAnswerText(word) {
     : word.meaning;
 }
 
+function updateQuizHints() {
+  quizPhoneticEl.classList.toggle("hidden", !quizPinyinVisibleEl.checked);
+  quizExampleEl.querySelectorAll(".example-pinyin").forEach(pinyin => {
+    pinyin.classList.toggle("hidden", !quizPinyinVisibleEl.checked);
+  });
+  quizExampleEl.classList.toggle(
+    "quiz-example-hidden",
+    quizPracticeMode === "example" || !quizExampleVisibleEl.checked
+  );
+  quizExampleOptionEl.classList.toggle("hidden", quizPracticeMode === "example");
+}
+
 function loadQuizQuestion() {
   if (currentQuizIndex >= quizQuestions.length) {
     if (quizRoundMistakes.length > 0) {
@@ -540,7 +557,7 @@ function loadQuizQuestion() {
       quizExampleEl.append(lineBreak, examplePinyin);
     }
   }
-  quizExampleEl.classList.toggle("quiz-example-hidden", isExamplePractice);
+  updateQuizHints();
   quizProgressEl.textContent = quizIsRetryRound
     ? `Còn sai: ${quizTotalQuestions - quizCorrectIds.size} câu`
     : `Câu ${currentQuizIndex + 1} / ${quizQuestions.length}`;
@@ -655,6 +672,8 @@ quizPracticeModeEl.addEventListener("change", () => {
   quizPracticeMode = quizPracticeModeEl.value;
   startQuiz();
 });
+quizPinyinVisibleEl.addEventListener("change", updateQuizHints);
+quizExampleVisibleEl.addEventListener("change", updateQuizHints);
 
 const MALE_MANDARIN_VOICE_HINTS = ["yunxi", "yunyang", "yunfeng", "kangkang"];
 
@@ -869,6 +888,7 @@ function startQuestionAnswerPractice(shouldShuffle = false, showAlert = true) {
       questionAnswerOptionsEl.replaceChildren();
       questionAnswerOptionsEl.classList.remove("hidden");
       questionAnswerTypingAreaEl.classList.add("hidden");
+      btnToggleQuestionAnswerQuestion.classList.add("hidden");
       btnToggleQuestionAnswerPinyin.classList.add("hidden");
       questionAnswerReviewEl.classList.add("hidden");
       btnNextQuestionAnswer.classList.add("hidden");
@@ -905,6 +925,7 @@ function loadQuestionAnswer() {
       questionAnswerPromptEl.textContent = "Bạn đã hoàn thành lượt hỏi đáp!";
       questionAnswerTypingAreaEl.classList.add("hidden");
       questionAnswerOptionsEl.classList.remove("hidden");
+      btnToggleQuestionAnswerQuestion.classList.add("hidden");
       btnToggleQuestionAnswerPinyin.classList.add("hidden");
       renderRestartButton(questionAnswerOptionsEl, "Làm lại hỏi đáp", () => startQuestionAnswerPractice());
       btnNextQuestionAnswer.classList.add("hidden");
@@ -927,6 +948,10 @@ function loadQuestionAnswer() {
   questionAnswerOptionsEl.replaceChildren();
   questionAnswerTypingAreaEl.classList.toggle("hidden", !isTypingAnswer);
   questionAnswerOptionsEl.classList.toggle("hidden", isTypingAnswer);
+  questionAnswerQuestionVisible = false;
+  btnToggleQuestionAnswerQuestion.classList.toggle("hidden", !isTypingAnswer);
+  btnToggleQuestionAnswerQuestion.textContent = "Hiển thị câu hỏi";
+  btnToggleQuestionAnswerQuestion.setAttribute("aria-expanded", "false");
   btnToggleQuestionAnswerPinyin.classList.toggle("hidden", !isChineseChoice);
   btnToggleQuestionAnswerPinyin.textContent = questionAnswerPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
   btnToggleQuestionAnswerPinyin.setAttribute("aria-pressed", String(questionAnswerPinyinVisible));
@@ -934,7 +959,9 @@ function loadQuestionAnswer() {
   questionAnswerReviewEl.classList.add("hidden");
   questionAnswerQuestionTextEl.textContent = "";
   questionAnswerQuestionPinyinEl.textContent = "";
+  questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
   questionAnswerQuestionMeaningEl.textContent = "";
+  questionAnswerQuestionMeaningEl.classList.add("hidden");
   setFeedback(questionAnswerFeedbackEl, "");
 
   if (isTypingAnswer) {
@@ -1016,8 +1043,13 @@ function recordQuestionAnswer(isCorrect) {
 
   questionAnswerQuestionTextEl.textContent = currentQuestion.question;
   questionAnswerQuestionPinyinEl.textContent = currentQuestion.questionPinyin;
+  questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
   questionAnswerQuestionMeaningEl.textContent = currentQuestion.questionMeaning;
+  questionAnswerQuestionMeaningEl.classList.remove("hidden");
   questionAnswerReviewEl.classList.remove("hidden");
+  questionAnswerQuestionVisible = true;
+  btnToggleQuestionAnswerQuestion.classList.add("hidden");
+  btnToggleQuestionAnswerPinyin.classList.toggle("hidden", questionAnswerModeEl.value !== "chinese" && questionAnswerModeEl.value !== "chinese-choice");
   questionAnswerAnswered = true;
   updateQuestionAnswerRetryCount();
 }
@@ -1074,6 +1106,19 @@ function advanceQuestionAnswer() {
 }
 
 btnNextQuestionAnswer.addEventListener("click", advanceQuestionAnswer);
+btnToggleQuestionAnswerQuestion.addEventListener("click", () => {
+  const currentQuestion = questionAnswerQuestions[currentQuestionAnswerIndex];
+  if (!currentQuestion || questionAnswerAnswered) return;
+
+  questionAnswerQuestionVisible = !questionAnswerQuestionVisible;
+  questionAnswerReviewEl.classList.toggle("hidden", !questionAnswerQuestionVisible);
+  questionAnswerQuestionTextEl.textContent = questionAnswerQuestionVisible ? currentQuestion.question : "";
+  questionAnswerQuestionPinyinEl.textContent = questionAnswerQuestionVisible ? currentQuestion.questionPinyin : "";
+  questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
+  btnToggleQuestionAnswerQuestion.textContent = questionAnswerQuestionVisible ? "Ẩn câu hỏi" : "Hiển thị câu hỏi";
+  btnToggleQuestionAnswerQuestion.setAttribute("aria-expanded", String(questionAnswerQuestionVisible));
+  btnToggleQuestionAnswerPinyin.classList.toggle("hidden", !questionAnswerQuestionVisible);
+});
 btnToggleQuestionAnswerPinyin.addEventListener("click", () => {
   questionAnswerPinyinVisible = !questionAnswerPinyinVisible;
   btnToggleQuestionAnswerPinyin.textContent = questionAnswerPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
@@ -1081,6 +1126,7 @@ btnToggleQuestionAnswerPinyin.addEventListener("click", () => {
   questionAnswerOptionsEl.querySelectorAll(".answer-option-pinyin").forEach(pinyin => {
     pinyin.classList.toggle("hidden", !questionAnswerPinyinVisible);
   });
+  questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
 });
 questionAnswerModeEl.addEventListener("change", () => {
   if (getFilteredQuestionAnswers().length < 4) {

@@ -128,9 +128,19 @@
         <button class="btn btn-primary btn-full" id="btn-quiz-speak" type="button">🔊 Phát âm</button>
         <label class="typing-label" for="quiz-practice-mode">Chế độ Quiz</label>
         <select id="quiz-practice-mode" class="typing-direction">
-          <option value="word">Từ vựng: chọn nghĩa của từ</option>
-          <option value="example">Ví dụ: chọn nghĩa của câu</option>
+          <option value="word">Cơ bản: chọn nghĩa của từ</option>
+          <option value="example">Nâng cao: chọn nghĩa của câu ví dụ</option>
         </select>
+        <div class="quiz-hint-options" id="quiz-hint-options">
+          <label class="quiz-hint-option" id="quiz-pinyin-option">
+            <input id="quiz-pinyin-visible" type="checkbox" checked />
+            Hiện pinyin
+          </label>
+          <label class="quiz-hint-option" id="quiz-example-option">
+            <input id="quiz-example-visible" type="checkbox" checked />
+            Hiện câu ví dụ
+          </label>
+        </div>
         
         <div class="quiz-options" id="quiz-options">
         </div>
@@ -187,13 +197,13 @@
         <button class="btn btn-primary btn-full" id="btn-replay-question-answer" type="button">🔊 Nghe lại câu hỏi</button>
         <label class="typing-label" for="question-answer-mode">Kiểu trả lời</label>
         <select id="question-answer-mode" class="typing-direction">
-          <option value="multiple-choice">Chọn câu trả lời tiếng Việt</option>
-          <option value="chinese-choice">Chọn câu trả lời tiếng Trung</option>
-          <option value="chinese">Gõ câu trả lời bằng tiếng Trung</option>
+          <option value="multiple-choice">Cơ bản: chọn nghĩa tiếng Việt</option>
+          <option value="chinese-choice">Trung cấp: chọn câu tiếng Trung</option>
+          <option value="chinese">Nâng cao: tự gõ câu tiếng Trung</option>
         </select>
-        <button class="btn pinyin-toggle hidden" id="btn-toggle-question-answer-pinyin" type="button" aria-controls="question-answer-options" aria-pressed="true">Ẩn pinyin</button>
+        <button class="btn hidden" id="btn-toggle-question-answer-question" type="button" aria-controls="question-answer-review" aria-expanded="false">Hiển thị câu hỏi</button>
+        <button class="btn pinyin-toggle hidden" id="btn-toggle-question-answer-pinyin" type="button" aria-controls="question-answer-options question-answer-review" aria-pressed="true">Ẩn pinyin</button>
         <div id="question-answer-typing-area" class="hidden">
-          <label class="typing-label" for="question-answer-input">Gõ câu trả lời bằng tiếng Trung</label>
           <input id="question-answer-input" type="text" class="typing-input" placeholder="Nhập câu trả lời tiếng Trung..." autocomplete="off" />
           <button class="btn btn-primary btn-full" id="btn-check-question-answer" type="button">Kiểm tra</button>
         </div>
@@ -241,11 +251,11 @@
         <p class="typing-label">Đọc câu tiếng Trung và điền từ còn thiếu</p>
         <p class="reading-sentence" id="reading-sentence"></p>
         <p class="quiz-phonetic reading-pinyin" id="reading-pinyin"></p>
-        <button class="btn pinyin-toggle" id="btn-toggle-reading-pinyin" type="button" aria-controls="reading-pinyin" aria-expanded="true">Ẩn pinyin</button>
+        <button class="btn pinyin-toggle" id="btn-toggle-reading-pinyin" type="button" aria-controls="reading-pinyin" aria-expanded="false">Hiện pinyin</button>
         <label class="typing-label" for="reading-answer-mode">Cách trả lời</label>
         <select id="reading-answer-mode" class="typing-direction">
-          <option value="choice">Chọn đáp án vào chỗ trống</option>
-          <option value="typing">Gõ từ còn thiếu</option>
+          <option value="choice">Cơ bản: chọn từ còn thiếu</option>
+          <option value="typing">Nâng cao: tự gõ từ còn thiếu</option>
         </select>
         <input id="reading-input" type="text" class="typing-input reading-input" placeholder="Nhập từ tiếng Trung..." autocomplete="off" />
         <div class="quiz-options hidden" id="reading-options"></div>
