@@ -162,6 +162,7 @@ const quizPracticeModeEl = document.getElementById("quiz-practice-mode");
 const quizPinyinVisibleEl = document.getElementById("quiz-pinyin-visible");
 const quizExampleVisibleEl = document.getElementById("quiz-example-visible");
 const quizExampleOptionEl = document.getElementById("quiz-example-option");
+const quizAutoSpeakEl = document.getElementById("quiz-auto-speak");
 const listeningScoreEl = document.getElementById("listening-score");
 const listeningProgressEl = document.getElementById("listening-progress");
 const listeningPromptEl = document.getElementById("listening-prompt");
@@ -583,6 +584,10 @@ function loadQuizQuestion() {
     btn.onclick = () => selectQuizAnswer(opt.id, currentQ.id, btn);
     quizOptionsEl.appendChild(btn);
   });
+
+  if (quizAutoSpeakEl.checked) {
+    speakChinese(isExamplePractice ? currentQ.example : currentQ.word, 2);
+  }
 }
 
 function formatWordType(type) {
@@ -690,16 +695,18 @@ function getMandarinVoice() {
   }) || chineseVoices[0] || mandarinVoices[0];
 }
 
-function speakChinese(text) {
+function speakChinese(text, repeatCount = 1) {
   if (!('speechSynthesis' in window)) return;
 
   window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "zh-CN";
-  utterance.rate = 0.8;
-  const chineseVoice = getMandarinVoice();
-  if (chineseVoice) utterance.voice = chineseVoice;
-  window.speechSynthesis.speak(utterance);
+  for (let i = 0; i < repeatCount; i++) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "zh-CN";
+    utterance.rate = repeatCount > 1 ? 0.9 : 0.8;
+    const chineseVoice = getMandarinVoice();
+    if (chineseVoice) utterance.voice = chineseVoice;
+    window.speechSynthesis.speak(utterance);
+  }
 }
 
 function formatChineseAnswer(chineseText, phoneticText) {
