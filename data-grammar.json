@@ -662,6 +662,69 @@
           { "vietnamese": "Chúng tôi nói chuyện nửa tiếng.", "chinese": "我们聊了半个小时。", "pinyin": "Wǒmen liáo le bàn gè xiǎoshí." },
           { "vietnamese": "Tôi đợi bạn hai tiếng rồi.", "chinese": "我等你两个小时了。", "pinyin": "Wǒ děng nǐ liǎng gè xiǎoshí le." }
         ]
+      },
+      {
+        "id": "hsk2-31",
+        "order": 31,
+        "title": "Cấu trúc chữ '是...的'",
+        "structure": "Chủ ngữ + 是 + thời gian/địa điểm/phương thức + động từ + 的",
+        "explanation": "Dùng để nhấn mạnh thời gian, địa điểm, phương thức hoặc chủ thể của một hành động đã xảy ra trong quá khứ.",
+        "examples": [
+          {
+            "chinese": "我是坐飞机来的。",
+            "pinyin": "Wǒ shì zuò fēijī lái de.",
+            "meaning": "Tôi đi máy bay đến."
+          }
+        ],
+        "practice": [
+          { "vietnamese": "Anh ấy đến vào ngày hôm qua.", "chinese": "他是昨天来的。", "pinyin": "Tā shì zuótiān lái de." },
+          { "vietnamese": "Tôi học tiếng Trung ở trường đại học.", "chinese": "我是在大学学习汉语的。", "pinyin": "Wǒ shì zài dàxué xuéxí Hànyǔ de." },
+          { "vietnamese": "Bạn đi đến Trung Quốc bằng cách nào?", "chinese": "你是怎么去中国的？", "pinyin": "Nǐ shì zěnme qù Zhōngguó de?" },
+          { "vietnamese": "Bạn sinh vào năm nào?", "chinese": "你是哪年出生的？", "pinyin": "Nǐ shì nǎ nián chūshēng de?" },
+          { "vietnamese": "Cuốn sách này tôi mua ở hiệu sách.", "chinese": "这本书是我在书店买的。", "pinyin": "Zhè běn shū shì wǒ zài shūdiàn mǎi de." }
+        ]
+      },
+      {
+        "id": "hsk2-32",
+        "order": 32,
+        "title": "Số xấp xỉ với 多 và 左右",
+        "structure": "Số từ + Lượng từ + Danh từ + 多  hoặc  Số từ + Lượng từ + 左右",
+        "explanation": "多 (đặt sau lượng từ nếu số nhỏ hơn 10, hoặc sau chục/trăm) và 左右 (đặt sau cụm số lượng từ) dùng để chỉ số lượng xấp xỉ, khoảng chừng.",
+        "examples": [
+          {
+            "chinese": "我有二十多本书。",
+            "pinyin": "Wǒ yǒu èrshí duō běn shū.",
+            "meaning": "Tôi có hơn hai mươi quyển sách."
+          }
+        ],
+        "practice": [
+          { "vietnamese": "Tôi có hơn hai mươi quyển sách.", "chinese": "我有二十多本书。", "pinyin": "Wǒ yǒu èrshí duō běn shū." },
+          { "vietnamese": "Cái này có giá khoảng một trăm tệ.", "chinese": "这个一百块钱左右。", "pinyin": "Zhè gè yì bǎi kuài qián zuǒyòu." },
+          { "vietnamese": "Ở đây có hơn ba mươi học sinh.", "chinese": "这里有三十多个学生。", "pinyin": "Zhè lǐ yǒu sānshí duō gè xuésheng." },
+          { "vietnamese": "Tôi chờ anh ấy khoảng nửa tiếng.", "chinese": "我等了他半个小时左右。", "pinyin": "Wǒ děng le tā bàn gè xiǎoshí zuǒyòu." },
+          { "vietnamese": "Anh ấy mua khoảng mười quả táo.", "chinese": "他买了十个苹果左右。", "pinyin": "Tā mǎi le shí gè píngguǒ zuǒyòu." }
+        ]
+      },
+      {
+        "id": "hsk2-33",
+        "order": 33,
+        "title": "Phủ định cầu khiến, khuyên can với 别",
+        "structure": "别 + động từ / tính từ",
+        "explanation": "别 dùng để khuyên can, ngăn cản ai đó làm việc gì, mang nghĩa “đừng”.",
+        "examples": [
+          {
+            "chinese": "别说话！",
+            "pinyin": "Bié shuōhuà!",
+            "meaning": "Đừng nói chuyện!"
+          }
+        ],
+        "practice": [
+          { "vietnamese": "Đừng nói chuyện!", "chinese": "别说话！", "pinyin": "Bié shuōhuà!" },
+          { "vietnamese": "Đừng uống quá nhiều cà phê.", "chinese": "别喝太多咖啡。", "pinyin": "Bié hē tài duō kāfēi." },
+          { "vietnamese": "Trời mưa rồi, đừng đi nữa.", "chinese": "下雨了，别去了。", "pinyin": "Xià yǔ le, bié qù le." },
+          { "vietnamese": "Đừng lo lắng, tôi có thể giúp bạn.", "chinese": "别担心，我能帮你。", "pinyin": "Bié dānxīn, wǒ néng bāng nǐ." },
+          { "vietnamese": "Đừng đọc sách nữa, đi ngủ thôi.", "chinese": "别看书了，睡觉吧。", "pinyin": "Bié kàn shū le, shuìjiào ba." }
+        ]
       }
     ]
   }
