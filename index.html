@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ứng Dụng Ôn Từ Vựng Tiếng Trung</title>
+  <title>Ứng Dụng Ôn Tiếng Trung</title>
   <link rel="stylesheet" href="style.css">
   <!-- Font giao diện tiếng Việt và font chữ Hán -->
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,10 +31,11 @@
         <button class="btn-primary small" id="question-answer-mode-btn" type="button" aria-pressed="false">5. 💬 Hỏi đáp</button>
         <button class="btn-primary small" id="reading-mode-btn" type="button" aria-pressed="false">6. 📖 Đọc</button>
         <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">7. 🎙️ Luyện nói</button>
+        <button class="btn-primary small" id="grammar-mode-btn" type="button" aria-pressed="false">8. 🧩 Ngữ pháp</button>
       </nav>
     </header>
 
-    <div class="study-panel">
+    <div class="study-panel" id="vocabulary-study-panel">
       <div class="panel-header">
         <span>Chế độ ôn tập</span>
         <div class="panel-actions">
@@ -297,6 +298,76 @@
         <audio id="speaking-playback" class="speaking-playback hidden" controls playsinline></audio>
         <button class="btn btn-primary btn-full" id="btn-next-speaking" type="button">Câu tiếp theo ➡</button>
       </div>
+    </div>
+
+    <div id="grammar-screen" class="screen hidden">
+      <section class="grammar-panel" aria-labelledby="grammar-heading">
+        <div class="grammar-controls">
+          <label>
+            Cấp độ
+            <select id="grammar-level">
+              <option value="HSK1">HSK1</option>
+              <option value="HSK2">HSK2</option>
+            </select>
+          </label>
+          <label>
+            Chủ đề
+            <select id="grammar-topic"></select>
+          </label>
+          <label>
+            Bài học
+            <select id="grammar-lesson"></select>
+          </label>
+        </div>
+
+        <p id="grammar-error" class="app-load-error hidden" role="alert"></p>
+
+        <article id="grammar-lesson-content" class="grammar-lesson">
+          <p id="grammar-lesson-meta" class="grammar-kicker"></p>
+          <h2 id="grammar-heading"></h2>
+          <div class="grammar-structure">
+            <span>Mẫu câu</span>
+            <p id="grammar-structure"></p>
+          </div>
+          <p id="grammar-explanation" class="grammar-explanation"></p>
+          <section class="grammar-examples" aria-labelledby="grammar-examples-heading">
+            <h3 id="grammar-examples-heading">Ví dụ</h3>
+            <div id="grammar-examples-list"></div>
+          </section>
+          <button id="grammar-start-practice" class="btn btn-primary btn-full" type="button">Bắt đầu luyện tập</button>
+        </article>
+
+        <section id="grammar-practice" class="grammar-practice hidden" aria-live="polite">
+          <div class="grammar-practice-header">
+            <span id="grammar-practice-progress"></span>
+            <span>Điểm: <strong id="grammar-practice-score">0</strong></span>
+          </div>
+          <p class="grammar-practice-label">Dịch câu sau sang tiếng Trung</p>
+          <p id="grammar-practice-prompt" class="grammar-practice-prompt"></p>
+          <label for="grammar-answer" class="grammar-answer-label">Câu trả lời</label>
+          <textarea id="grammar-answer" rows="2" autocomplete="off" lang="zh" placeholder="Nhập câu tiếng Trung..."></textarea>
+          <p class="grammar-keyboard-hint">Nhấn Enter để kiểm tra · Shift+Enter để xuống dòng</p>
+          <p id="grammar-practice-feedback" class="grammar-feedback" role="status"></p>
+          <div id="grammar-practice-reference" class="grammar-reference hidden">
+            <p id="grammar-reference-answer" class="grammar-reference-answer"></p>
+            <p id="grammar-reference-pinyin" class="grammar-reference-pinyin"></p>
+          </div>
+          <div class="grammar-practice-actions">
+            <button id="grammar-check-answer" class="btn btn-primary" type="button">Kiểm tra</button>
+            <button id="grammar-reveal-answer" class="btn" type="button">Hiện đáp án</button>
+            <button id="grammar-next-question" class="btn btn-primary hidden" type="button">Câu tiếp theo</button>
+          </div>
+        </section>
+
+        <section id="grammar-completion" class="grammar-completion hidden" aria-live="polite">
+          <h3>Hoàn thành bài luyện!</h3>
+          <p id="grammar-completion-score"></p>
+          <div class="grammar-practice-actions">
+            <button id="grammar-retry-practice" class="btn btn-primary" type="button">Luyện lại bài này</button>
+            <button id="grammar-next-lesson" class="btn" type="button">Bài tiếp theo</button>
+          </div>
+        </section>
+      </section>
     </div>
 
   </div>

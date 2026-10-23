@@ -73,6 +73,69 @@ async function loadWords() {
   return loadedSources.flat();
 }
 
+async function loadGrammarLessons() {
+  const response = await fetch("./data-grammar.json");
+  if (!response.ok) {
+    throw new Error(`Không đọc được data-grammar.json (HTTP ${response.status})`);
+  }
+
+  const data = await response.json();
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw new TypeError("Dữ liệu ngữ pháp phải được nhóm theo cấp độ.");
+  }
+
+  const lessons = Object.entries(data).flatMap(([level, topics]) => {
+    if (!topics || typeof topics !== "object" || Array.isArray(topics)) {
+      throw new TypeError(`Danh sách chủ đề ${level} không hợp lệ.`);
+    }
+
+    return Object.entries(topics).flatMap(([topic, topicLessons]) => {
+      if (!Array.isArray(topicLessons)) {
+        throw new TypeError(`Danh sách bài học ${topic} (${level}) không hợp lệ.`);
+      }
+
+      return topicLessons.map((lesson, index) => {
+        if (!lesson || typeof lesson !== "object" || Array.isArray(lesson)
+          || typeof lesson.id !== "string" || !lesson.id.trim()
+          || typeof lesson.title !== "string" || !lesson.title.trim()
+          || !Number.isInteger(lesson.order) || lesson.order < 1
+          || typeof lesson.structure !== "string"
+          || typeof lesson.explanation !== "string"
+          || !Array.isArray(lesson.examples) || !Array.isArray(lesson.practice)
+          || lesson.practice.length === 0) {
+          throw new TypeError(`Bài ${index + 1} trong chủ đề ${topic} (${level}) không hợp lệ.`);
+        }
+
+        lesson.examples.forEach((example, exampleIndex) => {
+          if (!example || typeof example.chinese !== "string"
+            || typeof example.pinyin !== "string" || typeof example.meaning !== "string") {
+            throw new TypeError(`Ví dụ ${exampleIndex + 1} trong bài ${lesson.id} không hợp lệ.`);
+          }
+        });
+        lesson.practice.forEach((practice, practiceIndex) => {
+          if (!practice || typeof practice.vietnamese !== "string" || !practice.vietnamese.trim()
+            || typeof practice.chinese !== "string" || !practice.chinese.trim()
+            || typeof practice.pinyin !== "string") {
+            throw new TypeError(`Câu luyện ${practiceIndex + 1} trong bài ${lesson.id} không hợp lệ.`);
+          }
+        });
+
+        return { ...lesson, level, topic };
+      });
+    });
+  });
+
+  const lessonIds = new Set();
+  lessons.forEach(lesson => {
+    if (lessonIds.has(lesson.id)) {
+      throw new TypeError(`Mã bài ngữ pháp bị trùng: ${lesson.id}`);
+    }
+    lessonIds.add(lesson.id);
+  });
+
+  return lessons.sort((first, second) => first.order - second.order);
+}
+
 function loadQuestionAnswers(words) {
   return words.flatMap((word, index) => {
     if (!word.answerChinese || !word.example) return [];
@@ -94,6 +157,13 @@ function loadQuestionAnswers(words) {
 
 let allWords = [];
 let allQuestionAnswers = [];
+let grammarLessons = [];
+let currentGrammarPracticeIndex = 0;
+let grammarPracticeQuestions = [];
+let grammarPracticeMistakes = [];
+let grammarPracticeCorrectIds = new Set();
+let grammarPracticeIsRetryRound = false;
+let grammarPracticeAnswered = false;
 
 // Quiz State
 let quizScore = 0;
@@ -125,6 +195,36 @@ const typingScreen = document.getElementById("typing-screen");
 const readingScreen = document.getElementById("reading-screen");
 const speakingModeBtn = document.getElementById("speaking-mode-btn");
 const speakingScreen = document.getElementById("speaking-screen");
+const grammarModeBtn = document.getElementById("grammar-mode-btn");
+const grammarScreen = document.getElementById("grammar-screen");
+const vocabularyStudyPanel = document.getElementById("vocabulary-study-panel");
+const grammarLevelEl = document.getElementById("grammar-level");
+const grammarTopicEl = document.getElementById("grammar-topic");
+const grammarLessonEl = document.getElementById("grammar-lesson");
+const grammarErrorEl = document.getElementById("grammar-error");
+const grammarLessonContentEl = document.getElementById("grammar-lesson-content");
+const grammarLessonMetaEl = document.getElementById("grammar-lesson-meta");
+const grammarHeadingEl = document.getElementById("grammar-heading");
+const grammarStructureEl = document.getElementById("grammar-structure");
+const grammarExplanationEl = document.getElementById("grammar-explanation");
+const grammarExamplesListEl = document.getElementById("grammar-examples-list");
+const grammarStartPracticeBtn = document.getElementById("grammar-start-practice");
+const grammarPracticeEl = document.getElementById("grammar-practice");
+const grammarPracticeProgressEl = document.getElementById("grammar-practice-progress");
+const grammarPracticeScoreEl = document.getElementById("grammar-practice-score");
+const grammarPracticePromptEl = document.getElementById("grammar-practice-prompt");
+const grammarAnswerEl = document.getElementById("grammar-answer");
+const grammarPracticeFeedbackEl = document.getElementById("grammar-practice-feedback");
+const grammarPracticeReferenceEl = document.getElementById("grammar-practice-reference");
+const grammarReferenceAnswerEl = document.getElementById("grammar-reference-answer");
+const grammarReferencePinyinEl = document.getElementById("grammar-reference-pinyin");
+const grammarCheckAnswerBtn = document.getElementById("grammar-check-answer");
+const grammarRevealAnswerBtn = document.getElementById("grammar-reveal-answer");
+const grammarNextQuestionBtn = document.getElementById("grammar-next-question");
+const grammarCompletionEl = document.getElementById("grammar-completion");
+const grammarCompletionScoreEl = document.getElementById("grammar-completion-score");
+const grammarRetryPracticeBtn = document.getElementById("grammar-retry-practice");
+const grammarNextLessonBtn = document.getElementById("grammar-next-lesson");
 
 const selectedWordCountEl = document.getElementById("selected-word-count");
 const appLoadErrorEl = document.getElementById("app-load-error");
@@ -1938,6 +2038,229 @@ dataSourceEl.addEventListener("change", () => {
   applyStudyMode();
 });
 
+function getSelectedGrammarLesson() {
+  return grammarLessons.find(lesson => lesson.id === grammarLessonEl.value);
+}
+
+function updateGrammarLessonOptions(selectedLessonId) {
+  const lessons = grammarLessons.filter(lesson =>
+    lesson.level === grammarLevelEl.value && lesson.topic === grammarTopicEl.value
+  );
+  grammarLessonEl.replaceChildren(...lessons.map(lesson =>
+    new Option(`${lesson.order}. ${lesson.title}`, lesson.id)
+  ));
+
+  if (lessons.length > 0) {
+    grammarLessonEl.value = lessons.some(lesson => lesson.id === selectedLessonId)
+      ? selectedLessonId
+      : lessons[0].id;
+  }
+}
+
+function updateGrammarTopics(selectedTopic) {
+  const topics = [...new Set(grammarLessons
+    .filter(lesson => lesson.level === grammarLevelEl.value)
+    .map(lesson => lesson.topic))];
+  grammarTopicEl.replaceChildren(...topics.map(topic => new Option(topic, topic)));
+
+  if (topics.length > 0) {
+    grammarTopicEl.value = topics.includes(selectedTopic) ? selectedTopic : topics[0];
+  }
+  updateGrammarLessonOptions();
+}
+
+function resetGrammarPractice() {
+  grammarPracticeEl.classList.add("hidden");
+  grammarCompletionEl.classList.add("hidden");
+  grammarPracticeAnswered = false;
+  currentGrammarPracticeIndex = 0;
+  grammarPracticeQuestions = [];
+  grammarPracticeMistakes = [];
+  grammarPracticeCorrectIds = new Set();
+  grammarPracticeIsRetryRound = false;
+}
+
+function renderGrammarLesson() {
+  resetGrammarPractice();
+  const lesson = getSelectedGrammarLesson();
+  grammarLessonContentEl.classList.toggle("hidden", !lesson);
+  grammarStartPracticeBtn.disabled = !lesson;
+  if (!lesson) return;
+
+  grammarLessonMetaEl.textContent = `${lesson.level} · ${lesson.topic} · Bài ${lesson.order}`;
+  grammarHeadingEl.textContent = lesson.title;
+  grammarStructureEl.textContent = lesson.structure;
+  grammarExplanationEl.textContent = lesson.explanation;
+  grammarExamplesListEl.replaceChildren();
+
+  lesson.examples.forEach(example => {
+    const item = document.createElement("article");
+    item.className = "grammar-example";
+
+    const chinese = document.createElement("p");
+    chinese.className = "grammar-example-chinese";
+    chinese.lang = "zh";
+    chinese.textContent = example.chinese;
+
+    const pinyin = document.createElement("p");
+    pinyin.className = "grammar-example-pinyin";
+    pinyin.textContent = example.pinyin;
+
+    const meaning = document.createElement("p");
+    meaning.className = "grammar-example-meaning";
+    meaning.textContent = example.meaning;
+
+    item.append(chinese, pinyin, meaning);
+    grammarExamplesListEl.appendChild(item);
+  });
+}
+
+function renderGrammarPracticeQuestion() {
+  const lesson = getSelectedGrammarLesson();
+  if (!lesson) return;
+
+  if (currentGrammarPracticeIndex >= grammarPracticeQuestions.length) {
+    if (grammarPracticeMistakes.length > 0) {
+      grammarPracticeQuestions = [...grammarPracticeMistakes];
+      grammarPracticeMistakes = [];
+      grammarPracticeIsRetryRound = true;
+      currentGrammarPracticeIndex = 0;
+    } else {
+      grammarPracticeEl.classList.add("hidden");
+      grammarCompletionEl.classList.remove("hidden");
+      grammarCompletionScoreEl.textContent =
+        `Bạn đã trả lời đúng hết ${grammarPracticeCorrectIds.size} câu.`;
+      const lessonIndex = grammarLessons.findIndex(item => item.id === lesson.id);
+      grammarNextLessonBtn.disabled = lessonIndex >= grammarLessons.length - 1;
+      grammarNextLessonBtn.textContent = grammarNextLessonBtn.disabled
+        ? "Đã hết bài"
+        : "Bài tiếp theo";
+      grammarRetryPracticeBtn.focus();
+      return;
+    }
+  }
+
+  const practice = grammarPracticeQuestions[currentGrammarPracticeIndex];
+  grammarPracticeAnswered = false;
+  grammarPracticeProgressEl.textContent = grammarPracticeIsRetryRound
+    ? `Còn sai: ${lesson.practice.length - grammarPracticeCorrectIds.size} câu`
+    : `Câu ${currentGrammarPracticeIndex + 1} / ${grammarPracticeQuestions.length}`;
+  grammarPracticeScoreEl.textContent =
+    `${grammarPracticeCorrectIds.size} / ${lesson.practice.length}`;
+  grammarPracticePromptEl.textContent = practice.vietnamese;
+  grammarAnswerEl.value = "";
+  grammarAnswerEl.disabled = false;
+  grammarPracticeFeedbackEl.textContent = "";
+  grammarPracticeFeedbackEl.className = "grammar-feedback";
+  grammarPracticeReferenceEl.classList.add("hidden");
+  grammarReferenceAnswerEl.textContent = practice.chinese;
+  grammarReferencePinyinEl.textContent = practice.pinyin;
+  grammarCheckAnswerBtn.classList.remove("hidden");
+  grammarCheckAnswerBtn.disabled = false;
+  grammarRevealAnswerBtn.classList.remove("hidden");
+  grammarNextQuestionBtn.classList.add("hidden");
+  grammarAnswerEl.focus();
+}
+
+function startGrammarPractice() {
+  const lesson = getSelectedGrammarLesson();
+  if (!lesson || lesson.practice.length === 0) return;
+
+  currentGrammarPracticeIndex = 0;
+  grammarPracticeQuestions = [...lesson.practice];
+  grammarPracticeMistakes = [];
+  grammarPracticeCorrectIds = new Set();
+  grammarPracticeIsRetryRound = false;
+  grammarLessonContentEl.classList.add("hidden");
+  grammarCompletionEl.classList.add("hidden");
+  grammarPracticeEl.classList.remove("hidden");
+  renderGrammarPracticeQuestion();
+}
+
+function revealGrammarAnswer(isCorrect, wasChecked = true) {
+  const practice = grammarPracticeQuestions[currentGrammarPracticeIndex];
+  if (!practice) return;
+
+  grammarPracticeAnswered = true;
+  grammarAnswerEl.disabled = true;
+  grammarPracticeReferenceEl.classList.remove("hidden");
+  grammarCheckAnswerBtn.classList.add("hidden");
+  grammarRevealAnswerBtn.classList.add("hidden");
+  grammarNextQuestionBtn.classList.remove("hidden");
+  grammarPracticeFeedbackEl.className = wasChecked
+    ? isCorrect ? "grammar-feedback is-correct" : "grammar-feedback is-incorrect"
+    : "grammar-feedback";
+  grammarPracticeFeedbackEl.textContent = !wasChecked
+    ? "Đáp án tham khảo (không tính điểm)."
+    : isCorrect
+      ? "Chính xác!"
+      : "Chưa chính xác. Hãy xem đáp án tham khảo bên dưới.";
+  grammarNextQuestionBtn.focus();
+}
+
+function checkGrammarAnswer() {
+  if (grammarPracticeAnswered) return;
+  if (!grammarAnswerEl.value.trim()) {
+    grammarPracticeFeedbackEl.className = "grammar-feedback is-incorrect";
+    grammarPracticeFeedbackEl.textContent = "Hãy nhập câu trả lời trước khi kiểm tra.";
+    grammarAnswerEl.focus();
+    return;
+  }
+
+  const lesson = getSelectedGrammarLesson();
+  const practice = grammarPracticeQuestions[currentGrammarPracticeIndex];
+  if (!practice) return;
+
+  const isCorrect = normalizeChineseAnswer(grammarAnswerEl.value)
+    === normalizeChineseAnswer(practice.chinese);
+  if (isCorrect) {
+    grammarPracticeCorrectIds.add(practice);
+  } else if (!grammarPracticeMistakes.includes(practice)) {
+    grammarPracticeMistakes.push(practice);
+  }
+  revealGrammarAnswer(isCorrect);
+  grammarPracticeScoreEl.textContent =
+    `${grammarPracticeCorrectIds.size} / ${lesson.practice.length}`;
+}
+
+function advanceGrammarPractice() {
+  if (!grammarPracticeAnswered) return;
+  currentGrammarPracticeIndex++;
+  renderGrammarPracticeQuestion();
+}
+
+function goToNextGrammarLesson() {
+  const currentLessonIndex = grammarLessons.findIndex(lesson => lesson.id === grammarLessonEl.value);
+  const nextLesson = grammarLessons[currentLessonIndex + 1];
+  if (!nextLesson) return;
+
+  grammarLevelEl.value = nextLesson.level;
+  updateGrammarTopics(nextLesson.topic);
+  updateGrammarLessonOptions(nextLesson.id);
+  renderGrammarLesson();
+}
+
+grammarLevelEl.addEventListener("change", () => {
+  updateGrammarTopics();
+  renderGrammarLesson();
+});
+grammarTopicEl.addEventListener("change", () => {
+  updateGrammarLessonOptions();
+  renderGrammarLesson();
+});
+grammarLessonEl.addEventListener("change", renderGrammarLesson);
+grammarStartPracticeBtn.addEventListener("click", startGrammarPractice);
+grammarCheckAnswerBtn.addEventListener("click", checkGrammarAnswer);
+grammarAnswerEl.addEventListener("keydown", event => {
+  if (event.key !== "Enter" || event.shiftKey || event.isComposing || event.keyCode === 229) return;
+  event.preventDefault();
+  checkGrammarAnswer();
+});
+grammarRevealAnswerBtn.addEventListener("click", () => revealGrammarAnswer(false, false));
+grammarNextQuestionBtn.addEventListener("click", advanceGrammarPractice);
+grammarRetryPracticeBtn.addEventListener("click", startGrammarPractice);
+grammarNextLessonBtn.addEventListener("click", goToNextGrammarLesson);
+
 btnShuffle.addEventListener("click", shuffleWords);
 
 let currentMode = "matching";
@@ -1949,7 +2272,8 @@ const studyScreens = [
   questionAnswerScreen,
   typingScreen,
   readingScreen,
-  speakingScreen
+  speakingScreen,
+  grammarScreen
 ];
 const studyModeButtons = [
   [matchingModeBtn, "matching"],
@@ -1958,7 +2282,8 @@ const studyModeButtons = [
   [listeningModeBtn, "listening"],
   [questionAnswerModeBtn, "question-answer"],
   [readingModeBtn, "reading"],
-  [speakingModeBtn, "speaking"]
+  [speakingModeBtn, "speaking"],
+  [grammarModeBtn, "grammar"]
 ];
 
 function setHeaderMenuOpen(isOpen) {
@@ -1987,6 +2312,7 @@ document.addEventListener("keydown", event => {
 function setActiveScreen(activeScreen, mode) {
   if (currentMode === "speaking" && mode !== "speaking") stopSpeakingRecording();
   currentMode = mode;
+  vocabularyStudyPanel.classList.toggle("hidden", mode === "grammar");
   studyScreens.forEach(screen => screen.classList.toggle("hidden", screen !== activeScreen));
   studyModeButtons.forEach(([button, buttonMode]) => {
     const isActive = buttonMode === mode;
@@ -2058,6 +2384,11 @@ function showSpeakingScreen() {
   startSpeakingPractice();
 }
 
+function showGrammarScreen() {
+  setActiveScreen(grammarScreen, "grammar");
+  renderGrammarLesson();
+}
+
 matchingModeBtn.addEventListener("click", showMatchingScreen);
 quizModeBtn.addEventListener("click", showQuizScreen);
 typingModeBtn.addEventListener("click", showTypingScreen);
@@ -2065,6 +2396,7 @@ listeningModeBtn.addEventListener("click", showListeningScreen);
 questionAnswerModeBtn.addEventListener("click", showQuestionAnswerScreen);
 readingModeBtn.addEventListener("click", showReadingScreen);
 speakingModeBtn.addEventListener("click", showSpeakingScreen);
+grammarModeBtn.addEventListener("click", showGrammarScreen);
 
 document.addEventListener("keydown", (event) => {
   const isSpeakShortcut = (event.ctrlKey || event.metaKey)
@@ -2175,6 +2507,25 @@ async function initApp() {
     updateSelectedWordCount();
     topicFilterEl.classList.toggle("hidden", studyModeEl.value !== "topic");
     topicFilterLabelEl.classList.toggle("hidden", studyModeEl.value !== "topic");
+
+    try {
+      grammarLessons = await loadGrammarLessons();
+      if (grammarLessons.length === 0) {
+        throw new Error("Không tìm thấy bài ngữ pháp nào.");
+      }
+      updateGrammarTopics();
+      renderGrammarLesson();
+    } catch (error) {
+      console.error("Không thể tải dữ liệu ngữ pháp:", error);
+      grammarErrorEl.textContent =
+        "Không thể tải dữ liệu ngữ pháp. Hãy kiểm tra data-grammar.json rồi tải lại trang.";
+      grammarErrorEl.classList.remove("hidden");
+      grammarLevelEl.disabled = true;
+      grammarTopicEl.disabled = true;
+      grammarLessonEl.disabled = true;
+      grammarStartPracticeBtn.disabled = true;
+    }
+
     showMatchingScreen();
   } catch (error) {
     console.error("Không thể khởi chạy ứng dụng:", error);
