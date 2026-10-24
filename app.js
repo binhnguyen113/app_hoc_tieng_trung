@@ -1,5 +1,6 @@
 const DATA_SOURCES = [
-  { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" }
+  { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" },
+  { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
 
 function normalizeWordRecord(item, topic, id) {
@@ -30,11 +31,16 @@ function normalizeWordRecord(item, topic, id) {
 }
 
 function normalizeWordRecords(data) {
-  if (!Array.isArray(data)) {
+  const records = Array.isArray(data)
+    ? data
+    : data && typeof data === "object" && !Array.isArray(data) && Array.isArray(data.words)
+      ? [data]
+      : null;
+  if (!records) {
     throw new TypeError("Dữ liệu từ vựng phải là một danh sách.");
   }
 
-  return data.flatMap((item, index) => {
+  return records.flatMap((item, index) => {
     if (!item || typeof item !== "object" || Array.isArray(item)) {
       throw new TypeError(`Bản ghi từ vựng thứ ${index + 1} không hợp lệ.`);
     }
@@ -927,22 +933,27 @@ btnCheckListening.addEventListener("click", () => {
     ? normalizeAnswer(listeningInputEl.value)
     : normalizeChineseAnswer(listeningInputEl.value);
   const isCorrect = correctValues.includes(inputValue);
-  const correctAnswer = isVietnameseAnswer
-    ? currentWord.meaning
-    : isExampleMode
-      ? formatChineseAnswer(currentWord.example, currentWord.examplePhonetic)
-      : formatChineseAnswer(currentWord.word, currentWord.phonetic);
+  const correctChinese = isExampleMode ? currentWord.example : currentWord.word;
+  const correctPinyin = isExampleMode ? currentWord.examplePhonetic : currentWord.phonetic;
+  const correctMeaning = isExampleMode ? currentWord.exampleMeaning : currentWord.meaning;
 
   if (isCorrect) {
     listeningCorrectIds.add(currentWord.id);
     listeningScore = listeningCorrectIds.size;
     listeningScoreEl.textContent = listeningScore;
-    setFeedback(listeningFeedbackEl, `✅ Đúng! ${correctAnswer}`, true);
+    const feedback = isVietnameseAnswer
+      ? `✅ Đúng! Chữ Hán: ${formatChineseAnswer(correctChinese, correctPinyin)}`
+      : `✅ Đúng! Nghĩa tiếng Việt: ${correctMeaning}`;
+    setFeedback(listeningFeedbackEl, feedback, true);
   } else {
     if (!listeningRoundMistakes.some(word => word.id === currentWord.id)) {
       listeningRoundMistakes.push(currentWord);
     }
-    setFeedback(listeningFeedbackEl, `❌ Sai. Đáp án đúng là: ${correctAnswer}`, false);
+    setFeedback(
+      listeningFeedbackEl,
+      `❌ Sai. Đáp án đúng là: ${correctChinese} - ${correctMeaning}`,
+      false
+    );
   }
 
   listeningAnswered = true;
