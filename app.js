@@ -285,9 +285,11 @@ const questionAnswerScoreEl = document.getElementById("question-answer-score");
 const questionAnswerProgressEl = document.getElementById("question-answer-progress");
 const questionAnswerPromptEl = document.getElementById("question-answer-prompt");
 const questionAnswerReviewEl = document.getElementById("question-answer-review");
+const questionAnswerReviewLabelEl = document.getElementById("question-answer-review-label");
 const questionAnswerQuestionTextEl = document.getElementById("question-answer-question-text");
 const questionAnswerQuestionPinyinEl = document.getElementById("question-answer-question-pinyin");
 const questionAnswerQuestionMeaningEl = document.getElementById("question-answer-question-meaning");
+const questionAnswerAnswerMeaningEl = document.getElementById("question-answer-answer-meaning");
 const questionAnswerModeEl = document.getElementById("question-answer-mode");
 const btnToggleQuestionAnswerQuestion = document.getElementById("btn-toggle-question-answer-question");
 const btnToggleQuestionAnswerPinyin = document.getElementById("btn-toggle-question-answer-pinyin");
@@ -1068,7 +1070,9 @@ function loadQuestionAnswer() {
   questionAnswerOptionsEl.classList.toggle("hidden", isTypingAnswer);
   questionAnswerQuestionVisible = false;
   btnToggleQuestionAnswerQuestion.classList.toggle("hidden", !isTypingAnswer);
-  btnToggleQuestionAnswerQuestion.textContent = "Hiển thị câu hỏi";
+  btnToggleQuestionAnswerQuestion.textContent = isTypingAnswer
+    ? "Hiển thị nghĩa tiếng Việt của câu trả lời"
+    : "Hiển thị câu hỏi";
   btnToggleQuestionAnswerQuestion.setAttribute("aria-expanded", "false");
   btnToggleQuestionAnswerPinyin.classList.toggle("hidden", !isChineseChoice);
   btnToggleQuestionAnswerPinyin.textContent = questionAnswerPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
@@ -1080,6 +1084,9 @@ function loadQuestionAnswer() {
   questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
   questionAnswerQuestionMeaningEl.textContent = "";
   questionAnswerQuestionMeaningEl.classList.add("hidden");
+  questionAnswerReviewLabelEl.textContent = "Câu hỏi";
+  questionAnswerAnswerMeaningEl.textContent = "";
+  questionAnswerAnswerMeaningEl.classList.add("hidden");
   setFeedback(questionAnswerFeedbackEl, "");
 
   if (isTypingAnswer) {
@@ -1164,6 +1171,9 @@ function recordQuestionAnswer(isCorrect) {
   questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
   questionAnswerQuestionMeaningEl.textContent = currentQuestion.questionMeaning;
   questionAnswerQuestionMeaningEl.classList.remove("hidden");
+  questionAnswerReviewLabelEl.textContent = "Câu hỏi";
+  questionAnswerAnswerMeaningEl.textContent = "";
+  questionAnswerAnswerMeaningEl.classList.add("hidden");
   questionAnswerReviewEl.classList.remove("hidden");
   questionAnswerQuestionVisible = true;
   btnToggleQuestionAnswerQuestion.classList.add("hidden");
@@ -1230,9 +1240,26 @@ btnToggleQuestionAnswerQuestion.addEventListener("click", () => {
 
   questionAnswerQuestionVisible = !questionAnswerQuestionVisible;
   questionAnswerReviewEl.classList.toggle("hidden", !questionAnswerQuestionVisible);
+  if (questionAnswerModeEl.value === "chinese") {
+    questionAnswerReviewLabelEl.textContent = "Nghĩa tiếng Việt của câu trả lời";
+    questionAnswerQuestionTextEl.textContent = "";
+    questionAnswerQuestionPinyinEl.textContent = "";
+    questionAnswerQuestionMeaningEl.textContent = "";
+    questionAnswerAnswerMeaningEl.textContent = questionAnswerQuestionVisible ? currentQuestion.answerMeaning : "";
+    questionAnswerAnswerMeaningEl.classList.toggle("hidden", !questionAnswerQuestionVisible);
+    btnToggleQuestionAnswerQuestion.textContent = questionAnswerQuestionVisible
+      ? "Ẩn nghĩa tiếng Việt của câu trả lời"
+      : "Hiển thị nghĩa tiếng Việt của câu trả lời";
+    btnToggleQuestionAnswerQuestion.setAttribute("aria-expanded", String(questionAnswerQuestionVisible));
+    return;
+  }
+
+  questionAnswerReviewLabelEl.textContent = "Câu hỏi";
   questionAnswerQuestionTextEl.textContent = questionAnswerQuestionVisible ? currentQuestion.question : "";
   questionAnswerQuestionPinyinEl.textContent = questionAnswerQuestionVisible ? currentQuestion.questionPinyin : "";
   questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
+  questionAnswerAnswerMeaningEl.textContent = "";
+  questionAnswerAnswerMeaningEl.classList.add("hidden");
   btnToggleQuestionAnswerQuestion.textContent = questionAnswerQuestionVisible ? "Ẩn câu hỏi" : "Hiển thị câu hỏi";
   btnToggleQuestionAnswerQuestion.setAttribute("aria-expanded", String(questionAnswerQuestionVisible));
   btnToggleQuestionAnswerPinyin.classList.toggle("hidden", !questionAnswerQuestionVisible);
