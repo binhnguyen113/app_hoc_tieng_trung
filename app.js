@@ -1,5 +1,5 @@
 const DATA_SOURCES = [
-  { id: "hsk", label: "Tiếng Trung HSK1-2", file: "./data-hsk.json" },
+  { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk.json" },
   { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
 
@@ -943,17 +943,18 @@ btnCheckListening.addEventListener("click", () => {
     listeningCorrectIds.add(currentWord.id);
     listeningScore = listeningCorrectIds.size;
     listeningScoreEl.textContent = listeningScore;
-    const feedback = isVietnameseAnswer
-      ? `✅ Đúng! Chữ Hán: ${formatChineseAnswer(correctChinese, correctPinyin)}`
-      : `✅ Đúng! Nghĩa tiếng Việt: ${correctMeaning}`;
-    setFeedback(listeningFeedbackEl, feedback, true);
+    setFeedback(
+      listeningFeedbackEl,
+      `✅ Đúng! ${formatChineseAnswer(correctChinese, correctPinyin)} — ${correctMeaning}`,
+      true
+    );
   } else {
     if (!listeningRoundMistakes.some(word => word.id === currentWord.id)) {
       listeningRoundMistakes.push(currentWord);
     }
     setFeedback(
       listeningFeedbackEl,
-      `❌ Sai. Đáp án đúng là: ${correctChinese} - ${correctMeaning}`,
+      `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(correctChinese, correctPinyin)} — ${correctMeaning}`,
       false
     );
   }
