@@ -1,6 +1,6 @@
 const DATA_SOURCES = [
-  { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk.json" },
-  { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
+  { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk1.json" },
+  //{ id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
 
 function normalizeWordRecord(item, topic, id) {
@@ -19,10 +19,10 @@ function normalizeWordRecord(item, topic, id) {
     topic,
     word: item.word,
     type: item.type.toLowerCase(),
-    phonetic: item.phonetic || "",
+    pinyin: item.pinyin || "",
     meaning: item.meaning || "",
     example: item.example || "",
-    examplePhonetic: item.examplePhonetic || "",
+    examplePinyin: item.examplePinyin || "",
     exampleMeaning: item.exampleMeaning || "",
     answerChinese: item.answerChinese || "",
     answerPinyin: item.answerPinyin || "",
@@ -152,7 +152,7 @@ function loadQuestionAnswers(words) {
       topic: word.topic,
       targetWord: word.word,
       question: word.example,
-      questionPinyin: word.examplePhonetic,
+      questionPinyin: word.examplePinyin,
       questionMeaning: word.exampleMeaning,
       answerChinese: word.answerChinese,
       answerPinyin: word.answerPinyin,
@@ -401,13 +401,13 @@ function startMatching() {
   matchingWords = [];
   const usedValues = {
     word: new Set(),
-    phonetic: new Set(),
+    pinyin: new Set(),
     meaning: new Set()
   };
 
   for (const word of shuffleList(filteredWords)) {
-    const values = [word.word, word.phonetic, word.meaning];
-    const fields = ["word", "phonetic", "meaning"];
+    const values = [word.word, word.pinyin, word.meaning];
+    const fields = ["word", "pinyin", "meaning"];
     if (fields.some((field, index) => usedValues[field].has(values[index]))) continue;
 
     matchingWords.push(word);
@@ -423,7 +423,7 @@ function startMatching() {
 function renderMatchingBoard() {
   const columns = [
     [matchingChineseEl, "word"],
-    [matchingPinyinEl, "phonetic"],
+    [matchingPinyinEl, "pinyin"],
     [matchingVietnameseEl, "meaning"]
   ];
 
@@ -458,7 +458,7 @@ function selectMatchingOption(field, id, button) {
   button.classList.add("selected");
 
   const requiredFields = matchingPinyinVisible
-    ? ["word", "phonetic", "meaning"]
+    ? ["word", "pinyin", "meaning"]
     : ["word", "meaning"];
   if (requiredFields.some(requiredField => !matchingSelections[requiredField])) return;
 
@@ -653,16 +653,16 @@ function loadQuizQuestion() {
   quizWordEl.textContent = isExamplePractice ? currentQ.example : currentQ.word;
   quizWordTypeEl.textContent = isExamplePractice ? "Câu ví dụ" : formatWordType(currentQ.type);
   quizPhoneticEl.textContent = isExamplePractice
-    ? (currentQ.examplePhonetic || "")
-    : (currentQ.phonetic || "");
+    ? (currentQ.examplePinyin || "")
+    : (currentQ.pinyin || "");
   quizExampleEl.replaceChildren();
   if (!isExamplePractice && currentQ.example) {
     quizExampleEl.append(`Ví dụ: "${currentQ.example}"`);
-    if (currentQ.examplePhonetic) {
+    if (currentQ.examplePinyin) {
       const lineBreak = document.createElement("br");
       const examplePinyin = document.createElement("span");
       examplePinyin.className = "example-pinyin";
-      examplePinyin.textContent = currentQ.examplePhonetic;
+      examplePinyin.textContent = currentQ.examplePinyin;
       quizExampleEl.append(lineBreak, examplePinyin);
     }
   }
@@ -936,7 +936,7 @@ btnCheckListening.addEventListener("click", () => {
     : normalizeChineseAnswer(listeningInputEl.value);
   const isCorrect = correctValues.includes(inputValue);
   const correctChinese = isExampleMode ? currentWord.example : currentWord.word;
-  const correctPinyin = isExampleMode ? currentWord.examplePhonetic : currentWord.phonetic;
+  const correctPinyin = isExampleMode ? currentWord.examplePinyin : currentWord.pinyin;
   const correctMeaning = isExampleMode ? currentWord.exampleMeaning : currentWord.meaning;
 
   if (isCorrect) {
@@ -1492,7 +1492,7 @@ btnCheckTyping.addEventListener("click", () => {
   const currentWord = typingQuestions[currentTypingIndex];
   const isExampleMode = typingContentModeEl.value === "example";
   const chineseText = isExampleMode ? currentWord.example : currentWord.word;
-  const phoneticText = isExampleMode ? currentWord.examplePhonetic : currentWord.phonetic;
+  const phoneticText = isExampleMode ? currentWord.examplePinyin : currentWord.pinyin;
   const correctValues = chineseText
     .split(",")
     .map(normalizeChineseAnswer);
@@ -1582,7 +1582,7 @@ function getReadingQuestions(words) {
     {
       id: `${word.id}-example`,
       sentence: word.example,
-      sentencePinyin: word.examplePhonetic
+      sentencePinyin: word.examplePinyin
     },
     {
       id: `${word.id}-answer`,
@@ -1638,7 +1638,7 @@ function getPinyinRangeForWord(sentencePinyin, wordPinyin) {
 }
 
 function renderReadingPinyin(currentWord) {
-  const pinyinRange = getPinyinRangeForWord(currentWord.sentencePinyin, currentWord.phonetic);
+  const pinyinRange = getPinyinRangeForWord(currentWord.sentencePinyin, currentWord.pinyin);
   const canShowPinyin = Boolean(currentWord.sentencePinyin && pinyinRange);
   readingPinyinEl.replaceChildren();
 
@@ -1662,7 +1662,7 @@ function updateReadingAnswerFeedback() {
   const currentWord = readingQuestions[currentReadingIndex];
   if (!currentWord || readingAnswerWasCorrect === null) return;
 
-  const pinyin = readingPinyinVisible ? currentWord.phonetic : "";
+  const pinyin = readingPinyinVisible ? currentWord.pinyin : "";
   const prefix = readingAnswerWasCorrect ? "✅ Đúng! Đáp án: " : "❌ Sai. Đáp án đúng là: ";
   setFeedback(
     readingFeedbackEl,
@@ -1731,11 +1731,11 @@ function renderReadingQuestion() {
       chinese.textContent = option.word;
       button.appendChild(chinese);
 
-      if (option.phonetic) {
+      if (option.pinyin) {
         const pinyin = document.createElement("span");
         pinyin.className = "answer-option-pinyin reading-option-pinyin";
         pinyin.classList.toggle("hidden", !readingPinyinVisible);
-        pinyin.textContent = option.phonetic;
+        pinyin.textContent = option.pinyin;
         button.appendChild(pinyin);
       }
       button.addEventListener("click", () => selectReadingAnswer(option.word, button));
@@ -1893,9 +1893,9 @@ function renderSpeakingQuestion() {
   speakingProgressEl.textContent = `Câu ${currentSpeakingIndex + 1} / ${speakingQuestions.length}`;
   speakingPromptEl.textContent = `Hãy nói một câu tiếng Trung có nghĩa: ${currentWord.exampleMeaning || currentWord.meaning}`;
   speakingTargetEl.textContent = currentWord.word;
-  speakingPhoneticEl.textContent = currentWord.phonetic || "";
+  speakingPhoneticEl.textContent = currentWord.pinyin || "";
   speakingSampleEl.textContent = currentWord.example || currentWord.word;
-  speakingSamplePhoneticEl.textContent = currentWord.examplePhonetic || currentWord.phonetic || "";
+  speakingSamplePhoneticEl.textContent = currentWord.examplePinyin || currentWord.pinyin || "";
   speakingStatusEl.textContent = "Bấm ghi âm, nói câu tiếng Trung rồi nghe lại.";
   btnStartSpeakingRecording.disabled = false;
   btnStopSpeakingRecording.disabled = true;
