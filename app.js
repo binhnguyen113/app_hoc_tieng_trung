@@ -1841,11 +1841,27 @@ btnToggleReadingPinyin.addEventListener("click", () => {
   btnToggleReadingPinyin.setAttribute("aria-expanded", String(readingPinyinVisible));
 });
 
-function startSpeakingPractice(shouldShuffle = false) {
+function startSpeakingPractice(shouldShuffle = true) {
   stopSpeakingRecording();
   speakingShouldShuffle = shouldShuffle;
-  const filteredWords = getFilteredWords();
-  speakingQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
+  const questionAnswers = getFilteredQuestionAnswers();
+  const speakingItems = questionAnswers.flatMap(question => [
+    {
+      id: `${question.id}-question`,
+      type: "câu hỏi",
+      meaning: question.questionMeaning,
+      sentence: question.question,
+      pinyin: question.questionPinyin
+    },
+    {
+      id: `${question.id}-answer`,
+      type: "câu trả lời",
+      meaning: question.answerMeaning,
+      sentence: question.answerChinese,
+      pinyin: question.answerPinyin
+    }
+  ]).filter(item => item.meaning && item.sentence);
+  speakingQuestions = shouldShuffle ? shuffleList(speakingItems) : speakingItems;
   currentSpeakingIndex = 0;
   speakingIsComplete = false;
   btnNextSpeaking.textContent = "Câu tiếp theo ➡";
@@ -1876,8 +1892,8 @@ function renderSpeakingQuestion() {
     speakingIsComplete = true;
     speakingProgressEl.textContent = "Đã hoàn thành";
     speakingPromptEl.textContent = speakingQuestions.length
-      ? "Bạn đã luyện xong bộ từ này."
-      : "Không có từ nào trong bộ lọc hiện tại.";
+      ? "Bạn đã luyện xong các câu hỏi và câu trả lời."
+      : "Không có câu hỏi hoặc câu trả lời phù hợp trong bộ lọc hiện tại.";
     speakingTargetEl.textContent = "";
     speakingPhoneticEl.textContent = "";
     speakingSampleEl.textContent = "";
@@ -1891,11 +1907,11 @@ function renderSpeakingQuestion() {
 
   speakingIsComplete = false;
   speakingProgressEl.textContent = `Câu ${currentSpeakingIndex + 1} / ${speakingQuestions.length}`;
-  speakingPromptEl.textContent = `Hãy nói một câu tiếng Trung có nghĩa: ${currentWord.exampleMeaning || currentWord.meaning}`;
-  speakingTargetEl.textContent = currentWord.word;
-  speakingPhoneticEl.textContent = currentWord.pinyin || "";
-  speakingSampleEl.textContent = currentWord.example || currentWord.word;
-  speakingSamplePhoneticEl.textContent = currentWord.examplePinyin || currentWord.pinyin || "";
+  speakingPromptEl.textContent = `Hãy nói ${currentWord.type} tiếng Trung theo gợi ý:`;
+  speakingTargetEl.textContent = currentWord.meaning;
+  speakingPhoneticEl.textContent = "";
+  speakingSampleEl.textContent = currentWord.sentence;
+  speakingSamplePhoneticEl.textContent = currentWord.pinyin || "";
   speakingStatusEl.textContent = "Bấm ghi âm, nói câu tiếng Trung rồi nghe lại.";
   btnStartSpeakingRecording.disabled = false;
   btnStopSpeakingRecording.disabled = true;
@@ -2007,7 +2023,7 @@ btnRevealSpeakingAnswer.addEventListener("click", () => {
 
 btnSpeakSpeakingAnswer.addEventListener("click", () => {
   const currentWord = speakingQuestions[currentSpeakingIndex];
-  if (currentWord) speakChinese(currentWord.example || currentWord.word);
+  if (currentWord) speakChinese(currentWord.sentence);
 });
 
 btnStartSpeakingRecording.addEventListener("click", startSpeakingRecording);
@@ -2419,6 +2435,11 @@ function showReadingScreen() {
 }
 
 function showSpeakingScreen() {
+  if (getFilteredQuestionAnswers().length === 0) {
+    alert("Không có câu hỏi hoặc câu trả lời trong bộ lọc hiện tại để luyện nói!");
+    return;
+  }
+
   setActiveScreen(speakingScreen, "speaking");
   startSpeakingPractice();
 }
