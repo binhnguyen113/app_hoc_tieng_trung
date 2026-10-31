@@ -1,6 +1,6 @@
 const DATA_SOURCES = [
-  { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk.json" },
-  //{ id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
+  { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk1.json" },
+  { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
 
 function normalizeWordRecord(item, topic, id) {
