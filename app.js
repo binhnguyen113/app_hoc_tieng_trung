@@ -1,6 +1,6 @@
 const DATA_SOURCES = [
   { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk1.json" },
-  //{ id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
+  { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
 
 function normalizeWordRecord(item, topic, id) {
@@ -193,12 +193,14 @@ const typingModeBtn = document.getElementById("typing-mode-btn");
 const listeningModeBtn = document.getElementById("listening-mode-btn");
 const questionAnswerModeBtn = document.getElementById("question-answer-mode-btn");
 const readingModeBtn = document.getElementById("reading-mode-btn");
+const sentenceBuildModeBtn = document.getElementById("sentence-build-mode-btn");
 const matchingScreen = document.getElementById("matching-screen");
 const quizScreen = document.getElementById("quiz-screen");
 const listeningScreen = document.getElementById("listening-screen");
 const questionAnswerScreen = document.getElementById("question-answer-screen");
 const typingScreen = document.getElementById("typing-screen");
 const readingScreen = document.getElementById("reading-screen");
+const sentenceBuildScreen = document.getElementById("sentence-build-screen");
 const speakingModeBtn = document.getElementById("speaking-mode-btn");
 const speakingScreen = document.getElementById("speaking-screen");
 const grammarModeBtn = document.getElementById("grammar-mode-btn");
@@ -306,6 +308,7 @@ const typingContentModeEl = document.getElementById("typing-content-mode");
 const typingPromptEl = document.getElementById("typing-prompt");
 const typingWordEl = document.getElementById("typing-word");
 const typingPhoneticEl = document.getElementById("typing-phonetic");
+const btnSpeakTyping = document.getElementById("btn-speak-typing");
 const typingInputLabelEl = document.getElementById("typing-input-label");
 const typingInputEl = document.getElementById("typing-input");
 const typingPronunciationEnabledEl = document.getElementById("typing-pronunciation-enabled");
@@ -322,6 +325,19 @@ const readingOptionsEl = document.getElementById("reading-options");
 const readingPronunciationEnabledEl = document.getElementById("reading-pronunciation-enabled");
 const btnCheckReading = document.getElementById("btn-check-reading");
 const readingFeedbackEl = document.getElementById("reading-feedback");
+const sentenceBuildScoreEl = document.getElementById("sentence-build-score");
+const sentenceBuildProgressEl = document.getElementById("sentence-build-progress");
+const sentenceBuildMeaningEl = document.getElementById("sentence-build-meaning");
+const sentenceBuildWordHintEl = document.getElementById("sentence-build-word-hint");
+const btnSpeakSentenceBuild = document.getElementById("btn-speak-sentence-build");
+const sentenceBuildAnswerEl = document.getElementById("sentence-build-answer");
+const sentenceBuildOptionsEl = document.getElementById("sentence-build-options");
+const sentenceBuildFeedbackEl = document.getElementById("sentence-build-feedback");
+const sentenceBuildReferenceEl = document.getElementById("sentence-build-reference");
+const sentenceBuildReferencePinyinEl = document.getElementById("sentence-build-reference-pinyin");
+const btnClearSentenceBuild = document.getElementById("btn-clear-sentence-build");
+const btnCheckSentenceBuild = document.getElementById("btn-check-sentence-build");
+const btnNextSentenceBuild = document.getElementById("btn-next-sentence-build");
 const speakingProgressEl = document.getElementById("speaking-progress");
 const speakingPromptEl = document.getElementById("speaking-prompt");
 const speakingTargetEl = document.getElementById("speaking-target");
@@ -605,6 +621,8 @@ function shuffleWords() {
     startReadingPractice(true);
   } else if (currentMode === "speaking") {
     startSpeakingPractice(true);
+  } else if (currentMode === "sentence-build") {
+    startSentenceBuildPractice(true);
   } else {
     startTypingPractice(true);
   }
@@ -1444,10 +1462,12 @@ function startTypingPractice(shouldShuffle = false) {
 }
 
 function renderTypingQuestion() {
+  const currentWord = typingQuestions[currentTypingIndex];
+  if (!currentWord) return;
+
   typingInputEl.value = "";
   typingInputEl.focus();
 
-  const currentWord = typingQuestions[currentTypingIndex];
   const isExampleMode = typingContentModeEl.value === "example";
   const vietnameseText = isExampleMode
     ? (currentWord.exampleMeaning || currentWord.meaning)
@@ -1468,11 +1488,21 @@ function renderTypingQuestion() {
     ? `Còn sai: ${typingTotalQuestions - typingCorrectIds.size} câu`
     : `Câu ${currentTypingIndex + 1} / ${typingQuestions.length}`;
   typingInputEl.disabled = false;
+  btnSpeakTyping.disabled = false;
   btnCheckTyping.disabled = false;
   btnCheckTyping.textContent = "Kiểm tra";
   typingAnswered = false;
   setFeedback(typingFeedbackEl, "");
 }
+
+function getTypingChineseText(word) {
+  return typingContentModeEl.value === "example" ? word.example : word.word;
+}
+
+btnSpeakTyping.addEventListener("click", () => {
+  const currentWord = typingQuestions[currentTypingIndex];
+  if (currentWord) speakChinese(getTypingChineseText(currentWord));
+});
 
 function updateTypingRetryCount() {
   if (!typingIsRetryRound) return;
@@ -1522,6 +1552,7 @@ btnCheckTyping.addEventListener("click", () => {
 
   typingAnswered = true;
   typingInputEl.disabled = true;
+  btnSpeakTyping.disabled = false;
   btnCheckTyping.disabled = false;
   btnCheckTyping.textContent = "Câu tiếp theo ➡";
 });
@@ -1540,6 +1571,7 @@ function advanceTypingQuestion() {
       typingPromptEl.textContent = "Hoàn thành!";
       typingWordEl.textContent = `Bạn đã đúng hết ${typingScore} câu.`;
       typingPhoneticEl.textContent = "";
+      btnSpeakTyping.disabled = true;
       setFeedback(typingFeedbackEl, "Bạn có thể bấm Xáo trộn để ôn lại theo thứ tự mới.", true);
       typingInputEl.value = "";
       typingInputEl.disabled = true;
@@ -1841,6 +1873,269 @@ btnToggleReadingPinyin.addEventListener("click", () => {
   btnToggleReadingPinyin.setAttribute("aria-expanded", String(readingPinyinVisible));
 });
 
+let sentenceBuildQuestions = [];
+let sentenceBuildCurrentIndex = 0;
+let sentenceBuildCorrectIds = new Set();
+let sentenceBuildRoundMistakes = [];
+let sentenceBuildSelectedTokenIndexes = [];
+let sentenceBuildShuffledTokens = [];
+let sentenceBuildShouldShuffle = false;
+let sentenceBuildIsRetryRound = false;
+let sentenceBuildAnswered = false;
+let sentenceBuildCompleted = false;
+const chineseSentenceSegmenter = typeof Intl.Segmenter === "function"
+  ? new Intl.Segmenter("zh-CN", { granularity: "word" })
+  : null;
+
+function segmentChineseSentence(sentence) {
+  const trimmedSentence = sentence.trim();
+  if (!trimmedSentence) return [];
+
+  const segments = chineseSentenceSegmenter
+    ? [...chineseSentenceSegmenter.segment(trimmedSentence)]
+      .map(item => item.segment)
+    : [...trimmedSentence];
+
+  return segments.reduce((tokens, segment) => {
+    if (/^[\p{P}\p{S}\s]+$/u.test(segment) && tokens.length > 0) {
+      tokens[tokens.length - 1] += segment;
+    } else {
+      tokens.push(segment);
+    }
+    return tokens;
+  }, []);
+}
+
+function getSentenceBuildQuestions() {
+  return getFilteredWords().flatMap(word => [
+    {
+      source: "example",
+      sentence: word.example,
+      meaning: word.exampleMeaning
+    },
+    {
+      source: "answer",
+      sentence: word.answerChinese,
+      meaning: word.answerMeaning
+    }
+  ].flatMap(({ source, sentence, meaning }) => {
+    const normalizedSentence = sentence.trim();
+    const tokens = segmentChineseSentence(normalizedSentence);
+    if (!normalizedSentence || tokens.length < 2) return [];
+
+    return [{
+      id: `${word.id}-${source}`,
+      word,
+      sentence: normalizedSentence,
+      meaning: meaning || word.meaning,
+      pinyin: word[`${source === "example" ? "example" : "answer"}Pinyin`],
+      tokens
+    }];
+  }));
+}
+
+function renderSentenceBuildUnavailable() {
+  sentenceBuildProgressEl.textContent = "Chưa có câu";
+  sentenceBuildMeaningEl.textContent = "Bộ lọc hiện tại chưa có câu phù hợp để ghép.";
+  sentenceBuildWordHintEl.textContent = "";
+  sentenceBuildAnswerEl.replaceChildren();
+  sentenceBuildOptionsEl.replaceChildren();
+  sentenceBuildFeedbackEl.textContent = "";
+  sentenceBuildReferenceEl.classList.add("hidden");
+  sentenceBuildReferencePinyinEl.classList.add("hidden");
+  btnSpeakSentenceBuild.disabled = true;
+  sentenceBuildAnswerEl.closest(".sentence-build-section").classList.remove("hidden");
+  sentenceBuildOptionsEl.closest(".sentence-build-section").classList.remove("hidden");
+  btnClearSentenceBuild.disabled = true;
+  btnCheckSentenceBuild.disabled = true;
+  btnCheckSentenceBuild.classList.remove("hidden");
+  btnNextSentenceBuild.classList.add("hidden");
+}
+
+function startSentenceBuildPractice(shouldShuffle = false, showAlert = true) {
+  const questions = getSentenceBuildQuestions();
+  if (questions.length === 0) {
+    if (showAlert) {
+      alert("Không có câu ví dụ hoặc câu trả lời phù hợp trong bộ lọc hiện tại để ghép!");
+      return;
+    }
+
+    sentenceBuildQuestions = [];
+    sentenceBuildScoreEl.textContent = "0";
+    sentenceBuildCompleted = false;
+    btnSpeakSentenceBuild.disabled = true;
+    renderSentenceBuildUnavailable();
+    return;
+  }
+
+  sentenceBuildShouldShuffle = shouldShuffle;
+  sentenceBuildQuestions = shouldShuffle ? shuffleList(questions) : [...questions];
+  sentenceBuildCurrentIndex = 0;
+  sentenceBuildCorrectIds = new Set();
+  sentenceBuildRoundMistakes = [];
+  sentenceBuildIsRetryRound = false;
+  sentenceBuildAnswered = false;
+  sentenceBuildCompleted = false;
+  sentenceBuildScoreEl.textContent = "0";
+  renderSentenceBuildQuestion();
+}
+
+function renderSentenceBuildQuestion() {
+  const question = sentenceBuildQuestions[sentenceBuildCurrentIndex];
+  if (!question) return;
+
+  sentenceBuildCompleted = false;
+  sentenceBuildAnswered = false;
+  sentenceBuildSelectedTokenIndexes = [];
+  sentenceBuildShuffledTokens = shuffleList(
+    question.tokens.map((text, index) => ({ index, text }))
+  );
+  if (sentenceBuildShuffledTokens.every((token, index) => token.index === index)
+    && sentenceBuildShuffledTokens.length > 1) {
+    sentenceBuildShuffledTokens.push(sentenceBuildShuffledTokens.shift());
+  }
+
+  sentenceBuildProgressEl.textContent = sentenceBuildIsRetryRound
+    ? `Ôn câu sai ${sentenceBuildCurrentIndex + 1}/${sentenceBuildQuestions.length}`
+    : `Câu ${sentenceBuildCurrentIndex + 1}/${sentenceBuildQuestions.length}`;
+  sentenceBuildMeaningEl.textContent = question.meaning || "Ghép các từ để tạo thành câu tiếng Trung.";
+  sentenceBuildWordHintEl.textContent = `Từ liên quan: ${question.word.word} · ${question.word.meaning}`;
+  btnSpeakSentenceBuild.disabled = false;
+  sentenceBuildReferenceEl.textContent = "";
+  sentenceBuildReferencePinyinEl.textContent = "";
+  sentenceBuildFeedbackEl.textContent = "";
+  sentenceBuildReferenceEl.classList.add("hidden");
+  sentenceBuildReferencePinyinEl.classList.add("hidden");
+  sentenceBuildAnswerEl.closest(".sentence-build-section").classList.remove("hidden");
+  sentenceBuildOptionsEl.closest(".sentence-build-section").classList.remove("hidden");
+  btnCheckSentenceBuild.classList.remove("hidden");
+  btnCheckSentenceBuild.disabled = true;
+  btnNextSentenceBuild.classList.add("hidden");
+  btnNextSentenceBuild.textContent = "Câu tiếp theo ➡";
+  renderSentenceBuildTiles();
+}
+
+function renderSentenceBuildTiles() {
+  const question = sentenceBuildQuestions[sentenceBuildCurrentIndex];
+  if (!question) return;
+
+  sentenceBuildAnswerEl.replaceChildren();
+  sentenceBuildSelectedTokenIndexes.forEach(tokenIndex => {
+    const button = document.createElement("button");
+    button.className = "sentence-build-tile sentence-build-tile-selected";
+    button.type = "button";
+    button.textContent = question.tokens[tokenIndex];
+    button.disabled = sentenceBuildAnswered;
+    button.setAttribute("aria-label", `Bỏ từ ${question.tokens[tokenIndex]} khỏi câu`);
+    button.addEventListener("click", () => {
+      sentenceBuildSelectedTokenIndexes = sentenceBuildSelectedTokenIndexes
+        .filter(selectedIndex => selectedIndex !== tokenIndex);
+      renderSentenceBuildTiles();
+    });
+    sentenceBuildAnswerEl.appendChild(button);
+  });
+
+  sentenceBuildOptionsEl.replaceChildren();
+  sentenceBuildShuffledTokens
+    .filter(token => !sentenceBuildSelectedTokenIndexes.includes(token.index))
+    .forEach(token => {
+      const button = document.createElement("button");
+      button.className = "sentence-build-tile";
+      button.type = "button";
+      button.textContent = token.text;
+      button.disabled = sentenceBuildAnswered;
+      button.addEventListener("click", () => {
+        sentenceBuildSelectedTokenIndexes.push(token.index);
+        renderSentenceBuildTiles();
+      });
+      sentenceBuildOptionsEl.appendChild(button);
+    });
+
+  btnClearSentenceBuild.disabled = sentenceBuildAnswered
+    || sentenceBuildSelectedTokenIndexes.length === 0;
+  btnCheckSentenceBuild.disabled = sentenceBuildAnswered
+    || sentenceBuildSelectedTokenIndexes.length !== question.tokens.length;
+}
+
+function checkSentenceBuildAnswer() {
+  const question = sentenceBuildQuestions[sentenceBuildCurrentIndex];
+  if (!question || sentenceBuildAnswered
+    || sentenceBuildSelectedTokenIndexes.length !== question.tokens.length) return;
+
+  const answer = sentenceBuildSelectedTokenIndexes
+    .map(tokenIndex => question.tokens[tokenIndex])
+    .join("")
+    .normalize("NFC");
+  const isCorrect = answer === question.sentence.normalize("NFC");
+  if (isCorrect) {
+    sentenceBuildCorrectIds.add(question.id);
+    sentenceBuildScoreEl.textContent = sentenceBuildCorrectIds.size;
+    setFeedback(sentenceBuildFeedbackEl, "✅ Chính xác! Bạn đã ghép đúng câu.", true);
+  } else {
+    if (!sentenceBuildRoundMistakes.some(item => item.id === question.id)) {
+      sentenceBuildRoundMistakes.push(question);
+    }
+    setFeedback(sentenceBuildFeedbackEl, "❌ Chưa đúng. Hãy xem lại thứ tự câu mẫu bên dưới.", false);
+  }
+
+  sentenceBuildReferenceEl.textContent = `Đáp án: ${question.sentence}`;
+  sentenceBuildReferencePinyinEl.textContent = question.pinyin || "";
+  sentenceBuildReferenceEl.classList.remove("hidden");
+  sentenceBuildReferencePinyinEl.classList.toggle("hidden", !question.pinyin);
+  sentenceBuildAnswered = true;
+  renderSentenceBuildTiles();
+  btnCheckSentenceBuild.classList.add("hidden");
+  btnNextSentenceBuild.classList.remove("hidden");
+}
+
+function advanceSentenceBuildQuestion() {
+  if (sentenceBuildCompleted) {
+    startSentenceBuildPractice(sentenceBuildShouldShuffle);
+    return;
+  }
+
+  sentenceBuildCurrentIndex++;
+  if (sentenceBuildCurrentIndex >= sentenceBuildQuestions.length) {
+    if (sentenceBuildRoundMistakes.length > 0) {
+      sentenceBuildQuestions = sentenceBuildShouldShuffle
+        ? shuffleList(sentenceBuildRoundMistakes)
+        : [...sentenceBuildRoundMistakes];
+      sentenceBuildRoundMistakes = [];
+      sentenceBuildIsRetryRound = true;
+      sentenceBuildCurrentIndex = 0;
+    } else {
+      sentenceBuildCompleted = true;
+      sentenceBuildProgressEl.textContent = "Đã hoàn thành";
+      sentenceBuildMeaningEl.textContent =
+        `Hoàn thành! Bạn đã ghép đúng ${sentenceBuildCorrectIds.size} câu.`;
+      sentenceBuildWordHintEl.textContent = "Bấm bên dưới để luyện lại hoặc chọn bộ lọc khác.";
+      sentenceBuildAnswerEl.replaceChildren();
+      sentenceBuildOptionsEl.replaceChildren();
+      sentenceBuildAnswerEl.closest(".sentence-build-section").classList.add("hidden");
+      sentenceBuildOptionsEl.closest(".sentence-build-section").classList.add("hidden");
+      sentenceBuildReferenceEl.classList.add("hidden");
+      sentenceBuildReferencePinyinEl.classList.add("hidden");
+      btnSpeakSentenceBuild.disabled = true;
+      btnNextSentenceBuild.textContent = "Luyện lại 🔄";
+      return;
+    }
+  }
+
+  renderSentenceBuildQuestion();
+}
+
+btnClearSentenceBuild.addEventListener("click", () => {
+  if (sentenceBuildAnswered) return;
+  sentenceBuildSelectedTokenIndexes = [];
+  renderSentenceBuildTiles();
+});
+btnSpeakSentenceBuild.addEventListener("click", () => {
+  const question = sentenceBuildQuestions[sentenceBuildCurrentIndex];
+  if (question) speakChinese(question.sentence);
+});
+btnCheckSentenceBuild.addEventListener("click", checkSentenceBuildAnswer);
+btnNextSentenceBuild.addEventListener("click", advanceSentenceBuildQuestion);
+
 function startSpeakingPractice(shouldShuffle = true) {
   stopSpeakingRecording();
   speakingShouldShuffle = shouldShuffle;
@@ -2077,6 +2372,11 @@ function applyStudyMode() {
 
   if (currentMode === "speaking") {
     startSpeakingPractice();
+    return;
+  }
+
+  if (currentMode === "sentence-build") {
+    startSentenceBuildPractice(false, false);
   }
 }
 
@@ -2324,21 +2624,23 @@ const studyScreens = [
   matchingScreen,
   quizScreen,
   listeningScreen,
-  questionAnswerScreen,
-  typingScreen,
   readingScreen,
+  typingScreen,
+  grammarScreen,
+  sentenceBuildScreen,
+  questionAnswerScreen,
   speakingScreen,
-  grammarScreen
 ];
 const studyModeButtons = [
   [matchingModeBtn, "matching"],
   [quizModeBtn, "quiz"],
-  [typingModeBtn, "typing"],
   [listeningModeBtn, "listening"],
-  [questionAnswerModeBtn, "question-answer"],
   [readingModeBtn, "reading"],
-  [speakingModeBtn, "speaking"],
-  [grammarModeBtn, "grammar"]
+  [typingModeBtn, "typing"],
+  [grammarModeBtn, "grammar"],
+  [sentenceBuildModeBtn, "sentence-build"],
+  [questionAnswerModeBtn, "question-answer"],
+  [speakingModeBtn, "speaking"]
 ];
 
 function setHeaderMenuOpen(isOpen) {
@@ -2434,6 +2736,16 @@ function showReadingScreen() {
   startReadingPractice();
 }
 
+function showSentenceBuildScreen() {
+  if (getSentenceBuildQuestions().length === 0) {
+    alert("Không có câu ví dụ hoặc câu trả lời phù hợp trong bộ lọc hiện tại để ghép!");
+    return;
+  }
+
+  setActiveScreen(sentenceBuildScreen, "sentence-build");
+  startSentenceBuildPractice();
+}
+
 function showSpeakingScreen() {
   if (getFilteredQuestionAnswers().length === 0) {
     alert("Không có câu hỏi hoặc câu trả lời trong bộ lọc hiện tại để luyện nói!");
@@ -2457,6 +2769,7 @@ questionAnswerModeBtn.addEventListener("click", showQuestionAnswerScreen);
 readingModeBtn.addEventListener("click", showReadingScreen);
 speakingModeBtn.addEventListener("click", showSpeakingScreen);
 grammarModeBtn.addEventListener("click", showGrammarScreen);
+sentenceBuildModeBtn.addEventListener("click", showSentenceBuildScreen);
 
 document.addEventListener("keydown", (event) => {
   const isSpeakShortcut = (event.ctrlKey || event.metaKey)
@@ -2479,6 +2792,9 @@ document.addEventListener("keydown", (event) => {
     } else if (currentMode === "reading") {
       const currentWord = readingQuestions[currentReadingIndex];
       if (currentWord) speakChinese(currentWord.sentence);
+    } else if (currentMode === "sentence-build") {
+      const currentQuestion = sentenceBuildQuestions[sentenceBuildCurrentIndex];
+      if (currentQuestion) speakChinese(currentQuestion.sentence);
     } else if (currentMode === "speaking") {
       const currentWord = speakingQuestions[currentSpeakingIndex];
       if (currentWord) speakChinese(currentWord.example || currentWord.word);
@@ -2488,6 +2804,16 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (event.key !== "Enter") return;
+
+  if (currentMode === "sentence-build") {
+    event.preventDefault();
+    if (sentenceBuildCompleted || sentenceBuildAnswered) {
+      btnNextSentenceBuild.click();
+    } else if (!btnCheckSentenceBuild.disabled) {
+      btnCheckSentenceBuild.click();
+    }
+    return;
+  }
 
   if (currentMode === "typing" && !btnCheckTyping.disabled) {
     event.preventDefault();

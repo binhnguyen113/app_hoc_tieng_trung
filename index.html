@@ -26,12 +26,13 @@
       <nav class="header-actions" id="header-actions" aria-label="Chọn chế độ ôn tập">
         <button class="btn-primary small is-active" id="matching-mode-btn" type="button" aria-pressed="true">1. 🔗 Nối từ</button>
         <button class="btn-primary small" id="quiz-mode-btn" type="button" aria-pressed="false">2. 🎮 Quiz</button>
-        <button class="btn-primary small" id="typing-mode-btn" type="button" aria-pressed="false">3. ⌨️ Gõ từ</button>
-        <button class="btn-primary small" id="listening-mode-btn" type="button" aria-pressed="false">4. 🔊 Nghe</button>
-        <button class="btn-primary small" id="question-answer-mode-btn" type="button" aria-pressed="false">5. 💬 Hỏi đáp</button>
-        <button class="btn-primary small" id="reading-mode-btn" type="button" aria-pressed="false">6. 📖 Đọc</button>
-        <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">7. 🎙️ Luyện nói</button>
-        <button class="btn-primary small" id="grammar-mode-btn" type="button" aria-pressed="false">8. 🧩 Ngữ pháp</button>
+        <button class="btn-primary small" id="listening-mode-btn" type="button" aria-pressed="false">3. 🔊 Nghe</button>
+        <button class="btn-primary small" id="reading-mode-btn" type="button" aria-pressed="false">4. 📖 Đọc</button>
+        <button class="btn-primary small" id="typing-mode-btn" type="button" aria-pressed="false">5. ⌨️ Gõ từ</button>
+        <button class="btn-primary small" id="grammar-mode-btn" type="button" aria-pressed="false">6. 🧩 Ngữ pháp</button>
+        <button class="btn-primary small" id="sentence-build-mode-btn" type="button" aria-pressed="false">7. 🧱 Ghép câu</button>
+        <button class="btn-primary small" id="question-answer-mode-btn" type="button" aria-pressed="false">8. 💬 Hỏi đáp</button>
+        <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">9. 🎙️ Luyện nói</button>
       </nav>
     </header>
 
@@ -233,7 +234,10 @@
           <option value="example">Ví dụ</option>
         </select>
 
-        <h3 class="quiz-question-word" id="typing-word">你好</h3>
+        <div class="typing-question">
+          <h3 class="quiz-question-word" id="typing-word">你好</h3>
+          <button class="btn typing-speak" id="btn-speak-typing" type="button" aria-label="Nghe phát âm đáp án" title="Nghe phát âm đáp án">🔊</button>
+        </div>
         <p class="quiz-phonetic" id="typing-phonetic">nǐ hǎo</p>
 
         <label class="typing-label" id="typing-input-label" for="typing-input">Gõ chữ Hán</label>
@@ -271,6 +275,41 @@
         </label>
         <button class="btn btn-primary btn-full" id="btn-check-reading" type="button">Kiểm tra</button>
         <p id="reading-feedback" class="typing-feedback"></p>
+      </div>
+    </div>
+
+    <div id="sentence-build-screen" class="screen hidden">
+      <div class="quiz-box sentence-build-box">
+        <div class="quiz-header">
+          <span>Điểm: <strong id="sentence-build-score">0</strong></span>
+          <span id="sentence-build-progress">Câu 1/1</span>
+        </div>
+        <p class="typing-label">Chọn các từ theo đúng thứ tự để ghép thành câu tiếng Trung</p>
+        <div class="sentence-build-prompt">
+          <div class="sentence-build-prompt-header">
+            <p id="sentence-build-meaning" class="sentence-build-meaning"></p>
+            <button class="btn sentence-build-speak" id="btn-speak-sentence-build" type="button" aria-label="Nghe phát âm câu tiếng Trung" title="Nghe câu">🔊</button>
+          </div>
+          <p id="sentence-build-word-hint" class="sentence-build-word-hint"></p>
+        </div>
+        <section class="sentence-build-section" aria-labelledby="sentence-build-answer-label">
+          <div class="sentence-build-section-header">
+            <h3 id="sentence-build-answer-label">Câu của bạn</h3>
+            <button class="btn sentence-build-clear" id="btn-clear-sentence-build" type="button">Xóa câu</button>
+          </div>
+          <div id="sentence-build-answer" class="sentence-build-tiles sentence-build-answer" aria-live="polite"></div>
+        </section>
+        <section class="sentence-build-section" aria-labelledby="sentence-build-options-label">
+          <h3 id="sentence-build-options-label">Chọn từ</h3>
+          <div id="sentence-build-options" class="sentence-build-tiles"></div>
+        </section>
+        <p id="sentence-build-feedback" class="typing-feedback" role="status" aria-live="polite"></p>
+        <p id="sentence-build-reference" class="sentence-build-reference hidden"></p>
+        <p id="sentence-build-reference-pinyin" class="quiz-phonetic hidden"></p>
+        <div class="sentence-build-actions">
+          <button class="btn btn-primary" id="btn-check-sentence-build" type="button" disabled>Kiểm tra</button>
+          <button class="btn btn-primary hidden" id="btn-next-sentence-build" type="button">Câu tiếp theo ➡</button>
+        </div>
       </div>
     </div>
 
