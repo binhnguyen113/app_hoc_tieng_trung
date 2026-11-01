@@ -289,6 +289,8 @@ let listeningTotalQuestions = 0;
 let listeningRoundMistakes = [];
 let listeningCorrectIds = new Set();
 let listeningIsRetryRound = false;
+let listeningRetryResumeQuestions = [];
+let listeningRetryResumeIndex = 0;
 let listeningAnswered = false;
 let listeningShouldShuffle = false;
 let questionAnswerQuestions = [];
@@ -823,13 +825,25 @@ function startListeningPractice(shouldShuffle = false) {
   listeningRoundMistakes = [];
   listeningCorrectIds = new Set();
   listeningIsRetryRound = false;
+  listeningRetryResumeQuestions = [];
+  listeningRetryResumeIndex = 0;
   listeningScoreEl.textContent = listeningScore;
   loadListeningQuestion();
 }
 
+function finishListeningPractice() {
+  listeningProgressEl.textContent = "Đã hoàn thành";
+  listeningOptionsEl.classList.remove("hidden");
+  renderRestartButton(listeningOptionsEl, "Làm lại luyện nghe", () => startListeningPractice());
+  listeningAnswerModeContainerEl.classList.add("hidden");
+  listeningInputLabelEl.classList.add("hidden");
+  listeningInputEl.classList.add("hidden");
+  btnCheckListening.classList.add("hidden");
+}
+
 function loadListeningQuestion() {
   if (currentListeningIndex >= listeningQuestions.length) {
-    if (listeningRoundMistakes.length > 0) {
+    if (listeningIsRetryRound && listeningRoundMistakes.length > 0) {
       const isExampleMode = listeningContentModeEl.value === "example";
       listeningQuestions = listeningShouldShuffle
         ? (isExampleMode
@@ -837,16 +851,29 @@ function loadListeningQuestion() {
           : shuffleList(listeningRoundMistakes))
         : [...listeningRoundMistakes];
       listeningRoundMistakes = [];
+      currentListeningIndex = 0;
+    } else if (listeningIsRetryRound) {
+      listeningQuestions = listeningRetryResumeQuestions;
+      currentListeningIndex = listeningRetryResumeIndex;
+      listeningRetryResumeQuestions = [];
+      listeningIsRetryRound = false;
+      if (currentListeningIndex >= listeningQuestions.length) {
+        finishListeningPractice();
+        return;
+      }
+    } else if (listeningRoundMistakes.length > 0) {
+      listeningRetryResumeQuestions = listeningQuestions;
+      listeningRetryResumeIndex = currentListeningIndex;
+      listeningQuestions = listeningShouldShuffle
+        ? (listeningContentModeEl.value === "example"
+          ? shufflePairedItems(listeningRoundMistakes)
+          : shuffleList(listeningRoundMistakes))
+        : [...listeningRoundMistakes];
+      listeningRoundMistakes = [];
       listeningIsRetryRound = true;
       currentListeningIndex = 0;
     } else {
-      listeningProgressEl.textContent = "Đã hoàn thành";
-      listeningOptionsEl.classList.remove("hidden");
-      renderRestartButton(listeningOptionsEl, "Làm lại luyện nghe", () => startListeningPractice());
-      listeningAnswerModeContainerEl.classList.add("hidden");
-      listeningInputLabelEl.classList.add("hidden");
-      listeningInputEl.classList.add("hidden");
-      btnCheckListening.classList.add("hidden");
+      finishListeningPractice();
       return;
     }
   }
@@ -946,9 +973,11 @@ btnCheckListening.addEventListener("click", () => {
   listeningAnswered = true;
   listeningInputEl.disabled = true;
   btnCheckListening.disabled = false;
-  btnCheckListening.textContent = isExampleMode && currentQuestion.type === "question"
-    ? "Câu trả lời ➡"
-    : "Câu tiếp theo ➡";
+  btnCheckListening.textContent = !listeningIsRetryRound && listeningRoundMistakes.length >= 4
+    ? "Làm lại câu sai ➡"
+    : isExampleMode && currentQuestion.type === "question"
+      ? "Câu trả lời ➡"
+      : "Câu tiếp theo ➡";
   updateListeningRetryCount();
 });
 
@@ -969,6 +998,19 @@ function advanceListeningQuestion() {
   }
 
   currentListeningIndex++;
+  if (!listeningIsRetryRound && listeningRoundMistakes.length >= 4) {
+    const isExampleMode = listeningContentModeEl.value === "example";
+    listeningRetryResumeQuestions = listeningQuestions;
+    listeningRetryResumeIndex = currentListeningIndex;
+    listeningQuestions = listeningShouldShuffle
+      ? (isExampleMode
+        ? shufflePairedItems(listeningRoundMistakes)
+        : shuffleList(listeningRoundMistakes))
+      : [...listeningRoundMistakes];
+    listeningRoundMistakes = [];
+    listeningIsRetryRound = true;
+    currentListeningIndex = 0;
+  }
   loadListeningQuestion();
 }
 
@@ -1404,6 +1446,8 @@ let typingTotalQuestions = 0;
 let typingRoundMistakes = [];
 let typingCorrectIds = new Set();
 let typingIsRetryRound = false;
+let typingRetryResumeQuestions = [];
+let typingRetryResumeIndex = 0;
 let typingAnswered = false;
 let typingShouldShuffle = false;
 
@@ -1430,6 +1474,8 @@ function startTypingPractice(shouldShuffle = false) {
   typingRoundMistakes = [];
   typingCorrectIds = new Set();
   typingIsRetryRound = false;
+  typingRetryResumeQuestions = [];
+  typingRetryResumeIndex = 0;
   typingScoreEl.textContent = typingScore;
   setFeedback(typingFeedbackEl, "");
   typingInputEl.value = "";
@@ -1525,17 +1571,64 @@ btnCheckTyping.addEventListener("click", () => {
   typingInputEl.disabled = true;
   btnSpeakTyping.disabled = false;
   btnCheckTyping.disabled = false;
-  btnCheckTyping.textContent = isExampleMode && currentQuestion.type === "question"
-    ? "Câu trả lời ➡"
-    : "Câu tiếp theo ➡";
+  btnCheckTyping.textContent = !typingIsRetryRound && typingRoundMistakes.length >= 4
+    ? "Làm lại câu sai ➡"
+    : isExampleMode && currentQuestion.type === "question"
+      ? "Câu trả lời ➡"
+      : "Câu tiếp theo ➡";
 });
+
+function finishTypingPractice() {
+  typingProgressEl.textContent = "Đã hoàn thành";
+  typingPromptEl.textContent = "Hoàn thành!";
+  typingWordEl.textContent = `Bạn đã đúng hết ${typingScore} câu.`;
+  typingPhoneticEl.textContent = "";
+  btnSpeakTyping.disabled = true;
+  setFeedback(typingFeedbackEl, "Bạn có thể bấm Xáo trộn để ôn lại theo thứ tự mới.", true);
+  typingInputEl.value = "";
+  typingInputEl.disabled = true;
+  btnCheckTyping.disabled = true;
+  btnCheckTyping.textContent = "Hoàn thành";
+}
 
 function advanceTypingQuestion() {
   currentTypingIndex++;
 
-  if (currentTypingIndex >= typingQuestions.length) {
-    if (typingRoundMistakes.length > 0) {
+  if (!typingIsRetryRound && typingRoundMistakes.length >= 4) {
+    const isExampleMode = typingContentModeEl.value === "example";
+    typingRetryResumeQuestions = typingQuestions;
+    typingRetryResumeIndex = currentTypingIndex;
+    typingQuestions = typingShouldShuffle
+      ? (isExampleMode
+        ? shufflePairedItems(typingRoundMistakes)
+        : shuffleList(typingRoundMistakes))
+      : [...typingRoundMistakes];
+    typingRoundMistakes = [];
+    typingIsRetryRound = true;
+    currentTypingIndex = 0;
+  } else if (currentTypingIndex >= typingQuestions.length) {
+    if (typingIsRetryRound && typingRoundMistakes.length > 0) {
       const isExampleMode = typingContentModeEl.value === "example";
+      typingQuestions = typingShouldShuffle
+        ? (isExampleMode
+          ? shufflePairedItems(typingRoundMistakes)
+          : shuffleList(typingRoundMistakes))
+        : [...typingRoundMistakes];
+      typingRoundMistakes = [];
+      currentTypingIndex = 0;
+    } else if (typingIsRetryRound) {
+      typingQuestions = typingRetryResumeQuestions;
+      currentTypingIndex = typingRetryResumeIndex;
+      typingRetryResumeQuestions = [];
+      typingIsRetryRound = false;
+      if (currentTypingIndex >= typingQuestions.length) {
+        finishTypingPractice();
+        return;
+      }
+    } else if (typingRoundMistakes.length > 0) {
+      const isExampleMode = typingContentModeEl.value === "example";
+      typingRetryResumeQuestions = typingQuestions;
+      typingRetryResumeIndex = currentTypingIndex;
       typingQuestions = typingShouldShuffle
         ? (isExampleMode
           ? shufflePairedItems(typingRoundMistakes)
@@ -1545,16 +1638,7 @@ function advanceTypingQuestion() {
       typingIsRetryRound = true;
       currentTypingIndex = 0;
     } else {
-      typingProgressEl.textContent = "Đã hoàn thành";
-      typingPromptEl.textContent = "Hoàn thành!";
-      typingWordEl.textContent = `Bạn đã đúng hết ${typingScore} câu.`;
-      typingPhoneticEl.textContent = "";
-      btnSpeakTyping.disabled = true;
-      setFeedback(typingFeedbackEl, "Bạn có thể bấm Xáo trộn để ôn lại theo thứ tự mới.", true);
-      typingInputEl.value = "";
-      typingInputEl.disabled = true;
-      btnCheckTyping.disabled = true;
-      btnCheckTyping.textContent = "Hoàn thành";
+      finishTypingPractice();
       return;
     }
   }
