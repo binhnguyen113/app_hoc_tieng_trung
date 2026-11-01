@@ -1,6 +1,6 @@
 const DATA_SOURCES = [
   { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk.json" },
-  { id: "hsk", label: "Tiếng Trung HSK1 3.0 (Nâng cao)", file: "./data-hsk1.json" },
+  { id: "hsk1", label: "Tiếng Trung HSK1 3.0 (Nâng cao)", file: "./data-hsk1.json" },
   { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
 
