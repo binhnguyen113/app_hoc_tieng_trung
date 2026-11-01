@@ -161,6 +161,34 @@ function loadQuestionAnswers(words) {
   });
 }
 
+function getPairedExampleItems(words) {
+  return words.flatMap(word => {
+    if (!word.example || !word.answerChinese) return [];
+
+    const pairId = `${word.sourceId || "default"}-${word.id}`;
+    return [
+      {
+        id: `${pairId}-question`,
+        pairId,
+        word,
+        type: "question",
+        chinese: word.example,
+        pinyin: word.examplePinyin,
+        meaning: word.exampleMeaning || word.meaning
+      },
+      {
+        id: `${pairId}-answer`,
+        pairId,
+        word,
+        type: "answer",
+        chinese: word.answerChinese,
+        pinyin: word.answerPinyin,
+        meaning: word.answerMeaning || word.meaning
+      }
+    ];
+  });
+}
+
 let allWords = [];
 let allQuestionAnswers = [];
 let grammarLessons = [];
@@ -391,6 +419,31 @@ function shuffleList(list) {
     [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
   }
   return shuffled;
+}
+
+function groupPairedItems(items) {
+  const pairs = new Map();
+  items.forEach(item => {
+    const pairId = item.pairId || item.id;
+    if (!pairs.has(pairId)) pairs.set(pairId, []);
+    pairs.get(pairId).push(item);
+  });
+  return [...pairs.values()];
+}
+
+function shufflePairedItems(items) {
+  return shuffleList(groupPairedItems(items)).flat();
+}
+
+function addPracticeMistake(mistakes, questions, item) {
+  const relatedItems = item.pairId
+    ? questions.filter(question => question.pairId === item.pairId)
+    : [item];
+  relatedItems.forEach(relatedItem => {
+    if (!mistakes.some(mistake => mistake.id === relatedItem.id)) {
+      mistakes.push(relatedItem);
+    }
+  });
 }
 
 function normalizeAnswer(value) {
@@ -847,16 +900,25 @@ function setFeedback(element, message, isCorrect) {
 
 function startListeningPractice(shouldShuffle = false) {
   const filteredWords = getFilteredWords();
-  if (filteredWords.length < 4) {
-    alert("Cần ít nhất 4 từ vựng trong bộ lọc hiện tại để bắt đầu luyện nghe!");
+  const isExampleMode = listeningContentModeEl.value === "example";
+  const exampleItems = isExampleMode ? getPairedExampleItems(filteredWords) : [];
+  if (isExampleMode
+    ? groupPairedItems(exampleItems).length < 4
+    : filteredWords.length < 4) {
+    alert(isExampleMode
+      ? "Cần ít nhất 4 cặp câu hỏi và câu trả lời trong bộ lọc hiện tại để luyện nghe ví dụ!"
+      : "Cần ít nhất 4 từ vựng trong bộ lọc hiện tại để bắt đầu luyện nghe!");
     return;
   }
 
   listeningShouldShuffle = shouldShuffle;
-  listeningQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
+  const questions = isExampleMode ? exampleItems : filteredWords;
+  listeningQuestions = shouldShuffle
+    ? (isExampleMode ? shufflePairedItems(questions) : shuffleList(questions))
+    : [...questions];
   currentListeningIndex = 0;
   listeningScore = 0;
-  listeningTotalQuestions = filteredWords.length;
+  listeningTotalQuestions = listeningQuestions.length;
   listeningRoundMistakes = [];
   listeningCorrectIds = new Set();
   listeningIsRetryRound = false;
@@ -867,7 +929,12 @@ function startListeningPractice(shouldShuffle = false) {
 function loadListeningQuestion() {
   if (currentListeningIndex >= listeningQuestions.length) {
     if (listeningRoundMistakes.length > 0) {
-      listeningQuestions = listeningShouldShuffle ? shuffleList(listeningRoundMistakes) : [...listeningRoundMistakes];
+      const isExampleMode = listeningContentModeEl.value === "example";
+      listeningQuestions = listeningShouldShuffle
+        ? (isExampleMode
+          ? shufflePairedItems(listeningRoundMistakes)
+          : shuffleList(listeningRoundMistakes))
+        : [...listeningRoundMistakes];
       listeningRoundMistakes = [];
       listeningIsRetryRound = true;
       currentListeningIndex = 0;
@@ -883,7 +950,8 @@ function loadListeningQuestion() {
     }
   }
 
-  const currentWord = listeningQuestions[currentListeningIndex];
+  const currentQuestion = listeningQuestions[currentListeningIndex];
+  const isExampleMode = listeningContentModeEl.value === "example";
   listeningAnswered = false;
   listeningProgressEl.textContent = listeningIsRetryRound
     ? `Còn sai: ${listeningTotalQuestions - listeningCorrectIds.size} câu`
@@ -891,10 +959,9 @@ function loadListeningQuestion() {
   listeningOptionsEl.replaceChildren();
   setFeedback(listeningFeedbackEl, "");
 
-  const isExampleMode = listeningContentModeEl.value === "example";
   const isVietnameseAnswer = !isExampleMode && listeningAnswerModeEl.value === "vietnamese";
   listeningPromptEl.textContent = isExampleMode
-    ? "Nghe câu ví dụ tiếng Trung rồi gõ lại bằng chữ Hán"
+    ? `Nghe ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"} tiếng Trung rồi gõ lại bằng chữ Hán`
     : isVietnameseAnswer
       ? "Nghe từ tiếng Trung rồi nhập nghĩa tiếng Việt"
       : "Nghe từ tiếng Trung rồi gõ chữ Hán";
@@ -903,7 +970,7 @@ function loadListeningQuestion() {
   listeningInputLabelEl.textContent = isVietnameseAnswer
     ? "Nhập nghĩa tiếng Việt của từ vừa nghe"
     : isExampleMode
-      ? "Gõ chữ Hán của câu ví dụ vừa nghe"
+      ? `Gõ chữ Hán của ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"} vừa nghe`
       : "Gõ chữ Hán vừa nghe";
   listeningInputLabelEl.classList.remove("hidden");
   listeningInputEl.classList.remove("hidden");
@@ -911,7 +978,7 @@ function loadListeningQuestion() {
   listeningInputEl.placeholder = isVietnameseAnswer
     ? "Nhập nghĩa tiếng Việt..."
     : isExampleMode
-      ? "Nhập câu ví dụ bằng chữ Hán..."
+      ? `Nhập ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"} bằng chữ Hán...`
       : "Nhập chữ Hán...";
   listeningInputEl.lang = isVietnameseAnswer ? "vi" : "zh";
   listeningInputEl.value = "";
@@ -920,7 +987,7 @@ function loadListeningQuestion() {
   btnCheckListening.textContent = "Kiểm tra";
   listeningInputEl.focus();
 
-  speakChinese(isExampleMode ? currentWord.example : currentWord.word);
+  speakChinese(isExampleMode ? currentQuestion.chinese : currentQuestion.word);
 }
 
 function updateListeningRetryCount() {
@@ -936,16 +1003,16 @@ btnCheckListening.addEventListener("click", () => {
     return;
   }
 
-  const currentWord = listeningQuestions[currentListeningIndex];
-  if (!currentWord) return;
+  const currentQuestion = listeningQuestions[currentListeningIndex];
+  if (!currentQuestion) return;
 
   const isExampleMode = listeningContentModeEl.value === "example";
   const isVietnameseAnswer = !isExampleMode && listeningAnswerModeEl.value === "vietnamese";
   const expectedAnswer = isVietnameseAnswer
-    ? currentWord.meaning
+    ? currentQuestion.meaning
     : isExampleMode
-      ? currentWord.example
-      : currentWord.word;
+      ? currentQuestion.chinese
+      : currentQuestion.word;
   const correctValues = isVietnameseAnswer
     ? [expectedAnswer, ...expectedAnswer.split(/[,，;；/]/)].map(normalizeAnswer).filter(Boolean)
     : expectedAnswer.split(",").map(normalizeChineseAnswer);
@@ -953,12 +1020,12 @@ btnCheckListening.addEventListener("click", () => {
     ? normalizeAnswer(listeningInputEl.value)
     : normalizeChineseAnswer(listeningInputEl.value);
   const isCorrect = correctValues.includes(inputValue);
-  const correctChinese = isExampleMode ? currentWord.example : currentWord.word;
-  const correctPinyin = isExampleMode ? currentWord.examplePinyin : currentWord.pinyin;
-  const correctMeaning = isExampleMode ? currentWord.exampleMeaning : currentWord.meaning;
+  const correctChinese = isExampleMode ? currentQuestion.chinese : currentQuestion.word;
+  const correctPinyin = currentQuestion.pinyin;
+  const correctMeaning = currentQuestion.meaning;
 
   if (isCorrect) {
-    listeningCorrectIds.add(currentWord.id);
+    listeningCorrectIds.add(currentQuestion.id);
     listeningScore = listeningCorrectIds.size;
     listeningScoreEl.textContent = listeningScore;
     setFeedback(
@@ -967,9 +1034,7 @@ btnCheckListening.addEventListener("click", () => {
       true
     );
   } else {
-    if (!listeningRoundMistakes.some(word => word.id === currentWord.id)) {
-      listeningRoundMistakes.push(currentWord);
-    }
+    addPracticeMistake(listeningRoundMistakes, listeningQuestions, currentQuestion);
     setFeedback(
       listeningFeedbackEl,
       `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(correctChinese, correctPinyin)} — ${correctMeaning}`,
@@ -980,23 +1045,25 @@ btnCheckListening.addEventListener("click", () => {
   listeningAnswered = true;
   listeningInputEl.disabled = true;
   btnCheckListening.disabled = false;
-  btnCheckListening.textContent = "Câu tiếp theo ➡";
+  btnCheckListening.textContent = isExampleMode && currentQuestion.type === "question"
+    ? "Câu trả lời ➡"
+    : "Câu tiếp theo ➡";
   updateListeningRetryCount();
 });
 
 btnReplayListening.addEventListener("click", () => {
-  const currentWord = listeningQuestions[currentListeningIndex];
-  if (!currentWord) return;
+  const currentQuestion = listeningQuestions[currentListeningIndex];
+  if (!currentQuestion) return;
 
   const isExampleMode = listeningContentModeEl.value === "example";
-  speakChinese(isExampleMode ? currentWord.example : currentWord.word);
+  speakChinese(isExampleMode ? currentQuestion.chinese : currentQuestion.word);
 });
 
 function advanceListeningQuestion() {
   if (!listeningAnswered) {
-    const skippedWord = listeningQuestions[currentListeningIndex];
-    if (skippedWord && !listeningRoundMistakes.some(word => word.id === skippedWord.id)) {
-      listeningRoundMistakes.push(skippedWord);
+    const skippedQuestion = listeningQuestions[currentListeningIndex];
+    if (skippedQuestion) {
+      addPracticeMistake(listeningRoundMistakes, listeningQuestions, skippedQuestion);
     }
   }
 
@@ -1005,7 +1072,7 @@ function advanceListeningQuestion() {
 }
 
 listeningContentModeEl.addEventListener("change", () => {
-  loadListeningQuestion();
+  startListeningPractice();
 });
 listeningAnswerModeEl.addEventListener("change", () => {
   loadListeningQuestion();
@@ -1441,17 +1508,24 @@ let typingShouldShuffle = false;
 
 function startTypingPractice(shouldShuffle = false) {
   const filteredWords = getFilteredWords();
-  if (filteredWords.length === 0) {
-    alert("Không có từ vựng nào trong bộ lọc hiện tại để luyện gõ!");
+  const isExampleMode = typingContentModeEl.value === "example";
+  const exampleItems = isExampleMode ? getPairedExampleItems(filteredWords) : [];
+  if (isExampleMode ? exampleItems.length === 0 : filteredWords.length === 0) {
+    alert(isExampleMode
+      ? "Không có cặp câu hỏi và câu trả lời trong bộ lọc hiện tại để luyện gõ ví dụ!"
+      : "Không có từ vựng nào trong bộ lọc hiện tại để luyện gõ!");
     return;
   }
 
   typingShouldShuffle = shouldShuffle;
-  typingQuestions = shouldShuffle ? shuffleList(filteredWords) : [...filteredWords];
+  const questions = isExampleMode ? exampleItems : filteredWords;
+  typingQuestions = shouldShuffle
+    ? (isExampleMode ? shufflePairedItems(questions) : shuffleList(questions))
+    : [...questions];
 
   currentTypingIndex = 0;
   typingScore = 0;
-  typingTotalQuestions = filteredWords.length;
+  typingTotalQuestions = typingQuestions.length;
   typingRoundMistakes = [];
   typingCorrectIds = new Set();
   typingIsRetryRound = false;
@@ -1462,27 +1536,25 @@ function startTypingPractice(shouldShuffle = false) {
 }
 
 function renderTypingQuestion() {
-  const currentWord = typingQuestions[currentTypingIndex];
-  if (!currentWord) return;
+  const currentQuestion = typingQuestions[currentTypingIndex];
+  if (!currentQuestion) return;
 
   typingInputEl.value = "";
   typingInputEl.focus();
 
   const isExampleMode = typingContentModeEl.value === "example";
-  const vietnameseText = isExampleMode
-    ? (currentWord.exampleMeaning || currentWord.meaning)
-    : currentWord.meaning;
+  const vietnameseText = currentQuestion.meaning;
 
   typingPromptEl.textContent = isExampleMode
-    ? "Nhìn nghĩa tiếng Việt của câu ví dụ rồi gõ câu đó bằng chữ Hán"
+    ? `Nhìn nghĩa tiếng Việt của ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"} rồi gõ câu đó bằng chữ Hán`
     : "Nhìn nghĩa tiếng Việt rồi gõ từ bằng chữ Hán";
   typingInputLabelEl.textContent = isExampleMode
-    ? "Gõ câu ví dụ bằng chữ Hán"
+    ? `Gõ chữ Hán của ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"}`
     : "Gõ từ bằng chữ Hán";
   typingWordEl.textContent = vietnameseText;
   typingPhoneticEl.textContent = "";
   typingInputEl.placeholder = isExampleMode
-    ? "Nhập câu ví dụ bằng chữ Hán..."
+    ? `Nhập ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"} bằng chữ Hán...`
     : "Nhập từ bằng chữ Hán...";
   typingProgressEl.textContent = typingIsRetryRound
     ? `Còn sai: ${typingTotalQuestions - typingCorrectIds.size} câu`
@@ -1495,13 +1567,13 @@ function renderTypingQuestion() {
   setFeedback(typingFeedbackEl, "");
 }
 
-function getTypingChineseText(word) {
-  return typingContentModeEl.value === "example" ? word.example : word.word;
+function getTypingChineseText(question) {
+  return typingContentModeEl.value === "example" ? question.chinese : question.word;
 }
 
 btnSpeakTyping.addEventListener("click", () => {
-  const currentWord = typingQuestions[currentTypingIndex];
-  if (currentWord) speakChinese(getTypingChineseText(currentWord));
+  const currentQuestion = typingQuestions[currentTypingIndex];
+  if (currentQuestion) speakChinese(getTypingChineseText(currentQuestion));
 });
 
 function updateTypingRetryCount() {
@@ -1519,24 +1591,22 @@ btnCheckTyping.addEventListener("click", () => {
 
   if (currentTypingIndex >= typingQuestions.length) return;
 
-  const currentWord = typingQuestions[currentTypingIndex];
+  const currentQuestion = typingQuestions[currentTypingIndex];
   const isExampleMode = typingContentModeEl.value === "example";
-  const chineseText = isExampleMode ? currentWord.example : currentWord.word;
-  const phoneticText = isExampleMode ? currentWord.examplePinyin : currentWord.pinyin;
+  const chineseText = getTypingChineseText(currentQuestion);
+  const phoneticText = currentQuestion.pinyin;
   const correctValues = chineseText
     .split(",")
     .map(normalizeChineseAnswer);
   const inputValue = normalizeChineseAnswer(typingInputEl.value);
 
   if (correctValues.includes(inputValue)) {
-    typingCorrectIds.add(currentWord.id);
+    typingCorrectIds.add(currentQuestion.id);
     typingScore = typingCorrectIds.size;
     typingScoreEl.textContent = typingScore;
     setFeedback(typingFeedbackEl, `✅ Đúng! Đáp án: ${formatChineseAnswer(chineseText, phoneticText)}`, true);
   } else {
-    if (!typingRoundMistakes.some(word => word.id === currentWord.id)) {
-      typingRoundMistakes.push(currentWord);
-    }
+    addPracticeMistake(typingRoundMistakes, typingQuestions, currentQuestion);
     setFeedback(
       typingFeedbackEl,
       `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(chineseText, phoneticText)}`,
@@ -1554,7 +1624,9 @@ btnCheckTyping.addEventListener("click", () => {
   typingInputEl.disabled = true;
   btnSpeakTyping.disabled = false;
   btnCheckTyping.disabled = false;
-  btnCheckTyping.textContent = "Câu tiếp theo ➡";
+  btnCheckTyping.textContent = isExampleMode && currentQuestion.type === "question"
+    ? "Câu trả lời ➡"
+    : "Câu tiếp theo ➡";
 });
 
 function advanceTypingQuestion() {
@@ -1562,7 +1634,12 @@ function advanceTypingQuestion() {
 
   if (currentTypingIndex >= typingQuestions.length) {
     if (typingRoundMistakes.length > 0) {
-      typingQuestions = typingShouldShuffle ? shuffleList(typingRoundMistakes) : [...typingRoundMistakes];
+      const isExampleMode = typingContentModeEl.value === "example";
+      typingQuestions = typingShouldShuffle
+        ? (isExampleMode
+          ? shufflePairedItems(typingRoundMistakes)
+          : shuffleList(typingRoundMistakes))
+        : [...typingRoundMistakes];
       typingRoundMistakes = [];
       typingIsRetryRound = true;
       currentTypingIndex = 0;
@@ -1907,31 +1984,25 @@ function segmentChineseSentence(sentence) {
 }
 
 function getSentenceBuildQuestions() {
-  return getFilteredWords().flatMap(word => [
-    {
-      source: "example",
-      sentence: word.example,
-      meaning: word.exampleMeaning
-    },
-    {
-      source: "answer",
-      sentence: word.answerChinese,
-      meaning: word.answerMeaning
-    }
-  ].flatMap(({ source, sentence, meaning }) => {
-    const normalizedSentence = sentence.trim();
+  const questions = getPairedExampleItems(getFilteredWords()).flatMap(item => {
+    const normalizedSentence = item.chinese.trim();
     const tokens = segmentChineseSentence(normalizedSentence);
     if (!normalizedSentence || tokens.length < 2) return [];
 
     return [{
-      id: `${word.id}-${source}`,
-      word,
+      id: item.id,
+      pairId: item.pairId,
+      type: item.type,
+      word: item.word,
       sentence: normalizedSentence,
-      meaning: meaning || word.meaning,
-      pinyin: word[`${source === "example" ? "example" : "answer"}Pinyin`],
+      meaning: item.meaning,
+      pinyin: item.pinyin,
       tokens
     }];
-  }));
+  });
+  return groupPairedItems(questions)
+    .filter(pair => pair.length === 2)
+    .flat();
 }
 
 function renderSentenceBuildUnavailable() {
@@ -1969,7 +2040,7 @@ function startSentenceBuildPractice(shouldShuffle = false, showAlert = true) {
   }
 
   sentenceBuildShouldShuffle = shouldShuffle;
-  sentenceBuildQuestions = shouldShuffle ? shuffleList(questions) : [...questions];
+  sentenceBuildQuestions = shouldShuffle ? shufflePairedItems(questions) : [...questions];
   sentenceBuildCurrentIndex = 0;
   sentenceBuildCorrectIds = new Set();
   sentenceBuildRoundMistakes = [];
@@ -1999,7 +2070,8 @@ function renderSentenceBuildQuestion() {
     ? `Ôn câu sai ${sentenceBuildCurrentIndex + 1}/${sentenceBuildQuestions.length}`
     : `Câu ${sentenceBuildCurrentIndex + 1}/${sentenceBuildQuestions.length}`;
   sentenceBuildMeaningEl.textContent = question.meaning || "Ghép các từ để tạo thành câu tiếng Trung.";
-  sentenceBuildWordHintEl.textContent = `Từ liên quan: ${question.word.word} · ${question.word.meaning}`;
+  sentenceBuildWordHintEl.textContent =
+    `${question.type === "question" ? "Câu hỏi" : "Câu trả lời"} · Từ liên quan: ${question.word.word} · ${question.word.meaning}`;
   btnSpeakSentenceBuild.disabled = false;
   sentenceBuildReferenceEl.textContent = "";
   sentenceBuildReferencePinyinEl.textContent = "";
@@ -2011,7 +2083,9 @@ function renderSentenceBuildQuestion() {
   btnCheckSentenceBuild.classList.remove("hidden");
   btnCheckSentenceBuild.disabled = true;
   btnNextSentenceBuild.classList.add("hidden");
-  btnNextSentenceBuild.textContent = "Câu tiếp theo ➡";
+  btnNextSentenceBuild.textContent = question.type === "question"
+    ? "Câu trả lời ➡"
+    : "Câu tiếp theo ➡";
   renderSentenceBuildTiles();
 }
 
@@ -2072,9 +2146,7 @@ function checkSentenceBuildAnswer() {
     sentenceBuildScoreEl.textContent = sentenceBuildCorrectIds.size;
     setFeedback(sentenceBuildFeedbackEl, "✅ Chính xác! Bạn đã ghép đúng câu.", true);
   } else {
-    if (!sentenceBuildRoundMistakes.some(item => item.id === question.id)) {
-      sentenceBuildRoundMistakes.push(question);
-    }
+    addPracticeMistake(sentenceBuildRoundMistakes, sentenceBuildQuestions, question);
     setFeedback(sentenceBuildFeedbackEl, "❌ Chưa đúng. Hãy xem lại thứ tự câu mẫu bên dưới.", false);
   }
 
@@ -2098,7 +2170,7 @@ function advanceSentenceBuildQuestion() {
   if (sentenceBuildCurrentIndex >= sentenceBuildQuestions.length) {
     if (sentenceBuildRoundMistakes.length > 0) {
       sentenceBuildQuestions = sentenceBuildShouldShuffle
-        ? shuffleList(sentenceBuildRoundMistakes)
+        ? shufflePairedItems(sentenceBuildRoundMistakes)
         : [...sentenceBuildRoundMistakes];
       sentenceBuildRoundMistakes = [];
       sentenceBuildIsRetryRound = true;
@@ -2784,7 +2856,7 @@ document.addEventListener("keydown", (event) => {
     } else if (currentMode === "listening") {
       const currentWord = listeningQuestions[currentListeningIndex];
       if (currentWord) {
-        speakChinese(listeningContentModeEl.value === "example" ? currentWord.example : currentWord.word);
+        speakChinese(listeningContentModeEl.value === "example" ? currentWord.chinese : currentWord.word);
       }
     } else if (currentMode === "question-answer") {
       const currentQuestion = questionAnswerQuestions[currentQuestionAnswerIndex];

@@ -1332,6 +1332,8 @@ select:focus-visible {
 
 @media (max-width: 620px) {
   body {
+    min-height: 100vh;
+    min-height: 100svh;
     padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
   }
 
@@ -1377,6 +1379,7 @@ select:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     max-height: 70vh;
     max-height: min(70svh, 420px);
+    max-height: min(70dvh, 420px);
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 12px;
@@ -1395,8 +1398,13 @@ select:focus-visible {
     width: 100%;
     min-width: 0;
     padding: 9px 8px;
-    font-size: 0.76rem;
+    font-size: 0.78rem;
+    line-height: 1.35;
     overflow-wrap: anywhere;
+  }
+
+  .header-actions > button.btn-primary.small {
+    min-height: 48px;
   }
 
   .study-panel {
@@ -1437,6 +1445,10 @@ select:focus-visible {
     flex-wrap: wrap;
   }
 
+  .screen {
+    scroll-margin-top: 12px;
+  }
+
   .quiz-header {
     font-size: 0.78rem;
   }
@@ -1458,14 +1470,50 @@ select:focus-visible {
     min-height: 48px;
   }
 
+  .btn-shuffle {
+    min-height: 48px;
+  }
+
+  .matching-option {
+    min-height: 52px;
+  }
+
+  .quiz-option-btn {
+    min-height: 52px;
+    line-height: 1.5;
+  }
+
+  .quiz-hint-option,
+  .typing-pronunciation-option {
+    min-height: 44px;
+  }
+
+  .topic-filter-options {
+    max-height: min(50dvh, 320px);
+  }
+
+  .sentence-build-tile {
+    min-height: 48px;
+  }
+
   .sentence-build-actions {
     flex-direction: column;
+  }
+
+  .sentence-build-actions > button {
+    min-width: 132px;
+    flex: 0 0 auto;
+    align-self: flex-start;
   }
 }
 
 @media (max-width: 420px) {
   .app-header {
     padding: 14px;
+  }
+
+  .app-header h1 {
+    font-size: clamp(1.2rem, 6vw, 1.35rem);
   }
 
   .study-panel {
@@ -1478,6 +1526,16 @@ select:focus-visible {
 
   .quiz-box {
     padding: 19px 14px;
+  }
+
+  .quiz-header {
+    align-items: stretch;
+  }
+
+  .quiz-header > span {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: center;
   }
 
   .panel-header {
@@ -1555,7 +1613,7 @@ select:focus-visible {
   }
 
   .quiz-question-word {
-    font-size: 2.15rem;
+    font-size: clamp(1.7rem, 8vw, 2.15rem);
   }
 
   .question-answer-review-item {
@@ -1572,6 +1630,14 @@ select:focus-visible {
 
   .reading-sentence {
     font-size: 1.3rem;
+  }
+
+  .sentence-build-tiles {
+    gap: 7px;
+  }
+
+  .sentence-build-tile {
+    padding: 8px 10px;
   }
 }
 
