@@ -1,0 +1,1386 @@
+{
+  "HSK1": {
+    "Câu cơ bản": [
+      {
+        "id": "hsk1-01",
+        "order": 1,
+        "title": "Trật tự câu tiếng Trung",
+        "structure": "Chủ ngữ + động từ + tân ngữ",
+        "explanation": "Câu kể cơ bản thường đặt chủ ngữ trước động từ và tân ngữ. Trật tự này khá giống tiếng Việt.",
+        "examples": [
+          {
+            "chinese": "我学习汉语。",
+            "pinyin": "Wǒ xuéxí Hànyǔ.",
+            "meaning": "Tôi học tiếng Trung."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi uống nước.",
+            "chinese": "我喝水。",
+            "pinyin": "Wǒ hē shuǐ."
+          },
+          {
+            "vietnamese": "Anh ấy ăn cơm.",
+            "chinese": "他吃饭。",
+            "pinyin": "Tā chī fàn."
+          },
+          {
+            "vietnamese": "Mẹ tôi mua ba quả táo.",
+            "chinese": "我妈妈买三个苹果。",
+            "pinyin": "Wǒ māma mǎi sān ge píngguǒ."
+          },
+          {
+            "vietnamese": "Chúng tôi đều thích nghe bài hát Trung Quốc.",
+            "chinese": "我们都喜欢听中国歌。",
+            "pinyin": "Wǒmen dōu xǐhuan tīng Zhōngguó gē."
+          },
+          {
+            "vietnamese": "Anh trai tôi muốn mua một chiếc máy tính mới.",
+            "chinese": "我哥哥想买一台新电脑。",
+            "pinyin": "Wǒ gēge xiǎng mǎi yì tái xīn diànnǎo."
+          }
+        ]
+      },
+      {
+        "id": "hsk1-02",
+        "order": 2,
+        "title": "Câu với 是",
+        "structure": "Chủ ngữ + 是 + danh từ",
+        "explanation": "是 dùng để xác định hoặc giới thiệu người, vật, nghề nghiệp. Khi phủ định, dùng 不是.",
+        "examples": [
+          {
+            "chinese": "他是我的汉语老师。",
+            "pinyin": "Tā shì wǒ de Hànyǔ lǎoshī.",
+            "meaning": "Thầy ấy là giáo viên tiếng Trung của tôi."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi là học sinh.",
+            "chinese": "我是学生。",
+            "pinyin": "Wǒ shì xuésheng."
+          },
+          {
+            "vietnamese": "Cô ấy không phải là bác sĩ.",
+            "chinese": "她不是医生。",
+            "pinyin": "Tā bú shì yīshēng."
+          },
+          {
+            "vietnamese": "Đây là cuốn sách của mẹ tôi.",
+            "chinese": "这是我妈妈的书。",
+            "pinyin": "Zhè shì wǒ māma de shū."
+          },
+          {
+            "vietnamese": "Người ở phía trước kia là bạn học của chúng tôi.",
+            "chinese": "前边的那个人是我们的同学。",
+            "pinyin": "Qiánbian de nà ge rén shì wǒmen de tóngxué."
+          },
+          {
+            "vietnamese": "Bố tôi là bác sĩ của bệnh viện lớn này.",
+            "chinese": "我爸爸是这个大医院的医生。",
+            "pinyin": "Wǒ bàba shì zhè ge dà yīyuàn de yīshēng."
+          }
+        ]
+      },
+      {
+        "id": "hsk1-03",
+        "order": 3,
+        "title": "Tính từ làm vị ngữ",
+        "structure": "Chủ ngữ + 很 + tính từ",
+        "explanation": "Tính từ có thể trực tiếp làm vị ngữ, không cần 是. 很 thường đứng trước tính từ trong câu miêu tả trung tính; không phải lúc nào cũng mang nghĩa nhấn mạnh “rất”.",
+        "examples": [
+          {
+            "chinese": "今天很热。",
+            "pinyin": "Jīntiān hěn rè.",
+            "meaning": "Hôm nay nóng."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi rất bận.",
+            "chinese": "我很忙。",
+            "pinyin": "Wǒ hěn máng."
+          },
+          {
+            "vietnamese": "Táo rất rẻ.",
+            "chinese": "苹果很便宜。",
+            "pinyin": "Píngguǒ hěn piányi."
+          },
+          {
+            "vietnamese": "Bộ quần áo này rất đẹp.",
+            "chinese": "这件衣服很漂亮。",
+            "pinyin": "Zhè jiàn yīfu hěn piàoliang."
+          },
+          {
+            "vietnamese": "Hôm nay bên ngoài rất lạnh.",
+            "chinese": "今天外边很冷。",
+            "pinyin": "Jīntiān wàibian hěn lěng."
+          },
+          {
+            "vietnamese": "Món ăn của nhà hàng này rất ngon.",
+            "chinese": "这个饭店的菜很好吃。",
+            "pinyin": "Zhè ge fàndiàn de cài hěn hǎochī."
+          }
+        ]
+      }
+    ],
+    "Câu hỏi": [
+      {
+        "id": "hsk1-04",
+        "order": 4,
+        "title": "Câu hỏi Có/Không với 吗",
+        "structure": "Câu kể + 吗？",
+        "explanation": "Thêm 吗 vào cuối câu kể để hỏi người nghe có đồng ý với nội dung đó hay không. Không thêm 吗 sau câu đã có từ để hỏi như 什么 hoặc 谁.",
+        "examples": [
+          {
+            "chinese": "你是学生吗？",
+            "pinyin": "Nǐ shì xuésheng ma?",
+            "meaning": "Bạn là học sinh phải không?"
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Bạn có thích trà không?",
+            "chinese": "你喜欢茶吗？",
+            "pinyin": "Nǐ xǐhuan chá ma?"
+          },
+          {
+            "vietnamese": "Anh ấy là bác sĩ phải không?",
+            "chinese": "他是医生吗？",
+            "pinyin": "Tā shì yīshēng ma?"
+          },
+          {
+            "vietnamese": "Ngày mai bạn đi đến trường học không?",
+            "chinese": "你明天去学校吗？",
+            "pinyin": "Nǐ míngtiān qù xuéxiào ma?"
+          },
+          {
+            "vietnamese": "Bộ quần áo màu đen này có đắt không?",
+            "chinese": "这件黑色的衣服贵吗？",
+            "pinyin": "Zhè jiàn hēisè de yīfu guì ma?"
+          },
+          {
+            "vietnamese": "Chiều hôm nay bạn có muốn cùng tôi đi siêu thị mua hoa quả không?",
+            "chinese": "今天下午你想和我一起去超市买水果吗？",
+            "pinyin": "Jīntiān xiàwǔ nǐ xiǎng hé wǒ yìqǐ qù chāoshì mǎi shuǐguǒ ma?"
+          }
+        ]
+      },
+      {
+        "id": "hsk1-05",
+        "order": 5,
+        "title": "Câu hỏi với 呢",
+        "structure": "Danh từ/đại từ + 呢？",
+        "explanation": "呢 thường dùng để hỏi tiếp về người hoặc việc vừa được nhắc đến, tương đương “còn ... thì sao?”.",
+        "examples": [
+          {
+            "chinese": "我很好，你呢？",
+            "pinyin": "Wǒ hěn hǎo, nǐ ne?",
+            "meaning": "Tôi rất khỏe, còn bạn thì sao?"
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi rất khỏe, còn bạn thì sao?",
+            "chinese": "我很好，你呢？",
+            "pinyin": "Wǒ hěn hǎo, nǐ ne?"
+          },
+          {
+            "vietnamese": "Còn mẹ bạn thì sao?",
+            "chinese": "你妈妈呢？",
+            "pinyin": "Nǐ māmā ne?"
+          },
+          {
+            "vietnamese": "Chiều hôm nay tôi muốn đi thư viện đọc sách, còn bạn thì sao?",
+            "chinese": "今天下午我想去图书馆看书，你呢？",
+            "pinyin": "Jīntiān xiàwǔ wǒ xiǎng qù túshūguǎn kànshū, nǐ ne?"
+          },
+          {
+            "vietnamese": "Bố tôi là bác sĩ ở bệnh viện này, còn mẹ bạn thì sao?",
+            "chinese": "我爸爸是这个医院的医生，你妈妈呢？",
+            "pinyin": "Wǒ bàba shì zhè ge yīyuàn de yīshēng, nǐ māma ne?"
+          },
+          {
+            "vietnamese": "Ngày mai chúng tôi đều ngồi xe buýt đến trường học, còn David thì sao?",
+            "chinese": "明天我们都坐公共汽车去学校，大卫呢？",
+            "pinyin": "Míngtiān wǒmen dōu zuò gōnggòng qìchē qù xuéxiào, Dàwèi ne?"
+          }
+        ]
+      },
+      {
+        "id": "hsk1-06",
+        "order": 6,
+        "title": "Từ để hỏi nằm ở vị trí cần hỏi",
+        "structure": "Chủ ngữ + động từ + từ để hỏi",
+        "explanation": "Các từ như 谁 (ai), 什么 (cái gì), 哪儿 (ở đâu), 几 (mấy) thường thay cho thành phần cần hỏi và giữ nguyên vị trí của thành phần đó trong câu.",
+        "examples": [
+          {
+            "chinese": "你想喝什么？",
+            "pinyin": "Nǐ xiǎng hē shénme?",
+            "meaning": "Bạn muốn uống gì?"
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Bạn đi đâu?",
+            "chinese": "你去哪儿？",
+            "pinyin": "Nǐ qù nǎr?"
+          },
+          {
+            "vietnamese": "Bạn muốn uống gì?",
+            "chinese": "你想喝什么？",
+            "pinyin": "Nǐ xiǎng hē shénme?"
+          },
+          {
+            "vietnamese": "Chiều hôm nay sau khi tan học, bạn muốn đi đâu ăn cơm?",
+            "chinese": "今天下午下课以后，你想去哪儿吃饭？",
+            "pinyin": "Jīntiān xiàwǔ xiàkè yǐhòu, nǐ xiǎng qù nǎr chīfàn?"
+          },
+          {
+            "vietnamese": "Người đang ngồi đọc sách ở trong phòng học phía trước kia là ai?",
+            "chinese": "坐在前边教室里看书的那个人是谁？",
+            "pinyin": "Zuò zài qiánbian jiàoshì lǐ kànshū de nà ge rén shì shéi?"
+          },
+          {
+            "vietnamese": "Sáng mai chín giờ bạn muốn đến cửa hàng mua thứ gì?",
+            "chinese": "明天上午九点你想去商店买什么东西？",
+            "pinyin": "Míngtiān shàngwǔ jiǔ diǎn nǐ xiǎng qù shāngdiàn mǎi shénme dōngxi?"
+          }
+        ]
+      }
+    ],
+    "Phủ định": [
+      {
+        "id": "hsk1-07",
+        "order": 7,
+        "title": "Phủ định với 不",
+        "structure": "不 + động từ/tính từ",
+        "explanation": "不 thường phủ định thói quen, ý muốn, nhận định hoặc hành động ở hiện tại và tương lai. Trước 是 tạo thành 不是.",
+        "examples": [
+          {
+            "chinese": "我不喝咖啡。",
+            "pinyin": "Wǒ bù hē kāfēi.",
+            "meaning": "Tôi không uống cà phê."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Hôm nay tôi không bận.",
+            "chinese": "我今天不忙。",
+            "pinyin": "Wǒ jīntiān bù máng."
+          },
+          {
+            "vietnamese": "Tôi không uống cà phê.",
+            "chinese": "我不喝咖啡。",
+            "pinyin": "Wǒ bù hē kāfēi."
+          },
+          {
+            "vietnamese": "Ngày mai là Chủ Nhật, anh trai tôi không đến công ty làm việc.",
+            "chinese": "明天是星期天，我哥哥不去公司上班。",
+            "pinyin": "Míngtiān shì xīngqītiān, wǒ gēge bú qù gōngsī shàngbān."
+          },
+          {
+            "vietnamese": "Hôm nay thời tiết ở bên ngoài không lạnh lắm, tôi không muốn mặc chiếc áo to này.",
+            "chinese": "今天外边的天气不太冷，我不想穿这件大衣服。",
+            "pinyin": "Jīntiān wàibian de tiānqì bú tài lěng, wǒ bù xiǎng chuān zhè jiàn dà yīfu."
+          },
+          {
+            "vietnamese": "Cuốn sách tiếng Trung này không phải của tôi, tôi không biết đây là sách của ai.",
+            "chinese": "这本中文书不是我的，我不知道这是谁的书。",
+            "pinyin": "Zhè běn Zhōngwén shū bú shì wǒ de, wǒ bù zhīdào zhè shì shéi de shū."
+          }
+        ]
+      }
+    ],
+    "Sở hữu và tồn tại": [
+      {
+        "id": "hsk1-08",
+        "order": 8,
+        "title": "有 và 没有",
+        "structure": "Chủ ngữ + 有/没有 + danh từ",
+        "explanation": "有 diễn tả sở hữu hoặc sự tồn tại. Dạng phủ định thông dụng là 没有, không dùng 不有.",
+        "examples": [
+          {
+            "chinese": "我有一个妹妹。",
+            "pinyin": "Wǒ yǒu yí ge mèimei.",
+            "meaning": "Tôi có một em gái."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Nhà tôi không có mèo.",
+            "chinese": "我家没有猫。",
+            "pinyin": "Wǒ jiā méiyǒu māo."
+          },
+          {
+            "vietnamese": "Tôi có một em gái.",
+            "chinese": "我有一个妹妹。",
+            "pinyin": "Wǒ yǒu yí gè mèimei."
+          },
+          {
+            "vietnamese": "Chiều hôm nay thầy Vương không có tiết học, bạn có thể đến văn phòng tìm thầy ấy.",
+            "chinese": "今天下午王老师没有课，你可以去办公室找他。",
+            "pinyin": "Jīntiān xiàwǔ Wáng lǎoshī méiyǒu kè, nǐ kěyǐ qù bàngōngshì zhǎo tā."
+          },
+          {
+            "vietnamese": "Bây giờ ở trong nhà không có đồ ăn, chúng ta cùng đi quán ăn phía trước ăn cơm nhé.",
+            "chinese": "现在家里没有吃的东西，我们一起去前边的饭馆吃饭吧。",
+            "pinyin": "Xiànzài jiālǐ méiyǒu chī de dōngxi, wǒmen yìqǐ qù qiánbian de fànguǎn chīfàn ba."
+          },
+          {
+            "vietnamese": "Gia đình của bạn Trung Quốc tôi có bốn người, anh ấy có một cô em gái rất đáng yêu.",
+            "chinese": "我的中国朋友家有四口人，他有一个很可爱的妹妹。",
+            "pinyin": "Wǒ de Zhōngguó péngyou jiā yǒu sì kǒu rén, tā yǒu yí ge hěn kě'ài de mèimei."
+          }
+        ]
+      },
+      {
+        "id": "hsk1-09",
+        "order": 9,
+        "title": "的 chỉ sở hữu và bổ nghĩa",
+        "structure": "Người/vật + 的 + danh từ",
+        "explanation": "的 nối người hoặc cụm từ bổ nghĩa với danh từ phía sau, thường diễn tả sở hữu.",
+        "examples": [
+          {
+            "chinese": "这是我的书。",
+            "pinyin": "Zhè shì wǒ de shū.",
+            "meaning": "Đây là sách của tôi."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Bạn của tôi là giáo viên.",
+            "chinese": "我的朋友是老师。",
+            "pinyin": "Wǒ de péngyou shì lǎoshī."
+          },
+          {
+            "vietnamese": "Đây là sách của tôi.",
+            "chinese": "这是我的书。",
+            "pinyin": "Zhè shì wǒ de shū."
+          },
+          {
+            "vietnamese": "Cuốn sách tiếng Trung ở trên bàn kia là của bạn tôi.",
+            "chinese": "桌子上的那本汉语书是我朋友的。",
+            "pinyin": "Zhuōzi shang de nà běn Hànyǔ shū shì wǒ péngyou de."
+          },
+          {
+            "vietnamese": "Bộ quần áo mới mua ở cửa hàng hôm qua là của mẹ tôi.",
+            "chinese": "昨天在商店买的新衣服是我妈妈的。",
+            "pinyin": "Zuótiān zài shāngdiàn mǎi de xīn yīfu shì wǒ māma de."
+          },
+          {
+            "vietnamese": "Bạn học đang ngồi đọc sách ở trong thư viện là bạn tốt của tôi.",
+            "chinese": "在图书馆里看书的那个同学是我的好朋友。",
+            "pinyin": "Zài túshūguǎn lǐ kànshū de nà ge tóngxué shì wǒ de hǎo péngyou."
+          }
+        ]
+      }
+    ],
+    "Số lượng": [
+      {
+        "id": "hsk1-10",
+        "order": 10,
+        "title": "Số từ và lượng từ",
+        "structure": "Số từ + lượng từ + danh từ",
+        "explanation": "Khi nói số lượng, thường cần một lượng từ giữa số từ và danh từ.",
+        "examples": [
+          {
+            "chinese": "我有三本书。",
+            "pinyin": "Wǒ yǒu sān běn shū.",
+            "meaning": "Tôi có ba quyển sách."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Một người bạn.",
+            "chinese": "一个朋友。",
+            "pinyin": "Yí gè péngyou."
+          },
+          {
+            "vietnamese": "Tôi có ba quyển sách.",
+            "chinese": "我有三本书。",
+            "pinyin": "Wǒ yǒu sān běn shū."
+          },
+          {
+            "vietnamese": "Hôm qua tôi đã mua ba bộ quần áo rất đẹp ở cửa hàng lớn kia.",
+            "chinese": "昨天我在那家大商店买了三件很漂亮的衣服。",
+            "pinyin": "Zuótiān wǒ zài nà jiā dà shāngdiàn mǎi le sān jiàn hěn piàoliang de yīfu."
+          },
+          {
+            "vietnamese": "Chiều hôm nay chúng tôi ngồi ở quán cà phê uống hai cốc trà nóng.",
+            "chinese": "今天下午我们坐在咖啡店里喝了两杯热茶。",
+            "pinyin": "Jīntiān xiàwǔ wǒmen zuò zài kāfēidiàn lǐ hē le liǎng bēi rè chá."
+          },
+          {
+            "vietnamese": "Trên chiếc bàn lớn trong phòng học có bốn cuốn sách mới và hai chiếc cốc màu trắng.",
+            "chinese": "教室的大桌子上有四本新书和两个白色的杯子。",
+            "pinyin": "Jiàoshì de dà zhuōzi shang yǒu sì běn xīn shū hé liǎng ge báisè de bēizi."
+          }
+        ]
+      }
+    ],
+    "Thời gian": [
+      {
+        "id": "hsk1-11",
+        "order": 11,
+        "title": "Vị trí của thời gian trong câu",
+        "structure": "Chủ ngữ + thời gian + động từ",
+        "explanation": "Từ chỉ thời gian thường đứng sau chủ ngữ hoặc đầu câu, trước động từ.",
+        "examples": [
+          {
+            "chinese": "我明天去学校。",
+            "pinyin": "Wǒ míngtiān qù xuéxiào.",
+            "meaning": "Ngày mai tôi đi đến trường."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Hôm nay anh ấy đi làm.",
+            "chinese": "他今天去工作。",
+            "pinyin": "Tā jīntiān qù gōngzuò."
+          },
+          {
+            "vietnamese": "Ngày mai tôi đi đến trường.",
+            "chinese": "我明天去学校。",
+            "pinyin": "Wǒ míngtiān qù xuéxiào."
+          },
+          {
+            "vietnamese": "Tám giờ sáng mai tôi cùng bạn bè đến bệnh viện khám bệnh.",
+            "chinese": "我明天上午八点和朋友去医院看病。",
+            "pinyin": "Wǒ míngtiān shàngwǔ bā diǎn hé péngyou qù yīyuàn kàn bìng."
+          },
+          {
+            "vietnamese": "Tối hôm qua lúc tám giờ, anh trai tôi lái xe về nhà.",
+            "chinese": "我哥哥昨天晚上八点开车回家。",
+            "pinyin": "Wǒ gēge zuótiān wǎnshang bā diǎn kāi chē huíjiā."
+          },
+          {
+            "vietnamese": "Mười hai giờ trưa hôm nay chúng tôi ngồi ăn cơm ở nhà hàng này.",
+            "chinese": "我们今天中午十二点在这个饭店吃饭。",
+            "pinyin": "Wǒmen jīntiān zhōngwǔ shí'èr diǎn zài zhè ge fàndiàn chīfàn."
+          }
+        ]
+      }
+    ],
+    "Nơi chốn": [
+      {
+        "id": "hsk1-12",
+        "order": 12,
+        "title": "在 chỉ địa điểm",
+        "structure": "Chủ ngữ + 在 + địa điểm (+ động từ)",
+        "explanation": "在 đứng trước địa điểm để nói ai hoặc vật ở đâu.",
+        "examples": [
+          {
+            "chinese": "我在家看书。",
+            "pinyin": "Wǒ zài jiā kàn shū.",
+            "meaning": "Tôi đọc sách ở nhà."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Bố tôi ở bệnh viện.",
+            "chinese": "我爸爸在医院。",
+            "pinyin": "Wǒ bàba zài yīyuàn."
+          },
+          {
+            "vietnamese": "Tôi đọc sách ở nhà.",
+            "chinese": "我在家看书。",
+            "pinyin": "Wǒ zài jiā kàn shū."
+          },
+          {
+            "vietnamese": "Chiều hôm nay mẹ tôi cùng bạn bè uống trà nói chuyện ở trong nhà.",
+            "chinese": "今天下午我妈妈和朋友在家里喝茶说话。",
+            "pinyin": "Jīntiān xiàwǔ wǒ māma hé péngyou zài jiālǐ hē chá shuō huà."
+          },
+          {
+            "vietnamese": "Thầy Vương hôm nay không ở văn phòng, thầy đang lên lớp cho học sinh ở trong phòng học lớn.",
+            "chinese": "王老师今天不在办公室，他正在大教室里给学生上课。",
+            "pinyin": "Wáng lǎoshī jīntiān bú zài bàngōngshì, tā zhèngzài dà jiàoshì lǐ gěi xuésheng shàngkè."
+          },
+          {
+            "vietnamese": "Những người bạn học kia của tôi bây giờ đều đang đọc sách ở trong thư viện của trường học.",
+            "chinese": "我的那些同学现在都在学校的图书馆里看书。",
+            "pinyin": "Wǒ de nàxiē tóngxué xiànzài dōu zài xuéxiào de túshūguǎn lǐ kàn shū."
+          }
+        ]
+      }
+    ],
+    "Động từ năng nguyện": [
+      {
+        "id": "hsk1-13",
+        "order": 13,
+        "title": "会, 能 và 可以",
+        "structure": "Chủ ngữ + 会/能/可以 + động từ",
+        "explanation": "会 nói về kỹ năng; 能 nói về năng lực/điều kiện; 可以 nói về sự cho phép.",
+        "examples": [
+          {
+            "chinese": "她会说汉语。",
+            "pinyin": "Tā huì shuō Hànyǔ.",
+            "meaning": "Cô ấy biết nói tiếng Trung."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi có thể vào không?",
+            "chinese": "我可以进去吗？",
+            "pinyin": "Wǒ kěyǐ jìnqù ma?"
+          },
+          {
+            "vietnamese": "Anh ấy học tiếng Trung ở trường đại học một năm rồi, bây giờ biết viết rất nhiều chữ Hán.",
+            "chinese": "他在大学学了一年汉语，现在会写很多汉字。",
+            "pinyin": "Tā zài dàxué xué le yì nián Hànyǔ, xiànzài huì xiě hěn duō Hànzì."
+          },
+          {
+            "vietnamese": "Chiều hôm nay tôi không có việc gì bận, có thể cùng bạn đi siêu thị mua hoa quả.",
+            "chinese": "今天下午我没有什么事，能和你一起去超市买水果。",
+            "pinyin": "Jīntiān xiàwǔ wǒ méiyǒu shénme shì, néng hé nǐ yìqǐ qù chāoshì mǎi shuǐguǒ."
+          },
+          {
+            "vietnamese": "Xin hỏi, bây giờ chúng tôi có thể ngồi ở đây uống trà và đọc sách không?",
+            "chinese": "请问，我们现在可以在这儿喝茶看书吗？",
+            "pinyin": "Qǐngwèn, wǒmen xiànzài kěyǐ zài zhèr hē chá kànshū ma?"
+          }
+        ]
+      },
+      {
+        "id": "hsk1-14",
+        "order": 14,
+        "title": "想 và 要 diễn tả mong muốn",
+        "structure": "Chủ ngữ + 想/要 + động từ",
+        "explanation": "想 diễn tả mong muốn nhẹ nhàng. 要 diễn tả ý định rõ hơn hoặc cần/muốn.",
+        "examples": [
+          {
+            "chinese": "我想喝茶。",
+            "pinyin": "Wǒ xiǎng hē chá.",
+            "meaning": "Tôi muốn uống trà."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tối nay tôi muốn xem phim.",
+            "chinese": "我晚上想看电影。",
+            "pinyin": "Wǒ wǎnshang xiǎng kàn diànyǐng."
+          },
+          {
+            "vietnamese": "Tôi muốn uống trà.",
+            "chinese": "我想喝茶。",
+            "pinyin": "Wǒ xiǎng hē chá."
+          },
+          {
+            "vietnamese": "Thời tiết hôm nay rất lạnh, tôi muốn ở trong ký túc xá uống một cốc trà nóng.",
+            "chinese": "今天天气很冷，我想在宿舍里喝一杯热茶。",
+            "pinyin": "Jīntiān tiānqì hěn lěng, wǒ xiǎng zài sùshè lǐ hē yì bēi rè chá."
+          },
+          {
+            "vietnamese": "Tám giờ sáng mai tôi phải đi sân bay đón bố mẹ tôi.",
+            "chinese": "明天上午八点我要去机场接我的爸爸妈妈。",
+            "pinyin": "Míngtiān shàngwǔ bā diǎn wǒ yào qù jīchǎng jiē wǒ de bàba māma."
+          },
+          {
+            "vietnamese": "Sang năm anh ấy muốn đi Bắc Kinh học đại học, bây giờ mỗi ngày đều phải chăm chỉ học tiếng Trung.",
+            "chinese": "明年他想去北京读大学，现在每天都要认真学习汉语。",
+            "pinyin": "Míngnián tā xiǎng qù Běijīng dú dàxué, xiànzài měitiān dōu yào rènzhēn xuéxí Hànyǔ."
+          }
+        ]
+      }
+    ],
+    "Động từ và liên kết": [
+      {
+        "id": "hsk1-15",
+        "order": 15,
+        "title": "喜欢 và 和",
+        "structure": "喜欢 + danh từ/động từ; danh từ + 和 + danh từ",
+        "explanation": "喜欢 đi với danh từ/động từ. 和 nối các danh từ trong câu.",
+        "examples": [
+          {
+            "chinese": "我喜欢和朋友喝茶。",
+            "pinyin": "Wǒ xǐhuan hé péngyou hē chá.",
+            "meaning": "Tôi thích uống trà với bạn bè."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi thích táo và chuối.",
+            "chinese": "我喜欢苹果和香蕉。",
+            "pinyin": "Wǒ xǐhuan píngguǒ hé xiāngjiāo."
+          },
+          {
+            "vietnamese": "Tôi thích uống trà với bạn bè.",
+            "chinese": "我喜欢和朋友喝茶。",
+            "pinyin": "Wǒ xǐhuan hé péngyou hē chá."
+          },
+          {
+            "vietnamese": "Tôi và em trai tôi đều rất thích học tiếng Trung và viết chữ Hán.",
+            "chinese": "我和我弟弟都非常喜欢学习汉语和写汉字。",
+            "pinyin": "Wǒ hé wǒ dìdi dōu fēicháng xǐhuan xuéxí Hànyǔ hé xiě Hànzì."
+          },
+          {
+            "vietnamese": "Bạn học của tôi rất thích ngồi ở quán cà phê kia uống trà nóng và cà phê.",
+            "chinese": "我的同学很喜欢坐在那家咖啡店里喝热茶和咖啡。",
+            "pinyin": "Wǒ de tóngxué hěn xǐhuan zuò zài nà jiā kāfēidiàn lǐ hē rè chá hé kāfēi."
+          },
+          {
+            "vietnamese": "Cuối tuần tôi và bạn tốt đều thích ở trong ký túc xá xem phim và nghe nhạc.",
+            "chinese": "周末我和好朋友都喜欢留在宿舍里看电影和听歌。",
+            "pinyin": "Zhōumò wǒ hé hǎo péngyou dōu xǐhuan liú zài sùshè lǐ kàn diànyǐng hé tīng gē."
+          }
+        ]
+      }
+    ]
+  },
+  "HSK2": {
+    "Bổ sung và nhấn mạnh": [
+      {
+        "id": "hsk2-16",
+        "order": 16,
+        "title": "Vị trí của 也 và 都",
+        "structure": "Chủ ngữ + 也/都 + động từ hoặc tính từ",
+        "explanation": "也 nghĩa là “cũng”; 都 nghĩa là “đều/tất cả”.",
+        "examples": [
+          {
+            "chinese": "我们都喜欢汉语。",
+            "pinyin": "Wǒmen dōu xǐhuan Hànyǔ.",
+            "meaning": "Chúng tôi đều thích tiếng Trung."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi cũng muốn đi.",
+            "chinese": "我也想去。",
+            "pinyin": "Wǒ yě xiǎng qù."
+          },
+          {
+            "vietnamese": "Chúng tôi đều thích tiếng Trung.",
+            "chinese": "我们都喜欢汉语。",
+            "pinyin": "Wǒmen dōu xǐhuan Hànyǔ."
+          },
+          {
+            "vietnamese": "Cô ấy cũng là học sinh.",
+            "chinese": "她也是学生。",
+            "pinyin": "Tā yě shì xuésheng."
+          },
+          {
+            "vietnamese": "Bọn họ đều rất bận.",
+            "chinese": "他们都很忙。",
+            "pinyin": "Tāmen dōu hěn máng."
+          },
+          {
+            "vietnamese": "Hôm nay tôi cũng không khỏe.",
+            "chinese": "我今天也不舒服。",
+            "pinyin": "Wǒ jīntiān yě bù shūfu."
+          }
+        ]
+      }
+    ],
+    "Thể và thời điểm": [
+      {
+        "id": "hsk2-17",
+        "order": 17,
+        "title": "了 diễn tả hành động đã xảy ra",
+        "structure": "Động từ + 了 + tân ngữ",
+        "explanation": "了 đặt sau động từ đánh dấu hành động đã xảy ra hoặc hoàn tất.",
+        "examples": [
+          {
+            "chinese": "我昨天买了一本书。",
+            "pinyin": "Wǒ zuótiān mǎi le yì běn shū.",
+            "meaning": "Hôm qua tôi đã mua một quyển sách."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Hôm qua tôi đã ăn cơm.",
+            "chinese": "我昨天吃了饭。",
+            "pinyin": "Wǒ zuótiān chī le fàn."
+          },
+          {
+            "vietnamese": "Hôm qua tôi đã mua một quyển sách.",
+            "chinese": "我昨天买了一本书。",
+            "pinyin": "Wǒ zuótiān mǎi le yì běn shū."
+          },
+          {
+            "vietnamese": "Sáng nay tôi đã uống một cốc cà phê.",
+            "chinese": "我今天早上喝了一杯咖啡。",
+            "pinyin": "Wǒ jīntiān zǎoshang hē le yì bēi kāfēi."
+          },
+          {
+            "vietnamese": "Anh ấy đã xem bộ phim này.",
+            "chinese": "他看了这部电影。",
+            "pinyin": "Tā kàn le zhè bù diànyǐng."
+          },
+          {
+            "vietnamese": "Hôm qua cô ấy đã làm bài tập.",
+            "chinese": "她昨天做了作业。",
+            "pinyin": "Tā zuótiān zuò le zuòyè."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-18",
+        "order": 18,
+        "title": "了 ở cuối câu chỉ sự thay đổi",
+        "structure": "Câu + 了",
+        "explanation": "了 cuối câu báo hiệu tình huống mới hoặc sự thay đổi.",
+        "examples": [
+          {
+            "chinese": "天气冷了。",
+            "pinyin": "Tiānqì lěng le.",
+            "meaning": "Trời trở lạnh rồi."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Em gái tôi lớn rồi.",
+            "chinese": "我妹妹大了。",
+            "pinyin": "Wǒ mèimei dà le."
+          },
+          {
+            "vietnamese": "Trời trở lạnh rồi.",
+            "chinese": "天气冷了。",
+            "pinyin": "Tiānqì lěng le."
+          },
+          {
+            "vietnamese": "Không có mưa nữa rồi.",
+            "chinese": "不下雨了。",
+            "pinyin": "Bú xià yǔ le."
+          },
+          {
+            "vietnamese": "Tôi đói rồi.",
+            "chinese": "我饿了。",
+            "pinyin": "Wǒ è le."
+          },
+          {
+            "vietnamese": "Đến giờ đi làm rồi.",
+            "chinese": "该去工作了。",
+            "pinyin": "Gāi qù gōngzuò le."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-19",
+        "order": 19,
+        "title": "正在 diễn tả hành động đang diễn ra",
+        "structure": "Chủ ngữ + 正在 + động từ (+ 呢)",
+        "explanation": "正在 nhấn mạnh hành động đang diễn ra ngay lúc nói.",
+        "examples": [
+          {
+            "chinese": "妈妈正在做饭呢。",
+            "pinyin": "Māma zhèngzài zuò fàn ne.",
+            "meaning": "Mẹ đang nấu cơm."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi đang đọc sách.",
+            "chinese": "我正在看书。",
+            "pinyin": "Wǒ zhèngzài kàn shū."
+          },
+          {
+            "vietnamese": "Mẹ đang nấu cơm.",
+            "chinese": "妈妈正在做饭呢。",
+            "pinyin": "Māmā zhèngzài zuò fàn ne."
+          },
+          {
+            "vietnamese": "Anh ấy đang nghe nhạc.",
+            "chinese": "他正在听音乐。",
+            "pinyin": "Tā zhèngzài tīng yīnyuè."
+          },
+          {
+            "vietnamese": "Bọn họ đang chơi bóng rổ.",
+            "chinese": "他们正在打篮球。",
+            "pinyin": "Tāmen zhèngzài dǎ lánqiú."
+          },
+          {
+            "vietnamese": "Cô ấy đang viết chữ Hán.",
+            "chinese": "她正在写汉字。",
+            "pinyin": "Tā zhèngzài xiě hànzì."
+          }
+        ]
+      }
+    ],
+    "So sánh": [
+      {
+        "id": "hsk2-20",
+        "order": 20,
+        "title": "So sánh hơn với 比",
+        "structure": "A + 比 + B + tính từ",
+        "explanation": "比 đặt giữa hai đối tượng để so sánh hơn.",
+        "examples": [
+          {
+            "chinese": "今天比昨天冷。",
+            "pinyin": "Jīntiān bǐ zuótiān lěng.",
+            "meaning": "Hôm nay lạnh hơn hôm qua."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Anh trai tôi cao hơn tôi.",
+            "chinese": "我哥哥比我高。",
+            "pinyin": "Wǒ gēge bǐ wǒ gāo."
+          },
+          {
+            "vietnamese": "Hôm nay lạnh hơn hôm qua.",
+            "chinese": "今天比昨天冷。",
+            "pinyin": "Jīntiān bǐ zuótiān lěng."
+          },
+          {
+            "vietnamese": "Quả táo này to hơn quả kia.",
+            "chinese": "这个苹果比那个大。",
+            "pinyin": "Zhè gè píngguǒ bǐ nà gè dà."
+          },
+          {
+            "vietnamese": "Tiếng Trung khó hơn tiếng Anh.",
+            "chinese": "汉语比英语难。",
+            "pinyin": "Hànyǔ bǐ yīngyǔ nán."
+          },
+          {
+            "vietnamese": "Xe máy nhanh hơn xe đạp.",
+            "chinese": "摩托车比自行车快。",
+            "pinyin": "Mótuōchē bǐ zìxíngchē kuài."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-21",
+        "order": 21,
+        "title": "So sánh nhất với 最",
+        "structure": "Chủ ngữ + 最 + tính từ/động từ",
+        "explanation": "最 diễn tả mức cao nhất trong một nhóm.",
+        "examples": [
+          {
+            "chinese": "我最喜欢喝茶。",
+            "pinyin": "Wǒ zuì xǐhuan hē chá.",
+            "meaning": "Tôi thích uống trà nhất."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Hôm nay là ngày nóng nhất.",
+            "chinese": "今天最热。",
+            "pinyin": "Jīntiān zuì rè."
+          },
+          {
+            "vietnamese": "Tôi thích uống trà nhất.",
+            "chinese": "我最喜欢喝茶。",
+            "pinyin": "Wǒ zuì xǐhuan hē chá."
+          },
+          {
+            "vietnamese": "Đây là cuốn sách đắt nhất.",
+            "chinese": "这是最贵的书。",
+            "pinyin": "Zhè shì zuì guì de shū."
+          },
+          {
+            "vietnamese": "Anh ấy là người cao nhất.",
+            "chinese": "他是最高的人。",
+            "pinyin": "Tā shì zuì gāo de rén."
+          },
+          {
+            "vietnamese": "Mùa đông lạnh nhất.",
+            "chinese": "冬天最冷。",
+            "pinyin": "Dōngtiān zuì lěng."
+          }
+        ]
+      }
+    ],
+    "Liên kết ý": [
+      {
+        "id": "hsk2-22",
+        "order": 22,
+        "title": "Nêu nguyên nhân với 因为 và 所以",
+        "structure": "因为 + nguyên nhân，所以 + kết quả",
+        "explanation": "因为 nêu nguyên nhân, 所以 dẫn vào kết quả.",
+        "examples": [
+          {
+            "chinese": "因为下雨，所以我不去。",
+            "pinyin": "Yīnwèi xiàyǔ, suǒyǐ wǒ bú qù.",
+            "meaning": "Vì trời mưa nên tôi không đi."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Vì tôi bận nên hôm nay không đi.",
+            "chinese": "因为我很忙，所以今天不去。",
+            "pinyin": "Yīnwèi wǒ hěn máng, suǒyǐ jīntiān bú qù."
+          },
+          {
+            "vietnamese": "Vì trời mưa nên tôi không đi.",
+            "chinese": "因为下雨，所以我不去。",
+            "pinyin": "Yīnwèi xiàyǔ, suǒyǐ wǒ bú qù."
+          },
+          {
+            "vietnamese": "Vì hôm nay rất lạnh nên tôi mặc áo ấm.",
+            "chinese": "因为今天很冷，所以穿暖和的衣服。",
+            "pinyin": "Yīnwèi jīntiān hěn lěng, suǒyǐ chuān nuǎnhuo de yīfu."
+          },
+          {
+            "vietnamese": "Vì thích tiếng Trung nên anh ấy học rất chăm.",
+            "chinese": "因为喜欢汉语，所以他学得很努力。",
+            "pinyin": "Yīnwèi xǐhuan Hànyǔ, suǒyǐ tā xué de hěn nǔlì."
+          },
+          {
+            "vietnamese": "Vì dậy muộn nên tôi đi làm muộn.",
+            "chinese": "因为起晚了，所以上班迟到了。",
+            "pinyin": "Yīnwèi qǐ wǎn le, suǒyǐ shàngbān chídào le."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-23",
+        "order": 23,
+        "title": "Đối lập với 但是",
+        "structure": "Ý thứ nhất，但是 + ý trái ngược",
+        "explanation": "但是 nối hai ý tương phản, mang nghĩa “nhưng”.",
+        "examples": [
+          {
+            "chinese": "这本书很贵，但是我很喜欢。",
+            "pinyin": "Zhè běn shū hěn guì, dànshì wǒ hěn xǐhuan.",
+            "meaning": "Quyển sách này rất đắt, nhưng tôi rất thích."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi muốn đi, nhưng hôm nay không có thời gian.",
+            "chinese": "我想去，但是今天没有时间。",
+            "pinyin": "Wǒ xiǎng qù, dànshì jīntiān méiyǒu shíjiān."
+          },
+          {
+            "vietnamese": "Quyển sách này rất đắt, nhưng tôi rất thích.",
+            "chinese": "这本书很贵，但是我很喜欢。",
+            "pinyin": "Zhè běn shū hěn guì, dànshì wǒ hěn xǐhuan."
+          },
+          {
+            "vietnamese": "Thời tiết rất đẹp, nhưng trời hơi lạnh.",
+            "chinese": "天气很好，但是有点儿冷。",
+            "pinyin": "Tiānqì hěn hǎo, dànshì yǒudiǎnr lěng."
+          },
+          {
+            "vietnamese": "Anh ấy nói tiếng Trung rất tốt, nhưng chữ Hán viết bình thường.",
+            "chinese": "他汉语说得很好，但是汉字写得一般。",
+            "pinyin": "Tā hànyǔ shuō de hěn hǎo, dànshì hànzì xiě de yìbān."
+          },
+          {
+            "vietnamese": "Món ăn này rất ngon, nhưng cay quá.",
+            "chinese": "这个菜很好吃，但是太辣了。",
+            "pinyin": "Zhè gè cài hěn hǎochī, dànshì tài là le."
+          }
+        ]
+      }
+    ],
+    "Trình tự và lựa chọn": [
+      {
+        "id": "hsk2-24",
+        "order": 24,
+        "title": "Sắp xếp hành động với 先 và 再",
+        "structure": "先 + hành động thứ nhất，再 + hành động tiếp theo",
+        "explanation": "先 chỉ việc làm trước; 再 chỉ việc làm sau đó.",
+        "examples": [
+          {
+            "chinese": "我先吃饭，再去学校。",
+            "pinyin": "Wǒ xiān chī fàn, zài qù xuéxiào.",
+            "meaning": "Tôi ăn cơm trước, rồi đi đến trường."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Trước tiên tôi học, sau đó xem ti vi.",
+            "chinese": "我先学习，再看电视。",
+            "pinyin": "Wǒ xiān xuéxí, zài kàn diànshì."
+          },
+          {
+            "vietnamese": "Tôi ăn cơm trước, rồi đi đến trường.",
+            "chinese": "我先吃饭，再去学校。",
+            "pinyin": "Wǒ xiān chī fàn, zài qù xuéxiào."
+          },
+          {
+            "vietnamese": "Bạn hãy làm bài tập trước, rồi chơi game.",
+            "chinese": "你先做作业，再玩游戏。",
+            "pinyin": "Nǐ xiān zuò zuòyè, zài wán yóuxì."
+          },
+          {
+            "vietnamese": "Chúng ta tắm trước, rồi đi ngủ.",
+            "chinese": "我们先洗澡，再睡觉。",
+            "pinyin": "Wǒmen xiān xǐzǎo, zài shuìjiào."
+          },
+          {
+            "vietnamese": "Hãy mua vé trước, rồi lên tàu.",
+            "chinese": "先买票，再上车。",
+            "pinyin": "Xiān mǎi piào, zài shàng chē."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-25",
+        "order": 25,
+        "title": "Phân biệt 还是 và 或者",
+        "structure": "A 还是 B？ (câu hỏi); A 或者 B (câu kể)",
+        "explanation": "还是 dùng trong câu hỏi lựa chọn; 或者 dùng trong câu kể.",
+        "examples": [
+          {
+            "chinese": "你喝茶还是喝水？",
+            "pinyin": "Nǐ hē chá háishi hē shuǐ?",
+            "meaning": "Bạn uống trà hay nước?"
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Bạn đi bằng xe buýt hay taxi?",
+            "chinese": "你坐公共汽车还是坐出租车？",
+            "pinyin": "Nǐ zuò gōnggòng qìchē háishi zuò chūzūchē?"
+          },
+          {
+            "vietnamese": "Tôi uống trà hoặc nước đều được.",
+            "chinese": "我喝茶或者喝水都可以。",
+            "pinyin": "Wǒ hē chá huòzhě hē shuǐ dōu kěyǐ."
+          },
+          {
+            "vietnamese": "Bạn muốn ăn táo hay chuối?",
+            "chinese": "你想吃苹果还是香蕉？",
+            "pinyin": "Nǐ xiǎng chī píngguǒ háishi xiāngjiāo?"
+          },
+          {
+            "vietnamese": "Chủ nhật tôi ở nhà xem phim hoặc đọc sách.",
+            "chinese": "星期天我在家看电影或者看书。",
+            "pinyin": "Xīngqītiān wǒ zài jiā kàn diànyǐng huòzhě kàn shū."
+          },
+          {
+            "vietnamese": "Bạn thích màu đỏ hay màu xanh?",
+            "chinese": "你喜欢红色还是蓝色？",
+            "pinyin": "Nǐ xǐhuan hóngsè háishi lánsè?"
+          }
+        ]
+      }
+    ],
+    "Thời gian và khoảng cách": [
+      {
+        "id": "hsk2-26",
+        "order": 26,
+        "title": "Khoảng thời gian với 从 và 到",
+        "structure": "从 + điểm bắt đầu + 到 + điểm kết thúc",
+        "explanation": "从 nêu điểm bắt đầu, 到 nêu điểm kết thúc.",
+        "examples": [
+          {
+            "chinese": "我从早上八点工作到下午五点。",
+            "pinyin": "Wǒ cóng zǎoshang bā diǎn gōngzuò dào xiàwǔ wǔ diǎn.",
+            "meaning": "Tôi làm việc từ 8 giờ sáng đến 5 giờ chiều."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi làm việc từ sáng đến chiều.",
+            "chinese": "我从早上八点工作到下午五点。",
+            "pinyin": "Wǒ cóng zǎoshang bā diǎn gōngzuò dào xiàwǔ wǔ diǎn."
+          },
+          {
+            "vietnamese": "Tôi học từ thứ Hai đến thứ Sáu.",
+            "chinese": "我从星期一到星期五学习。",
+            "pinyin": "Wǒ cóng xīngqīyī dào xīngqīwǔ xuéxí."
+          },
+          {
+            "vietnamese": "Cửa hàng mở cửa từ 8 giờ sáng đến 10 giờ tối.",
+            "chinese": "商店从早上八点开到晚上十点。",
+            "pinyin": "Shūdiàn cóng zǎoshang bā diǎn kāi dào wǎnshang shí diǎn."
+          },
+          {
+            "vietnamese": "Anh ấy chạy bộ từ công viên về nhà.",
+            "chinese": "他从公园跑步回家。",
+            "pinyin": "Tā cóng gōngyuán pǎobù huí jiā."
+          },
+          {
+            "vietnamese": "Nghỉ hè từ tháng 7 đến tháng 8.",
+            "chinese": "暑假从七月到八月。",
+            "pinyin": "Shǔjià cóng qī yuè dào bā yuè."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-27",
+        "order": 27,
+        "title": "Nói khoảng cách với 离",
+        "structure": "Địa điểm/người + 离 + mốc + khoảng cách",
+        "explanation": "离 diễn tả khoảng cách giữa hai địa điểm hoặc mốc tham chiếu.",
+        "examples": [
+          {
+            "chinese": "我家离学校很近。",
+            "pinyin": "Wǒ jiā lí xuéxiào hěn jìn.",
+            "meaning": "Nhà tôi rất gần trường."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Nhà ga cách nhà tôi rất xa.",
+            "chinese": "火车站离我家很远。",
+            "pinyin": "Huǒchēzhàn lí wǒ jiā hěn yuǎn."
+          },
+          {
+            "vietnamese": "Nhà tôi rất gần trường.",
+            "chinese": "我家离学校很近。",
+            "pinyin": "Wǒ jiā lí xuéxiào hěn jìn."
+          },
+          {
+            "vietnamese": "Công ty cách sân bay bao xa?",
+            "chinese": "公司离机场多远？",
+            "pinyin": "Gōngsī lí jīchǎng duō yuǎn?"
+          },
+          {
+            "vietnamese": "Bệnh viện cách khách sạn một km.",
+            "chinese": "医院离酒店一公里。",
+            "pinyin": "Yīyuàn lí jiǔdiàn yì gōnglǐ."
+          },
+          {
+            "vietnamese": "Bưu điện cách đây không xa.",
+            "chinese": "邮局离这儿不远。",
+            "pinyin": "Yóujú lí zhè'r bù yuǎn."
+          }
+        ]
+      }
+    ],
+    "Bổ ngữ": [
+      {
+        "id": "hsk2-28",
+        "order": 28,
+        "title": "Bổ ngữ mức độ với 得",
+        "structure": "Động từ + 得 + tính từ/cụm miêu tả",
+        "explanation": "得 nối động từ với phần miêu tả mức độ hoặc cách thức.",
+        "examples": [
+          {
+            "chinese": "他说汉语说得很好。",
+            "pinyin": "Tā shuō Hànyǔ shuō de hěn hǎo.",
+            "meaning": "Anh ấy nói tiếng Trung rất tốt."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Cô ấy chạy rất nhanh.",
+            "chinese": "她跑得很快。",
+            "pinyin": "Tā pǎo de hěn kuài."
+          },
+          {
+            "vietnamese": "Anh ấy nói tiếng Trung rất tốt.",
+            "chinese": "他说汉语说得很好。",
+            "pinyin": "Tā shuō Hànyǔ shuō de hěn hǎo."
+          },
+          {
+            "vietnamese": "Em ấy hát rất hay.",
+            "chinese": "她唱歌唱得很好听。",
+            "pinyin": "Tā chànggē chàng de hěn hǎotīng."
+          },
+          {
+            "vietnamese": "Thầy giáo viết chữ Hán rất đẹp.",
+            "chinese": "老师汉字写得很漂亮。",
+            "pinyin": "Lǎoshī hànzì xiě de hěn piàoliang."
+          },
+          {
+            "vietnamese": "Anh ấy làm việc rất chăm chỉ.",
+            "chinese": "他工作得很努力。",
+            "pinyin": "Tā gōngzuò de hěn nǔlì."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-29",
+        "order": 29,
+        "title": "Bổ ngữ kết quả thường gặp",
+        "structure": "Động từ + kết quả (见, 完, 好...)",
+        "explanation": "Bổ ngữ kết quả cho biết kết quả thực hiện của hành động.",
+        "examples": [
+          {
+            "chinese": "我看见他了。",
+            "pinyin": "Wǒ kànjiàn tā le.",
+            "meaning": "Tôi nhìn thấy anh ấy rồi."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi đã làm xong bài tập.",
+            "chinese": "我做完作业了。",
+            "pinyin": "Wǒ zuò wán zuòyè le."
+          },
+          {
+            "vietnamese": "Tôi nhìn thấy anh ấy rồi.",
+            "chinese": "我看见他了。",
+            "pinyin": "Wǒ kànjiàn tā le."
+          },
+          {
+            "vietnamese": "Bạn có nghe thấy tôi nói không?",
+            "chinese": "你听见我说话了吗？",
+            "pinyin": "Nǐ tīngjiàn wǒ shuōhuà le ma?"
+          },
+          {
+            "vietnamese": "Cơm đã nấu xong rồi.",
+            "chinese": "饭做好了。",
+            "pinyin": "Fàn zuò hǎo le."
+          },
+          {
+            "vietnamese": "Tôi đã tìm thấy chìa khóa rồi.",
+            "chinese": "我找到钥匙了。",
+            "pinyin": "Wǒ zhǎodào yàoshi le."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-30",
+        "order": 30,
+        "title": "Nói thời lượng của hành động",
+        "structure": "Động từ + khoảng thời gian",
+        "explanation": "Khoảng thời gian đặt sau động từ để chỉ thời lượng kéo dài.",
+        "examples": [
+          {
+            "chinese": "我每天睡八个小时。",
+            "pinyin": "Wǒ měitiān shuì bā ge xiǎoshí.",
+            "meaning": "Mỗi ngày tôi ngủ tám tiếng."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi học tiếng Trung hai tiếng mỗi ngày.",
+            "chinese": "我每天学习汉语两个小时。",
+            "pinyin": "Wǒ měitiān xuéxí Hànyǔ liǎng gè xiǎoshí."
+          },
+          {
+            "vietnamese": "Mỗi ngày tôi ngủ tám tiếng.",
+            "chinese": "我每天睡八个小时。",
+            "pinyin": "Wǒ měitiān shuì bā gè xiǎoshí."
+          },
+          {
+            "vietnamese": "Anh ấy xem ti vi ba tiếng đồng hồ.",
+            "chinese": "他看电视看了三个小时。",
+            "pinyin": "Tā kàn diànshì kàn le sān gè xiǎoshí."
+          },
+          {
+            "vietnamese": "Chúng tôi nói chuyện nửa tiếng.",
+            "chinese": "我们聊了半个小时。",
+            "pinyin": "Wǒmen liáo le bàn gè xiǎoshí."
+          },
+          {
+            "vietnamese": "Tôi đợi bạn hai tiếng rồi.",
+            "chinese": "我等你两个小时了。",
+            "pinyin": "Wǒ děng nǐ liǎng gè xiǎoshí le."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-31",
+        "order": 31,
+        "title": "Cấu trúc chữ '是...的'",
+        "structure": "Chủ ngữ + 是 + thời gian/địa điểm/phương thức + động từ + 的",
+        "explanation": "Dùng để nhấn mạnh thời gian, địa điểm, phương thức hoặc chủ thể của một hành động đã xảy ra trong quá khứ.",
+        "examples": [
+          {
+            "chinese": "我是坐飞机来的。",
+            "pinyin": "Wǒ shì zuò fēijī lái de.",
+            "meaning": "Tôi đi máy bay đến."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Anh ấy đến vào ngày hôm qua.",
+            "chinese": "他是昨天来的。",
+            "pinyin": "Tā shì zuótiān lái de."
+          },
+          {
+            "vietnamese": "Tôi học tiếng Trung ở trường đại học.",
+            "chinese": "我是在大学学习汉语的。",
+            "pinyin": "Wǒ shì zài dàxué xuéxí Hànyǔ de."
+          },
+          {
+            "vietnamese": "Bạn đi đến Trung Quốc bằng cách nào?",
+            "chinese": "你是怎么去中国的？",
+            "pinyin": "Nǐ shì zěnme qù Zhōngguó de?"
+          },
+          {
+            "vietnamese": "Bạn sinh vào năm nào?",
+            "chinese": "你是哪年出生的？",
+            "pinyin": "Nǐ shì nǎ nián chūshēng de?"
+          },
+          {
+            "vietnamese": "Cuốn sách này tôi mua ở hiệu sách.",
+            "chinese": "这本书是我在书店买的。",
+            "pinyin": "Zhè běn shū shì wǒ zài shūdiàn mǎi de."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-32",
+        "order": 32,
+        "title": "Số xấp xỉ với 多 và 左右",
+        "structure": "Số từ + Lượng từ + Danh từ + 多  hoặc  Số từ + Lượng từ + 左右",
+        "explanation": "多 (đặt sau lượng từ nếu số nhỏ hơn 10, hoặc sau chục/trăm) và 左右 (đặt sau cụm số lượng từ) dùng để chỉ số lượng xấp xỉ, khoảng chừng.",
+        "examples": [
+          {
+            "chinese": "我有二十多本书。",
+            "pinyin": "Wǒ yǒu èrshí duō běn shū.",
+            "meaning": "Tôi có hơn hai mươi quyển sách."
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Tôi có hơn hai mươi quyển sách.",
+            "chinese": "我有二十多本书。",
+            "pinyin": "Wǒ yǒu èrshí duō běn shū."
+          },
+          {
+            "vietnamese": "Cái này có giá khoảng một trăm tệ.",
+            "chinese": "这个一百块钱左右。",
+            "pinyin": "Zhè gè yì bǎi kuài qián zuǒyòu."
+          },
+          {
+            "vietnamese": "Ở đây có hơn ba mươi học sinh.",
+            "chinese": "这里有三十多个学生。",
+            "pinyin": "Zhè lǐ yǒu sānshí duō gè xuésheng."
+          },
+          {
+            "vietnamese": "Tôi chờ anh ấy khoảng nửa tiếng.",
+            "chinese": "我等了他半个小时左右。",
+            "pinyin": "Wǒ děng le tā bàn gè xiǎoshí zuǒyòu."
+          },
+          {
+            "vietnamese": "Anh ấy mua khoảng mười quả táo.",
+            "chinese": "他买了十个苹果左右。",
+            "pinyin": "Tā mǎi le shí gè píngguǒ zuǒyòu."
+          }
+        ]
+      },
+      {
+        "id": "hsk2-33",
+        "order": 33,
+        "title": "Phủ định cầu khiến, khuyên can với 别",
+        "structure": "别 + động từ / tính từ",
+        "explanation": "别 dùng để khuyên can, ngăn cản ai đó làm việc gì, mang nghĩa “đừng”.",
+        "examples": [
+          {
+            "chinese": "别说话！",
+            "pinyin": "Bié shuōhuà!",
+            "meaning": "Đừng nói chuyện!"
+          }
+        ],
+        "practice": [
+          {
+            "vietnamese": "Đừng nói chuyện!",
+            "chinese": "别说话！",
+            "pinyin": "Bié shuōhuà!"
+          },
+          {
+            "vietnamese": "Đừng uống quá nhiều cà phê.",
+            "chinese": "别喝太多咖啡。",
+            "pinyin": "Bié hē tài duō kāfēi."
+          },
+          {
+            "vietnamese": "Trời mưa rồi, đừng đi nữa.",
+            "chinese": "下雨了，别去了。",
+            "pinyin": "Xià yǔ le, bié qù le."
+          },
+          {
+            "vietnamese": "Đừng lo lắng, tôi có thể giúp bạn.",
+            "chinese": "别担心，我能帮你。",
+            "pinyin": "Bié dānxīn, wǒ néng bāng nǐ."
+          },
+          {
+            "vietnamese": "Đừng đọc sách nữa, đi ngủ thôi.",
+            "chinese": "别看书了，睡觉吧。",
+            "pinyin": "Bié kàn shū le, shuìjiào ba."
+          }
+        ]
+      }
+    ]
+  }
+}

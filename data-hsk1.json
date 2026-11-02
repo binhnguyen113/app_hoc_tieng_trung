@@ -4974,9 +4974,9 @@
         "example": "你住在哪个酒店？",
         "examplePinyin": "Nǐ zhù zài nǎ ge jiǔdiàn?",
         "exampleMeaning": "Bạn ở khách sạn nào?",
-        "answerMeaning": "Tôi ở trung tâm thành phố.",
         "answerChinese": "我住在市中心。",
-        "answerPinyin": "Wǒ zhù zài shì zhōngxīn."
+        "answerPinyin": "Wǒ zhù zài shì zhōngxīn.",
+        "answerMeaning": "Tôi ở trung tâm thành phố."
       },
       {
         "word": "早",
