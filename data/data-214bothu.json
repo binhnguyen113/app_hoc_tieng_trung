@@ -1,289 +1,5311 @@
-
-[
-	{
-		"topic": "Nhóm 1 nét",
-		"words": [		
-            { "word": "一", "type": "radical", "phonetic": "yī", "meaning": "bộ nhất, số 1", "example": "三、上、下", "examplePhonetic": "sān, shàng, xià", "exampleMeaning": "Số 3, bên trên, bên dưới" },
-            { "word": "丨", "type": "radical", "phonetic": "gǔn", "meaning": "bộ cổn, nét sổ dọc", "example": "中、个、丰", "examplePhonetic": "zhōng, gè, fēng", "exampleMeaning": "Trung tâm/ở giữa, cái/chiếc, phong phú" },
-            { "word": "丶", "type": "radical", "phonetic": "zhǔ", "meaning": "bộ chủ, nét chấm", "example": "丸、丹、凡", "examplePhonetic": "wán, dān, fán", "exampleMeaning": "Viên thuốc, màu đỏ/đan, phàm trần" },
-            { "word": "丿", "type": "radical", "phonetic": "piě", "meaning": "bộ phiệt, nét phẩy", "example": "九、乃、久", "examplePhonetic": "jiǔ, nǎi, jiǔ", "exampleMeaning": "Số 9, là/mà, lâu dài" },
-            { "word": "乙", "type": "radical", "phonetic": "yǐ", "meaning": "bộ ất, vị trí thứ 2 trong thiên can", "example": "九、乞、乾", "examplePhonetic": "jiǔ, qǐ, gān", "exampleMeaning": "Số 9, ăn xin, khô" },
-            { "word": "亅", "type": "radical", "phonetic": "jué", "meaning": "bộ quyết, nét móc", "example": "了、予、事", "examplePhonetic": "le, yǔ, shì", "exampleMeaning": "Rồi, cho/cho phép, sự việc" }
-          
-		]
-	},
+{
+  "schemaVersion": 2,
+  "groups": [
     {
-        "topic": "Nhóm 2 nét",
-        "words": [
-            { "word": "二", "type": "radical", "phonetic": "èr", "meaning": "bộ nhị, số 2", "example": "于、云、五", "examplePhonetic": "yú, yún, wǔ", "exampleMeaning": "Ở/tại, mây, số 5" },
-            { "word": "亠", "type": "radical", "phonetic": "tóu", "meaning": "bộ đầu, mái nhà phía trên", "example": "亡、交、京", "examplePhonetic": "wáng, jiāo, jīng", "exampleMeaning": "Diệt vong/chết, giao lưu, kinh đô" },
-            { "word": "人 (亻)", "type": "radical", "phonetic": "rén", "meaning": "bộ nhân, người (dạng đứng là 亻)", "example": "从、你、他", "examplePhonetic": "cóng, nǐ, tā", "exampleMeaning": "Đi theo, bạn, anh ấy" },
-            { "word": "儿", "type": "radical", "phonetic": "ér", "meaning": "bộ nhi, trẻ con, chân người", "example": "兄、先、光", "examplePhonetic": "xiōng, xiān, guāng", "exampleMeaning": "Anh trai, trước tiên, ánh sáng" },
-            { "word": "入", "type": "radical", "phonetic": "rù", "meaning": "bộ nhập, đi vào", "example": "内、全、两", "examplePhonetic": "nèi, quán, liǎng", "exampleMeaning": "Bên trong, toàn bộ, hai" },
-            { "word": "八", "type": "radical", "phonetic": "bā", "meaning": "bộ bát, số 8", "example": "公、六、共", "examplePhonetic": "gōng, liù, gòng", "exampleMeaning": "Công cộng, số 6, cùng nhau" },
-            { "word": "冂", "type": "radical", "phonetic": "jiōng", "meaning": "bộ quynh, vùng ngoại ô", "example": "网、册、周", "examplePhonetic": "wǎng, cè, zhōu", "exampleMeaning": "Mạng lưới, tập/sách, chu kỳ/xung quanh" },
-            { "word": "冖", "type": "radical", "phonetic": "mì", "meaning": "bộ mịch, trùm chăn, bao phủ", "example": "写、军、冠", "examplePhonetic": "xiě, jūn, guān", "exampleMeaning": "Viết, quân đội, mũ/quán quân" },
-            { "word": "冫", "type": "radical", "phonetic": "bīng", "meaning": "bộ băng, băng đá (hai chấm băng)", "example": "冷、冰、冻", "examplePhonetic": "lěng, bīng, dòng", "exampleMeaning": "Lạnh, băng, đóng đông" },
-            { "word": "几", "type": "radical", "phonetic": "jī", "meaning": "bộ kỷ, cái bàn nhỏ", "example": "凡、凤、凭", "examplePhonetic": "fán, fèng, píng", "exampleMeaning": "Phàm trần, chim phượng, dựa vào" },
-            { "word": "凵", "type": "radical", "phonetic": "kǎn", "meaning": "bộ khảm, há miệng, chỗ lõm", "example": "凶、出、击", "examplePhonetic": "xiōng, chū, jī", "exampleMeaning": "Hung tợn, đi ra, đánh/kích" },
-            { "word": "刀 (刂)", "type": "radical", "phonetic": "dāo", "meaning": "bộ đao, con dao (dạng đứng là 刂)", "example": "分、切、利", "examplePhonetic": "fēn, qiē, lì", "exampleMeaning": "Phân chia, cắt, sắc bén/lợi ích" },
-            { "word": "力", "type": "radical", "phonetic": "lì", "meaning": "bộ lực, sức lực", "example": "加、动、助", "examplePhonetic": "jiā, dòng, zhù", "exampleMeaning": "Thêm vào, chuyển động, giúp đỡ" },
-            { "word": "勹", "type": "radical", "phonetic": "bāo", "meaning": "bộ bao, bao bọc, gói lại", "example": "包、句、勾", "examplePhonetic": "bāo, jù, gōu", "exampleMeaning": "Bọc/gói, câu văn, móc vào" },
-            { "word": "匕", "type": "radical", "phonetic": "bǐ", "meaning": "bộ chủy, cái thìa (muỗng)", "example": "北、匙、旨", "examplePhonetic": "běi, chí, zhǐ", "exampleMeaning": "Phía bắc, cái thìa, ý chỉ" },
-            { "word": "匚", "type": "radical", "phonetic": "fāng", "meaning": "bộ phương, tủ đựng, đồ chứa", "example": "匠、匡、匪", "examplePhonetic": "jiàng, kuāng, fěi", "exampleMeaning": "Thợ thủ công, sửa sang, cướp/căng" },
-            { "word": "匸", "type": "radical", "phonetic": "xì", "meaning": "bộ hệ, che đậy, giấu giếm", "example": "匹、区、医", "examplePhonetic": "pǐ, qū, yī", "exampleMeaning": "Con/ngựa, khu vực, y tế" },
-            { "word": "十", "type": "radical", "phonetic": "shí", "meaning": "bộ thập, số 10", "example": "千、午、半", "examplePhonetic": "qiān, wǔ, bàn", "exampleMeaning": "Số 1000, giữa trưa, một nửa" },
-            { "word": "卜", "type": "radical", "phonetic": "bǔ", "meaning": "bộ bốc, xem bói", "example": "占、卡、卦", "examplePhonetic": "zhān, kǎ, guà", "exampleMeaning": "Chiếm/bói toán, thẻ, quẻ bói" },
-            { "word": "卩", "type": "radical", "phonetic": "jié", "meaning": "bộ tiết, đốt trúc, thẻ trúc", "example": "印、却、危", "examplePhonetic": "yìn, què, wēi", "exampleMeaning": "In/dấu ấn, nhưng/lùi lại, nguy hiểm" },
-            { "word": "厂", "type": "radical", "phonetic": "chǎng", "meaning": "bộ hán, sườn núi, vách đá", "example": "厅、历、原", "examplePhonetic": "tīng, lì, yuán", "exampleMeaning": "Phòng khách, lịch sử, nguyên bản/cánh đồng" },
-            { "word": "厶", "type": "radical", "phonetic": "sī", "meaning": "bộ tư, riêng tư", "example": "去、县、参", "examplePhonetic": "qù, xiàn, cān", "exampleMeaning": "Đi, huyện, tham gia" },
-            { "word": "又", "type": "radical", "phonetic": "yòu", "meaning": "bộ hựu, lại nữa, bàn tay", "example": "双、友、发", "examplePhonetic": "shuāng, yǒu, fā", "exampleMeaning": "Đôi/cặp, bạn bè, phát triển" }           
-        ]      
+      "id": "group-1",
+      "label": "Nhóm 1 nét",
+      "radicals": [
+        {
+          "id": "radical-4e00",
+          "glyph": "一",
+          "variants": [],
+          "pinyin": "yī",
+          "meaning": "bộ nhất, số 1",
+          "examples": [
+            {
+              "hanzi": "三",
+              "pinyin": "sān",
+              "meaning": "Số 3"
+            },
+            {
+              "hanzi": "上",
+              "pinyin": "shàng",
+              "meaning": "bên trên"
+            },
+            {
+              "hanzi": "下",
+              "pinyin": "xià",
+              "meaning": "bên dưới"
+            }
+          ]
+        },
+        {
+          "id": "radical-4e28",
+          "glyph": "丨",
+          "variants": [],
+          "pinyin": "gǔn",
+          "meaning": "bộ cổn, nét sổ dọc",
+          "examples": [
+            {
+              "hanzi": "中",
+              "pinyin": "zhōng",
+              "meaning": "Trung tâm/ở giữa"
+            },
+            {
+              "hanzi": "个",
+              "pinyin": "gè",
+              "meaning": "cái/chiếc"
+            },
+            {
+              "hanzi": "丰",
+              "pinyin": "fēng",
+              "meaning": "phong phú"
+            }
+          ]
+        },
+        {
+          "id": "radical-4e36",
+          "glyph": "丶",
+          "variants": [],
+          "pinyin": "zhǔ",
+          "meaning": "bộ chủ, nét chấm",
+          "examples": [
+            {
+              "hanzi": "丸",
+              "pinyin": "wán",
+              "meaning": "Viên thuốc"
+            },
+            {
+              "hanzi": "丹",
+              "pinyin": "dān",
+              "meaning": "màu đỏ/đan"
+            },
+            {
+              "hanzi": "凡",
+              "pinyin": "fán",
+              "meaning": "phàm trần"
+            }
+          ]
+        },
+        {
+          "id": "radical-4e3f",
+          "glyph": "丿",
+          "variants": [],
+          "pinyin": "piě",
+          "meaning": "bộ phiệt, nét phẩy",
+          "examples": [
+            {
+              "hanzi": "九",
+              "pinyin": "jiǔ",
+              "meaning": "Số 9"
+            },
+            {
+              "hanzi": "乃",
+              "pinyin": "nǎi",
+              "meaning": "là/mà"
+            },
+            {
+              "hanzi": "久",
+              "pinyin": "jiǔ",
+              "meaning": "lâu dài"
+            }
+          ]
+        },
+        {
+          "id": "radical-4e59",
+          "glyph": "乙",
+          "variants": [],
+          "pinyin": "yǐ",
+          "meaning": "bộ ất, vị trí thứ 2 trong thiên can",
+          "examples": [
+            {
+              "hanzi": "九",
+              "pinyin": "jiǔ",
+              "meaning": "Số 9"
+            },
+            {
+              "hanzi": "乞",
+              "pinyin": "qǐ",
+              "meaning": "ăn xin"
+            },
+            {
+              "hanzi": "乾",
+              "pinyin": "gān",
+              "meaning": "khô"
+            }
+          ]
+        },
+        {
+          "id": "radical-4e85",
+          "glyph": "亅",
+          "variants": [],
+          "pinyin": "jué",
+          "meaning": "bộ quyết, nét móc",
+          "examples": [
+            {
+              "hanzi": "了",
+              "pinyin": "le",
+              "meaning": "Rồi"
+            },
+            {
+              "hanzi": "予",
+              "pinyin": "yǔ",
+              "meaning": "cho/cho phép"
+            },
+            {
+              "hanzi": "事",
+              "pinyin": "shì",
+              "meaning": "sự việc"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 3 nét",
-        "words": [
-            { "word": "口", "type": "radical", "phonetic": "kǒu", "meaning": "bộ khẩu, cái miệng", "example": "吃、喝、叫", "examplePhonetic": "chī, hē, jiào", "exampleMeaning": "Ăn, uống, gọi/kêu" },
-            { "word": "囗", "type": "radical", "phonetic": "wéi", "meaning": "bộ vi, vây quanh", "example": "国、园、图", "examplePhonetic": "guó, yuán, tú", "exampleMeaning": "Quốc gia, vườn, bản đồ" },
-            { "word": "土", "type": "radical", "phonetic": "tǔ", "meaning": "bộ thổ, đất", "example": "地、城、场", "examplePhonetic": "dì, chéng, chǎng", "exampleMeaning": "Đất, thành phố, quảng trường/sân" },
-            { "word": "士", "type": "radical", "phonetic": "shì", "meaning": "bộ sĩ, quan lại, học sĩ", "example": "壮、声、壹", "examplePhonetic": "zhuàng, shēng, yī", "exampleMeaning": "Tráng kiện, âm thanh, số 1 (chữ viết hoa)" },
-            { "word": "夂", "type": "radical", "phonetic": "zhǐ", "meaning": "bộ truy, đi chậm", "example": "处、备、复", "examplePhonetic": "chù, bèi, fù", "exampleMeaning": "Nơi chốn, chuẩn bị, lặp lại" },
-            { "word": "夊", "type": "radical", "phonetic": "suī", "meaning": "bộ suy, đi chậm bước sau", "example": "夏、夔、夋", "examplePhonetic": "xià, kuí, qūn", "exampleMeaning": "Mùa hè, con quỳ (thần thoại), bước đi chậm" },
-            { "word": "夕", "type": "radical", "phonetic": "xī", "meaning": "bộ tịch, đêm tối", "example": "外、多、夜", "examplePhonetic": "wài, duō, yè", "exampleMeaning": "Bên ngoài, nhiều, đêm" },
-            { "word": "大", "type": "radical", "phonetic": "dà", "meaning": "bộ đại, to lớn", "example": "天、太、夫", "examplePhonetic": "tiān, tài, fū", "exampleMeaning": "Trời, quá/rất, chồng" },
-            { "word": "女", "type": "radical", "phonetic": "nǚ", "meaning": "bộ nữ, con gái, phụ nữ", "example": "妈、姐、好", "examplePhonetic": "mā, jiě, hǎo", "exampleMeaning": "Mẹ, chị gái, tốt" },
-            { "word": "子", "type": "radical", "phonetic": "zǐ", "meaning": "bộ tử, con cái", "example": "字、学、存", "examplePhonetic": "zì, xué, cún", "exampleMeaning": "Chữ, học, tồn tại" },
-            { "word": "宀", "type": "radical", "phonetic": "mián", "meaning": "bộ miên, mái nhà", "example": "家、安、室", "examplePhonetic": "jiā, ān, shì", "exampleMeaning": "Nhà, an toàn, phòng" },
-            { "word": "寸", "type": "radical", "phonetic": "cùn", "meaning": "bộ thốn, tấc (đơn vị đo)", "example": "寺、封、耐", "examplePhonetic": "sì, fēng, nài", "exampleMeaning": "Chùa, phong tỏa/bức thư, nhẫn nại" },
-            { "word": "小", "type": "radical", "phonetic": "xiǎo", "meaning": "bộ tiểu, nhỏ bé", "example": "少、尖、尚", "examplePhonetic": "shǎo, jiān, shàng", "exampleMeaning": "Ít, nhọn, cao quý/chuộng" },
-            { "word": "尢 (尣)", "type": "radical", "phonetic": "wāng", "meaning": "bộ uông, tàn tật, yếu ớt", "example": "尤、就、尴尬", "examplePhonetic": "yóu, jiù, gāngà", "exampleMeaning": "Đặc biệt, ngay/chính là, ngượng ngùng" },
-            { "word": "尸", "type": "radical", "phonetic": "shī", "meaning": "bộ thi, xác chết, thây ma", "example": "尺、尼、尾", "examplePhonetic": "chǐ, ní, wěi", "exampleMeaning": "Thước, ni cô, cái đuôi" },
-            { "word": "屮", "type": "radical", "phonetic": "chè", "meaning": "bộ triệt, mầm cây mới nhú", "example": "屯、屰、屮", "examplePhonetic": "tún, nì, chè", "exampleMeaning": "Đồn trú/tích trữ, ngỗ ngược, cỏ mới mọc" },
-            { "word": "山", "type": "radical", "phonetic": "shān", "meaning": "bộ sơn, núi", "example": "岁、岛、岸", "examplePhonetic": "suì, dǎo, àn", "exampleMeaning": "Tuổi, hòn đảo, bờ bến" },
-            { "word": "巛 (川)", "type": "radical", "phonetic": "chuān", "meaning": "bộ xuyên, sông ngòi", "example": "州、巡、巢", "examplePhonetic": "zhōu, xún, cháo", "exampleMeaning": "Châu/tỉnh, tuần tra, tổ chim" },
-            { "word": "工", "type": "radical", "phonetic": "gōng", "meaning": "bộ công, công việc, thợ", "example": "左、巧、差", "examplePhonetic": "zuǒ, qiǎo, chà", "exampleMeaning": "Bên trái, khéo léo, sai lệch" },
-            { "word": "己", "type": "radical", "phonetic": "jǐ", "meaning": "bộ kỷ, bản thân", "example": "已、改、忌", "examplePhonetic": "yǐ, gǎi, jì", "exampleMeaning": "Đã/rồi, sửa đổi, kiêng kỵ" },
-            { "word": "巾", "type": "radical", "phonetic": "jīn", "meaning": "bộ cân, khăn lau", "example": "市、布、帮", "examplePhonetic": "shì, bù, bāng", "exampleMeaning": "Thành phố/chợ, vải, giúp đỡ" },
-            { "word": "干", "type": "radical", "phonetic": "gān", "meaning": "bộ can, can thiệp, khô", "example": "平、年、并", "examplePhonetic": "píng, nián, bìng", "exampleMeaning": "Bằng phẳng, năm, đồng thời" },
-            { "word": "幺", "type": "radical", "phonetic": "yāo", "meaning": "bộ yêu, nhỏ nhắn", "example": "幻、幼、幽", "examplePhonetic": "huàn, yòu, yōu", "exampleMeaning": "A ảo, thơ ấu, u tĩnh" },
-            { "word": "广", "type": "radical", "phonetic": "guǎng", "meaning": "bộ quảng, mái nhà rộng", "example": "庄、店、床", "examplePhonetic": "zhuāng, diàn, chuáng", "exampleMeaning": "Trang trại, cửa hàng, cái giường" },
-            { "word": "廴", "type": "radical", "phonetic": "yǐn", "meaning": "bộ dẫn, bước dài", "example": "延、建、廷", "examplePhonetic": "yán, jiàn, tíng", "exampleMeaning": "Kéo dài, xây dựng, triều đình" },
-            { "word": "廾", "type": "radical", "phonetic": "gǒng", "meaning": "bộ củng, chắp tay", "example": "开、弁、弄", "examplePhonetic": "kāi, biàn, nòng", "exampleMeaning": "Mở, mũ mạo, đùa giỡn/làm" },
-            { "word": "弋", "type": "radical", "phonetic": "yì", "meaning": "bộ dực, bắn cung, cọc gỗ", "example": "式、弑、忒", "examplePhonetic": "shì, shì, tè", "exampleMeaning": "Hình thức, giết vua/cha, sai lầm" },
-            { "word": "弓", "type": "radical", "phonetic": "gōng", "meaning": "bộ cung, cây cung", "example": "引、张、强", "examplePhonetic": "yǐn, zhāng, qiáng", "exampleMeaning": "Dẫn dắt/kéo, mở ra/họ Trương, mạnh mẽ" },
-            { "word": "彐 (彔)", "type": "radical", "phonetic": "jì", "meaning": "bộ ký, đầu con heo", "example": "归、录、彗", "examplePhonetic": "guī, lù, huì", "exampleMeaning": "Trở về, ghi chép, sao chổi" },
-            { "word": "彡", "type": "radical", "phonetic": "shān", "meaning": "bộ sam, lông tóc dài, hoa văn", "example": "形、彩、影", "examplePhonetic": "xíng, cǎi, yǐng", "exampleMeaning": "Hình dạng, màu sắc, cái bóng" },
-            { "word": "彳", "type": "radical", "phonetic": "chì", "meaning": "bộ xích, bước chân trái (chim chích)", "example": "行、很、待", "examplePhonetic": "xíng, hěn, dài", "exampleMeaning": "Đi/được, rất, chờ đợi" }
-        ]
+      "id": "group-2",
+      "label": "Nhóm 2 nét",
+      "radicals": [
+        {
+          "id": "radical-4e8c",
+          "glyph": "二",
+          "variants": [],
+          "pinyin": "èr",
+          "meaning": "bộ nhị, số 2",
+          "examples": [
+            {
+              "hanzi": "于",
+              "pinyin": "yú",
+              "meaning": "Ở/tại"
+            },
+            {
+              "hanzi": "云",
+              "pinyin": "yún",
+              "meaning": "mây"
+            },
+            {
+              "hanzi": "五",
+              "pinyin": "wǔ",
+              "meaning": "số 5"
+            }
+          ]
+        },
+        {
+          "id": "radical-4ea0",
+          "glyph": "亠",
+          "variants": [],
+          "pinyin": "tóu",
+          "meaning": "bộ đầu, mái nhà phía trên",
+          "examples": [
+            {
+              "hanzi": "亡",
+              "pinyin": "wáng",
+              "meaning": "Diệt vong/chết"
+            },
+            {
+              "hanzi": "交",
+              "pinyin": "jiāo",
+              "meaning": "giao lưu"
+            },
+            {
+              "hanzi": "京",
+              "pinyin": "jīng",
+              "meaning": "kinh đô"
+            }
+          ]
+        },
+        {
+          "id": "radical-4eba",
+          "glyph": "人",
+          "variants": [
+            "亻"
+          ],
+          "pinyin": "rén",
+          "meaning": "bộ nhân, người (dạng đứng là 亻)",
+          "examples": [
+            {
+              "hanzi": "从",
+              "pinyin": "cóng",
+              "meaning": "Đi theo"
+            },
+            {
+              "hanzi": "你",
+              "pinyin": "nǐ",
+              "meaning": "bạn"
+            },
+            {
+              "hanzi": "他",
+              "pinyin": "tā",
+              "meaning": "anh ấy"
+            }
+          ]
+        },
+        {
+          "id": "radical-513f",
+          "glyph": "儿",
+          "variants": [],
+          "pinyin": "ér",
+          "meaning": "bộ nhi, trẻ con, chân người",
+          "examples": [
+            {
+              "hanzi": "兄",
+              "pinyin": "xiōng",
+              "meaning": "Anh trai"
+            },
+            {
+              "hanzi": "先",
+              "pinyin": "xiān",
+              "meaning": "trước tiên"
+            },
+            {
+              "hanzi": "光",
+              "pinyin": "guāng",
+              "meaning": "ánh sáng"
+            }
+          ]
+        },
+        {
+          "id": "radical-5165",
+          "glyph": "入",
+          "variants": [],
+          "pinyin": "rù",
+          "meaning": "bộ nhập, đi vào",
+          "examples": [
+            {
+              "hanzi": "内",
+              "pinyin": "nèi",
+              "meaning": "Bên trong"
+            },
+            {
+              "hanzi": "全",
+              "pinyin": "quán",
+              "meaning": "toàn bộ"
+            },
+            {
+              "hanzi": "两",
+              "pinyin": "liǎng",
+              "meaning": "hai"
+            }
+          ]
+        },
+        {
+          "id": "radical-516b",
+          "glyph": "八",
+          "variants": [],
+          "pinyin": "bā",
+          "meaning": "bộ bát, số 8",
+          "examples": [
+            {
+              "hanzi": "公",
+              "pinyin": "gōng",
+              "meaning": "Công cộng"
+            },
+            {
+              "hanzi": "六",
+              "pinyin": "liù",
+              "meaning": "số 6"
+            },
+            {
+              "hanzi": "共",
+              "pinyin": "gòng",
+              "meaning": "cùng nhau"
+            }
+          ]
+        },
+        {
+          "id": "radical-5182",
+          "glyph": "冂",
+          "variants": [],
+          "pinyin": "jiōng",
+          "meaning": "bộ quynh, vùng ngoại ô",
+          "examples": [
+            {
+              "hanzi": "网",
+              "pinyin": "wǎng",
+              "meaning": "Mạng lưới"
+            },
+            {
+              "hanzi": "册",
+              "pinyin": "cè",
+              "meaning": "tập/sách"
+            },
+            {
+              "hanzi": "周",
+              "pinyin": "zhōu",
+              "meaning": "chu kỳ/xung quanh"
+            }
+          ]
+        },
+        {
+          "id": "radical-5196",
+          "glyph": "冖",
+          "variants": [],
+          "pinyin": "mì",
+          "meaning": "bộ mịch, trùm chăn, bao phủ",
+          "examples": [
+            {
+              "hanzi": "写",
+              "pinyin": "xiě",
+              "meaning": "Viết"
+            },
+            {
+              "hanzi": "军",
+              "pinyin": "jūn",
+              "meaning": "quân đội"
+            },
+            {
+              "hanzi": "冠",
+              "pinyin": "guān",
+              "meaning": "mũ/quán quân"
+            }
+          ]
+        },
+        {
+          "id": "radical-51ab",
+          "glyph": "冫",
+          "variants": [],
+          "pinyin": "bīng",
+          "meaning": "bộ băng, băng đá (hai chấm băng)",
+          "examples": [
+            {
+              "hanzi": "冷",
+              "pinyin": "lěng",
+              "meaning": "Lạnh"
+            },
+            {
+              "hanzi": "冰",
+              "pinyin": "bīng",
+              "meaning": "băng"
+            },
+            {
+              "hanzi": "冻",
+              "pinyin": "dòng",
+              "meaning": "đóng đông"
+            }
+          ]
+        },
+        {
+          "id": "radical-51e0",
+          "glyph": "几",
+          "variants": [],
+          "pinyin": "jī",
+          "meaning": "bộ kỷ, cái bàn nhỏ",
+          "examples": [
+            {
+              "hanzi": "凡",
+              "pinyin": "fán",
+              "meaning": "Phàm trần"
+            },
+            {
+              "hanzi": "凤",
+              "pinyin": "fèng",
+              "meaning": "chim phượng"
+            },
+            {
+              "hanzi": "凭",
+              "pinyin": "píng",
+              "meaning": "dựa vào"
+            }
+          ]
+        },
+        {
+          "id": "radical-51f5",
+          "glyph": "凵",
+          "variants": [],
+          "pinyin": "kǎn",
+          "meaning": "bộ khảm, há miệng, chỗ lõm",
+          "examples": [
+            {
+              "hanzi": "凶",
+              "pinyin": "xiōng",
+              "meaning": "Hung tợn"
+            },
+            {
+              "hanzi": "出",
+              "pinyin": "chū",
+              "meaning": "đi ra"
+            },
+            {
+              "hanzi": "击",
+              "pinyin": "jī",
+              "meaning": "đánh/kích"
+            }
+          ]
+        },
+        {
+          "id": "radical-5200",
+          "glyph": "刀",
+          "variants": [
+            "刂"
+          ],
+          "pinyin": "dāo",
+          "meaning": "bộ đao, con dao (dạng đứng là 刂)",
+          "examples": [
+            {
+              "hanzi": "分",
+              "pinyin": "fēn",
+              "meaning": "Phân chia"
+            },
+            {
+              "hanzi": "切",
+              "pinyin": "qiē",
+              "meaning": "cắt"
+            },
+            {
+              "hanzi": "利",
+              "pinyin": "lì",
+              "meaning": "sắc bén/lợi ích"
+            }
+          ]
+        },
+        {
+          "id": "radical-529b",
+          "glyph": "力",
+          "variants": [],
+          "pinyin": "lì",
+          "meaning": "bộ lực, sức lực",
+          "examples": [
+            {
+              "hanzi": "加",
+              "pinyin": "jiā",
+              "meaning": "Thêm vào"
+            },
+            {
+              "hanzi": "动",
+              "pinyin": "dòng",
+              "meaning": "chuyển động"
+            },
+            {
+              "hanzi": "助",
+              "pinyin": "zhù",
+              "meaning": "giúp đỡ"
+            }
+          ]
+        },
+        {
+          "id": "radical-52f9",
+          "glyph": "勹",
+          "variants": [],
+          "pinyin": "bāo",
+          "meaning": "bộ bao, bao bọc, gói lại",
+          "examples": [
+            {
+              "hanzi": "包",
+              "pinyin": "bāo",
+              "meaning": "Bọc/gói"
+            },
+            {
+              "hanzi": "句",
+              "pinyin": "jù",
+              "meaning": "câu văn"
+            },
+            {
+              "hanzi": "勾",
+              "pinyin": "gōu",
+              "meaning": "móc vào"
+            }
+          ]
+        },
+        {
+          "id": "radical-5315",
+          "glyph": "匕",
+          "variants": [],
+          "pinyin": "bǐ",
+          "meaning": "bộ chủy, cái thìa (muỗng)",
+          "examples": [
+            {
+              "hanzi": "北",
+              "pinyin": "běi",
+              "meaning": "Phía bắc"
+            },
+            {
+              "hanzi": "匙",
+              "pinyin": "chí",
+              "meaning": "cái thìa"
+            },
+            {
+              "hanzi": "旨",
+              "pinyin": "zhǐ",
+              "meaning": "ý chỉ"
+            }
+          ]
+        },
+        {
+          "id": "radical-531a",
+          "glyph": "匚",
+          "variants": [],
+          "pinyin": "fāng",
+          "meaning": "bộ phương, tủ đựng, đồ chứa",
+          "examples": [
+            {
+              "hanzi": "匠",
+              "pinyin": "jiàng",
+              "meaning": "Thợ thủ công"
+            },
+            {
+              "hanzi": "匡",
+              "pinyin": "kuāng",
+              "meaning": "sửa sang"
+            },
+            {
+              "hanzi": "匪",
+              "pinyin": "fěi",
+              "meaning": "cướp/căng"
+            }
+          ]
+        },
+        {
+          "id": "radical-5338",
+          "glyph": "匸",
+          "variants": [],
+          "pinyin": "xì",
+          "meaning": "bộ hệ, che đậy, giấu giếm",
+          "examples": [
+            {
+              "hanzi": "匹",
+              "pinyin": "pǐ",
+              "meaning": "Con/ngựa"
+            },
+            {
+              "hanzi": "区",
+              "pinyin": "qū",
+              "meaning": "khu vực"
+            },
+            {
+              "hanzi": "医",
+              "pinyin": "yī",
+              "meaning": "y tế"
+            }
+          ]
+        },
+        {
+          "id": "radical-5341",
+          "glyph": "十",
+          "variants": [],
+          "pinyin": "shí",
+          "meaning": "bộ thập, số 10",
+          "examples": [
+            {
+              "hanzi": "千",
+              "pinyin": "qiān",
+              "meaning": "Số 1000"
+            },
+            {
+              "hanzi": "午",
+              "pinyin": "wǔ",
+              "meaning": "giữa trưa"
+            },
+            {
+              "hanzi": "半",
+              "pinyin": "bàn",
+              "meaning": "một nửa"
+            }
+          ]
+        },
+        {
+          "id": "radical-535c",
+          "glyph": "卜",
+          "variants": [],
+          "pinyin": "bǔ",
+          "meaning": "bộ bốc, xem bói",
+          "examples": [
+            {
+              "hanzi": "占",
+              "pinyin": "zhān",
+              "meaning": "Chiếm/bói toán"
+            },
+            {
+              "hanzi": "卡",
+              "pinyin": "kǎ",
+              "meaning": "thẻ"
+            },
+            {
+              "hanzi": "卦",
+              "pinyin": "guà",
+              "meaning": "quẻ bói"
+            }
+          ]
+        },
+        {
+          "id": "radical-5369",
+          "glyph": "卩",
+          "variants": [],
+          "pinyin": "jié",
+          "meaning": "bộ tiết, đốt trúc, thẻ trúc",
+          "examples": [
+            {
+              "hanzi": "印",
+              "pinyin": "yìn",
+              "meaning": "In/dấu ấn"
+            },
+            {
+              "hanzi": "却",
+              "pinyin": "què",
+              "meaning": "nhưng/lùi lại"
+            },
+            {
+              "hanzi": "危",
+              "pinyin": "wēi",
+              "meaning": "nguy hiểm"
+            }
+          ]
+        },
+        {
+          "id": "radical-5382",
+          "glyph": "厂",
+          "variants": [],
+          "pinyin": "chǎng",
+          "meaning": "bộ hán, sườn núi, vách đá",
+          "examples": [
+            {
+              "hanzi": "厅",
+              "pinyin": "tīng",
+              "meaning": "Phòng khách"
+            },
+            {
+              "hanzi": "历",
+              "pinyin": "lì",
+              "meaning": "lịch sử"
+            },
+            {
+              "hanzi": "原",
+              "pinyin": "yuán",
+              "meaning": "nguyên bản/cánh đồng"
+            }
+          ]
+        },
+        {
+          "id": "radical-53b6",
+          "glyph": "厶",
+          "variants": [],
+          "pinyin": "sī",
+          "meaning": "bộ tư, riêng tư",
+          "examples": [
+            {
+              "hanzi": "去",
+              "pinyin": "qù",
+              "meaning": "Đi"
+            },
+            {
+              "hanzi": "县",
+              "pinyin": "xiàn",
+              "meaning": "huyện"
+            },
+            {
+              "hanzi": "参",
+              "pinyin": "cān",
+              "meaning": "tham gia"
+            }
+          ]
+        },
+        {
+          "id": "radical-53c8",
+          "glyph": "又",
+          "variants": [],
+          "pinyin": "yòu",
+          "meaning": "bộ hựu, lại nữa, bàn tay",
+          "examples": [
+            {
+              "hanzi": "双",
+              "pinyin": "shuāng",
+              "meaning": "Đôi/cặp"
+            },
+            {
+              "hanzi": "友",
+              "pinyin": "yǒu",
+              "meaning": "bạn bè"
+            },
+            {
+              "hanzi": "发",
+              "pinyin": "fā",
+              "meaning": "phát triển"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 4 nét",
-        "words": [
-            { "word": "心 (忄)", "type": "radical", "phonetic": "xīn", "meaning": "bộ tâm, trái tim, tấm lòng (dạng đứng là 忄)", "example": "想、思、快", "examplePhonetic": "xiǎng, sī, kuài", "exampleMeaning": "Nghĩ/muốn, suy nghĩ, nhanh" },
-            { "word": "戈", "type": "radical", "phonetic": "gē", "meaning": "bộ qua, binh khí, cây giáo", "example": "成、我、战", "examplePhonetic": "chéng, wǒ, zhàn", "exampleMeaning": "Thành công, tôi/tớ, chiến tranh" },
-            { "word": "户", "type": "radical", "phonetic": "hù", "meaning": "bộ hộ, cửa một cánh", "example": "房、所、扇", "examplePhonetic": "fáng, suǒ, shàn", "exampleMeaning": "Căn phòng, nơi chốn, cái quạt" },
-            { "word": "手 (扌)", "type": "radical", "phonetic": "shǒu", "meaning": "bộ thủ, bàn tay (dạng đứng là tay gảy 扌)", "example": "拿、打、提", "examplePhonetic": "ná, dǎ, tí", "exampleMeaning": "Cầm/nắm, đánh, nhấc" },
-            { "word": "支", "type": "radical", "phonetic": "zhī", "meaning": "bộ chi, cành cây", "example": "支、翅、豉", "examplePhonetic": "zhī, chì, chǐ", "exampleMeaning": "Cành/chi, đôi cánh, tương đậu" },
-            { "word": "攴 (攵)", "type": "radical", "phonetic": "pū", "meaning": "bộ phặc, đánh nhẹ (dạng bên phải là 攵)", "example": "收、改、放", "examplePhonetic": "shōu, gǎi, fàng", "exampleMeaning": "Thu lại, sửa đổi, buông/thả" },
-            { "word": "文", "type": "radical", "phonetic": "wén", "meaning": "bộ văn, văn tự, văn hóa", "example": "齐、斐、斑", "examplePhonetic": "qí, fěi, bān", "exampleMeaning": "Cùng nhau/đều, sặc sỡ, vết đốm" },
-            { "word": "斗", "type": "radical", "phonetic": "dǒu", "meaning": "bộ đẩu, cái đẩu đo lường", "example": "料、斜、斟", "examplePhonetic": "liào, xié, zhēn", "exampleMeaning": "Nguyên liệu, nghiêng, rót trà/cân nhắc" },
-            { "word": "斤", "type": "radical", "phonetic": "jīn", "meaning": "bộ cân, cái búa, cân (đơn vị đo)", "example": "新、斯、断", "examplePhonetic": "xīn, sī, duàn", "exampleMeaning": "Mới, này/đây, cắt đứt" },
-            { "word": "方", "type": "radical", "phonetic": "fāng", "meaning": "bộ phương, phương hướng, hình vuông", "example": "旁、旅、族", "examplePhonetic": "páng, lǚ, zú", "exampleMeaning": "Bên cạnh, du lịch, dân tộc" },
-            { "word": "无", "type": "radical", "phonetic": "wú", "meaning": "bộ vô, không có", "example": "既、无、旡", "examplePhonetic": "jì, wú, jì", "exampleMeaning": "Đã/vừa, không có, nghẹn" },
-            { "word": "日", "type": "radical", "phonetic": "rì", "meaning": "bộ nhật, mặt trời, ngày", "example": "明、时、早", "examplePhonetic": "míng, shí, zǎo", "exampleMeaning": "Sáng, thời gian, sớm" },
-            { "word": "曰", "type": "radical", "phonetic": "yuē", "meaning": "bộ viết, nói rằng", "example": "曲、更、书", "examplePhonetic": "qū, gèng, shū", "exampleMeaning": "Ca khúc/cong, càng/thêm, sách" },
-            { "word": "月", "type": "radical", "phonetic": "yuè", "meaning": "bộ nguyệt, mặt trăng, tháng", "example": "期、朋、服", "examplePhonetic": "qī, péng, fú", "exampleMeaning": "Kỳ hạn/thời gian, bạn bè, trang phục" },
-            { "word": "木", "type": "radical", "phonetic": "mù", "meaning": "bộ mộc, cây cối, gỗ", "example": "林、森、校", "examplePhonetic": "lín, sēn, xiào", "exampleMeaning": "Rừng, rừng rậm, trường học" },
-            { "word": "欠", "type": "radical", "phonetic": "qiàn", "meaning": "bộ khiếm, thiếu sót, ngáp", "example": "欢、歌、欲", "examplePhonetic": "huān, gē, yù", "exampleMeaning": "Vui vẻ, bài hát, ham muốn" },
-            { "word": "止", "type": "radical", "phonetic": "zhǐ", "meaning": "bộ chỉ, dừng lại", "example": "正、此、步", "examplePhonetic": "zhèng, cǐ, bù", "exampleMeaning": "Chính xác, đây/này, bước đi" },
-            { "word": "歹", "type": "radical", "phonetic": "dǎi", "meaning": "bộ đãi, xấu xa, tàn ác", "example": "死、殁、殇", "examplePhonetic": "sǐ, mò, shāng", "exampleMeaning": "Chết, qua đời, chết trẻ" },
-            { "word": "殳", "type": "radical", "phonetic": "shū", "meaning": "bộ thù, gậy gộc", "example": "段、殷、殿", "examplePhonetic": "duàn, yān, diàn", "exampleMeaning": "Giai đoạn/đoạn, ân勤/sầm uất, điện thờ" },
-            { "word": "毋", "type": "radical", "phonetic": "wú", "meaning": "bộ vô, đừng, không nên", "example": "母、每、毒", "examplePhonetic": "mǔ, měi, dú", "exampleMeaning": "Mẹ, mỗi, độc hại" },
-            { "word": "比", "type": "radical", "phonetic": "bǐ", "meaning": "bộ tỷ, so sánh", "example": "毕、毙、毗", "examplePhonetic": "bì, bì, pí", "exampleMeaning": "Tốt nghiệp/hoàn thành, chết, liền kề" },
-            { "word": "毛", "type": "radical", "phonetic": "máo", "meaning": "bộ mao, lông", "example": "毫、毯、毫", "examplePhonetic": "háo, tǎn, háo", "exampleMeaning": "Mảy may/lông, cái thảm, lông mịn" },
-            { "word": "氏", "type": "radical", "phonetic": "shì", "meaning": "bộ thị, họ hàng, dòng họ", "example": "民、氓、氐", "examplePhonetic": "mín, máng, dī", "exampleMeaning": "Rân/nhân dân, dân thường, gốc rễ" },
-            { "word": "气", "type": "radical", "phonetic": "qì", "meaning": "bộ khí, hơi nước, không khí", "example": "氧、氢、氮", "examplePhonetic": "yǎng, qīng, dàn", "exampleMeaning": "Khí ô-xi, khí hydro, khí nitơ" },
-            { "word": "水 (氵)", "type": "radical", "phonetic": "shuǐ", "meaning": "bộ thủy, nước (dạng đứng là ba chấm thủy 氵)", "example": "河、海、洗", "examplePhonetic": "hé, hǎi, xǐ", "exampleMeaning": "Sông, biển, rửa" },
-            { "word": "火 (灬)", "type": "radical", "phonetic": "huǒ", "meaning": "bộ hỏa, lửa (dạng dưới là 4 chấm hỏa 灬)", "example": "烧、热、点", "examplePhonetic": "shāo, rè, diǎn", "exampleMeaning": "Đốt, nóng, điểm/chút" },
-            { "word": "爪", "type": "radical", "phonetic": "zhǎo", "meaning": "bộ trảo, móng vuốt", "example": "爬、爱、妥", "examplePhonetic": "pá, ài, tuǒ", "exampleMeaning": "Bò/trèo, yêu, thỏa đáng" },
-            { "word": "父", "type": "radical", "phonetic": "fù", "meaning": "bộ phụ, cha, bố", "example": "爸、爷、爹", "examplePhonetic": "bà, yé, diē", "exampleMeaning": "Bố, ông nội, cha" },
-            { "word": "爻", "type": "radical", "phonetic": "yáo", "meaning": "bộ hào, quẻ hào", "example": "爽、爽、尔", "examplePhonetic": "shuǎng, shuǎng, ěr", "exampleMeaning": "Sảng khoái, dũng cảm, bạn/ngươi" },
-            { "word": "爿", "type": "radical", "phonetic": "pán", "meaning": "bộ tường, tấm phản, giường gỗ", "example": "床、墙、壮", "examplePhonetic": "chuáng, qiáng, zhuàng", "exampleMeaning": "Cái giường, bức tường, tráng kiện" },
-            { "word": "片", "type": "radical", "phonetic": "piàn", "meaning": "bộ phiến, mảnh giấy, lát mỏng", "example": "牌、版、牒", "examplePhonetic": "pái, bǎn, dié", "exampleMeaning": "Tấm biển/bài, xuất bản/phiên bản, văn bản" },
-            { "word": "牙", "type": "radical", "phonetic": "yá", "meaning": "bộ nha, răng", "example": "芽、鸦、邪", "examplePhonetic": "yá, yā, xié", "exampleMeaning": "Mầm cây, con quạ, tà ác" },
-            { "word": "牛 (牜)", "type": "radical", "phonetic": "niú", "meaning": "bộ ngưu, con bò (dạng đứng là 牜)", "example": "物、特、牧", "examplePhonetic": "wù, tè, mù", "exampleMeaning": "Đồ vật, đặc biệt, chăn nuôi" },
-            { "word": "犬 (犭)", "type": "radical", "phonetic": "quǎn", "meaning": "bộ khuyển, con chó (dạng đứng là 犭)", "example": "狗、猫、犯", "examplePhonetic": "gǒu, māo, fàn", "exampleMeaning": "Con chó, con mèo, phạm tội" }
-        ]
+      "id": "group-3",
+      "label": "Nhóm 3 nét",
+      "radicals": [
+        {
+          "id": "radical-53e3",
+          "glyph": "口",
+          "variants": [],
+          "pinyin": "kǒu",
+          "meaning": "bộ khẩu, cái miệng",
+          "examples": [
+            {
+              "hanzi": "吃",
+              "pinyin": "chī",
+              "meaning": "Ăn"
+            },
+            {
+              "hanzi": "喝",
+              "pinyin": "hē",
+              "meaning": "uống"
+            },
+            {
+              "hanzi": "叫",
+              "pinyin": "jiào",
+              "meaning": "gọi/kêu"
+            }
+          ]
+        },
+        {
+          "id": "radical-56d7",
+          "glyph": "囗",
+          "variants": [],
+          "pinyin": "wéi",
+          "meaning": "bộ vi, vây quanh",
+          "examples": [
+            {
+              "hanzi": "国",
+              "pinyin": "guó",
+              "meaning": "Quốc gia"
+            },
+            {
+              "hanzi": "园",
+              "pinyin": "yuán",
+              "meaning": "vườn"
+            },
+            {
+              "hanzi": "图",
+              "pinyin": "tú",
+              "meaning": "bản đồ"
+            }
+          ]
+        },
+        {
+          "id": "radical-571f",
+          "glyph": "土",
+          "variants": [],
+          "pinyin": "tǔ",
+          "meaning": "bộ thổ, đất",
+          "examples": [
+            {
+              "hanzi": "地",
+              "pinyin": "dì",
+              "meaning": "Đất"
+            },
+            {
+              "hanzi": "城",
+              "pinyin": "chéng",
+              "meaning": "thành phố"
+            },
+            {
+              "hanzi": "场",
+              "pinyin": "chǎng",
+              "meaning": "quảng trường/sân"
+            }
+          ]
+        },
+        {
+          "id": "radical-58eb",
+          "glyph": "士",
+          "variants": [],
+          "pinyin": "shì",
+          "meaning": "bộ sĩ, quan lại, học sĩ",
+          "examples": [
+            {
+              "hanzi": "壮",
+              "pinyin": "zhuàng",
+              "meaning": "Tráng kiện"
+            },
+            {
+              "hanzi": "声",
+              "pinyin": "shēng",
+              "meaning": "âm thanh"
+            },
+            {
+              "hanzi": "壹",
+              "pinyin": "yī",
+              "meaning": "số 1 (chữ viết hoa)"
+            }
+          ]
+        },
+        {
+          "id": "radical-5902",
+          "glyph": "夂",
+          "variants": [],
+          "pinyin": "zhǐ",
+          "meaning": "bộ truy, đi chậm",
+          "examples": [
+            {
+              "hanzi": "处",
+              "pinyin": "chù",
+              "meaning": "Nơi chốn"
+            },
+            {
+              "hanzi": "备",
+              "pinyin": "bèi",
+              "meaning": "chuẩn bị"
+            },
+            {
+              "hanzi": "复",
+              "pinyin": "fù",
+              "meaning": "lặp lại"
+            }
+          ]
+        },
+        {
+          "id": "radical-590a",
+          "glyph": "夊",
+          "variants": [],
+          "pinyin": "suī",
+          "meaning": "bộ suy, đi chậm bước sau",
+          "examples": [
+            {
+              "hanzi": "夏",
+              "pinyin": "xià",
+              "meaning": "Mùa hè"
+            },
+            {
+              "hanzi": "夔",
+              "pinyin": "kuí",
+              "meaning": "con quỳ (thần thoại)"
+            },
+            {
+              "hanzi": "夋",
+              "pinyin": "qūn",
+              "meaning": "bước đi chậm"
+            }
+          ]
+        },
+        {
+          "id": "radical-5915",
+          "glyph": "夕",
+          "variants": [],
+          "pinyin": "xī",
+          "meaning": "bộ tịch, đêm tối",
+          "examples": [
+            {
+              "hanzi": "外",
+              "pinyin": "wài",
+              "meaning": "Bên ngoài"
+            },
+            {
+              "hanzi": "多",
+              "pinyin": "duō",
+              "meaning": "nhiều"
+            },
+            {
+              "hanzi": "夜",
+              "pinyin": "yè",
+              "meaning": "đêm"
+            }
+          ]
+        },
+        {
+          "id": "radical-5927",
+          "glyph": "大",
+          "variants": [],
+          "pinyin": "dà",
+          "meaning": "bộ đại, to lớn",
+          "examples": [
+            {
+              "hanzi": "天",
+              "pinyin": "tiān",
+              "meaning": "Trời"
+            },
+            {
+              "hanzi": "太",
+              "pinyin": "tài",
+              "meaning": "quá/rất"
+            },
+            {
+              "hanzi": "夫",
+              "pinyin": "fū",
+              "meaning": "chồng"
+            }
+          ]
+        },
+        {
+          "id": "radical-5973",
+          "glyph": "女",
+          "variants": [],
+          "pinyin": "nǚ",
+          "meaning": "bộ nữ, con gái, phụ nữ",
+          "examples": [
+            {
+              "hanzi": "妈",
+              "pinyin": "mā",
+              "meaning": "Mẹ"
+            },
+            {
+              "hanzi": "姐",
+              "pinyin": "jiě",
+              "meaning": "chị gái"
+            },
+            {
+              "hanzi": "好",
+              "pinyin": "hǎo",
+              "meaning": "tốt"
+            }
+          ]
+        },
+        {
+          "id": "radical-5b50",
+          "glyph": "子",
+          "variants": [],
+          "pinyin": "zǐ",
+          "meaning": "bộ tử, con cái",
+          "examples": [
+            {
+              "hanzi": "字",
+              "pinyin": "zì",
+              "meaning": "Chữ"
+            },
+            {
+              "hanzi": "学",
+              "pinyin": "xué",
+              "meaning": "học"
+            },
+            {
+              "hanzi": "存",
+              "pinyin": "cún",
+              "meaning": "tồn tại"
+            }
+          ]
+        },
+        {
+          "id": "radical-5b80",
+          "glyph": "宀",
+          "variants": [],
+          "pinyin": "mián",
+          "meaning": "bộ miên, mái nhà",
+          "examples": [
+            {
+              "hanzi": "家",
+              "pinyin": "jiā",
+              "meaning": "Nhà"
+            },
+            {
+              "hanzi": "安",
+              "pinyin": "ān",
+              "meaning": "an toàn"
+            },
+            {
+              "hanzi": "室",
+              "pinyin": "shì",
+              "meaning": "phòng"
+            }
+          ]
+        },
+        {
+          "id": "radical-5bf8",
+          "glyph": "寸",
+          "variants": [],
+          "pinyin": "cùn",
+          "meaning": "bộ thốn, tấc (đơn vị đo)",
+          "examples": [
+            {
+              "hanzi": "寺",
+              "pinyin": "sì",
+              "meaning": "Chùa"
+            },
+            {
+              "hanzi": "封",
+              "pinyin": "fēng",
+              "meaning": "phong tỏa/bức thư"
+            },
+            {
+              "hanzi": "耐",
+              "pinyin": "nài",
+              "meaning": "nhẫn nại"
+            }
+          ]
+        },
+        {
+          "id": "radical-5c0f",
+          "glyph": "小",
+          "variants": [],
+          "pinyin": "xiǎo",
+          "meaning": "bộ tiểu, nhỏ bé",
+          "examples": [
+            {
+              "hanzi": "少",
+              "pinyin": "shǎo",
+              "meaning": "Ít"
+            },
+            {
+              "hanzi": "尖",
+              "pinyin": "jiān",
+              "meaning": "nhọn"
+            },
+            {
+              "hanzi": "尚",
+              "pinyin": "shàng",
+              "meaning": "cao quý/chuộng"
+            }
+          ]
+        },
+        {
+          "id": "radical-5c22",
+          "glyph": "尢",
+          "variants": [
+            "尣"
+          ],
+          "pinyin": "wāng",
+          "meaning": "bộ uông, tàn tật, yếu ớt",
+          "examples": [
+            {
+              "hanzi": "尤",
+              "pinyin": "yóu",
+              "meaning": "Đặc biệt"
+            },
+            {
+              "hanzi": "就",
+              "pinyin": "jiù",
+              "meaning": "ngay/chính là"
+            },
+            {
+              "hanzi": "尴尬",
+              "pinyin": "gāngà",
+              "meaning": "ngượng ngùng"
+            }
+          ]
+        },
+        {
+          "id": "radical-5c38",
+          "glyph": "尸",
+          "variants": [],
+          "pinyin": "shī",
+          "meaning": "bộ thi, xác chết, thây ma",
+          "examples": [
+            {
+              "hanzi": "尺",
+              "pinyin": "chǐ",
+              "meaning": "Thước"
+            },
+            {
+              "hanzi": "尼",
+              "pinyin": "ní",
+              "meaning": "ni cô"
+            },
+            {
+              "hanzi": "尾",
+              "pinyin": "wěi",
+              "meaning": "cái đuôi"
+            }
+          ]
+        },
+        {
+          "id": "radical-5c6e",
+          "glyph": "屮",
+          "variants": [],
+          "pinyin": "chè",
+          "meaning": "bộ triệt, mầm cây mới nhú",
+          "examples": [
+            {
+              "hanzi": "屯",
+              "pinyin": "tún",
+              "meaning": "Đồn trú/tích trữ"
+            },
+            {
+              "hanzi": "屰",
+              "pinyin": "nì",
+              "meaning": "ngỗ ngược"
+            },
+            {
+              "hanzi": "屮",
+              "pinyin": "chè",
+              "meaning": "cỏ mới mọc"
+            }
+          ]
+        },
+        {
+          "id": "radical-5c71",
+          "glyph": "山",
+          "variants": [],
+          "pinyin": "shān",
+          "meaning": "bộ sơn, núi",
+          "examples": [
+            {
+              "hanzi": "岁",
+              "pinyin": "suì",
+              "meaning": "Tuổi"
+            },
+            {
+              "hanzi": "岛",
+              "pinyin": "dǎo",
+              "meaning": "hòn đảo"
+            },
+            {
+              "hanzi": "岸",
+              "pinyin": "àn",
+              "meaning": "bờ bến"
+            }
+          ]
+        },
+        {
+          "id": "radical-5ddb",
+          "glyph": "巛",
+          "variants": [
+            "川"
+          ],
+          "pinyin": "chuān",
+          "meaning": "bộ xuyên, sông ngòi",
+          "examples": [
+            {
+              "hanzi": "州",
+              "pinyin": "zhōu",
+              "meaning": "Châu/tỉnh"
+            },
+            {
+              "hanzi": "巡",
+              "pinyin": "xún",
+              "meaning": "tuần tra"
+            },
+            {
+              "hanzi": "巢",
+              "pinyin": "cháo",
+              "meaning": "tổ chim"
+            }
+          ]
+        },
+        {
+          "id": "radical-5de5",
+          "glyph": "工",
+          "variants": [],
+          "pinyin": "gōng",
+          "meaning": "bộ công, công việc, thợ",
+          "examples": [
+            {
+              "hanzi": "左",
+              "pinyin": "zuǒ",
+              "meaning": "Bên trái"
+            },
+            {
+              "hanzi": "巧",
+              "pinyin": "qiǎo",
+              "meaning": "khéo léo"
+            },
+            {
+              "hanzi": "差",
+              "pinyin": "chà",
+              "meaning": "sai lệch"
+            }
+          ]
+        },
+        {
+          "id": "radical-5df1",
+          "glyph": "己",
+          "variants": [],
+          "pinyin": "jǐ",
+          "meaning": "bộ kỷ, bản thân",
+          "examples": [
+            {
+              "hanzi": "已",
+              "pinyin": "yǐ",
+              "meaning": "Đã/rồi"
+            },
+            {
+              "hanzi": "改",
+              "pinyin": "gǎi",
+              "meaning": "sửa đổi"
+            },
+            {
+              "hanzi": "忌",
+              "pinyin": "jì",
+              "meaning": "kiêng kỵ"
+            }
+          ]
+        },
+        {
+          "id": "radical-5dfe",
+          "glyph": "巾",
+          "variants": [],
+          "pinyin": "jīn",
+          "meaning": "bộ cân, khăn lau",
+          "examples": [
+            {
+              "hanzi": "市",
+              "pinyin": "shì",
+              "meaning": "Thành phố/chợ"
+            },
+            {
+              "hanzi": "布",
+              "pinyin": "bù",
+              "meaning": "vải"
+            },
+            {
+              "hanzi": "帮",
+              "pinyin": "bāng",
+              "meaning": "giúp đỡ"
+            }
+          ]
+        },
+        {
+          "id": "radical-5e72",
+          "glyph": "干",
+          "variants": [],
+          "pinyin": "gān",
+          "meaning": "bộ can, can thiệp, khô",
+          "examples": [
+            {
+              "hanzi": "平",
+              "pinyin": "píng",
+              "meaning": "Bằng phẳng"
+            },
+            {
+              "hanzi": "年",
+              "pinyin": "nián",
+              "meaning": "năm"
+            },
+            {
+              "hanzi": "并",
+              "pinyin": "bìng",
+              "meaning": "đồng thời"
+            }
+          ]
+        },
+        {
+          "id": "radical-5e7a",
+          "glyph": "幺",
+          "variants": [],
+          "pinyin": "yāo",
+          "meaning": "bộ yêu, nhỏ nhắn",
+          "examples": [
+            {
+              "hanzi": "幻",
+              "pinyin": "huàn",
+              "meaning": "A ảo"
+            },
+            {
+              "hanzi": "幼",
+              "pinyin": "yòu",
+              "meaning": "thơ ấu"
+            },
+            {
+              "hanzi": "幽",
+              "pinyin": "yōu",
+              "meaning": "u tĩnh"
+            }
+          ]
+        },
+        {
+          "id": "radical-5e7f",
+          "glyph": "广",
+          "variants": [],
+          "pinyin": "guǎng",
+          "meaning": "bộ quảng, mái nhà rộng",
+          "examples": [
+            {
+              "hanzi": "庄",
+              "pinyin": "zhuāng",
+              "meaning": "Trang trại"
+            },
+            {
+              "hanzi": "店",
+              "pinyin": "diàn",
+              "meaning": "cửa hàng"
+            },
+            {
+              "hanzi": "床",
+              "pinyin": "chuáng",
+              "meaning": "cái giường"
+            }
+          ]
+        },
+        {
+          "id": "radical-5ef4",
+          "glyph": "廴",
+          "variants": [],
+          "pinyin": "yǐn",
+          "meaning": "bộ dẫn, bước dài",
+          "examples": [
+            {
+              "hanzi": "延",
+              "pinyin": "yán",
+              "meaning": "Kéo dài"
+            },
+            {
+              "hanzi": "建",
+              "pinyin": "jiàn",
+              "meaning": "xây dựng"
+            },
+            {
+              "hanzi": "廷",
+              "pinyin": "tíng",
+              "meaning": "triều đình"
+            }
+          ]
+        },
+        {
+          "id": "radical-5efe",
+          "glyph": "廾",
+          "variants": [],
+          "pinyin": "gǒng",
+          "meaning": "bộ củng, chắp tay",
+          "examples": [
+            {
+              "hanzi": "开",
+              "pinyin": "kāi",
+              "meaning": "Mở"
+            },
+            {
+              "hanzi": "弁",
+              "pinyin": "biàn",
+              "meaning": "mũ mạo"
+            },
+            {
+              "hanzi": "弄",
+              "pinyin": "nòng",
+              "meaning": "đùa giỡn/làm"
+            }
+          ]
+        },
+        {
+          "id": "radical-5f0b",
+          "glyph": "弋",
+          "variants": [],
+          "pinyin": "yì",
+          "meaning": "bộ dực, bắn cung, cọc gỗ",
+          "examples": [
+            {
+              "hanzi": "式",
+              "pinyin": "shì",
+              "meaning": "Hình thức"
+            },
+            {
+              "hanzi": "弑",
+              "pinyin": "shì",
+              "meaning": "giết vua/cha"
+            },
+            {
+              "hanzi": "忒",
+              "pinyin": "tè",
+              "meaning": "sai lầm"
+            }
+          ]
+        },
+        {
+          "id": "radical-5f13",
+          "glyph": "弓",
+          "variants": [],
+          "pinyin": "gōng",
+          "meaning": "bộ cung, cây cung",
+          "examples": [
+            {
+              "hanzi": "引",
+              "pinyin": "yǐn",
+              "meaning": "Dẫn dắt/kéo"
+            },
+            {
+              "hanzi": "张",
+              "pinyin": "zhāng",
+              "meaning": "mở ra/họ Trương"
+            },
+            {
+              "hanzi": "强",
+              "pinyin": "qiáng",
+              "meaning": "mạnh mẽ"
+            }
+          ]
+        },
+        {
+          "id": "radical-5f50",
+          "glyph": "彐",
+          "variants": [
+            "彔"
+          ],
+          "pinyin": "jì",
+          "meaning": "bộ ký, đầu con heo",
+          "examples": [
+            {
+              "hanzi": "归",
+              "pinyin": "guī",
+              "meaning": "Trở về"
+            },
+            {
+              "hanzi": "录",
+              "pinyin": "lù",
+              "meaning": "ghi chép"
+            },
+            {
+              "hanzi": "彗",
+              "pinyin": "huì",
+              "meaning": "sao chổi"
+            }
+          ]
+        },
+        {
+          "id": "radical-5f61",
+          "glyph": "彡",
+          "variants": [],
+          "pinyin": "shān",
+          "meaning": "bộ sam, lông tóc dài, hoa văn",
+          "examples": [
+            {
+              "hanzi": "形",
+              "pinyin": "xíng",
+              "meaning": "Hình dạng"
+            },
+            {
+              "hanzi": "彩",
+              "pinyin": "cǎi",
+              "meaning": "màu sắc"
+            },
+            {
+              "hanzi": "影",
+              "pinyin": "yǐng",
+              "meaning": "cái bóng"
+            }
+          ]
+        },
+        {
+          "id": "radical-5f73",
+          "glyph": "彳",
+          "variants": [],
+          "pinyin": "chì",
+          "meaning": "bộ xích, bước chân trái (chim chích)",
+          "examples": [
+            {
+              "hanzi": "行",
+              "pinyin": "xíng",
+              "meaning": "Đi/được"
+            },
+            {
+              "hanzi": "很",
+              "pinyin": "hěn",
+              "meaning": "rất"
+            },
+            {
+              "hanzi": "待",
+              "pinyin": "dài",
+              "meaning": "chờ đợi"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 5 nét",
-        "words": [
-            { "word": "玄", "type": "radical", "phonetic": "xuán", "meaning": "bộ huyền, huyền bí, màu đen", "example": "率、兹、畜", "examplePhonetic": "shuài, zī, chù", "exampleMeaning": "Tỷ lệ/dẫn dắt, này/đây, gia súc" },
-            { "word": "玉 (王)", "type": "radical", "phonetic": "yù", "meaning": "bộ ngọc/vương, viên ngọc, vua (dạng ghép là 王)", "example": "王、玩、理", "examplePhonetic": "wáng, wán, lǐ", "exampleMeaning": "Vua, chơi, lý trí/quản lý" },
-            { "word": "瓜", "type": "radical", "phonetic": "guā", "meaning": "bộ qua, quả dưa", "example": "瓢、瓣、瓢", "examplePhonetic": "piáo, bàn, piáo", "exampleMeaning": "Gáo dừa, cánh hoa/múi, gáo" },
-            { "word": "瓦", "type": "radical", "phonetic": "wǎ", "meaning": "bộ ngõa, ngói lợp nhà", "example": "瓶、瓷、甄", "examplePhonetic": "píng, cí, zhēn", "exampleMeaning": "Cái bình, đồ sứ, chọn lựa" },
-            { "word": "甘", "type": "radical", "phonetic": "gān", "meaning": "bộ cam, ngọt ngào", "example": "甜、甚、某", "examplePhonetic": "tián, shèn, mǒu", "exampleMeaning": "Ngọt, lắm/quá, nào đó" },
-            { "word": "生", "type": "radical", "phonetic": "shēng", "meaning": "bộ sinh, sinh sống, sinh đẻ", "example": "产、甥、产", "examplePhonetic": "chǎn, shēng, chǎn", "exampleMeaning": "Sản xuất, cháu ngoại, sinh ra" },
-            { "word": "用", "type": "radical", "phonetic": "yòng", "meaning": "bộ dụng, sử dụng", "example": "甩、甫、佣", "examplePhonetic": "shuǎi, fǔ, yōng", "exampleMeaning": "Vung/ném, vừa mới, tiền hoa hồng" },
-            { "word": "田", "type": "radical", "phonetic": "tián", "meaning": "bộ điền, ruộng đất", "example": "男、画、界", "examplePhonetic": "nán, huà, jiè", "exampleMeaning": "Nam giới/đàn ông, bức tranh, ranh giới" },
-            { "word": "疋", "type": "radical", "phonetic": "pǐ", "meaning": "bộ thất, cuộn vải, chân", "example": "蛋、疏、疑", "examplePhonetic": "dàn, shū, yí", "exampleMeaning": "Quả trứng, thưa thớt, nghi ngờ" },
-            { "word": "疒", "type": "radical", "phonetic": "nè", "meaning": "bộ nạch, bệnh tật", "example": "病、痛、疯", "examplePhonetic": "bìng, tòng, fēng", "exampleMeaning": "Bệnh, đau, điên" },
-            { "word": "癶", "type": "radical", "phonetic": "bō", "meaning": "bộ bát, gạt ra, gót chân", "example": "癸、登、发", "examplePhonetic": "guǐ, dēng, fā", "exampleMeaning": "Thiên can Quý, leo lên, phát ra" },
-            { "word": "白", "type": "radical", "phonetic": "bái", "meaning": "bộ bạch, màu trắng", "example": "百、的、皇", "examplePhonetic": "bǎi, de, huáng", "exampleMeaning": "Số 100, của (trợ từ), hoàng đế" },
-            { "word": "皮", "type": "radical", "phonetic": "pí", "meaning": "bộ bì, da", "example": "皱、披、破", "examplePhonetic": "zhòu, pī, pò", "exampleMeaning": "Nếp nhăn, khoác áo, rách" },
-            { "word": "皿", "type": "radical", "phonetic": "mǐn", "meaning": "bộ mãnh, bát đĩa, đồ đựng", "example": "盆、益、盒", "examplePhonetic": "pén, yì, hé", "exampleMeaning": "Cái chậu, bổ ích, cái hộp" },
-            { "word": "目", "type": "radical", "phonetic": "mù", "meaning": "bộ mục, mắt", "example": "眼、看、睡", "examplePhonetic": "yǎn, kàn, shuì", "exampleMeaning": "Mắt, nhìn, ngủ" },
-            { "word": "矛", "type": "radical", "phonetic": "máo", "meaning": "bộ mâu, cây giáo", "example": "柔、矜、鹬", "examplePhonetic": "róu, jīn, yù", "exampleMeaning": "Mềm mại, kiêu ngạo, chim dốt" },
-            { "word": "矢", "type": "radical", "phonetic": "shǐ", "meaning": "bộ thỉ, mũi tên", "example": "知、短、矩", "examplePhonetic": "zhī, duǎn, jǔ", "exampleMeaning": "Biết, ngắn, quy tắc/thước đo" },
-            { "word": "石", "type": "radical", "phonetic": "shí", "meaning": "bộ thạch, đá", "example": "破、砍、硬", "examplePhonetic": "pò, kǎn, yìng", "exampleMeaning": "Phá vỡ/rách, chặt, cứng" },
-            { "word": "示 (礻)", "type": "radical", "phonetic": "shì", "meaning": "bộ thị, thần linh, chỉ bảo (dạng đứng là 礻)", "example": "社、祝、神", "examplePhonetic": "shè, zhù, shén", "exampleMeaning": "Xã hội/xã tắc, chúc mừng, thần linh" },
-            { "word": "禸", "type": "radical", "phonetic": "róu", "meaning": "bộ nhựu, vết chân thú", "example": "离、禹、禽", "examplePhonetic": "lí, yǔ, qín", "exampleMeaning": "Rời khỏi, vua Vũ, chim/gia cầm" },
-            { "word": "禾", "type": "radical", "phonetic": "hé", "meaning": "bộ hòa, cây lúa", "example": "私、秋、种", "examplePhonetic": "sī, qiū, zhǒng", "exampleMeaning": "Riêng tư, mùa thu, hạt giống" },
-            { "word": "穴", "type": "radical", "phonetic": "xué", "meaning": "bộ huyệt, hang xóm, lỗ hổng", "example": "空、穿、穷", "examplePhonetic": "kōng, chuān, qióng", "exampleMeaning": "Bầu trời/trống rỗng, mặc áo, nghèo" },
-            { "word": "立", "type": "radical", "phonetic": "lì", "meaning": "bộ lập, đứng thẳng", "example": "站、童、端", "examplePhonetic": "zhàn, tóng, duān", "exampleMeaning": "Trạm/đứng, trẻ em, ngay ngắn/đầu" }          
-        ]
+      "id": "group-4",
+      "label": "Nhóm 4 nét",
+      "radicals": [
+        {
+          "id": "radical-5fc3",
+          "glyph": "心",
+          "variants": [
+            "忄"
+          ],
+          "pinyin": "xīn",
+          "meaning": "bộ tâm, trái tim, tấm lòng (dạng đứng là 忄)",
+          "examples": [
+            {
+              "hanzi": "想",
+              "pinyin": "xiǎng",
+              "meaning": "Nghĩ/muốn"
+            },
+            {
+              "hanzi": "思",
+              "pinyin": "sī",
+              "meaning": "suy nghĩ"
+            },
+            {
+              "hanzi": "快",
+              "pinyin": "kuài",
+              "meaning": "nhanh"
+            }
+          ]
+        },
+        {
+          "id": "radical-6208",
+          "glyph": "戈",
+          "variants": [],
+          "pinyin": "gē",
+          "meaning": "bộ qua, binh khí, cây giáo",
+          "examples": [
+            {
+              "hanzi": "成",
+              "pinyin": "chéng",
+              "meaning": "Thành công"
+            },
+            {
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "meaning": "tôi/tớ"
+            },
+            {
+              "hanzi": "战",
+              "pinyin": "zhàn",
+              "meaning": "chiến tranh"
+            }
+          ]
+        },
+        {
+          "id": "radical-6237",
+          "glyph": "户",
+          "variants": [],
+          "pinyin": "hù",
+          "meaning": "bộ hộ, cửa một cánh",
+          "examples": [
+            {
+              "hanzi": "房",
+              "pinyin": "fáng",
+              "meaning": "Căn phòng"
+            },
+            {
+              "hanzi": "所",
+              "pinyin": "suǒ",
+              "meaning": "nơi chốn"
+            },
+            {
+              "hanzi": "扇",
+              "pinyin": "shàn",
+              "meaning": "cái quạt"
+            }
+          ]
+        },
+        {
+          "id": "radical-624b",
+          "glyph": "手",
+          "variants": [
+            "扌"
+          ],
+          "pinyin": "shǒu",
+          "meaning": "bộ thủ, bàn tay (dạng đứng là tay gảy 扌)",
+          "examples": [
+            {
+              "hanzi": "拿",
+              "pinyin": "ná",
+              "meaning": "Cầm/nắm"
+            },
+            {
+              "hanzi": "打",
+              "pinyin": "dǎ",
+              "meaning": "đánh"
+            },
+            {
+              "hanzi": "提",
+              "pinyin": "tí",
+              "meaning": "nhấc"
+            }
+          ]
+        },
+        {
+          "id": "radical-652f",
+          "glyph": "支",
+          "variants": [],
+          "pinyin": "zhī",
+          "meaning": "bộ chi, cành cây",
+          "examples": [
+            {
+              "hanzi": "支",
+              "pinyin": "zhī",
+              "meaning": "Cành/chi"
+            },
+            {
+              "hanzi": "翅",
+              "pinyin": "chì",
+              "meaning": "đôi cánh"
+            },
+            {
+              "hanzi": "豉",
+              "pinyin": "chǐ",
+              "meaning": "tương đậu"
+            }
+          ]
+        },
+        {
+          "id": "radical-6534",
+          "glyph": "攴",
+          "variants": [
+            "攵"
+          ],
+          "pinyin": "pū",
+          "meaning": "bộ phặc, đánh nhẹ (dạng bên phải là 攵)",
+          "examples": [
+            {
+              "hanzi": "收",
+              "pinyin": "shōu",
+              "meaning": "Thu lại"
+            },
+            {
+              "hanzi": "改",
+              "pinyin": "gǎi",
+              "meaning": "sửa đổi"
+            },
+            {
+              "hanzi": "放",
+              "pinyin": "fàng",
+              "meaning": "buông/thả"
+            }
+          ]
+        },
+        {
+          "id": "radical-6587",
+          "glyph": "文",
+          "variants": [],
+          "pinyin": "wén",
+          "meaning": "bộ văn, văn tự, văn hóa",
+          "examples": [
+            {
+              "hanzi": "齐",
+              "pinyin": "qí",
+              "meaning": "Cùng nhau/đều"
+            },
+            {
+              "hanzi": "斐",
+              "pinyin": "fěi",
+              "meaning": "sặc sỡ"
+            },
+            {
+              "hanzi": "斑",
+              "pinyin": "bān",
+              "meaning": "vết đốm"
+            }
+          ]
+        },
+        {
+          "id": "radical-6597",
+          "glyph": "斗",
+          "variants": [],
+          "pinyin": "dǒu",
+          "meaning": "bộ đẩu, cái đẩu đo lường",
+          "examples": [
+            {
+              "hanzi": "料",
+              "pinyin": "liào",
+              "meaning": "Nguyên liệu"
+            },
+            {
+              "hanzi": "斜",
+              "pinyin": "xié",
+              "meaning": "nghiêng"
+            },
+            {
+              "hanzi": "斟",
+              "pinyin": "zhēn",
+              "meaning": "rót trà/cân nhắc"
+            }
+          ]
+        },
+        {
+          "id": "radical-65a4",
+          "glyph": "斤",
+          "variants": [],
+          "pinyin": "jīn",
+          "meaning": "bộ cân, cái búa, cân (đơn vị đo)",
+          "examples": [
+            {
+              "hanzi": "新",
+              "pinyin": "xīn",
+              "meaning": "Mới"
+            },
+            {
+              "hanzi": "斯",
+              "pinyin": "sī",
+              "meaning": "này/đây"
+            },
+            {
+              "hanzi": "断",
+              "pinyin": "duàn",
+              "meaning": "cắt đứt"
+            }
+          ]
+        },
+        {
+          "id": "radical-65b9",
+          "glyph": "方",
+          "variants": [],
+          "pinyin": "fāng",
+          "meaning": "bộ phương, phương hướng, hình vuông",
+          "examples": [
+            {
+              "hanzi": "旁",
+              "pinyin": "páng",
+              "meaning": "Bên cạnh"
+            },
+            {
+              "hanzi": "旅",
+              "pinyin": "lǚ",
+              "meaning": "du lịch"
+            },
+            {
+              "hanzi": "族",
+              "pinyin": "zú",
+              "meaning": "dân tộc"
+            }
+          ]
+        },
+        {
+          "id": "radical-65e0",
+          "glyph": "无",
+          "variants": [],
+          "pinyin": "wú",
+          "meaning": "bộ vô, không có",
+          "examples": [
+            {
+              "hanzi": "既",
+              "pinyin": "jì",
+              "meaning": "Đã/vừa"
+            },
+            {
+              "hanzi": "无",
+              "pinyin": "wú",
+              "meaning": "không có"
+            },
+            {
+              "hanzi": "旡",
+              "pinyin": "jì",
+              "meaning": "nghẹn"
+            }
+          ]
+        },
+        {
+          "id": "radical-65e5",
+          "glyph": "日",
+          "variants": [],
+          "pinyin": "rì",
+          "meaning": "bộ nhật, mặt trời, ngày",
+          "examples": [
+            {
+              "hanzi": "明",
+              "pinyin": "míng",
+              "meaning": "Sáng"
+            },
+            {
+              "hanzi": "时",
+              "pinyin": "shí",
+              "meaning": "thời gian"
+            },
+            {
+              "hanzi": "早",
+              "pinyin": "zǎo",
+              "meaning": "sớm"
+            }
+          ]
+        },
+        {
+          "id": "radical-66f0",
+          "glyph": "曰",
+          "variants": [],
+          "pinyin": "yuē",
+          "meaning": "bộ viết, nói rằng",
+          "examples": [
+            {
+              "hanzi": "曲",
+              "pinyin": "qū",
+              "meaning": "Ca khúc/cong"
+            },
+            {
+              "hanzi": "更",
+              "pinyin": "gèng",
+              "meaning": "càng/thêm"
+            },
+            {
+              "hanzi": "书",
+              "pinyin": "shū",
+              "meaning": "sách"
+            }
+          ]
+        },
+        {
+          "id": "radical-6708",
+          "glyph": "月",
+          "variants": [],
+          "pinyin": "yuè",
+          "meaning": "bộ nguyệt, mặt trăng, tháng",
+          "examples": [
+            {
+              "hanzi": "期",
+              "pinyin": "qī",
+              "meaning": "Kỳ hạn/thời gian"
+            },
+            {
+              "hanzi": "朋",
+              "pinyin": "péng",
+              "meaning": "bạn bè"
+            },
+            {
+              "hanzi": "服",
+              "pinyin": "fú",
+              "meaning": "trang phục"
+            }
+          ]
+        },
+        {
+          "id": "radical-6728",
+          "glyph": "木",
+          "variants": [],
+          "pinyin": "mù",
+          "meaning": "bộ mộc, cây cối, gỗ",
+          "examples": [
+            {
+              "hanzi": "林",
+              "pinyin": "lín",
+              "meaning": "Rừng"
+            },
+            {
+              "hanzi": "森",
+              "pinyin": "sēn",
+              "meaning": "rừng rậm"
+            },
+            {
+              "hanzi": "校",
+              "pinyin": "xiào",
+              "meaning": "trường học"
+            }
+          ]
+        },
+        {
+          "id": "radical-6b20",
+          "glyph": "欠",
+          "variants": [],
+          "pinyin": "qiàn",
+          "meaning": "bộ khiếm, thiếu sót, ngáp",
+          "examples": [
+            {
+              "hanzi": "欢",
+              "pinyin": "huān",
+              "meaning": "Vui vẻ"
+            },
+            {
+              "hanzi": "歌",
+              "pinyin": "gē",
+              "meaning": "bài hát"
+            },
+            {
+              "hanzi": "欲",
+              "pinyin": "yù",
+              "meaning": "ham muốn"
+            }
+          ]
+        },
+        {
+          "id": "radical-6b62",
+          "glyph": "止",
+          "variants": [],
+          "pinyin": "zhǐ",
+          "meaning": "bộ chỉ, dừng lại",
+          "examples": [
+            {
+              "hanzi": "正",
+              "pinyin": "zhèng",
+              "meaning": "Chính xác"
+            },
+            {
+              "hanzi": "此",
+              "pinyin": "cǐ",
+              "meaning": "đây/này"
+            },
+            {
+              "hanzi": "步",
+              "pinyin": "bù",
+              "meaning": "bước đi"
+            }
+          ]
+        },
+        {
+          "id": "radical-6b79",
+          "glyph": "歹",
+          "variants": [],
+          "pinyin": "dǎi",
+          "meaning": "bộ đãi, xấu xa, tàn ác",
+          "examples": [
+            {
+              "hanzi": "死",
+              "pinyin": "sǐ",
+              "meaning": "Chết"
+            },
+            {
+              "hanzi": "殁",
+              "pinyin": "mò",
+              "meaning": "qua đời"
+            },
+            {
+              "hanzi": "殇",
+              "pinyin": "shāng",
+              "meaning": "chết trẻ"
+            }
+          ]
+        },
+        {
+          "id": "radical-6bb3",
+          "glyph": "殳",
+          "variants": [],
+          "pinyin": "shū",
+          "meaning": "bộ thù, gậy gộc",
+          "examples": [
+            {
+              "hanzi": "段",
+              "pinyin": "duàn",
+              "meaning": "Giai đoạn/đoạn"
+            },
+            {
+              "hanzi": "殷",
+              "pinyin": "yān",
+              "meaning": "ân勤/sầm uất"
+            },
+            {
+              "hanzi": "殿",
+              "pinyin": "diàn",
+              "meaning": "điện thờ"
+            }
+          ]
+        },
+        {
+          "id": "radical-6bcb",
+          "glyph": "毋",
+          "variants": [],
+          "pinyin": "wú",
+          "meaning": "bộ vô, đừng, không nên",
+          "examples": [
+            {
+              "hanzi": "母",
+              "pinyin": "mǔ",
+              "meaning": "Mẹ"
+            },
+            {
+              "hanzi": "每",
+              "pinyin": "měi",
+              "meaning": "mỗi"
+            },
+            {
+              "hanzi": "毒",
+              "pinyin": "dú",
+              "meaning": "độc hại"
+            }
+          ]
+        },
+        {
+          "id": "radical-6bd4",
+          "glyph": "比",
+          "variants": [],
+          "pinyin": "bǐ",
+          "meaning": "bộ tỷ, so sánh",
+          "examples": [
+            {
+              "hanzi": "毕",
+              "pinyin": "bì",
+              "meaning": "Tốt nghiệp/hoàn thành"
+            },
+            {
+              "hanzi": "毙",
+              "pinyin": "bì",
+              "meaning": "chết"
+            },
+            {
+              "hanzi": "毗",
+              "pinyin": "pí",
+              "meaning": "liền kề"
+            }
+          ]
+        },
+        {
+          "id": "radical-6bdb",
+          "glyph": "毛",
+          "variants": [],
+          "pinyin": "máo",
+          "meaning": "bộ mao, lông",
+          "examples": [
+            {
+              "hanzi": "毫",
+              "pinyin": "háo",
+              "meaning": "Mảy may/lông"
+            },
+            {
+              "hanzi": "毯",
+              "pinyin": "tǎn",
+              "meaning": "cái thảm"
+            },
+            {
+              "hanzi": "毫",
+              "pinyin": "háo",
+              "meaning": "lông mịn"
+            }
+          ]
+        },
+        {
+          "id": "radical-6c0f",
+          "glyph": "氏",
+          "variants": [],
+          "pinyin": "shì",
+          "meaning": "bộ thị, họ hàng, dòng họ",
+          "examples": [
+            {
+              "hanzi": "民",
+              "pinyin": "mín",
+              "meaning": "Rân/nhân dân"
+            },
+            {
+              "hanzi": "氓",
+              "pinyin": "máng",
+              "meaning": "dân thường"
+            },
+            {
+              "hanzi": "氐",
+              "pinyin": "dī",
+              "meaning": "gốc rễ"
+            }
+          ]
+        },
+        {
+          "id": "radical-6c14",
+          "glyph": "气",
+          "variants": [],
+          "pinyin": "qì",
+          "meaning": "bộ khí, hơi nước, không khí",
+          "examples": [
+            {
+              "hanzi": "氧",
+              "pinyin": "yǎng",
+              "meaning": "Khí ô-xi"
+            },
+            {
+              "hanzi": "氢",
+              "pinyin": "qīng",
+              "meaning": "khí hydro"
+            },
+            {
+              "hanzi": "氮",
+              "pinyin": "dàn",
+              "meaning": "khí nitơ"
+            }
+          ]
+        },
+        {
+          "id": "radical-6c34",
+          "glyph": "水",
+          "variants": [
+            "氵"
+          ],
+          "pinyin": "shuǐ",
+          "meaning": "bộ thủy, nước (dạng đứng là ba chấm thủy 氵)",
+          "examples": [
+            {
+              "hanzi": "河",
+              "pinyin": "hé",
+              "meaning": "Sông"
+            },
+            {
+              "hanzi": "海",
+              "pinyin": "hǎi",
+              "meaning": "biển"
+            },
+            {
+              "hanzi": "洗",
+              "pinyin": "xǐ",
+              "meaning": "rửa"
+            }
+          ]
+        },
+        {
+          "id": "radical-706b",
+          "glyph": "火",
+          "variants": [
+            "灬"
+          ],
+          "pinyin": "huǒ",
+          "meaning": "bộ hỏa, lửa (dạng dưới là 4 chấm hỏa 灬)",
+          "examples": [
+            {
+              "hanzi": "烧",
+              "pinyin": "shāo",
+              "meaning": "Đốt"
+            },
+            {
+              "hanzi": "热",
+              "pinyin": "rè",
+              "meaning": "nóng"
+            },
+            {
+              "hanzi": "点",
+              "pinyin": "diǎn",
+              "meaning": "điểm/chút"
+            }
+          ]
+        },
+        {
+          "id": "radical-722a",
+          "glyph": "爪",
+          "variants": [],
+          "pinyin": "zhǎo",
+          "meaning": "bộ trảo, móng vuốt",
+          "examples": [
+            {
+              "hanzi": "爬",
+              "pinyin": "pá",
+              "meaning": "Bò/trèo"
+            },
+            {
+              "hanzi": "爱",
+              "pinyin": "ài",
+              "meaning": "yêu"
+            },
+            {
+              "hanzi": "妥",
+              "pinyin": "tuǒ",
+              "meaning": "thỏa đáng"
+            }
+          ]
+        },
+        {
+          "id": "radical-7236",
+          "glyph": "父",
+          "variants": [],
+          "pinyin": "fù",
+          "meaning": "bộ phụ, cha, bố",
+          "examples": [
+            {
+              "hanzi": "爸",
+              "pinyin": "bà",
+              "meaning": "Bố"
+            },
+            {
+              "hanzi": "爷",
+              "pinyin": "yé",
+              "meaning": "ông nội"
+            },
+            {
+              "hanzi": "爹",
+              "pinyin": "diē",
+              "meaning": "cha"
+            }
+          ]
+        },
+        {
+          "id": "radical-723b",
+          "glyph": "爻",
+          "variants": [],
+          "pinyin": "yáo",
+          "meaning": "bộ hào, quẻ hào",
+          "examples": [
+            {
+              "hanzi": "爽",
+              "pinyin": "shuǎng",
+              "meaning": "Sảng khoái"
+            },
+            {
+              "hanzi": "爽",
+              "pinyin": "shuǎng",
+              "meaning": "dũng cảm"
+            },
+            {
+              "hanzi": "尔",
+              "pinyin": "ěr",
+              "meaning": "bạn/ngươi"
+            }
+          ]
+        },
+        {
+          "id": "radical-723f",
+          "glyph": "爿",
+          "variants": [],
+          "pinyin": "pán",
+          "meaning": "bộ tường, tấm phản, giường gỗ",
+          "examples": [
+            {
+              "hanzi": "床",
+              "pinyin": "chuáng",
+              "meaning": "Cái giường"
+            },
+            {
+              "hanzi": "墙",
+              "pinyin": "qiáng",
+              "meaning": "bức tường"
+            },
+            {
+              "hanzi": "壮",
+              "pinyin": "zhuàng",
+              "meaning": "tráng kiện"
+            }
+          ]
+        },
+        {
+          "id": "radical-7247",
+          "glyph": "片",
+          "variants": [],
+          "pinyin": "piàn",
+          "meaning": "bộ phiến, mảnh giấy, lát mỏng",
+          "examples": [
+            {
+              "hanzi": "牌",
+              "pinyin": "pái",
+              "meaning": "Tấm biển/bài"
+            },
+            {
+              "hanzi": "版",
+              "pinyin": "bǎn",
+              "meaning": "xuất bản/phiên bản"
+            },
+            {
+              "hanzi": "牒",
+              "pinyin": "dié",
+              "meaning": "văn bản"
+            }
+          ]
+        },
+        {
+          "id": "radical-7259",
+          "glyph": "牙",
+          "variants": [],
+          "pinyin": "yá",
+          "meaning": "bộ nha, răng",
+          "examples": [
+            {
+              "hanzi": "芽",
+              "pinyin": "yá",
+              "meaning": "Mầm cây"
+            },
+            {
+              "hanzi": "鸦",
+              "pinyin": "yā",
+              "meaning": "con quạ"
+            },
+            {
+              "hanzi": "邪",
+              "pinyin": "xié",
+              "meaning": "tà ác"
+            }
+          ]
+        },
+        {
+          "id": "radical-725b",
+          "glyph": "牛",
+          "variants": [
+            "牜"
+          ],
+          "pinyin": "niú",
+          "meaning": "bộ ngưu, con bò (dạng đứng là 牜)",
+          "examples": [
+            {
+              "hanzi": "物",
+              "pinyin": "wù",
+              "meaning": "Đồ vật"
+            },
+            {
+              "hanzi": "特",
+              "pinyin": "tè",
+              "meaning": "đặc biệt"
+            },
+            {
+              "hanzi": "牧",
+              "pinyin": "mù",
+              "meaning": "chăn nuôi"
+            }
+          ]
+        },
+        {
+          "id": "radical-72ac",
+          "glyph": "犬",
+          "variants": [
+            "犭"
+          ],
+          "pinyin": "quǎn",
+          "meaning": "bộ khuyển, con chó (dạng đứng là 犭)",
+          "examples": [
+            {
+              "hanzi": "狗",
+              "pinyin": "gǒu",
+              "meaning": "Con chó"
+            },
+            {
+              "hanzi": "猫",
+              "pinyin": "māo",
+              "meaning": "con mèo"
+            },
+            {
+              "hanzi": "犯",
+              "pinyin": "fàn",
+              "meaning": "phạm tội"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 6 nét",
-        "words": [
-             { "word": "竹 (⺮)", "type": "radical", "phonetic": "zhú", "meaning": "bộ trúc, tre trúc (dạng trên đầu là ⺮)", "example": "笔、等、笑", "examplePhonetic": "bǐ, děng, xiào", "exampleMeaning": "Bút, đợi, cười" },
-            { "word": "米", "type": "radical", "phonetic": "mǐ", "meaning": "bộ mễ, gạo", "example": "粉、粒、糖", "examplePhonetic": "fěn, lì, táng", "exampleMeaning": "Bột/phấn, hạt, đường" },
-            { "word": "糸 (纟)", "type": "radical", "phonetic": "mì", "meaning": "bộ mịch, sợi tơ (giản thể viết gọn là 纟)", "example": "红、纸、级", "examplePhonetic": "hóng, zhǐ, jí", "exampleMeaning": "Màu đỏ, giấy, cấp bậc" },
-            { "word": "缶", "type": "radical", "phonetic": "fǒu", "meaning": "bộ phẫu, đồ sành sứ", "example": "缸、缺、罐", "examplePhonetic": "gāng, quē, guàn", "exampleMeaning": "Cái chum/vại, thiếu sót, cái hũ/lon" },
-            { "word": "网 (罒)", "type": "radical", "phonetic": "wǎng", "meaning": "bộ võng, cái lưới (dạng trên đầu là 罒)", "example": "罕、罩、罪", "examplePhonetic": "hǎn, zhào, zuì", "exampleMeaning": "Hiếm có, lồng/chụp, tội lỗi" },
-            { "word": "羊", "type": "radical", "phonetic": "yáng", "meaning": "bộ dương, con dê", "example": "美、群、着", "examplePhonetic": "měi, qún, zhe", "exampleMeaning": "Đẹp, bầy đàn, trợ từ hành động" },
-            { "word": "羽", "type": "radical", "phonetic": "yǔ", "meaning": "bộ vũ, lông vũ, cánh chim", "example": "习、翅、扇", "examplePhonetic": "xí, chì, shàn", "exampleMeaning": "Học tập, đôi cánh, cái quạt" },
-            { "word": "老", "type": "radical", "phonetic": "lǎo", "meaning": "bộ lão, già nu", "example": "考、者、耆", "examplePhonetic": "kǎo, zhě, qí", "exampleMeaning": "Thi cử/khảo sát, người, người già" },
-            { "word": "而", "type": "radical", "phonetic": "ér", "meaning": "bộ nhi, mà, lại", "example": "耐、耍、端", "examplePhonetic": "nài, shuǎ, duān", "exampleMeaning": "Nhẫn nại, chơi đùa, ngay ngắn" },
-            { "word": "耒", "type": "radical", "phonetic": "lěi", "meaning": "bộ lỗi, cái cày", "example": "耕、耗、耘", "examplePhonetic": "gēng, hào, yún", "exampleMeaning": "Cày cấy, hao tốn, nhổ cỏ" },
-            { "word": "耳", "type": "radical", "phonetic": "ěr", "meaning": "bộ nhĩ, cái tai", "example": "取、聪、聊", "examplePhonetic": "qǔ, cōng, liáo", "exampleMeaning": "Lấy, thông minh, trò chuyện" },
-            { "word": "聿", "type": "radical", "phonetic": "yù", "meaning": "bộ duật, cây bút", "example": "建、肃、肇", "examplePhonetic": "jiàn, sù, zhào", "exampleMeaning": "Xây dựng, nghiêm túc, bắt đầu" },
-            { "word": "肉 (⺼)", "type": "radical", "phonetic": "ròu", "meaning": "bộ nhục, thịt (dạng bên trái giống bộ nguyệt ⺼)", "example": "肚、月、胖", "examplePhonetic": "dù, fú, pàng", "exampleMeaning": "Cái bụng, trang phục, béo/mập" },
-            { "word": "臣", "type": "radical", "phonetic": "chén", "meaning": "bộ thần, bầy tôi, quan lại", "example": "卧、臧、临", "examplePhonetic": "wò, zāng, lín", "exampleMeaning": "Nằm, tốt/chứa, tới gần" },
-            { "word": "自", "type": "radical", "phonetic": "zì", "meaning": "bộ tự, bản thân, tự mình", "example": "臭、息、臬", "examplePhonetic": "chòu, xī, niè", "exampleMeaning": "Hôi thối, hơi thở/nghỉ ngơi, cái cọc" },
-            { "word": "至", "type": "radical", "phonetic": "zhì", "meaning": "bộ chí, đến nơi", "example": "致、臻、到达", "examplePhonetic": "zhì, zhēn, dào dá", "exampleMeaning": "Dẫn đến, đạt tới, đến nơi" },
-            { "word": "臼", "type": "radical", "phonetic": "jiù", "meaning": "bộ cữu, cái cối", "example": "舂、舅、舆", "examplePhonetic": "chōng, jiù, yú", "exampleMeaning": "Giã gạo, cậu (anh em mẹ), kiệu/dư luận" },
-            { "word": "舌", "type": "radical", "phonetic": "shé", "meaning": "bộ thiệt, cái lưỡi", "example": "乱、甜、辞", "examplePhonetic": "luàn, tián, cí", "exampleMeaning": "Hỗn loạn, ngọt, từ biệt/từ ngữ" },
-            { "word": "舛", "type": "radical", "phonetic": "chuǎn", "meaning": "bộ suyễn, trái ngược", "example": "舞、舜、舛", "examplePhonetic": "wǔ, shùn, chuǎn", "exampleMeaning": "Múa, vua Thuấn, sai lệch" },
-            { "word": "舟", "type": "radical", "phonetic": "zhōu", "meaning": "bộ chu, con thuyền", "example": "船、航、舱", "examplePhonetic": "chuán, háng, cāng", "exampleMeaning": "Thuyền, hàng hải/bay, khoang thuyền" },
-            { "word": "艮", "type": "radical", "phonetic": "gèn", "meaning": "bộ cấn, cứng cỏi", "example": "艰、狠、艰", "examplePhonetic": "jiān, hěn, jiān", "exampleMeaning": "Gian khổ, tàn nhẫn, gian nan" },
-            { "word": "色", "type": "radical", "phonetic": "sè", "meaning": "bộ sắc, màu sắc", "example": "艳、绝色、艴", "examplePhonetic": "yàn, jué sè, fú", "exampleMeaning": "Tươi đẹp/diễm lệ, tuyệt sắc, giận dữ" },
-            { "word": "草 (艹)", "type": "radical", "phonetic": "cǎo", "meaning": "bộ thảo, cỏ cây (dạng trên đầu là 艹)", "example": "茶、花、药", "examplePhonetic": "chá, huā, yào", "exampleMeaning": "Trà, hoa, thuốc" },
-            { "word": "虍", "type": "radical", "phonetic": "hū", "meaning": "bộ hô, vằn hổ", "example": "虎、虚、虑", "examplePhonetic": "hǔ, xū, lǜ", "exampleMeaning": "Con hổ, hư hỏng/trống rỗng, lo lắng" },
-            { "word": "虫", "type": "radical", "phonetic": "chóng", "meaning": "bộ trùng, côn trùng, sâu bọ", "example": "蛇、蜂、蚂", "examplePhonetic": "shé, fēng, mǎ", "exampleMeaning": "Con rắn, con ong, con kiến" },
-            { "word": "血", "type": "radical", "phonetic": "xuè", "meaning": "bộ huyết, máu", "example": "衄、众、衅", "examplePhonetic": "nǜ, zhòng, xìn", "exampleMeaning": "Chảy máu cam, đông đảo, hiềm khích" },
-            { "word": "行", "type": "radical", "phonetic": "xíng", "meaning": "bộ hành, đi lại, hàng lối", "example": "街、衙、冲", "examplePhonetic": "jiē, yá, chōng", "exampleMeaning": "Đường phố, nha môn, xung đột" },
-            { "word": "衣 (衤)", "type": "radical", "phonetic": "yī", "meaning": "bộ y, áo quần (dạng bên trái là 衤)", "example": "衬、衫、被", "examplePhonetic": "chèn, shān, bèi", "exampleMeaning": "Áo lót, áo sơ mi, cái chăn" },
-            { "word": "襾", "type": "radical", "phonetic": "yà", "meaning": "bộ tây, che đậy, nắp đậy", "example": "要、覃、覆", "examplePhonetic": "yào, tán, fù", "exampleMeaning": "Cần/muốn, sâu xa, lật úp" }
-        ]
+      "id": "group-5",
+      "label": "Nhóm 5 nét",
+      "radicals": [
+        {
+          "id": "radical-7384",
+          "glyph": "玄",
+          "variants": [],
+          "pinyin": "xuán",
+          "meaning": "bộ huyền, huyền bí, màu đen",
+          "examples": [
+            {
+              "hanzi": "率",
+              "pinyin": "shuài",
+              "meaning": "Tỷ lệ/dẫn dắt"
+            },
+            {
+              "hanzi": "兹",
+              "pinyin": "zī",
+              "meaning": "này/đây"
+            },
+            {
+              "hanzi": "畜",
+              "pinyin": "chù",
+              "meaning": "gia súc"
+            }
+          ]
+        },
+        {
+          "id": "radical-7389",
+          "glyph": "玉",
+          "variants": [
+            "王"
+          ],
+          "pinyin": "yù",
+          "meaning": "bộ ngọc/vương, viên ngọc, vua (dạng ghép là 王)",
+          "examples": [
+            {
+              "hanzi": "王",
+              "pinyin": "wáng",
+              "meaning": "Vua"
+            },
+            {
+              "hanzi": "玩",
+              "pinyin": "wán",
+              "meaning": "chơi"
+            },
+            {
+              "hanzi": "理",
+              "pinyin": "lǐ",
+              "meaning": "lý trí/quản lý"
+            }
+          ]
+        },
+        {
+          "id": "radical-74dc",
+          "glyph": "瓜",
+          "variants": [],
+          "pinyin": "guā",
+          "meaning": "bộ qua, quả dưa",
+          "examples": [
+            {
+              "hanzi": "瓢",
+              "pinyin": "piáo",
+              "meaning": "Gáo dừa"
+            },
+            {
+              "hanzi": "瓣",
+              "pinyin": "bàn",
+              "meaning": "cánh hoa/múi"
+            },
+            {
+              "hanzi": "瓢",
+              "pinyin": "piáo",
+              "meaning": "gáo"
+            }
+          ]
+        },
+        {
+          "id": "radical-74e6",
+          "glyph": "瓦",
+          "variants": [],
+          "pinyin": "wǎ",
+          "meaning": "bộ ngõa, ngói lợp nhà",
+          "examples": [
+            {
+              "hanzi": "瓶",
+              "pinyin": "píng",
+              "meaning": "Cái bình"
+            },
+            {
+              "hanzi": "瓷",
+              "pinyin": "cí",
+              "meaning": "đồ sứ"
+            },
+            {
+              "hanzi": "甄",
+              "pinyin": "zhēn",
+              "meaning": "chọn lựa"
+            }
+          ]
+        },
+        {
+          "id": "radical-7518",
+          "glyph": "甘",
+          "variants": [],
+          "pinyin": "gān",
+          "meaning": "bộ cam, ngọt ngào",
+          "examples": [
+            {
+              "hanzi": "甜",
+              "pinyin": "tián",
+              "meaning": "Ngọt"
+            },
+            {
+              "hanzi": "甚",
+              "pinyin": "shèn",
+              "meaning": "lắm/quá"
+            },
+            {
+              "hanzi": "某",
+              "pinyin": "mǒu",
+              "meaning": "nào đó"
+            }
+          ]
+        },
+        {
+          "id": "radical-751f",
+          "glyph": "生",
+          "variants": [],
+          "pinyin": "shēng",
+          "meaning": "bộ sinh, sinh sống, sinh đẻ",
+          "examples": [
+            {
+              "hanzi": "产",
+              "pinyin": "chǎn",
+              "meaning": "Sản xuất"
+            },
+            {
+              "hanzi": "甥",
+              "pinyin": "shēng",
+              "meaning": "cháu ngoại"
+            },
+            {
+              "hanzi": "产",
+              "pinyin": "chǎn",
+              "meaning": "sinh ra"
+            }
+          ]
+        },
+        {
+          "id": "radical-7528",
+          "glyph": "用",
+          "variants": [],
+          "pinyin": "yòng",
+          "meaning": "bộ dụng, sử dụng",
+          "examples": [
+            {
+              "hanzi": "甩",
+              "pinyin": "shuǎi",
+              "meaning": "Vung/ném"
+            },
+            {
+              "hanzi": "甫",
+              "pinyin": "fǔ",
+              "meaning": "vừa mới"
+            },
+            {
+              "hanzi": "佣",
+              "pinyin": "yōng",
+              "meaning": "tiền hoa hồng"
+            }
+          ]
+        },
+        {
+          "id": "radical-7530",
+          "glyph": "田",
+          "variants": [],
+          "pinyin": "tián",
+          "meaning": "bộ điền, ruộng đất",
+          "examples": [
+            {
+              "hanzi": "男",
+              "pinyin": "nán",
+              "meaning": "Nam giới/đàn ông"
+            },
+            {
+              "hanzi": "画",
+              "pinyin": "huà",
+              "meaning": "bức tranh"
+            },
+            {
+              "hanzi": "界",
+              "pinyin": "jiè",
+              "meaning": "ranh giới"
+            }
+          ]
+        },
+        {
+          "id": "radical-758b",
+          "glyph": "疋",
+          "variants": [],
+          "pinyin": "pǐ",
+          "meaning": "bộ thất, cuộn vải, chân",
+          "examples": [
+            {
+              "hanzi": "蛋",
+              "pinyin": "dàn",
+              "meaning": "Quả trứng"
+            },
+            {
+              "hanzi": "疏",
+              "pinyin": "shū",
+              "meaning": "thưa thớt"
+            },
+            {
+              "hanzi": "疑",
+              "pinyin": "yí",
+              "meaning": "nghi ngờ"
+            }
+          ]
+        },
+        {
+          "id": "radical-7592",
+          "glyph": "疒",
+          "variants": [],
+          "pinyin": "nè",
+          "meaning": "bộ nạch, bệnh tật",
+          "examples": [
+            {
+              "hanzi": "病",
+              "pinyin": "bìng",
+              "meaning": "Bệnh"
+            },
+            {
+              "hanzi": "痛",
+              "pinyin": "tòng",
+              "meaning": "đau"
+            },
+            {
+              "hanzi": "疯",
+              "pinyin": "fēng",
+              "meaning": "điên"
+            }
+          ]
+        },
+        {
+          "id": "radical-7676",
+          "glyph": "癶",
+          "variants": [],
+          "pinyin": "bō",
+          "meaning": "bộ bát, gạt ra, gót chân",
+          "examples": [
+            {
+              "hanzi": "癸",
+              "pinyin": "guǐ",
+              "meaning": "Thiên can Quý"
+            },
+            {
+              "hanzi": "登",
+              "pinyin": "dēng",
+              "meaning": "leo lên"
+            },
+            {
+              "hanzi": "发",
+              "pinyin": "fā",
+              "meaning": "phát ra"
+            }
+          ]
+        },
+        {
+          "id": "radical-767d",
+          "glyph": "白",
+          "variants": [],
+          "pinyin": "bái",
+          "meaning": "bộ bạch, màu trắng",
+          "examples": [
+            {
+              "hanzi": "百",
+              "pinyin": "bǎi",
+              "meaning": "Số 100"
+            },
+            {
+              "hanzi": "的",
+              "pinyin": "de",
+              "meaning": "của (trợ từ)"
+            },
+            {
+              "hanzi": "皇",
+              "pinyin": "huáng",
+              "meaning": "hoàng đế"
+            }
+          ]
+        },
+        {
+          "id": "radical-76ae",
+          "glyph": "皮",
+          "variants": [],
+          "pinyin": "pí",
+          "meaning": "bộ bì, da",
+          "examples": [
+            {
+              "hanzi": "皱",
+              "pinyin": "zhòu",
+              "meaning": "Nếp nhăn"
+            },
+            {
+              "hanzi": "披",
+              "pinyin": "pī",
+              "meaning": "khoác áo"
+            },
+            {
+              "hanzi": "破",
+              "pinyin": "pò",
+              "meaning": "rách"
+            }
+          ]
+        },
+        {
+          "id": "radical-76bf",
+          "glyph": "皿",
+          "variants": [],
+          "pinyin": "mǐn",
+          "meaning": "bộ mãnh, bát đĩa, đồ đựng",
+          "examples": [
+            {
+              "hanzi": "盆",
+              "pinyin": "pén",
+              "meaning": "Cái chậu"
+            },
+            {
+              "hanzi": "益",
+              "pinyin": "yì",
+              "meaning": "bổ ích"
+            },
+            {
+              "hanzi": "盒",
+              "pinyin": "hé",
+              "meaning": "cái hộp"
+            }
+          ]
+        },
+        {
+          "id": "radical-76ee",
+          "glyph": "目",
+          "variants": [],
+          "pinyin": "mù",
+          "meaning": "bộ mục, mắt",
+          "examples": [
+            {
+              "hanzi": "眼",
+              "pinyin": "yǎn",
+              "meaning": "Mắt"
+            },
+            {
+              "hanzi": "看",
+              "pinyin": "kàn",
+              "meaning": "nhìn"
+            },
+            {
+              "hanzi": "睡",
+              "pinyin": "shuì",
+              "meaning": "ngủ"
+            }
+          ]
+        },
+        {
+          "id": "radical-77db",
+          "glyph": "矛",
+          "variants": [],
+          "pinyin": "máo",
+          "meaning": "bộ mâu, cây giáo",
+          "examples": [
+            {
+              "hanzi": "柔",
+              "pinyin": "róu",
+              "meaning": "Mềm mại"
+            },
+            {
+              "hanzi": "矜",
+              "pinyin": "jīn",
+              "meaning": "kiêu ngạo"
+            },
+            {
+              "hanzi": "鹬",
+              "pinyin": "yù",
+              "meaning": "chim dốt"
+            }
+          ]
+        },
+        {
+          "id": "radical-77e2",
+          "glyph": "矢",
+          "variants": [],
+          "pinyin": "shǐ",
+          "meaning": "bộ thỉ, mũi tên",
+          "examples": [
+            {
+              "hanzi": "知",
+              "pinyin": "zhī",
+              "meaning": "Biết"
+            },
+            {
+              "hanzi": "短",
+              "pinyin": "duǎn",
+              "meaning": "ngắn"
+            },
+            {
+              "hanzi": "矩",
+              "pinyin": "jǔ",
+              "meaning": "quy tắc/thước đo"
+            }
+          ]
+        },
+        {
+          "id": "radical-77f3",
+          "glyph": "石",
+          "variants": [],
+          "pinyin": "shí",
+          "meaning": "bộ thạch, đá",
+          "examples": [
+            {
+              "hanzi": "破",
+              "pinyin": "pò",
+              "meaning": "Phá vỡ/rách"
+            },
+            {
+              "hanzi": "砍",
+              "pinyin": "kǎn",
+              "meaning": "chặt"
+            },
+            {
+              "hanzi": "硬",
+              "pinyin": "yìng",
+              "meaning": "cứng"
+            }
+          ]
+        },
+        {
+          "id": "radical-793a",
+          "glyph": "示",
+          "variants": [
+            "礻"
+          ],
+          "pinyin": "shì",
+          "meaning": "bộ thị, thần linh, chỉ bảo (dạng đứng là 礻)",
+          "examples": [
+            {
+              "hanzi": "社",
+              "pinyin": "shè",
+              "meaning": "Xã hội/xã tắc"
+            },
+            {
+              "hanzi": "祝",
+              "pinyin": "zhù",
+              "meaning": "chúc mừng"
+            },
+            {
+              "hanzi": "神",
+              "pinyin": "shén",
+              "meaning": "thần linh"
+            }
+          ]
+        },
+        {
+          "id": "radical-79b8",
+          "glyph": "禸",
+          "variants": [],
+          "pinyin": "róu",
+          "meaning": "bộ nhựu, vết chân thú",
+          "examples": [
+            {
+              "hanzi": "离",
+              "pinyin": "lí",
+              "meaning": "Rời khỏi"
+            },
+            {
+              "hanzi": "禹",
+              "pinyin": "yǔ",
+              "meaning": "vua Vũ"
+            },
+            {
+              "hanzi": "禽",
+              "pinyin": "qín",
+              "meaning": "chim/gia cầm"
+            }
+          ]
+        },
+        {
+          "id": "radical-79be",
+          "glyph": "禾",
+          "variants": [],
+          "pinyin": "hé",
+          "meaning": "bộ hòa, cây lúa",
+          "examples": [
+            {
+              "hanzi": "私",
+              "pinyin": "sī",
+              "meaning": "Riêng tư"
+            },
+            {
+              "hanzi": "秋",
+              "pinyin": "qiū",
+              "meaning": "mùa thu"
+            },
+            {
+              "hanzi": "种",
+              "pinyin": "zhǒng",
+              "meaning": "hạt giống"
+            }
+          ]
+        },
+        {
+          "id": "radical-7a74",
+          "glyph": "穴",
+          "variants": [],
+          "pinyin": "xué",
+          "meaning": "bộ huyệt, hang xóm, lỗ hổng",
+          "examples": [
+            {
+              "hanzi": "空",
+              "pinyin": "kōng",
+              "meaning": "Bầu trời/trống rỗng"
+            },
+            {
+              "hanzi": "穿",
+              "pinyin": "chuān",
+              "meaning": "mặc áo"
+            },
+            {
+              "hanzi": "穷",
+              "pinyin": "qióng",
+              "meaning": "nghèo"
+            }
+          ]
+        },
+        {
+          "id": "radical-7acb",
+          "glyph": "立",
+          "variants": [],
+          "pinyin": "lì",
+          "meaning": "bộ lập, đứng thẳng",
+          "examples": [
+            {
+              "hanzi": "站",
+              "pinyin": "zhàn",
+              "meaning": "Trạm/đứng"
+            },
+            {
+              "hanzi": "童",
+              "pinyin": "tóng",
+              "meaning": "trẻ em"
+            },
+            {
+              "hanzi": "端",
+              "pinyin": "duān",
+              "meaning": "ngay ngắn/đầu"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 7 nét",
-        "words": [
-            { "word": "见 (見)", "type": "radical", "phonetic": "jiàn", "meaning": "bộ kiến, nhìn thấy (giản thể là 见)", "example": "视、觉、规", "examplePhonetic": "shì, jué, guī", "exampleMeaning": "Thị giác/nhìn, cảm thấy, quy tắc" },
-            { "word": "角", "type": "radical", "phonetic": "jiǎo", "meaning": "bộ giác, sừng thú, góc", "example": "解、触、嘴", "examplePhonetic": "jiě, chù, zuǐ", "exampleMeaning": "Giải thích/hiểu, tiếp xúc/va chạm, cái miệng" },
-            { "word": "言 (讠)", "type": "radical", "phonetic": "yán", "meaning": "bộ ngôn, lời nói (giản thể viết gọn là 讠)", "example": "话、说、谢", "examplePhonetic": "huà, shuō, xiè", "exampleMeaning": "Lời nói, nói, cảm ơn" },
-            { "word": "谷", "type": "radical", "phonetic": "gǔ", "meaning": "bộ cốc, thung lũng", "example": "却、欲、豁", "examplePhonetic": "què, yù, huò", "exampleMeaning": "Nhưng/lùi, ham muốn, thanh thoát/mở rộng" },
-            { "word": "豆", "type": "radical", "phonetic": "dòu", "meaning": "bộ đậu, hạt đậu", "example": "短、豉、丰", "examplePhonetic": "duǎn, chǐ, fēng", "exampleMeaning": "Ngắn, tương đậu, phong phú" },
-            { "word": "豕", "type": "radical", "phonetic": "shǐ", "meaning": "bộ thỉ, con heo (lợn)", "example": "家、象、豪", "examplePhonetic": "jiā, xiàng, háo", "exampleMeaning": "Gia đình/nhà, con voi, hào hoa/kiệt xuất" },
-            { "word": "豸", "type": "radical", "phonetic": "zhì", "meaning": "bộ trĩ, loài muông thú", "example": "豹、貌、猫", "examplePhonetic": "bào, mào, māo", "exampleMeaning": "Báo (động vật), diện mạo, con mèo" },
-            { "word": "贝 (貝)", "type": "radical", "phonetic": "bèi", "meaning": "bộ bối, vỏ sò, tiền bạc (giản thể là 贝)", "example": "贵、买、卖", "examplePhonetic": "guì, mǎi, mài", "exampleMeaning": "Đắt/quý, mua, bán" },
-            { "word": "赤", "type": "radical", "phonetic": "chì", "meaning": "bộ xích, màu đỏ", "example": "赦、赫、赭", "examplePhonetic": "shè, hè, zhě", "exampleMeaning": "Xá tội, hiển hách, màu đỏ sẫm" },
-            { "word": "走", "type": "radical", "phonetic": "zǒu", "meaning": "bộ tẩu, chạy", "example": "起、超、越", "examplePhonetic": "qǐ, chāo, yuè", "exampleMeaning": "Thức dậy/bắt đầu, vượt quá, vượt qua" },
-            { "word": "足", "type": "radical", "phonetic": "zú", "meaning": "bộ túc, cái chân", "example": "跑、跳、路", "examplePhonetic": "pǎo, tiào, lù", "exampleMeaning": "Chạy, nhảy, con đường" },
-            { "word": "身", "type": "radical", "phonetic": "shēn", "meaning": "bộ thân, thân thể", "example": "躺、躯、射", "examplePhonetic": "tǎng, qū, shè", "exampleMeaning": "Nằm, thân躯/thân thể, bắn cung" },
-            { "word": "车 (車)", "type": "radical", "phonetic": "chē", "meaning": "bộ xa, xe cộ (giản thể là 车)", "example": "较、转、轮", "examplePhonetic": "jiào, zhuǎn, lún", "exampleMeaning": "So sánh, xoay/chuyển, bánh xe" },
-            { "word": "辛", "type": "radical", "phonetic": "xīn", "meaning": "bộ tân, cay đắng, vất vả", "example": "辟、辣、辨", "examplePhonetic": "pì, là, biàn", "exampleMeaning": "Khai phá, cay, phân biệt" },
-            { "word": "辰", "type": "radical", "phonetic": "chén", "meaning": "bộ thần, ngôi sao, giờ Thìn", "example": "辱、农、晨", "examplePhonetic": "rǔ, nóng, chén", "exampleMeaning": "Sỉ nhục, nông nghiệp, buổi sáng" },
-            { "word": "辵 (辶)", "type": "radical", "phonetic": "chuò", "meaning": "bộ sước, chợt đi chợt dừng (dạng bên trái là quai sước 辶)", "example": "近、远、进", "examplePhonetic": "jìn, yuǎn, jìn", "exampleMeaning": "Gần, xa, tiến vào" },
-            { "word": "邑 (阝)", "type": "radical", "phonetic": "yì", "meaning": "bộ ấp, làng xóm (nằm bên phải chữ biến thành 阝)", "example": "邮、都、郭", "examplePhonetic": "yóu, dōu, guō", "exampleMeaning": "Bưu điện, thủ đô/đều, thành quách" },
-            { "word": "酉", "type": "radical", "phonetic": "yǒu", "meaning": "bộ dậu, rượu, giờ Dậu", "example": "酒、酱、酸", "examplePhonetic": "jiǔ, jiàng, suān", "exampleMeaning": "Rượu, nước tương/xốt, chua" },
-            { "word": "采", "type": "radical", "phonetic": "cǎi", "meaning": "bộ thái, hái, chọn lựa", "example": "彩、菜、釉", "examplePhonetic": "cǎi, cài, yòu", "exampleMeaning": "Màu sắc, rau/món ăn, men gốm" },
-            { "word": "里", "type": "radical", "phonetic": "lǐ", "meaning": "bộ lý, dặm đường", "example": "野、量、重", "examplePhonetic": "yě, liáng, zhòng", "exampleMeaning": "Hoang dã/cánh đồng, đo lường, nặng" }
-        ]
+      "id": "group-6",
+      "label": "Nhóm 6 nét",
+      "radicals": [
+        {
+          "id": "radical-7af9",
+          "glyph": "竹",
+          "variants": [
+            "⺮"
+          ],
+          "pinyin": "zhú",
+          "meaning": "bộ trúc, tre trúc (dạng trên đầu là ⺮)",
+          "examples": [
+            {
+              "hanzi": "笔",
+              "pinyin": "bǐ",
+              "meaning": "Bút"
+            },
+            {
+              "hanzi": "等",
+              "pinyin": "děng",
+              "meaning": "đợi"
+            },
+            {
+              "hanzi": "笑",
+              "pinyin": "xiào",
+              "meaning": "cười"
+            }
+          ]
+        },
+        {
+          "id": "radical-7c73",
+          "glyph": "米",
+          "variants": [],
+          "pinyin": "mǐ",
+          "meaning": "bộ mễ, gạo",
+          "examples": [
+            {
+              "hanzi": "粉",
+              "pinyin": "fěn",
+              "meaning": "Bột/phấn"
+            },
+            {
+              "hanzi": "粒",
+              "pinyin": "lì",
+              "meaning": "hạt"
+            },
+            {
+              "hanzi": "糖",
+              "pinyin": "táng",
+              "meaning": "đường"
+            }
+          ]
+        },
+        {
+          "id": "radical-7cf8",
+          "glyph": "糸",
+          "variants": [
+            "纟"
+          ],
+          "pinyin": "mì",
+          "meaning": "bộ mịch, sợi tơ (giản thể viết gọn là 纟)",
+          "examples": [
+            {
+              "hanzi": "红",
+              "pinyin": "hóng",
+              "meaning": "Màu đỏ"
+            },
+            {
+              "hanzi": "纸",
+              "pinyin": "zhǐ",
+              "meaning": "giấy"
+            },
+            {
+              "hanzi": "级",
+              "pinyin": "jí",
+              "meaning": "cấp bậc"
+            }
+          ]
+        },
+        {
+          "id": "radical-7f36",
+          "glyph": "缶",
+          "variants": [],
+          "pinyin": "fǒu",
+          "meaning": "bộ phẫu, đồ sành sứ",
+          "examples": [
+            {
+              "hanzi": "缸",
+              "pinyin": "gāng",
+              "meaning": "Cái chum/vại"
+            },
+            {
+              "hanzi": "缺",
+              "pinyin": "quē",
+              "meaning": "thiếu sót"
+            },
+            {
+              "hanzi": "罐",
+              "pinyin": "guàn",
+              "meaning": "cái hũ/lon"
+            }
+          ]
+        },
+        {
+          "id": "radical-7f51",
+          "glyph": "网",
+          "variants": [
+            "罒"
+          ],
+          "pinyin": "wǎng",
+          "meaning": "bộ võng, cái lưới (dạng trên đầu là 罒)",
+          "examples": [
+            {
+              "hanzi": "罕",
+              "pinyin": "hǎn",
+              "meaning": "Hiếm có"
+            },
+            {
+              "hanzi": "罩",
+              "pinyin": "zhào",
+              "meaning": "lồng/chụp"
+            },
+            {
+              "hanzi": "罪",
+              "pinyin": "zuì",
+              "meaning": "tội lỗi"
+            }
+          ]
+        },
+        {
+          "id": "radical-7f8a",
+          "glyph": "羊",
+          "variants": [],
+          "pinyin": "yáng",
+          "meaning": "bộ dương, con dê",
+          "examples": [
+            {
+              "hanzi": "美",
+              "pinyin": "měi",
+              "meaning": "Đẹp"
+            },
+            {
+              "hanzi": "群",
+              "pinyin": "qún",
+              "meaning": "bầy đàn"
+            },
+            {
+              "hanzi": "着",
+              "pinyin": "zhe",
+              "meaning": "trợ từ hành động"
+            }
+          ]
+        },
+        {
+          "id": "radical-7fbd",
+          "glyph": "羽",
+          "variants": [],
+          "pinyin": "yǔ",
+          "meaning": "bộ vũ, lông vũ, cánh chim",
+          "examples": [
+            {
+              "hanzi": "习",
+              "pinyin": "xí",
+              "meaning": "Học tập"
+            },
+            {
+              "hanzi": "翅",
+              "pinyin": "chì",
+              "meaning": "đôi cánh"
+            },
+            {
+              "hanzi": "扇",
+              "pinyin": "shàn",
+              "meaning": "cái quạt"
+            }
+          ]
+        },
+        {
+          "id": "radical-8001",
+          "glyph": "老",
+          "variants": [],
+          "pinyin": "lǎo",
+          "meaning": "bộ lão, già nu",
+          "examples": [
+            {
+              "hanzi": "考",
+              "pinyin": "kǎo",
+              "meaning": "Thi cử/khảo sát"
+            },
+            {
+              "hanzi": "者",
+              "pinyin": "zhě",
+              "meaning": "người"
+            },
+            {
+              "hanzi": "耆",
+              "pinyin": "qí",
+              "meaning": "người già"
+            }
+          ]
+        },
+        {
+          "id": "radical-800c",
+          "glyph": "而",
+          "variants": [],
+          "pinyin": "ér",
+          "meaning": "bộ nhi, mà, lại",
+          "examples": [
+            {
+              "hanzi": "耐",
+              "pinyin": "nài",
+              "meaning": "Nhẫn nại"
+            },
+            {
+              "hanzi": "耍",
+              "pinyin": "shuǎ",
+              "meaning": "chơi đùa"
+            },
+            {
+              "hanzi": "端",
+              "pinyin": "duān",
+              "meaning": "ngay ngắn"
+            }
+          ]
+        },
+        {
+          "id": "radical-8012",
+          "glyph": "耒",
+          "variants": [],
+          "pinyin": "lěi",
+          "meaning": "bộ lỗi, cái cày",
+          "examples": [
+            {
+              "hanzi": "耕",
+              "pinyin": "gēng",
+              "meaning": "Cày cấy"
+            },
+            {
+              "hanzi": "耗",
+              "pinyin": "hào",
+              "meaning": "hao tốn"
+            },
+            {
+              "hanzi": "耘",
+              "pinyin": "yún",
+              "meaning": "nhổ cỏ"
+            }
+          ]
+        },
+        {
+          "id": "radical-8033",
+          "glyph": "耳",
+          "variants": [],
+          "pinyin": "ěr",
+          "meaning": "bộ nhĩ, cái tai",
+          "examples": [
+            {
+              "hanzi": "取",
+              "pinyin": "qǔ",
+              "meaning": "Lấy"
+            },
+            {
+              "hanzi": "聪",
+              "pinyin": "cōng",
+              "meaning": "thông minh"
+            },
+            {
+              "hanzi": "聊",
+              "pinyin": "liáo",
+              "meaning": "trò chuyện"
+            }
+          ]
+        },
+        {
+          "id": "radical-807f",
+          "glyph": "聿",
+          "variants": [],
+          "pinyin": "yù",
+          "meaning": "bộ duật, cây bút",
+          "examples": [
+            {
+              "hanzi": "建",
+              "pinyin": "jiàn",
+              "meaning": "Xây dựng"
+            },
+            {
+              "hanzi": "肃",
+              "pinyin": "sù",
+              "meaning": "nghiêm túc"
+            },
+            {
+              "hanzi": "肇",
+              "pinyin": "zhào",
+              "meaning": "bắt đầu"
+            }
+          ]
+        },
+        {
+          "id": "radical-8089",
+          "glyph": "肉",
+          "variants": [
+            "⺼"
+          ],
+          "pinyin": "ròu",
+          "meaning": "bộ nhục, thịt (dạng bên trái giống bộ nguyệt ⺼)",
+          "examples": [
+            {
+              "hanzi": "肚",
+              "pinyin": "dù",
+              "meaning": "Cái bụng"
+            },
+            {
+              "hanzi": "月",
+              "pinyin": "fú",
+              "meaning": "trang phục"
+            },
+            {
+              "hanzi": "胖",
+              "pinyin": "pàng",
+              "meaning": "béo/mập"
+            }
+          ]
+        },
+        {
+          "id": "radical-81e3",
+          "glyph": "臣",
+          "variants": [],
+          "pinyin": "chén",
+          "meaning": "bộ thần, bầy tôi, quan lại",
+          "examples": [
+            {
+              "hanzi": "卧",
+              "pinyin": "wò",
+              "meaning": "Nằm"
+            },
+            {
+              "hanzi": "臧",
+              "pinyin": "zāng",
+              "meaning": "tốt/chứa"
+            },
+            {
+              "hanzi": "临",
+              "pinyin": "lín",
+              "meaning": "tới gần"
+            }
+          ]
+        },
+        {
+          "id": "radical-81ea",
+          "glyph": "自",
+          "variants": [],
+          "pinyin": "zì",
+          "meaning": "bộ tự, bản thân, tự mình",
+          "examples": [
+            {
+              "hanzi": "臭",
+              "pinyin": "chòu",
+              "meaning": "Hôi thối"
+            },
+            {
+              "hanzi": "息",
+              "pinyin": "xī",
+              "meaning": "hơi thở/nghỉ ngơi"
+            },
+            {
+              "hanzi": "臬",
+              "pinyin": "niè",
+              "meaning": "cái cọc"
+            }
+          ]
+        },
+        {
+          "id": "radical-81f3",
+          "glyph": "至",
+          "variants": [],
+          "pinyin": "zhì",
+          "meaning": "bộ chí, đến nơi",
+          "examples": [
+            {
+              "hanzi": "致",
+              "pinyin": "zhì",
+              "meaning": "Dẫn đến"
+            },
+            {
+              "hanzi": "臻",
+              "pinyin": "zhēn",
+              "meaning": "đạt tới"
+            },
+            {
+              "hanzi": "到达",
+              "pinyin": "dào dá",
+              "meaning": "đến nơi"
+            }
+          ]
+        },
+        {
+          "id": "radical-81fc",
+          "glyph": "臼",
+          "variants": [],
+          "pinyin": "jiù",
+          "meaning": "bộ cữu, cái cối",
+          "examples": [
+            {
+              "hanzi": "舂",
+              "pinyin": "chōng",
+              "meaning": "Giã gạo"
+            },
+            {
+              "hanzi": "舅",
+              "pinyin": "jiù",
+              "meaning": "cậu (anh em mẹ)"
+            },
+            {
+              "hanzi": "舆",
+              "pinyin": "yú",
+              "meaning": "kiệu/dư luận"
+            }
+          ]
+        },
+        {
+          "id": "radical-820c",
+          "glyph": "舌",
+          "variants": [],
+          "pinyin": "shé",
+          "meaning": "bộ thiệt, cái lưỡi",
+          "examples": [
+            {
+              "hanzi": "乱",
+              "pinyin": "luàn",
+              "meaning": "Hỗn loạn"
+            },
+            {
+              "hanzi": "甜",
+              "pinyin": "tián",
+              "meaning": "ngọt"
+            },
+            {
+              "hanzi": "辞",
+              "pinyin": "cí",
+              "meaning": "từ biệt/từ ngữ"
+            }
+          ]
+        },
+        {
+          "id": "radical-821b",
+          "glyph": "舛",
+          "variants": [],
+          "pinyin": "chuǎn",
+          "meaning": "bộ suyễn, trái ngược",
+          "examples": [
+            {
+              "hanzi": "舞",
+              "pinyin": "wǔ",
+              "meaning": "Múa"
+            },
+            {
+              "hanzi": "舜",
+              "pinyin": "shùn",
+              "meaning": "vua Thuấn"
+            },
+            {
+              "hanzi": "舛",
+              "pinyin": "chuǎn",
+              "meaning": "sai lệch"
+            }
+          ]
+        },
+        {
+          "id": "radical-821f",
+          "glyph": "舟",
+          "variants": [],
+          "pinyin": "zhōu",
+          "meaning": "bộ chu, con thuyền",
+          "examples": [
+            {
+              "hanzi": "船",
+              "pinyin": "chuán",
+              "meaning": "Thuyền"
+            },
+            {
+              "hanzi": "航",
+              "pinyin": "háng",
+              "meaning": "hàng hải/bay"
+            },
+            {
+              "hanzi": "舱",
+              "pinyin": "cāng",
+              "meaning": "khoang thuyền"
+            }
+          ]
+        },
+        {
+          "id": "radical-826e",
+          "glyph": "艮",
+          "variants": [],
+          "pinyin": "gèn",
+          "meaning": "bộ cấn, cứng cỏi",
+          "examples": [
+            {
+              "hanzi": "艰",
+              "pinyin": "jiān",
+              "meaning": "Gian khổ"
+            },
+            {
+              "hanzi": "狠",
+              "pinyin": "hěn",
+              "meaning": "tàn nhẫn"
+            },
+            {
+              "hanzi": "艰",
+              "pinyin": "jiān",
+              "meaning": "gian nan"
+            }
+          ]
+        },
+        {
+          "id": "radical-8272",
+          "glyph": "色",
+          "variants": [],
+          "pinyin": "sè",
+          "meaning": "bộ sắc, màu sắc",
+          "examples": [
+            {
+              "hanzi": "艳",
+              "pinyin": "yàn",
+              "meaning": "Tươi đẹp/diễm lệ"
+            },
+            {
+              "hanzi": "绝色",
+              "pinyin": "jué sè",
+              "meaning": "tuyệt sắc"
+            },
+            {
+              "hanzi": "艴",
+              "pinyin": "fú",
+              "meaning": "giận dữ"
+            }
+          ]
+        },
+        {
+          "id": "radical-8349",
+          "glyph": "草",
+          "variants": [
+            "艹"
+          ],
+          "pinyin": "cǎo",
+          "meaning": "bộ thảo, cỏ cây (dạng trên đầu là 艹)",
+          "examples": [
+            {
+              "hanzi": "茶",
+              "pinyin": "chá",
+              "meaning": "Trà"
+            },
+            {
+              "hanzi": "花",
+              "pinyin": "huā",
+              "meaning": "hoa"
+            },
+            {
+              "hanzi": "药",
+              "pinyin": "yào",
+              "meaning": "thuốc"
+            }
+          ]
+        },
+        {
+          "id": "radical-864d",
+          "glyph": "虍",
+          "variants": [],
+          "pinyin": "hū",
+          "meaning": "bộ hô, vằn hổ",
+          "examples": [
+            {
+              "hanzi": "虎",
+              "pinyin": "hǔ",
+              "meaning": "Con hổ"
+            },
+            {
+              "hanzi": "虚",
+              "pinyin": "xū",
+              "meaning": "hư hỏng/trống rỗng"
+            },
+            {
+              "hanzi": "虑",
+              "pinyin": "lǜ",
+              "meaning": "lo lắng"
+            }
+          ]
+        },
+        {
+          "id": "radical-866b",
+          "glyph": "虫",
+          "variants": [],
+          "pinyin": "chóng",
+          "meaning": "bộ trùng, côn trùng, sâu bọ",
+          "examples": [
+            {
+              "hanzi": "蛇",
+              "pinyin": "shé",
+              "meaning": "Con rắn"
+            },
+            {
+              "hanzi": "蜂",
+              "pinyin": "fēng",
+              "meaning": "con ong"
+            },
+            {
+              "hanzi": "蚂",
+              "pinyin": "mǎ",
+              "meaning": "con kiến"
+            }
+          ]
+        },
+        {
+          "id": "radical-8840",
+          "glyph": "血",
+          "variants": [],
+          "pinyin": "xuè",
+          "meaning": "bộ huyết, máu",
+          "examples": [
+            {
+              "hanzi": "衄",
+              "pinyin": "nǜ",
+              "meaning": "Chảy máu cam"
+            },
+            {
+              "hanzi": "众",
+              "pinyin": "zhòng",
+              "meaning": "đông đảo"
+            },
+            {
+              "hanzi": "衅",
+              "pinyin": "xìn",
+              "meaning": "hiềm khích"
+            }
+          ]
+        },
+        {
+          "id": "radical-884c",
+          "glyph": "行",
+          "variants": [],
+          "pinyin": "xíng",
+          "meaning": "bộ hành, đi lại, hàng lối",
+          "examples": [
+            {
+              "hanzi": "街",
+              "pinyin": "jiē",
+              "meaning": "Đường phố"
+            },
+            {
+              "hanzi": "衙",
+              "pinyin": "yá",
+              "meaning": "nha môn"
+            },
+            {
+              "hanzi": "冲",
+              "pinyin": "chōng",
+              "meaning": "xung đột"
+            }
+          ]
+        },
+        {
+          "id": "radical-8863",
+          "glyph": "衣",
+          "variants": [
+            "衤"
+          ],
+          "pinyin": "yī",
+          "meaning": "bộ y, áo quần (dạng bên trái là 衤)",
+          "examples": [
+            {
+              "hanzi": "衬",
+              "pinyin": "chèn",
+              "meaning": "Áo lót"
+            },
+            {
+              "hanzi": "衫",
+              "pinyin": "shān",
+              "meaning": "áo sơ mi"
+            },
+            {
+              "hanzi": "被",
+              "pinyin": "bèi",
+              "meaning": "cái chăn"
+            }
+          ]
+        },
+        {
+          "id": "radical-897e",
+          "glyph": "襾",
+          "variants": [],
+          "pinyin": "yà",
+          "meaning": "bộ tây, che đậy, nắp đậy",
+          "examples": [
+            {
+              "hanzi": "要",
+              "pinyin": "yào",
+              "meaning": "Cần/muốn"
+            },
+            {
+              "hanzi": "覃",
+              "pinyin": "tán",
+              "meaning": "sâu xa"
+            },
+            {
+              "hanzi": "覆",
+              "pinyin": "fù",
+              "meaning": "lật úp"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 8 nét",
-        "words": [
-            { "word": "金 (钅)", "type": "radical", "phonetic": "jīn", "meaning": "bộ kim, kim loại, vàng (giản thể dạng bên trái là 钅)", "example": "银、铁、钱", "examplePhonetic": "yín, tiě, qián", "exampleMeaning": "Bạc, sắt, tiền" },
-            { "word": "长 (長)", "type": "radical", "phonetic": "cháng", "meaning": "bộ trường, dài (giản thể là 长)", "example": "肆、镸、张", "examplePhonetic": "sì, cháng, zhāng", "exampleMeaning": "Tùy ý/số 4 (chữ lớn), bộ trường (dạng phồn thể), mở rộng" },
-            { "word": "门 (門)", "type": "radical", "phonetic": "mén", "meaning": "bộ môn, cánh cửa (giản thể là 门)", "example": "闭、开、问", "examplePhonetic": "bì, kāi, wèn", "exampleMeaning": "Đóng, mở, hỏi" },
-            { "word": "阜 (阝)", "type": "radical", "phonetic": "fù", "meaning": "bộ phụ, gò đất, núi (nằm bên trái chữ biến thành 阝)", "example": "阳、阴、防", "examplePhonetic": "yáng, yīn, fáng", "exampleMeaning": "Mặt trời/dương, âm/mặt tối, phòng thủ" },
-            { "word": "隶", "type": "radical", "phonetic": "lì", "meaning": "bộ đãi, bắt giữ", "example": "隶、康、逮", "examplePhonetic": "lì, kāng, dǎi", "exampleMeaning": "Nô lệ/phụ thuộc, khỏe mạnh, bắt giữ" },
-            { "word": "隹", "type": "radical", "phonetic": "zhuī", "meaning": "bộ truy, chim đuôi ngắn", "example": "难、雀、集", "examplePhonetic": "nán, què, jí", "exampleMeaning": "Khó khăn, chim sẻ, tập hợp" },
-            { "word": "雨", "type": "radical", "phonetic": "yǔ", "meaning": "bộ vũ, cơn mưa", "example": "雪、云、零", "examplePhonetic": "xuě, yún, líng", "exampleMeaning": "Tuyết, mây, số không" },
-            { "word": "青", "type": "radical", "phonetic": "qīng", "meaning": "bộ thanh, màu xanh", "example": "靓、静、靛", "examplePhonetic": "jìng, jìng, diàn", "exampleMeaning": "Đẹp đẽ/trang điểm, yên tĩnh, màu lam sẫm" },
-            { "word": "非", "type": "radical", "phonetic": "fēi", "meaning": "bộ phi, không phải", "example": "靠、靡、悲", "examplePhonetic": "kào, mǐ, bēi", "exampleMeaning": "Dựa vào, lãng phí, đau thương" }           
-            ]
+      "id": "group-7",
+      "label": "Nhóm 7 nét",
+      "radicals": [
+        {
+          "id": "radical-89c1",
+          "glyph": "见",
+          "variants": [
+            "見"
+          ],
+          "pinyin": "jiàn",
+          "meaning": "bộ kiến, nhìn thấy (giản thể là 见)",
+          "examples": [
+            {
+              "hanzi": "视",
+              "pinyin": "shì",
+              "meaning": "Thị giác/nhìn"
+            },
+            {
+              "hanzi": "觉",
+              "pinyin": "jué",
+              "meaning": "cảm thấy"
+            },
+            {
+              "hanzi": "规",
+              "pinyin": "guī",
+              "meaning": "quy tắc"
+            }
+          ]
+        },
+        {
+          "id": "radical-89d2",
+          "glyph": "角",
+          "variants": [],
+          "pinyin": "jiǎo",
+          "meaning": "bộ giác, sừng thú, góc",
+          "examples": [
+            {
+              "hanzi": "解",
+              "pinyin": "jiě",
+              "meaning": "Giải thích/hiểu"
+            },
+            {
+              "hanzi": "触",
+              "pinyin": "chù",
+              "meaning": "tiếp xúc/va chạm"
+            },
+            {
+              "hanzi": "嘴",
+              "pinyin": "zuǐ",
+              "meaning": "cái miệng"
+            }
+          ]
+        },
+        {
+          "id": "radical-8a00",
+          "glyph": "言",
+          "variants": [
+            "讠"
+          ],
+          "pinyin": "yán",
+          "meaning": "bộ ngôn, lời nói (giản thể viết gọn là 讠)",
+          "examples": [
+            {
+              "hanzi": "话",
+              "pinyin": "huà",
+              "meaning": "Lời nói"
+            },
+            {
+              "hanzi": "说",
+              "pinyin": "shuō",
+              "meaning": "nói"
+            },
+            {
+              "hanzi": "谢",
+              "pinyin": "xiè",
+              "meaning": "cảm ơn"
+            }
+          ]
+        },
+        {
+          "id": "radical-8c37",
+          "glyph": "谷",
+          "variants": [],
+          "pinyin": "gǔ",
+          "meaning": "bộ cốc, thung lũng",
+          "examples": [
+            {
+              "hanzi": "却",
+              "pinyin": "què",
+              "meaning": "Nhưng/lùi"
+            },
+            {
+              "hanzi": "欲",
+              "pinyin": "yù",
+              "meaning": "ham muốn"
+            },
+            {
+              "hanzi": "豁",
+              "pinyin": "huò",
+              "meaning": "thanh thoát/mở rộng"
+            }
+          ]
+        },
+        {
+          "id": "radical-8c46",
+          "glyph": "豆",
+          "variants": [],
+          "pinyin": "dòu",
+          "meaning": "bộ đậu, hạt đậu",
+          "examples": [
+            {
+              "hanzi": "短",
+              "pinyin": "duǎn",
+              "meaning": "Ngắn"
+            },
+            {
+              "hanzi": "豉",
+              "pinyin": "chǐ",
+              "meaning": "tương đậu"
+            },
+            {
+              "hanzi": "丰",
+              "pinyin": "fēng",
+              "meaning": "phong phú"
+            }
+          ]
+        },
+        {
+          "id": "radical-8c55",
+          "glyph": "豕",
+          "variants": [],
+          "pinyin": "shǐ",
+          "meaning": "bộ thỉ, con heo (lợn)",
+          "examples": [
+            {
+              "hanzi": "家",
+              "pinyin": "jiā",
+              "meaning": "Gia đình/nhà"
+            },
+            {
+              "hanzi": "象",
+              "pinyin": "xiàng",
+              "meaning": "con voi"
+            },
+            {
+              "hanzi": "豪",
+              "pinyin": "háo",
+              "meaning": "hào hoa/kiệt xuất"
+            }
+          ]
+        },
+        {
+          "id": "radical-8c78",
+          "glyph": "豸",
+          "variants": [],
+          "pinyin": "zhì",
+          "meaning": "bộ trĩ, loài muông thú",
+          "examples": [
+            {
+              "hanzi": "豹",
+              "pinyin": "bào",
+              "meaning": "Báo (động vật)"
+            },
+            {
+              "hanzi": "貌",
+              "pinyin": "mào",
+              "meaning": "diện mạo"
+            },
+            {
+              "hanzi": "猫",
+              "pinyin": "māo",
+              "meaning": "con mèo"
+            }
+          ]
+        },
+        {
+          "id": "radical-8d1d",
+          "glyph": "贝",
+          "variants": [
+            "貝"
+          ],
+          "pinyin": "bèi",
+          "meaning": "bộ bối, vỏ sò, tiền bạc (giản thể là 贝)",
+          "examples": [
+            {
+              "hanzi": "贵",
+              "pinyin": "guì",
+              "meaning": "Đắt/quý"
+            },
+            {
+              "hanzi": "买",
+              "pinyin": "mǎi",
+              "meaning": "mua"
+            },
+            {
+              "hanzi": "卖",
+              "pinyin": "mài",
+              "meaning": "bán"
+            }
+          ]
+        },
+        {
+          "id": "radical-8d64",
+          "glyph": "赤",
+          "variants": [],
+          "pinyin": "chì",
+          "meaning": "bộ xích, màu đỏ",
+          "examples": [
+            {
+              "hanzi": "赦",
+              "pinyin": "shè",
+              "meaning": "Xá tội"
+            },
+            {
+              "hanzi": "赫",
+              "pinyin": "hè",
+              "meaning": "hiển hách"
+            },
+            {
+              "hanzi": "赭",
+              "pinyin": "zhě",
+              "meaning": "màu đỏ sẫm"
+            }
+          ]
+        },
+        {
+          "id": "radical-8d70",
+          "glyph": "走",
+          "variants": [],
+          "pinyin": "zǒu",
+          "meaning": "bộ tẩu, chạy",
+          "examples": [
+            {
+              "hanzi": "起",
+              "pinyin": "qǐ",
+              "meaning": "Thức dậy/bắt đầu"
+            },
+            {
+              "hanzi": "超",
+              "pinyin": "chāo",
+              "meaning": "vượt quá"
+            },
+            {
+              "hanzi": "越",
+              "pinyin": "yuè",
+              "meaning": "vượt qua"
+            }
+          ]
+        },
+        {
+          "id": "radical-8db3",
+          "glyph": "足",
+          "variants": [],
+          "pinyin": "zú",
+          "meaning": "bộ túc, cái chân",
+          "examples": [
+            {
+              "hanzi": "跑",
+              "pinyin": "pǎo",
+              "meaning": "Chạy"
+            },
+            {
+              "hanzi": "跳",
+              "pinyin": "tiào",
+              "meaning": "nhảy"
+            },
+            {
+              "hanzi": "路",
+              "pinyin": "lù",
+              "meaning": "con đường"
+            }
+          ]
+        },
+        {
+          "id": "radical-8eab",
+          "glyph": "身",
+          "variants": [],
+          "pinyin": "shēn",
+          "meaning": "bộ thân, thân thể",
+          "examples": [
+            {
+              "hanzi": "躺",
+              "pinyin": "tǎng",
+              "meaning": "Nằm"
+            },
+            {
+              "hanzi": "躯",
+              "pinyin": "qū",
+              "meaning": "thân躯/thân thể"
+            },
+            {
+              "hanzi": "射",
+              "pinyin": "shè",
+              "meaning": "bắn cung"
+            }
+          ]
+        },
+        {
+          "id": "radical-8f66",
+          "glyph": "车",
+          "variants": [
+            "車"
+          ],
+          "pinyin": "chē",
+          "meaning": "bộ xa, xe cộ (giản thể là 车)",
+          "examples": [
+            {
+              "hanzi": "较",
+              "pinyin": "jiào",
+              "meaning": "So sánh"
+            },
+            {
+              "hanzi": "转",
+              "pinyin": "zhuǎn",
+              "meaning": "xoay/chuyển"
+            },
+            {
+              "hanzi": "轮",
+              "pinyin": "lún",
+              "meaning": "bánh xe"
+            }
+          ]
+        },
+        {
+          "id": "radical-8f9b",
+          "glyph": "辛",
+          "variants": [],
+          "pinyin": "xīn",
+          "meaning": "bộ tân, cay đắng, vất vả",
+          "examples": [
+            {
+              "hanzi": "辟",
+              "pinyin": "pì",
+              "meaning": "Khai phá"
+            },
+            {
+              "hanzi": "辣",
+              "pinyin": "là",
+              "meaning": "cay"
+            },
+            {
+              "hanzi": "辨",
+              "pinyin": "biàn",
+              "meaning": "phân biệt"
+            }
+          ]
+        },
+        {
+          "id": "radical-8fb0",
+          "glyph": "辰",
+          "variants": [],
+          "pinyin": "chén",
+          "meaning": "bộ thần, ngôi sao, giờ Thìn",
+          "examples": [
+            {
+              "hanzi": "辱",
+              "pinyin": "rǔ",
+              "meaning": "Sỉ nhục"
+            },
+            {
+              "hanzi": "农",
+              "pinyin": "nóng",
+              "meaning": "nông nghiệp"
+            },
+            {
+              "hanzi": "晨",
+              "pinyin": "chén",
+              "meaning": "buổi sáng"
+            }
+          ]
+        },
+        {
+          "id": "radical-8fb5",
+          "glyph": "辵",
+          "variants": [
+            "辶"
+          ],
+          "pinyin": "chuò",
+          "meaning": "bộ sước, chợt đi chợt dừng (dạng bên trái là quai sước 辶)",
+          "examples": [
+            {
+              "hanzi": "近",
+              "pinyin": "jìn",
+              "meaning": "Gần"
+            },
+            {
+              "hanzi": "远",
+              "pinyin": "yuǎn",
+              "meaning": "xa"
+            },
+            {
+              "hanzi": "进",
+              "pinyin": "jìn",
+              "meaning": "tiến vào"
+            }
+          ]
+        },
+        {
+          "id": "radical-9091",
+          "glyph": "邑",
+          "variants": [
+            "阝"
+          ],
+          "pinyin": "yì",
+          "meaning": "bộ ấp, làng xóm (nằm bên phải chữ biến thành 阝)",
+          "examples": [
+            {
+              "hanzi": "邮",
+              "pinyin": "yóu",
+              "meaning": "Bưu điện"
+            },
+            {
+              "hanzi": "都",
+              "pinyin": "dōu",
+              "meaning": "thủ đô/đều"
+            },
+            {
+              "hanzi": "郭",
+              "pinyin": "guō",
+              "meaning": "thành quách"
+            }
+          ]
+        },
+        {
+          "id": "radical-9149",
+          "glyph": "酉",
+          "variants": [],
+          "pinyin": "yǒu",
+          "meaning": "bộ dậu, rượu, giờ Dậu",
+          "examples": [
+            {
+              "hanzi": "酒",
+              "pinyin": "jiǔ",
+              "meaning": "Rượu"
+            },
+            {
+              "hanzi": "酱",
+              "pinyin": "jiàng",
+              "meaning": "nước tương/xốt"
+            },
+            {
+              "hanzi": "酸",
+              "pinyin": "suān",
+              "meaning": "chua"
+            }
+          ]
+        },
+        {
+          "id": "radical-91c7",
+          "glyph": "采",
+          "variants": [],
+          "pinyin": "cǎi",
+          "meaning": "bộ thái, hái, chọn lựa",
+          "examples": [
+            {
+              "hanzi": "彩",
+              "pinyin": "cǎi",
+              "meaning": "Màu sắc"
+            },
+            {
+              "hanzi": "菜",
+              "pinyin": "cài",
+              "meaning": "rau/món ăn"
+            },
+            {
+              "hanzi": "釉",
+              "pinyin": "yòu",
+              "meaning": "men gốm"
+            }
+          ]
+        },
+        {
+          "id": "radical-91cc",
+          "glyph": "里",
+          "variants": [],
+          "pinyin": "lǐ",
+          "meaning": "bộ lý, dặm đường",
+          "examples": [
+            {
+              "hanzi": "野",
+              "pinyin": "yě",
+              "meaning": "Hoang dã/cánh đồng"
+            },
+            {
+              "hanzi": "量",
+              "pinyin": "liáng",
+              "meaning": "đo lường"
+            },
+            {
+              "hanzi": "重",
+              "pinyin": "zhòng",
+              "meaning": "nặng"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 9 nét",
-        "words": [
-            { "word": "面", "type": "radical", "phonetic": "miàn", "meaning": "bộ diện, khuôn mặt", "example": "面、腼、靥", "examplePhonetic": "miàn, miǎn, yè", "exampleMeaning": "Khuôn mặt/mì, thẹn thùng, lúm đồng tiền" },
-            { "word": "革", "type": "radical", "phonetic": "gé", "meaning": "bộ cách, da thuộc", "example": "鞋、靴、鞭", "examplePhonetic": "xié, xuē, biān", "exampleMeaning": "Giày, ủng, roi da" },
-            { "word": "韦 (韋)", "type": "radical", "phonetic": "wéi", "meaning": "bộ vi, da đã thuộc (giản thể là 韦)", "example": "韩、韧、伟", "examplePhonetic": "hán, rèn, wěi", "exampleMeaning": "Nước Hàn/họ Hàn, dẻo dai, vĩ đại" },
-            { "word": "韭", "type": "radical", "phonetic": "jiǔ", "meaning": "bộ cửu, cây hẹ", "example": "韭、韲、韘", "examplePhonetic": "jiǔ, jī, shè", "exampleMeaning": "Rau hẹ, thức ăn thái nhỏ, nhẫn gảy đàn" },
-            { "word": "音", "type": "radical", "phonetic": "yīn", "meaning": "bộ âm, âm thanh", "example": "韵、韶、响", "examplePhonetic": "yùn, sháo, xiǎng", "exampleMeaning": "Vần điệu, tuyệt mỹ/tuổi trẻ, âm thanh vang" },
-            { "word": "页 (頁)", "type": "radical", "phonetic": "yè", "meaning": "bộ hiệt, trang sách, đầu người (giản thể là 页)", "example": "顶、顺、题", "examplePhonetic": "dǐng, shùn, tí", "exampleMeaning": "Đỉnh đầu, thuận lợi, đề tài" },
-            { "word": "风 (風)", "type": "radical", "phonetic": "fēng", "meaning": "bộ phong, gió (giản thể là 风)", "example": "飓、飘、飙", "examplePhonetic": "jù, piāo, biāo", "exampleMeaning": "Gió lốc, bay cuốn, gió mạnh" },
-            { "word": "飞 (飛)", "type": "radical", "phonetic": "fēi", "meaning": "bộ phi, bay (giản thể là 飞)", "example": "飞、飜、飝", "examplePhonetic": "fēi, fān, fēi", "exampleMeaning": "Bay, lật qua/bay, chim bay lượn" },
-            { "word": "食 (饣)", "type": "radical", "phonetic": "shí", "meaning": "bộ thực, ăn uống (giản thể dạng bên trái là 饣)", "example": "饭、饮、饱", "examplePhonetic": "fàn, yǐn, bǎo", "exampleMeaning": "Cơm, uống, no" },
-            { "word": "首", "type": "radical", "phonetic": "shǒu", "meaning": "bộ thủ, cái đầu", "example": "馗、馘、馑", "examplePhonetic": "kuí, guó, jǐn", "exampleMeaning": "Đường lớn, cắt tai tù binh, mất mùa" },
-            { "word": "香", "type": "radical", "phonetic": "xiāng", "meaning": "bộ hương, mùi thơm", "example": "馥、馨、馑", "examplePhonetic": "fù, xīn, jǐn", "exampleMeaning": "Hương thơm nồng, mùi thơm xa, đói kém" }
-        ]
+      "id": "group-8",
+      "label": "Nhóm 8 nét",
+      "radicals": [
+        {
+          "id": "radical-91d1",
+          "glyph": "金",
+          "variants": [
+            "钅"
+          ],
+          "pinyin": "jīn",
+          "meaning": "bộ kim, kim loại, vàng (giản thể dạng bên trái là 钅)",
+          "examples": [
+            {
+              "hanzi": "银",
+              "pinyin": "yín",
+              "meaning": "Bạc"
+            },
+            {
+              "hanzi": "铁",
+              "pinyin": "tiě",
+              "meaning": "sắt"
+            },
+            {
+              "hanzi": "钱",
+              "pinyin": "qián",
+              "meaning": "tiền"
+            }
+          ]
+        },
+        {
+          "id": "radical-957f",
+          "glyph": "长",
+          "variants": [
+            "長"
+          ],
+          "pinyin": "cháng",
+          "meaning": "bộ trường, dài (giản thể là 长)",
+          "examples": [
+            {
+              "hanzi": "肆",
+              "pinyin": "sì",
+              "meaning": "Tùy ý/số 4 (chữ lớn)"
+            },
+            {
+              "hanzi": "镸",
+              "pinyin": "cháng",
+              "meaning": "bộ trường (dạng phồn thể)"
+            },
+            {
+              "hanzi": "张",
+              "pinyin": "zhāng",
+              "meaning": "mở rộng"
+            }
+          ]
+        },
+        {
+          "id": "radical-95e8",
+          "glyph": "门",
+          "variants": [
+            "門"
+          ],
+          "pinyin": "mén",
+          "meaning": "bộ môn, cánh cửa (giản thể là 门)",
+          "examples": [
+            {
+              "hanzi": "闭",
+              "pinyin": "bì",
+              "meaning": "Đóng"
+            },
+            {
+              "hanzi": "开",
+              "pinyin": "kāi",
+              "meaning": "mở"
+            },
+            {
+              "hanzi": "问",
+              "pinyin": "wèn",
+              "meaning": "hỏi"
+            }
+          ]
+        },
+        {
+          "id": "radical-961c",
+          "glyph": "阜",
+          "variants": [
+            "阝"
+          ],
+          "pinyin": "fù",
+          "meaning": "bộ phụ, gò đất, núi (nằm bên trái chữ biến thành 阝)",
+          "examples": [
+            {
+              "hanzi": "阳",
+              "pinyin": "yáng",
+              "meaning": "Mặt trời/dương"
+            },
+            {
+              "hanzi": "阴",
+              "pinyin": "yīn",
+              "meaning": "âm/mặt tối"
+            },
+            {
+              "hanzi": "防",
+              "pinyin": "fáng",
+              "meaning": "phòng thủ"
+            }
+          ]
+        },
+        {
+          "id": "radical-96b6",
+          "glyph": "隶",
+          "variants": [],
+          "pinyin": "lì",
+          "meaning": "bộ đãi, bắt giữ",
+          "examples": [
+            {
+              "hanzi": "隶",
+              "pinyin": "lì",
+              "meaning": "Nô lệ/phụ thuộc"
+            },
+            {
+              "hanzi": "康",
+              "pinyin": "kāng",
+              "meaning": "khỏe mạnh"
+            },
+            {
+              "hanzi": "逮",
+              "pinyin": "dǎi",
+              "meaning": "bắt giữ"
+            }
+          ]
+        },
+        {
+          "id": "radical-96b9",
+          "glyph": "隹",
+          "variants": [],
+          "pinyin": "zhuī",
+          "meaning": "bộ truy, chim đuôi ngắn",
+          "examples": [
+            {
+              "hanzi": "难",
+              "pinyin": "nán",
+              "meaning": "Khó khăn"
+            },
+            {
+              "hanzi": "雀",
+              "pinyin": "què",
+              "meaning": "chim sẻ"
+            },
+            {
+              "hanzi": "集",
+              "pinyin": "jí",
+              "meaning": "tập hợp"
+            }
+          ]
+        },
+        {
+          "id": "radical-96e8",
+          "glyph": "雨",
+          "variants": [],
+          "pinyin": "yǔ",
+          "meaning": "bộ vũ, cơn mưa",
+          "examples": [
+            {
+              "hanzi": "雪",
+              "pinyin": "xuě",
+              "meaning": "Tuyết"
+            },
+            {
+              "hanzi": "云",
+              "pinyin": "yún",
+              "meaning": "mây"
+            },
+            {
+              "hanzi": "零",
+              "pinyin": "líng",
+              "meaning": "số không"
+            }
+          ]
+        },
+        {
+          "id": "radical-9752",
+          "glyph": "青",
+          "variants": [],
+          "pinyin": "qīng",
+          "meaning": "bộ thanh, màu xanh",
+          "examples": [
+            {
+              "hanzi": "靓",
+              "pinyin": "jìng",
+              "meaning": "Đẹp đẽ/trang điểm"
+            },
+            {
+              "hanzi": "静",
+              "pinyin": "jìng",
+              "meaning": "yên tĩnh"
+            },
+            {
+              "hanzi": "靛",
+              "pinyin": "diàn",
+              "meaning": "màu lam sẫm"
+            }
+          ]
+        },
+        {
+          "id": "radical-975e",
+          "glyph": "非",
+          "variants": [],
+          "pinyin": "fēi",
+          "meaning": "bộ phi, không phải",
+          "examples": [
+            {
+              "hanzi": "靠",
+              "pinyin": "kào",
+              "meaning": "Dựa vào"
+            },
+            {
+              "hanzi": "靡",
+              "pinyin": "mǐ",
+              "meaning": "lãng phí"
+            },
+            {
+              "hanzi": "悲",
+              "pinyin": "bēi",
+              "meaning": "đau thương"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 10 nét",
-        "words": [
-            { "word": "马 (馬)", "type": "radical", "phonetic": "mǎ", "meaning": "bộ mã, con ngựa (giản thể là 马)", "example": "骑、驾、验", "examplePhonetic": "qí, jià, yàn", "exampleMeaning": "Cưỡi, điều khiển, kiểm tra" },
-            { "word": "骨", "type": "radical", "phonetic": "gǔ", "meaning": "bộ cốt, xương", "example": "髓、骼、骷", "examplePhonetic": "suǐ, gé, kū", "exampleMeaning": "Tủy xương, bộ xương, đầu lâu" },
-            { "word": "高", "type": "radical", "phonetic": "gāo", "meaning": "bộ cao, cao lớn", "example": "篙、膏、敲", "examplePhonetic": "gāo, gāo, qiāo", "exampleMeaning": "Sào chống thuyền, cao mỡ/thuốc cao, gõ" },
-            { "word": "髟", "type": "radical", "phonetic": "biāo", "meaning": "bộ tiêu, tóc dài", "example": "发、髯、鬓", "examplePhonetic": "fà, rán, bìn", "exampleMeaning": "Tóc, râu quai nón, tóc mai" },
-            { "word": "鬥", "type": "radical", "phonetic": "dòu", "meaning": "bộ đấu, đánh nhau", "example": "闹、阄、阋", "examplePhonetic": "nào, jiū, xì", "exampleMeaning": "Náo nhiệt, thăm/bốc thăm, xích mích" },
-            { "word": "鬯", "type": "radical", "phonetic": "chàng", "meaning": "bộ sưởng, rượu tế cúng", "example": "鬯、郁、鬰", "examplePhonetic": "chàng, yù, yù", "exampleMeaning": "Rượu cúng, u ất/thơm tho, u ám" },
-            { "word": "鬲", "type": "radical", "phonetic": "lì", "meaning": "bộ cách, cái nồi ba chân", "example": "融、鬻、隔", "examplePhonetic": "róng, yù, gé", "exampleMeaning": "Hòa tan/dung hợp, bán/nấu cháo, ngăn cách" },
-            { "word": "鬼", "type": "radical", "phonetic": "guǐ", "meaning": "bộ quỷ, ma quỷ", "example": "魂、魄、魅", "examplePhonetic": "hún, pò, mèi", "exampleMeaning": "Linh hồn, phách/vía, quyến rũ/mê hoặc" }
-        ]
+      "id": "group-9",
+      "label": "Nhóm 9 nét",
+      "radicals": [
+        {
+          "id": "radical-9762",
+          "glyph": "面",
+          "variants": [],
+          "pinyin": "miàn",
+          "meaning": "bộ diện, khuôn mặt",
+          "examples": [
+            {
+              "hanzi": "面",
+              "pinyin": "miàn",
+              "meaning": "Khuôn mặt/mì"
+            },
+            {
+              "hanzi": "腼",
+              "pinyin": "miǎn",
+              "meaning": "thẹn thùng"
+            },
+            {
+              "hanzi": "靥",
+              "pinyin": "yè",
+              "meaning": "lúm đồng tiền"
+            }
+          ]
+        },
+        {
+          "id": "radical-9769",
+          "glyph": "革",
+          "variants": [],
+          "pinyin": "gé",
+          "meaning": "bộ cách, da thuộc",
+          "examples": [
+            {
+              "hanzi": "鞋",
+              "pinyin": "xié",
+              "meaning": "Giày"
+            },
+            {
+              "hanzi": "靴",
+              "pinyin": "xuē",
+              "meaning": "ủng"
+            },
+            {
+              "hanzi": "鞭",
+              "pinyin": "biān",
+              "meaning": "roi da"
+            }
+          ]
+        },
+        {
+          "id": "radical-97e6",
+          "glyph": "韦",
+          "variants": [
+            "韋"
+          ],
+          "pinyin": "wéi",
+          "meaning": "bộ vi, da đã thuộc (giản thể là 韦)",
+          "examples": [
+            {
+              "hanzi": "韩",
+              "pinyin": "hán",
+              "meaning": "Nước Hàn/họ Hàn"
+            },
+            {
+              "hanzi": "韧",
+              "pinyin": "rèn",
+              "meaning": "dẻo dai"
+            },
+            {
+              "hanzi": "伟",
+              "pinyin": "wěi",
+              "meaning": "vĩ đại"
+            }
+          ]
+        },
+        {
+          "id": "radical-97ed",
+          "glyph": "韭",
+          "variants": [],
+          "pinyin": "jiǔ",
+          "meaning": "bộ cửu, cây hẹ",
+          "examples": [
+            {
+              "hanzi": "韭",
+              "pinyin": "jiǔ",
+              "meaning": "Rau hẹ"
+            },
+            {
+              "hanzi": "韲",
+              "pinyin": "jī",
+              "meaning": "thức ăn thái nhỏ"
+            },
+            {
+              "hanzi": "韘",
+              "pinyin": "shè",
+              "meaning": "nhẫn gảy đàn"
+            }
+          ]
+        },
+        {
+          "id": "radical-97f3",
+          "glyph": "音",
+          "variants": [],
+          "pinyin": "yīn",
+          "meaning": "bộ âm, âm thanh",
+          "examples": [
+            {
+              "hanzi": "韵",
+              "pinyin": "yùn",
+              "meaning": "Vần điệu"
+            },
+            {
+              "hanzi": "韶",
+              "pinyin": "sháo",
+              "meaning": "tuyệt mỹ/tuổi trẻ"
+            },
+            {
+              "hanzi": "响",
+              "pinyin": "xiǎng",
+              "meaning": "âm thanh vang"
+            }
+          ]
+        },
+        {
+          "id": "radical-9875",
+          "glyph": "页",
+          "variants": [
+            "頁"
+          ],
+          "pinyin": "yè",
+          "meaning": "bộ hiệt, trang sách, đầu người (giản thể là 页)",
+          "examples": [
+            {
+              "hanzi": "顶",
+              "pinyin": "dǐng",
+              "meaning": "Đỉnh đầu"
+            },
+            {
+              "hanzi": "顺",
+              "pinyin": "shùn",
+              "meaning": "thuận lợi"
+            },
+            {
+              "hanzi": "题",
+              "pinyin": "tí",
+              "meaning": "đề tài"
+            }
+          ]
+        },
+        {
+          "id": "radical-98ce",
+          "glyph": "风",
+          "variants": [
+            "風"
+          ],
+          "pinyin": "fēng",
+          "meaning": "bộ phong, gió (giản thể là 风)",
+          "examples": [
+            {
+              "hanzi": "飓",
+              "pinyin": "jù",
+              "meaning": "Gió lốc"
+            },
+            {
+              "hanzi": "飘",
+              "pinyin": "piāo",
+              "meaning": "bay cuốn"
+            },
+            {
+              "hanzi": "飙",
+              "pinyin": "biāo",
+              "meaning": "gió mạnh"
+            }
+          ]
+        },
+        {
+          "id": "radical-98de",
+          "glyph": "飞",
+          "variants": [
+            "飛"
+          ],
+          "pinyin": "fēi",
+          "meaning": "bộ phi, bay (giản thể là 飞)",
+          "examples": [
+            {
+              "hanzi": "飞",
+              "pinyin": "fēi",
+              "meaning": "Bay"
+            },
+            {
+              "hanzi": "飜",
+              "pinyin": "fān",
+              "meaning": "lật qua/bay"
+            },
+            {
+              "hanzi": "飝",
+              "pinyin": "fēi",
+              "meaning": "chim bay lượn"
+            }
+          ]
+        },
+        {
+          "id": "radical-98df",
+          "glyph": "食",
+          "variants": [
+            "饣"
+          ],
+          "pinyin": "shí",
+          "meaning": "bộ thực, ăn uống (giản thể dạng bên trái là 饣)",
+          "examples": [
+            {
+              "hanzi": "饭",
+              "pinyin": "fàn",
+              "meaning": "Cơm"
+            },
+            {
+              "hanzi": "饮",
+              "pinyin": "yǐn",
+              "meaning": "uống"
+            },
+            {
+              "hanzi": "饱",
+              "pinyin": "bǎo",
+              "meaning": "no"
+            }
+          ]
+        },
+        {
+          "id": "radical-9996",
+          "glyph": "首",
+          "variants": [],
+          "pinyin": "shǒu",
+          "meaning": "bộ thủ, cái đầu",
+          "examples": [
+            {
+              "hanzi": "馗",
+              "pinyin": "kuí",
+              "meaning": "Đường lớn"
+            },
+            {
+              "hanzi": "馘",
+              "pinyin": "guó",
+              "meaning": "cắt tai tù binh"
+            },
+            {
+              "hanzi": "馑",
+              "pinyin": "jǐn",
+              "meaning": "mất mùa"
+            }
+          ]
+        },
+        {
+          "id": "radical-9999",
+          "glyph": "香",
+          "variants": [],
+          "pinyin": "xiāng",
+          "meaning": "bộ hương, mùi thơm",
+          "examples": [
+            {
+              "hanzi": "馥",
+              "pinyin": "fù",
+              "meaning": "Hương thơm nồng"
+            },
+            {
+              "hanzi": "馨",
+              "pinyin": "xīn",
+              "meaning": "mùi thơm xa"
+            },
+            {
+              "hanzi": "馑",
+              "pinyin": "jǐn",
+              "meaning": "đói kém"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 11 nét",
-        "words": [
-            { "word": "鱼 (魚)", "type": "radical", "phonetic": "yú", "meaning": "bộ ngư, con cá (giản thể là 鱼)", "example": "鲜、鲁、鲸", "examplePhonetic": "xiān, lǔ, jīng", "exampleMeaning": "Tươi ngon, thô lỗ/ngốc, cá voi" },
-            { "word": "鸟 (鳥)", "type": "radical", "phonetic": "niǎo", "meaning": "bộ điểu, con chim (giản thể là 鸟)", "example": "鸡、鸭、鸽", "examplePhonetic": "jī, yā, gē", "exampleMeaning": "Con gà, con vịt, chim bồ câu" },
-            { "word": "卤", "type": "radical", "phonetic": "lǔ", "meaning": "bộ lỗ, đất mặn", "example": "卤、咸、碱", "examplePhonetic": "lǔ, xián, jiǎn", "exampleMeaning": "Nước muối/kho, mặn, chất kiềm" },
-            { "word": "鹿", "type": "radical", "phonetic": "lù", "meaning": "bộ lộc, con hươu", "example": "丽、尘、麒", "examplePhonetic": "lì, chén, qí", "exampleMeaning": "Xinh đẹp, bụi bẩn, kỳ lân" },
-            { "word": "麦 (麥)", "type": "radical", "phonetic": "mài", "meaning": "bộ mạch, cây lúa mì (giản thể là 麦)", "example": "麸、曲、面", "examplePhonetic": "fū, qū, miàn", "exampleMeaning": "Cám mì, men rượu, bột mì/mặt" },
-            { "word": "麻", "type": "radical", "phonetic": "má", "meaning": "bộ ma, cây gai", "example": "麾、靡、摩", "examplePhonetic": "huī, mǐ, mó", "exampleMeaning": "Cờ chỉ huy, lãng phí, cọ xát" }        
-        ]
+      "id": "group-10",
+      "label": "Nhóm 10 nét",
+      "radicals": [
+        {
+          "id": "radical-9a6c",
+          "glyph": "马",
+          "variants": [
+            "馬"
+          ],
+          "pinyin": "mǎ",
+          "meaning": "bộ mã, con ngựa (giản thể là 马)",
+          "examples": [
+            {
+              "hanzi": "骑",
+              "pinyin": "qí",
+              "meaning": "Cưỡi"
+            },
+            {
+              "hanzi": "驾",
+              "pinyin": "jià",
+              "meaning": "điều khiển"
+            },
+            {
+              "hanzi": "验",
+              "pinyin": "yàn",
+              "meaning": "kiểm tra"
+            }
+          ]
+        },
+        {
+          "id": "radical-9aa8",
+          "glyph": "骨",
+          "variants": [],
+          "pinyin": "gǔ",
+          "meaning": "bộ cốt, xương",
+          "examples": [
+            {
+              "hanzi": "髓",
+              "pinyin": "suǐ",
+              "meaning": "Tủy xương"
+            },
+            {
+              "hanzi": "骼",
+              "pinyin": "gé",
+              "meaning": "bộ xương"
+            },
+            {
+              "hanzi": "骷",
+              "pinyin": "kū",
+              "meaning": "đầu lâu"
+            }
+          ]
+        },
+        {
+          "id": "radical-9ad8",
+          "glyph": "高",
+          "variants": [],
+          "pinyin": "gāo",
+          "meaning": "bộ cao, cao lớn",
+          "examples": [
+            {
+              "hanzi": "篙",
+              "pinyin": "gāo",
+              "meaning": "Sào chống thuyền"
+            },
+            {
+              "hanzi": "膏",
+              "pinyin": "gāo",
+              "meaning": "cao mỡ/thuốc cao"
+            },
+            {
+              "hanzi": "敲",
+              "pinyin": "qiāo",
+              "meaning": "gõ"
+            }
+          ]
+        },
+        {
+          "id": "radical-9adf",
+          "glyph": "髟",
+          "variants": [],
+          "pinyin": "biāo",
+          "meaning": "bộ tiêu, tóc dài",
+          "examples": [
+            {
+              "hanzi": "发",
+              "pinyin": "fà",
+              "meaning": "Tóc"
+            },
+            {
+              "hanzi": "髯",
+              "pinyin": "rán",
+              "meaning": "râu quai nón"
+            },
+            {
+              "hanzi": "鬓",
+              "pinyin": "bìn",
+              "meaning": "tóc mai"
+            }
+          ]
+        },
+        {
+          "id": "radical-9b25",
+          "glyph": "鬥",
+          "variants": [],
+          "pinyin": "dòu",
+          "meaning": "bộ đấu, đánh nhau",
+          "examples": [
+            {
+              "hanzi": "闹",
+              "pinyin": "nào",
+              "meaning": "Náo nhiệt"
+            },
+            {
+              "hanzi": "阄",
+              "pinyin": "jiū",
+              "meaning": "thăm/bốc thăm"
+            },
+            {
+              "hanzi": "阋",
+              "pinyin": "xì",
+              "meaning": "xích mích"
+            }
+          ]
+        },
+        {
+          "id": "radical-9b2f",
+          "glyph": "鬯",
+          "variants": [],
+          "pinyin": "chàng",
+          "meaning": "bộ sưởng, rượu tế cúng",
+          "examples": [
+            {
+              "hanzi": "鬯",
+              "pinyin": "chàng",
+              "meaning": "Rượu cúng"
+            },
+            {
+              "hanzi": "郁",
+              "pinyin": "yù",
+              "meaning": "u ất/thơm tho"
+            },
+            {
+              "hanzi": "鬰",
+              "pinyin": "yù",
+              "meaning": "u ám"
+            }
+          ]
+        },
+        {
+          "id": "radical-9b32",
+          "glyph": "鬲",
+          "variants": [],
+          "pinyin": "lì",
+          "meaning": "bộ cách, cái nồi ba chân",
+          "examples": [
+            {
+              "hanzi": "融",
+              "pinyin": "róng",
+              "meaning": "Hòa tan/dung hợp"
+            },
+            {
+              "hanzi": "鬻",
+              "pinyin": "yù",
+              "meaning": "bán/nấu cháo"
+            },
+            {
+              "hanzi": "隔",
+              "pinyin": "gé",
+              "meaning": "ngăn cách"
+            }
+          ]
+        },
+        {
+          "id": "radical-9b3c",
+          "glyph": "鬼",
+          "variants": [],
+          "pinyin": "guǐ",
+          "meaning": "bộ quỷ, ma quỷ",
+          "examples": [
+            {
+              "hanzi": "魂",
+              "pinyin": "hún",
+              "meaning": "Linh hồn"
+            },
+            {
+              "hanzi": "魄",
+              "pinyin": "pò",
+              "meaning": "phách/vía"
+            },
+            {
+              "hanzi": "魅",
+              "pinyin": "mèi",
+              "meaning": "quyến rũ/mê hoặc"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 12 nét",
-        "words": [
-            { "word": "黄", "type": "radical", "phonetic": "huáng", "meaning": "bộ hoàng, màu vàng", "example": "黄、潢、黈", "examplePhonetic": "huáng, huáng, tǒu", "exampleMeaning": "Màu vàng, ao hồ, màu vàng sẫm" },
-            { "word": "黍", "type": "radical", "phonetic": "shǔ", "meaning": "bộ thử, lúa nếp", "example": "黏、黎、黏", "examplePhonetic": "nián, lí, nián", "exampleMeaning": "Dính/nhớt, đông đúc/họ Lê, dính" },
-            { "word": "黑", "type": "radical", "phonetic": "hēi", "meaning": "bộ hắc, màu đen", "example": "墨、默、黛", "examplePhonetic": "mò, mò, dài", "exampleMeaning": "Mực, giữ im lặng, màu đen kẻ lông mày" },
-            { "word": "黹", "type": "radical", "phonetic": "zhǐ", "meaning": "bộ trỉ, thêu thùa", "example": "黻、黼、黺", "examplePhonetic": "fú, fǔ, fěn", "exampleMeaning": "Hoa văn thêu hình chữ Á, hoa văn thêu hình rìu, thêu hoa văn" }           
-        ]
+      "id": "group-11",
+      "label": "Nhóm 11 nét",
+      "radicals": [
+        {
+          "id": "radical-9c7c",
+          "glyph": "鱼",
+          "variants": [
+            "魚"
+          ],
+          "pinyin": "yú",
+          "meaning": "bộ ngư, con cá (giản thể là 鱼)",
+          "examples": [
+            {
+              "hanzi": "鲜",
+              "pinyin": "xiān",
+              "meaning": "Tươi ngon"
+            },
+            {
+              "hanzi": "鲁",
+              "pinyin": "lǔ",
+              "meaning": "thô lỗ/ngốc"
+            },
+            {
+              "hanzi": "鲸",
+              "pinyin": "jīng",
+              "meaning": "cá voi"
+            }
+          ]
+        },
+        {
+          "id": "radical-9e1f",
+          "glyph": "鸟",
+          "variants": [
+            "鳥"
+          ],
+          "pinyin": "niǎo",
+          "meaning": "bộ điểu, con chim (giản thể là 鸟)",
+          "examples": [
+            {
+              "hanzi": "鸡",
+              "pinyin": "jī",
+              "meaning": "Con gà"
+            },
+            {
+              "hanzi": "鸭",
+              "pinyin": "yā",
+              "meaning": "con vịt"
+            },
+            {
+              "hanzi": "鸽",
+              "pinyin": "gē",
+              "meaning": "chim bồ câu"
+            }
+          ]
+        },
+        {
+          "id": "radical-5364",
+          "glyph": "卤",
+          "variants": [],
+          "pinyin": "lǔ",
+          "meaning": "bộ lỗ, đất mặn",
+          "examples": [
+            {
+              "hanzi": "卤",
+              "pinyin": "lǔ",
+              "meaning": "Nước muối/kho"
+            },
+            {
+              "hanzi": "咸",
+              "pinyin": "xián",
+              "meaning": "mặn"
+            },
+            {
+              "hanzi": "碱",
+              "pinyin": "jiǎn",
+              "meaning": "chất kiềm"
+            }
+          ]
+        },
+        {
+          "id": "radical-9e7f",
+          "glyph": "鹿",
+          "variants": [],
+          "pinyin": "lù",
+          "meaning": "bộ lộc, con hươu",
+          "examples": [
+            {
+              "hanzi": "丽",
+              "pinyin": "lì",
+              "meaning": "Xinh đẹp"
+            },
+            {
+              "hanzi": "尘",
+              "pinyin": "chén",
+              "meaning": "bụi bẩn"
+            },
+            {
+              "hanzi": "麒",
+              "pinyin": "qí",
+              "meaning": "kỳ lân"
+            }
+          ]
+        },
+        {
+          "id": "radical-9ea6",
+          "glyph": "麦",
+          "variants": [
+            "麥"
+          ],
+          "pinyin": "mài",
+          "meaning": "bộ mạch, cây lúa mì (giản thể là 麦)",
+          "examples": [
+            {
+              "hanzi": "麸",
+              "pinyin": "fū",
+              "meaning": "Cám mì"
+            },
+            {
+              "hanzi": "曲",
+              "pinyin": "qū",
+              "meaning": "men rượu"
+            },
+            {
+              "hanzi": "面",
+              "pinyin": "miàn",
+              "meaning": "bột mì/mặt"
+            }
+          ]
+        },
+        {
+          "id": "radical-9ebb",
+          "glyph": "麻",
+          "variants": [],
+          "pinyin": "má",
+          "meaning": "bộ ma, cây gai",
+          "examples": [
+            {
+              "hanzi": "麾",
+              "pinyin": "huī",
+              "meaning": "Cờ chỉ huy"
+            },
+            {
+              "hanzi": "靡",
+              "pinyin": "mǐ",
+              "meaning": "lãng phí"
+            },
+            {
+              "hanzi": "摩",
+              "pinyin": "mó",
+              "meaning": "cọ xát"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 13 nét",
-        "words": [
-             { "word": "黾", "type": "radical", "phonetic": "mǐn", "meaning": "bộ mẫn, con ếch", "example": "黽、黾、鼋", "examplePhonetic": "mǐn, mǐn, yuán", "exampleMeaning": "Con ếch (phồn thể), con ếch, con giải" },
-            { "word": "鼎", "type": "radical", "phonetic": "dǐng", "meaning": "bộ đỉnh, cái đỉnh đồng", "example": "鼎、鼐、鼒", "examplePhonetic": "dǐng, nài, zī", "exampleMeaning": "Đỉnh đồng, đỉnh lớn, đỉnh nhỏ" },
-            { "word": "鼓", "type": "radical", "phonetic": "gǔ", "meaning": "bộ cổ, cái trống", "example": "鼓、鼗、瞽", "examplePhonetic": "gǔ, táo, gǔ", "exampleMeaning": "Trống, trống lắc, mù/mù lừa" },
-            { "word": "鼠", "type": "radical", "phonetic": "shǔ", "meaning": "bộ thử, con chuột", "example": "鼬、鼹、鼯", "examplePhonetic": "yòu, yǎn, wú", "exampleMeaning": "Con chồn, con chuột chũi, sóc bay" }          
-        ]
+      "id": "group-12",
+      "label": "Nhóm 12 nét",
+      "radicals": [
+        {
+          "id": "radical-9ec4",
+          "glyph": "黄",
+          "variants": [],
+          "pinyin": "huáng",
+          "meaning": "bộ hoàng, màu vàng",
+          "examples": [
+            {
+              "hanzi": "黄",
+              "pinyin": "huáng",
+              "meaning": "Màu vàng"
+            },
+            {
+              "hanzi": "潢",
+              "pinyin": "huáng",
+              "meaning": "ao hồ"
+            },
+            {
+              "hanzi": "黈",
+              "pinyin": "tǒu",
+              "meaning": "màu vàng sẫm"
+            }
+          ]
+        },
+        {
+          "id": "radical-9ecd",
+          "glyph": "黍",
+          "variants": [],
+          "pinyin": "shǔ",
+          "meaning": "bộ thử, lúa nếp",
+          "examples": [
+            {
+              "hanzi": "黏",
+              "pinyin": "nián",
+              "meaning": "Dính/nhớt"
+            },
+            {
+              "hanzi": "黎",
+              "pinyin": "lí",
+              "meaning": "đông đúc/họ Lê"
+            },
+            {
+              "hanzi": "黏",
+              "pinyin": "nián",
+              "meaning": "dính"
+            }
+          ]
+        },
+        {
+          "id": "radical-9ed1",
+          "glyph": "黑",
+          "variants": [],
+          "pinyin": "hēi",
+          "meaning": "bộ hắc, màu đen",
+          "examples": [
+            {
+              "hanzi": "墨",
+              "pinyin": "mò",
+              "meaning": "Mực"
+            },
+            {
+              "hanzi": "默",
+              "pinyin": "mò",
+              "meaning": "giữ im lặng"
+            },
+            {
+              "hanzi": "黛",
+              "pinyin": "dài",
+              "meaning": "màu đen kẻ lông mày"
+            }
+          ]
+        },
+        {
+          "id": "radical-9ef9",
+          "glyph": "黹",
+          "variants": [],
+          "pinyin": "zhǐ",
+          "meaning": "bộ trỉ, thêu thùa",
+          "examples": [
+            {
+              "hanzi": "黻",
+              "pinyin": "fú",
+              "meaning": "Hoa văn thêu hình chữ Á"
+            },
+            {
+              "hanzi": "黼",
+              "pinyin": "fǔ",
+              "meaning": "hoa văn thêu hình rìu"
+            },
+            {
+              "hanzi": "黺",
+              "pinyin": "fěn",
+              "meaning": "thêu hoa văn"
+            }
+          ]
+        }
+      ]
     },
     {
-        "topic": "Nhóm 14 nét",
-        "words": [
-            { "word": "鼻", "type": "radical", "phonetic": "bí", "meaning": "bộ tị, cái mũi", "example": "鼾、齄、齇", "examplePhonetic": "hān, zhā, zhā", "exampleMeaning": "Ngáy, mũi đỏ, mụn đỏ ở mũi" },
-            { "word": "齐 (齊)", "type": "radical", "phonetic": "qí", "meaning": "bộ tề, ngang bằng (giản thể là 齐)", "example": "斋、齑、齑", "examplePhonetic": "zhāi, jī, jī", "exampleMeaning": "Ăn chay/phòng học, dưa muối/bột mịn, cắt nhỏ" },
-            { "word": "齿 (齒)", "type": "radical", "phonetic": "chǐ", "meaning": "bộ xỉ, răng (giản thể là 齿)", "example": "龄、龀、龉", "examplePhonetic": "líng, chèn, yǔ", "exampleMeaning": "Tuổi tác, thay răng, bất đồng/không hợp" },
-            { "word": "龙 (龍)", "type": "radical", "phonetic": "lóng", "meaning": "bộ long, con rồng (giản thể là 龙)", "example": "龚、龛、庞", "examplePhonetic": "gōng, kān, páng", "exampleMeaning": "Cung kính/họ Cung, khám thờ, to lớn/họ Bàng" },
-            { "word": "龟 (龜)", "type": "radical", "phonetic": "guī", "meaning": "bộ quy, con rùa (giản thể là 龟)", "example": "龟、鼈、龝", "examplePhonetic": "guī, biē, qiū", "exampleMeaning": "Con rùa, con ba ba, mùa thu (chữ cổ)" },
-            { "word": "龠", "type": "radical", "phonetic": "yuè", "meaning": "bộ dược, ống sáo", "example": "龢、龣、龤", "examplePhonetic": "hé, jué, xié", "exampleMeaning": "Hòa hợp, âm nhạc, âm điệu hòa hợp" }
-        ]
+      "id": "group-13",
+      "label": "Nhóm 13 nét",
+      "radicals": [
+        {
+          "id": "radical-9efe",
+          "glyph": "黾",
+          "variants": [],
+          "pinyin": "mǐn",
+          "meaning": "bộ mẫn, con ếch",
+          "examples": [
+            {
+              "hanzi": "黽",
+              "pinyin": "mǐn",
+              "meaning": "Con ếch (phồn thể)"
+            },
+            {
+              "hanzi": "黾",
+              "pinyin": "mǐn",
+              "meaning": "con ếch"
+            },
+            {
+              "hanzi": "鼋",
+              "pinyin": "yuán",
+              "meaning": "con giải"
+            }
+          ]
+        },
+        {
+          "id": "radical-9f0e",
+          "glyph": "鼎",
+          "variants": [],
+          "pinyin": "dǐng",
+          "meaning": "bộ đỉnh, cái đỉnh đồng",
+          "examples": [
+            {
+              "hanzi": "鼎",
+              "pinyin": "dǐng",
+              "meaning": "Đỉnh đồng"
+            },
+            {
+              "hanzi": "鼐",
+              "pinyin": "nài",
+              "meaning": "đỉnh lớn"
+            },
+            {
+              "hanzi": "鼒",
+              "pinyin": "zī",
+              "meaning": "đỉnh nhỏ"
+            }
+          ]
+        },
+        {
+          "id": "radical-9f13",
+          "glyph": "鼓",
+          "variants": [],
+          "pinyin": "gǔ",
+          "meaning": "bộ cổ, cái trống",
+          "examples": [
+            {
+              "hanzi": "鼓",
+              "pinyin": "gǔ",
+              "meaning": "Trống"
+            },
+            {
+              "hanzi": "鼗",
+              "pinyin": "táo",
+              "meaning": "trống lắc"
+            },
+            {
+              "hanzi": "瞽",
+              "pinyin": "gǔ",
+              "meaning": "mù/mù lừa"
+            }
+          ]
+        },
+        {
+          "id": "radical-9f20",
+          "glyph": "鼠",
+          "variants": [],
+          "pinyin": "shǔ",
+          "meaning": "bộ thử, con chuột",
+          "examples": [
+            {
+              "hanzi": "鼬",
+              "pinyin": "yòu",
+              "meaning": "Con chồn"
+            },
+            {
+              "hanzi": "鼹",
+              "pinyin": "yǎn",
+              "meaning": "con chuột chũi"
+            },
+            {
+              "hanzi": "鼯",
+              "pinyin": "wú",
+              "meaning": "sóc bay"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "group-14",
+      "label": "Nhóm 14–17 nét",
+      "radicals": [
+        {
+          "id": "radical-9f3b",
+          "glyph": "鼻",
+          "variants": [],
+          "pinyin": "bí",
+          "meaning": "bộ tị, cái mũi",
+          "examples": [
+            {
+              "hanzi": "鼾",
+              "pinyin": "hān",
+              "meaning": "Ngáy"
+            },
+            {
+              "hanzi": "齄",
+              "pinyin": "zhā",
+              "meaning": "mũi đỏ"
+            },
+            {
+              "hanzi": "齇",
+              "pinyin": "zhā",
+              "meaning": "mụn đỏ ở mũi"
+            }
+          ]
+        },
+        {
+          "id": "radical-9f50",
+          "glyph": "齐",
+          "variants": [
+            "齊"
+          ],
+          "pinyin": "qí",
+          "meaning": "bộ tề, ngang bằng (giản thể là 齐)",
+          "examples": [
+            {
+              "hanzi": "斋",
+              "pinyin": "zhāi",
+              "meaning": "Ăn chay/phòng học"
+            },
+            {
+              "hanzi": "齑",
+              "pinyin": "jī",
+              "meaning": "dưa muối/bột mịn"
+            },
+            {
+              "hanzi": "齑",
+              "pinyin": "jī",
+              "meaning": "cắt nhỏ"
+            }
+          ]
+        },
+        {
+          "id": "radical-9f7f",
+          "glyph": "齿",
+          "variants": [
+            "齒"
+          ],
+          "pinyin": "chǐ",
+          "meaning": "bộ xỉ, răng (giản thể là 齿)",
+          "examples": [
+            {
+              "hanzi": "龄",
+              "pinyin": "líng",
+              "meaning": "Tuổi tác"
+            },
+            {
+              "hanzi": "龀",
+              "pinyin": "chèn",
+              "meaning": "thay răng"
+            },
+            {
+              "hanzi": "龉",
+              "pinyin": "yǔ",
+              "meaning": "bất đồng/không hợp"
+            }
+          ]
+        },
+        {
+          "id": "radical-9f99",
+          "glyph": "龙",
+          "variants": [
+            "龍"
+          ],
+          "pinyin": "lóng",
+          "meaning": "bộ long, con rồng (giản thể là 龙)",
+          "examples": [
+            {
+              "hanzi": "龚",
+              "pinyin": "gōng",
+              "meaning": "Cung kính/họ Cung"
+            },
+            {
+              "hanzi": "龛",
+              "pinyin": "kān",
+              "meaning": "khám thờ"
+            },
+            {
+              "hanzi": "庞",
+              "pinyin": "páng",
+              "meaning": "to lớn/họ Bàng"
+            }
+          ]
+        },
+        {
+          "id": "radical-9f9f",
+          "glyph": "龟",
+          "variants": [
+            "龜"
+          ],
+          "pinyin": "guī",
+          "meaning": "bộ quy, con rùa (giản thể là 龟)",
+          "examples": [
+            {
+              "hanzi": "龟",
+              "pinyin": "guī",
+              "meaning": "Con rùa"
+            },
+            {
+              "hanzi": "鼈",
+              "pinyin": "biē",
+              "meaning": "con ba ba"
+            },
+            {
+              "hanzi": "龝",
+              "pinyin": "qiū",
+              "meaning": "mùa thu (chữ cổ)"
+            }
+          ]
+        },
+        {
+          "id": "radical-9fa0",
+          "glyph": "龠",
+          "variants": [],
+          "pinyin": "yuè",
+          "meaning": "bộ dược, ống sáo",
+          "examples": [
+            {
+              "hanzi": "龢",
+              "pinyin": "hé",
+              "meaning": "Hòa hợp"
+            },
+            {
+              "hanzi": "龣",
+              "pinyin": "jué",
+              "meaning": "âm nhạc"
+            },
+            {
+              "hanzi": "龤",
+              "pinyin": "xié",
+              "meaning": "âm điệu hòa hợp"
+            }
+          ]
+        }
+      ]
     }
-]
-
+  ]
+}

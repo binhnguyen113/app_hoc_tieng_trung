@@ -31,6 +31,7 @@
         <button class="btn-primary small" id="listening-mode-btn" type="button" aria-pressed="false">5. 🔊 Nghe</button>
         <button class="btn-primary small" id="sentence-build-mode-btn" type="button" aria-pressed="false">6. 🧱 Ghép câu</button>
         <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">7. 🎙️ Luyện nói</button>
+        <button class="btn-primary small" id="radical-mode-btn" type="button" aria-pressed="false">8. 🧩 Ôn bộ thủ</button>
       </nav>
     </header>
 
@@ -300,6 +301,35 @@
         <p id="speaking-status" class="typing-feedback" aria-live="polite">Bấm ghi âm, nói câu tiếng Trung rồi nghe lại.</p>
         <audio id="speaking-playback" class="speaking-playback hidden" controls playsinline></audio>
         <button class="btn btn-primary btn-full" id="btn-next-speaking" type="button">Câu tiếp theo ➡</button>
+      </div>
+    </div>
+
+    <div id="radical-screen" class="screen hidden">
+      <div class="quiz-box radical-box">
+        <div class="quiz-header">
+          <span>Điểm: <strong id="radical-score">0</strong></span>
+          <span id="radical-progress">Câu 1/10</span>
+        </div>
+        <div class="radical-controls">
+          <label class="typing-label" for="radical-group-filter">Nhóm bộ thủ</label>
+          <select id="radical-group-filter" class="typing-direction">
+            <option value="all">Tất cả nhóm</option>
+          </select>
+          <label class="typing-label" for="radical-direction">Chiều ôn</label>
+          <select id="radical-direction" class="typing-direction">
+            <option value="glyph-to-meaning">Nhìn chữ → chọn nghĩa</option>
+            <option value="meaning-to-glyph">Nhìn nghĩa → chọn chữ</option>
+          </select>
+        </div>
+        <p class="typing-label radical-prompt" id="radical-prompt">Nhìn bộ thủ và chọn ý nghĩa:</p>
+        <h3 class="quiz-question-word radical-question" id="radical-question"></h3>
+        <p class="quiz-phonetic radical-pinyin" id="radical-pinyin"></p>
+        <div class="quiz-options radical-options" id="radical-options"></div>
+        <p class="radical-examples hidden" id="radical-examples"></p>
+        <p class="typing-feedback" id="radical-feedback" role="status" aria-live="polite"></p>
+        <button class="btn btn-primary btn-full hidden" id="btn-next-radical" type="button">Câu tiếp theo ➡</button>
+        <button class="btn btn-full radical-shuffle" id="btn-shuffle-radicals" type="button">🔀 Xáo trộn bộ thủ</button>
+        <p class="radical-shortcut-hint">Mẹo: nhấn Ctrl + . để nghe phát âm chữ đang hiện.</p>
       </div>
     </div>
 

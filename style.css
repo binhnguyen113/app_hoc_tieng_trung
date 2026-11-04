@@ -604,6 +604,70 @@ select:focus-visible {
   text-align: center;
 }
 
+.radical-box {
+  align-items: stretch;
+  text-align: left;
+}
+
+.radical-controls {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.radical-prompt {
+  margin-top: 6px;
+}
+
+.radical-question {
+  margin: 0;
+  font-size: clamp(2.2rem, 11vw, 4rem);
+  text-align: center;
+}
+
+.radical-pinyin {
+  min-height: 0;
+  text-align: center;
+}
+
+.radical-pinyin:empty {
+  display: none;
+}
+
+.radical-examples {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+
+.radical-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.radical-shuffle {
+  margin-top: 0;
+}
+
+.radical-option {
+  min-height: 58px;
+}
+
+.radical-glyph-option {
+  font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.radical-shortcut-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
 .quiz-header {
   display: flex;
   width: 100%;

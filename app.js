@@ -1,9 +1,10 @@
 const DATA_SOURCES = [
   { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk1.json" },
-  // { id: "hsk1", label: "Tiếng Trung HSK1 3.0 (Nâng cao)", file: "./data-hsk1-pro.json" },
-  // { id: "hsk2", label: "Tiếng Trung HSK2 3.0", file: "./data-hsk2.json" },
-  // { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
+  { id: "hsk1", label: "Tiếng Trung HSK1 3.0 (Nâng cao)", file: "./data-hsk1-pro.json" },
+  { id: "hsk2", label: "Tiếng Trung HSK2 3.0", file: "./data-hsk2.json" },
+  { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
+const RADICAL_DATA_FILE = "./data/data-214bothu.json";
 
 function normalizeWordRecord(item, topic, id) {
   if (typeof item.word !== "string" || !item.word.trim()) {
@@ -81,6 +82,44 @@ async function loadWords() {
   return loadedSources.flat();
 }
 
+async function loadRadicals() {
+  const response = await fetch(RADICAL_DATA_FILE);
+  if (!response.ok) {
+    throw new Error(`Không đọc được ${RADICAL_DATA_FILE} (HTTP ${response.status})`);
+  }
+
+  const data = await response.json();
+  if (data?.schemaVersion !== 2 || !Array.isArray(data.groups)) {
+    throw new TypeError("Dữ liệu bộ thủ không đúng schema phiên bản 2.");
+  }
+
+  return data.groups.flatMap((group, groupIndex) => {
+    if (!group || typeof group.id !== "string" || typeof group.label !== "string"
+      || !Array.isArray(group.radicals)) {
+      throw new TypeError(`Nhóm bộ thủ thứ ${groupIndex + 1} không hợp lệ.`);
+    }
+
+    return group.radicals.map((radical, radicalIndex) => {
+      if (!radical || typeof radical.id !== "string" || typeof radical.glyph !== "string"
+        || typeof radical.pinyin !== "string" || typeof radical.meaning !== "string"
+        || !Array.isArray(radical.variants) || !radical.variants.every(variant => typeof variant === "string")
+        || !Array.isArray(radical.examples)
+        || !radical.examples.every(example => example
+          && typeof example.hanzi === "string"
+          && typeof example.pinyin === "string"
+          && typeof example.meaning === "string")) {
+        throw new TypeError(`Bộ thủ thứ ${radicalIndex + 1} trong ${group.label} không hợp lệ.`);
+      }
+
+      return {
+        ...radical,
+        groupId: group.id,
+        topic: group.label
+      };
+    });
+  });
+}
+
 function loadQuestionAnswers(words) {
   return words.flatMap((word, index) => {
     if (!word.answerChinese || !word.example) return [];
@@ -130,6 +169,7 @@ function getPairedExampleItems(words) {
 
 let allWords = [];
 let allQuestionAnswers = [];
+let allRadicals = [];
 
 // Quiz State
 let quizScore = 0;
@@ -143,6 +183,15 @@ let quizIsRetryRound = false;
 let currentQuizAnswered = false;
 let quizShouldShuffle = false;
 let quizPracticeMode = "word";
+let radicalQuestions = [];
+let radicalOptionPool = [];
+let radicalRoundMistakes = [];
+let radicalCorrectIds = new Set();
+let radicalCurrentIndex = 0;
+let radicalScore = 0;
+let radicalTotalQuestions = 0;
+let radicalIsRetryRound = false;
+let radicalAnswered = false;
 
 // DOM Elements - Common
 const headerMenuToggle = document.getElementById("header-menu-toggle");
@@ -161,6 +210,9 @@ const readingScreen = document.getElementById("reading-screen");
 const sentenceBuildScreen = document.getElementById("sentence-build-screen");
 const speakingModeBtn = document.getElementById("speaking-mode-btn");
 const speakingScreen = document.getElementById("speaking-screen");
+const radicalModeBtn = document.getElementById("radical-mode-btn");
+const radicalScreen = document.getElementById("radical-screen");
+const vocabularyStudyPanelEl = document.getElementById("vocabulary-study-panel");
 
 const selectedWordCountEl = document.getElementById("selected-word-count");
 const appLoadErrorEl = document.getElementById("app-load-error");
@@ -278,6 +330,18 @@ const btnSpeakSpeakingAnswer = document.getElementById("btn-speak-speaking-answe
 const btnStartSpeakingRecording = document.getElementById("btn-start-speaking-recording");
 const btnStopSpeakingRecording = document.getElementById("btn-stop-speaking-recording");
 const btnNextSpeaking = document.getElementById("btn-next-speaking");
+const radicalProgressEl = document.getElementById("radical-progress");
+const radicalScoreEl = document.getElementById("radical-score");
+const radicalGroupFilterEl = document.getElementById("radical-group-filter");
+const radicalDirectionEl = document.getElementById("radical-direction");
+const radicalPromptEl = document.getElementById("radical-prompt");
+const radicalQuestionEl = document.getElementById("radical-question");
+const radicalPinyinEl = document.getElementById("radical-pinyin");
+const radicalOptionsEl = document.getElementById("radical-options");
+const radicalExamplesEl = document.getElementById("radical-examples");
+const radicalFeedbackEl = document.getElementById("radical-feedback");
+const btnNextRadical = document.getElementById("btn-next-radical");
+const btnShuffleRadicals = document.getElementById("btn-shuffle-radicals");
 
 let listeningQuestions = [];
 let currentListeningIndex = 0;
@@ -540,6 +604,11 @@ function startQuiz(shouldShuffle = false) {
 }
 
 function shuffleWords() {
+  if (currentMode === "radicals") {
+    startRadicalPractice(true);
+    return;
+  }
+
   const filteredWords = getFilteredWords();
   if (filteredWords.length === 0) {
     alert("Không có từ vựng nào trong bộ lọc hiện tại để xáo trộn!");
@@ -743,6 +812,170 @@ quizPracticeModeEl.addEventListener("change", () => {
 });
 quizPinyinVisibleEl.addEventListener("change", updateQuizHints);
 quizExampleVisibleEl.addEventListener("change", updateQuizHints);
+
+const RADICAL_QUIZ_SIZE = 10;
+
+function getFilteredRadicals() {
+  const selectedGroup = radicalGroupFilterEl.value;
+  return selectedGroup === "all"
+    ? [...allRadicals]
+    : allRadicals.filter(radical => radical.groupId === selectedGroup);
+}
+
+function getRadicalAnswerText(radical) {
+  return radicalDirectionEl.value === "meaning-to-glyph"
+    ? radical.glyph
+    : radical.meaning;
+}
+
+function formatRadicalAnswer(radical) {
+  const variants = radical.variants.length ? ` · Biến thể: ${radical.variants.join(", ")}` : "";
+  return `${radical.glyph}${variants} · ${radical.pinyin} · ${radical.meaning}`;
+}
+
+function startRadicalPractice(shouldShuffle = true) {
+  const filteredRadicals = getFilteredRadicals();
+  if (filteredRadicals.length < 4) {
+    alert("Cần ít nhất 4 bộ thủ trong nhóm đang chọn để bắt đầu ôn luyện.");
+    return;
+  }
+
+  const deck = shouldShuffle ? shuffleList(filteredRadicals) : filteredRadicals;
+  radicalOptionPool = filteredRadicals;
+  radicalQuestions = deck.slice(0, Math.min(RADICAL_QUIZ_SIZE, deck.length));
+  radicalRoundMistakes = [];
+  radicalCorrectIds = new Set();
+  radicalIsRetryRound = false;
+  radicalCurrentIndex = 0;
+  radicalScore = 0;
+  radicalTotalQuestions = radicalQuestions.length;
+  radicalScoreEl.textContent = radicalScore;
+  btnNextRadical.classList.add("hidden");
+  loadRadicalQuestion();
+}
+
+function loadRadicalQuestion() {
+  if (radicalCurrentIndex >= radicalQuestions.length) {
+    if (radicalRoundMistakes.length > 0) {
+      radicalQuestions = shuffleList(radicalRoundMistakes);
+      radicalRoundMistakes = [];
+      radicalIsRetryRound = true;
+      radicalCurrentIndex = 0;
+    } else {
+      radicalPromptEl.textContent = "Hoàn thành lượt ôn!";
+      radicalQuestionEl.textContent = "Giỏi lắm!";
+      radicalPinyinEl.textContent = "";
+      radicalProgressEl.textContent = "Đã hoàn thành";
+      radicalFeedbackEl.textContent = `Bạn đã nhận diện đúng ${radicalCorrectIds.size}/${radicalTotalQuestions} bộ thủ.`;
+      radicalFeedbackEl.classList.remove("is-wrong");
+      radicalFeedbackEl.classList.add("is-correct");
+      radicalOptionsEl.replaceChildren();
+      btnNextRadical.classList.add("hidden");
+      renderRestartButton(radicalOptionsEl, "Ôn lại 10 bộ thủ", () => startRadicalPractice());
+      return;
+    }
+  }
+
+  const currentRadical = radicalQuestions[radicalCurrentIndex];
+  const meaningToGlyph = radicalDirectionEl.value === "meaning-to-glyph";
+  radicalAnswered = false;
+  radicalPromptEl.textContent = meaningToGlyph
+    ? "Chọn mặt chữ ứng với ý nghĩa:"
+    : "Nhìn bộ thủ và chọn ý nghĩa:";
+  radicalQuestionEl.textContent = meaningToGlyph ? currentRadical.meaning : currentRadical.glyph;
+  radicalPinyinEl.textContent = "";
+  radicalExamplesEl.textContent = "";
+  radicalExamplesEl.classList.add("hidden");
+  radicalFeedbackEl.textContent = "";
+  radicalFeedbackEl.classList.remove("is-correct", "is-wrong");
+  radicalProgressEl.textContent = radicalIsRetryRound
+    ? `Ôn lại câu sai · ${radicalCurrentIndex + 1}/${radicalQuestions.length}`
+    : `Câu ${radicalCurrentIndex + 1}/${radicalQuestions.length}`;
+
+  const correctText = getRadicalAnswerText(currentRadical);
+  const seenAnswers = new Set([normalizeAnswer(correctText)]);
+  const wrongOptions = shuffleList(radicalOptionPool.filter(radical => radical.id !== currentRadical.id))
+    .filter(radical => {
+      const answer = getRadicalAnswerText(radical);
+      const key = normalizeAnswer(answer);
+      if (seenAnswers.has(key)) return false;
+      seenAnswers.add(key);
+      return true;
+    })
+    .slice(0, 3);
+
+  if (wrongOptions.length < 3) {
+    throw new Error("Không đủ 4 đáp án khác nhau cho bộ thủ đang ôn.");
+  }
+
+  radicalOptionsEl.replaceChildren();
+  shuffleList([currentRadical, ...wrongOptions]).forEach(radical => {
+    const button = document.createElement("button");
+    button.className = "quiz-option-btn radical-option";
+    if (meaningToGlyph) button.classList.add("radical-glyph-option");
+    button.type = "button";
+    button.dataset.radicalId = radical.id;
+    button.textContent = getRadicalAnswerText(radical);
+    button.addEventListener("click", () => selectRadicalAnswer(radical, currentRadical, button));
+    radicalOptionsEl.appendChild(button);
+  });
+  btnNextRadical.classList.add("hidden");
+}
+
+function selectRadicalAnswer(selectedRadical, currentRadical, selectedButton) {
+  if (radicalAnswered) return;
+
+  radicalAnswered = true;
+  radicalPinyinEl.textContent = currentRadical.pinyin;
+  radicalExamplesEl.textContent = `Ví dụ: ${currentRadical.examples
+    .map(example => `${example.hanzi} (${example.pinyin}) — ${example.meaning}`)
+    .join(" · ")}`;
+  radicalExamplesEl.classList.remove("hidden");
+  const buttons = radicalOptionsEl.querySelectorAll(".quiz-option-btn");
+  buttons.forEach(button => {
+    button.disabled = true;
+    if (button.dataset.radicalId === currentRadical.id) {
+      button.classList.add("correct");
+    }
+  });
+
+  if (selectedRadical.id === currentRadical.id) {
+    selectedButton.classList.add("correct");
+    radicalCorrectIds.add(currentRadical.id);
+    radicalScore = radicalCorrectIds.size;
+    radicalScoreEl.textContent = radicalScore;
+    radicalFeedbackEl.textContent = `Chính xác! ${formatRadicalAnswer(currentRadical)}`;
+    radicalFeedbackEl.classList.remove("is-wrong");
+    radicalFeedbackEl.classList.add("is-correct");
+  } else {
+    selectedButton.classList.add("wrong");
+    if (!radicalRoundMistakes.some(radical => radical.id === currentRadical.id)) {
+      radicalRoundMistakes.push(currentRadical);
+    }
+    radicalFeedbackEl.textContent = `Đáp án: ${formatRadicalAnswer(currentRadical)}`;
+    radicalFeedbackEl.classList.remove("is-correct");
+    radicalFeedbackEl.classList.add("is-wrong");
+  }
+
+  btnNextRadical.classList.remove("hidden");
+}
+
+function updateRadicalGroupOptions() {
+  radicalGroupFilterEl.replaceChildren(new Option("Tất cả nhóm", "all"));
+  const groups = new Map(allRadicals.map(radical => [radical.groupId, radical.topic]));
+  groups.forEach((label, id) => {
+    radicalGroupFilterEl.add(new Option(label, id));
+  });
+}
+
+radicalGroupFilterEl.addEventListener("change", () => startRadicalPractice());
+radicalDirectionEl.addEventListener("change", () => startRadicalPractice());
+btnNextRadical.addEventListener("click", () => {
+  if (!radicalAnswered) return;
+  radicalCurrentIndex++;
+  loadRadicalQuestion();
+});
+btnShuffleRadicals.addEventListener("click", () => startRadicalPractice(true));
 
 const MALE_MANDARIN_VOICE_HINTS = ["yunxi", "yunyang", "yunfeng", "kangkang"];
 
@@ -2131,6 +2364,7 @@ function startSpeakingPractice(shouldShuffle = true) {
   const speakingItems = questionAnswers.flatMap(question => [
     {
       id: `${question.id}-question`,
+      pairId: question.id,
       type: "câu hỏi",
       meaning: question.questionMeaning,
       sentence: question.question,
@@ -2138,13 +2372,14 @@ function startSpeakingPractice(shouldShuffle = true) {
     },
     {
       id: `${question.id}-answer`,
+      pairId: question.id,
       type: "câu trả lời",
       meaning: question.answerMeaning,
       sentence: question.answerChinese,
       pinyin: question.answerPinyin
     }
   ]).filter(item => item.meaning && item.sentence);
-  speakingQuestions = shouldShuffle ? shuffleList(speakingItems) : speakingItems;
+  speakingQuestions = shouldShuffle ? shufflePairedItems(speakingItems) : speakingItems;
   currentSpeakingIndex = 0;
   speakingIsComplete = false;
   btnNextSpeaking.textContent = "Câu tiếp theo ➡";
@@ -2191,6 +2426,9 @@ function renderSpeakingQuestion() {
   speakingIsComplete = false;
   speakingProgressEl.textContent = `Câu ${currentSpeakingIndex + 1} / ${speakingQuestions.length}`;
   speakingPromptEl.textContent = `Hãy nói ${currentWord.type} tiếng Trung theo gợi ý:`;
+  btnNextSpeaking.textContent = currentWord.type === "câu hỏi"
+    ? "Câu trả lời ➡"
+    : "Câu tiếp theo ➡";
   speakingTargetEl.textContent = currentWord.meaning;
   speakingPhoneticEl.textContent = "";
   speakingSampleEl.textContent = currentWord.sentence;
@@ -2365,6 +2603,11 @@ function applyStudyMode() {
 
   if (currentMode === "sentence-build") {
     startSentenceBuildPractice(false, false);
+    return;
+  }
+
+  if (currentMode === "radicals") {
+    startRadicalPractice();
   }
 }
 
@@ -2393,6 +2636,7 @@ const studyScreens = [
   typingScreen,
   sentenceBuildScreen,
   speakingScreen,
+  radicalScreen,
 ];
 const studyModeButtons = [
   [matchingModeBtn, "matching"],
@@ -2401,7 +2645,8 @@ const studyModeButtons = [
   [readingModeBtn, "reading"],
   [typingModeBtn, "typing"],
   [sentenceBuildModeBtn, "sentence-build"],
-  [speakingModeBtn, "speaking"]
+  [speakingModeBtn, "speaking"],
+  [radicalModeBtn, "radicals"]
 ];
 
 function setHeaderMenuOpen(isOpen) {
@@ -2430,6 +2675,7 @@ document.addEventListener("keydown", event => {
 function setActiveScreen(activeScreen, mode) {
   if (currentMode === "speaking" && mode !== "speaking") stopSpeakingRecording();
   currentMode = mode;
+  vocabularyStudyPanelEl.classList.toggle("hidden", mode === "radicals");
   studyScreens.forEach(screen => screen.classList.toggle("hidden", screen !== activeScreen));
   studyModeButtons.forEach(([button, buttonMode]) => {
     const isActive = buttonMode === mode;
@@ -2506,6 +2752,11 @@ function showSpeakingScreen() {
   startSpeakingPractice();
 }
 
+function showRadicalScreen() {
+  setActiveScreen(radicalScreen, "radicals");
+  startRadicalPractice();
+}
+
 matchingModeBtn.addEventListener("click", showMatchingScreen);
 quizModeBtn.addEventListener("click", showQuizScreen);
 typingModeBtn.addEventListener("click", showTypingScreen);
@@ -2513,6 +2764,7 @@ listeningModeBtn.addEventListener("click", showListeningScreen);
 readingModeBtn.addEventListener("click", showReadingScreen);
 speakingModeBtn.addEventListener("click", showSpeakingScreen);
 sentenceBuildModeBtn.addEventListener("click", showSentenceBuildScreen);
+radicalModeBtn.addEventListener("click", showRadicalScreen);
 
 document.addEventListener("keydown", (event) => {
   const isSpeakShortcut = (event.ctrlKey || event.metaKey)
@@ -2538,12 +2790,21 @@ document.addEventListener("keydown", (event) => {
     } else if (currentMode === "speaking") {
       const currentWord = speakingQuestions[currentSpeakingIndex];
       if (currentWord) speakChinese(currentWord.example || currentWord.word);
+    } else if (currentMode === "radicals") {
+      const currentRadical = radicalQuestions[radicalCurrentIndex];
+      if (currentRadical) speakChinese(currentRadical.glyph);
     }
 
     return;
   }
 
   if (event.key !== "Enter") return;
+
+  if (currentMode === "radicals" && radicalAnswered && !btnNextRadical.classList.contains("hidden")) {
+    event.preventDefault();
+    btnNextRadical.click();
+    return;
+  }
 
   if (currentMode === "sentence-build") {
     event.preventDefault();
@@ -2600,12 +2861,16 @@ document.addEventListener("keydown", (event) => {
 
 async function initApp() {
   try {
-    allWords = await loadWords();
+    [allWords, allRadicals] = await Promise.all([loadWords(), loadRadicals()]);
     if (allWords.length === 0) {
       throw new Error("Không tìm thấy dữ liệu từ vựng.");
     }
+    if (allRadicals.length === 0) {
+      throw new Error("Không tìm thấy dữ liệu bộ thủ.");
+    }
 
     allQuestionAnswers = loadQuestionAnswers(allWords);
+    updateRadicalGroupOptions();
     updateDataSourceOptions();
     updateTopicOptions();
     updateStudyModeAvailability();
@@ -2616,7 +2881,7 @@ async function initApp() {
     showMatchingScreen();
   } catch (error) {
     console.error("Không thể khởi chạy ứng dụng:", error);
-    appLoadErrorEl.textContent = "Không thể tải dữ liệu từ vựng. Hãy kiểm tra dữ liệu hoặc kết nối rồi tải lại trang.";
+    appLoadErrorEl.textContent = "Không thể tải dữ liệu học tập. Hãy kiểm tra dữ liệu hoặc kết nối rồi tải lại trang.";
     appLoadErrorEl.classList.remove("hidden");
   }
 }
