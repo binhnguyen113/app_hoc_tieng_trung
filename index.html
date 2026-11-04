@@ -30,8 +30,7 @@
         <button class="btn-primary small" id="typing-mode-btn" type="button" aria-pressed="false">4. ⌨️ Gõ từ</button>
         <button class="btn-primary small" id="listening-mode-btn" type="button" aria-pressed="false">5. 🔊 Nghe</button>
         <button class="btn-primary small" id="sentence-build-mode-btn" type="button" aria-pressed="false">6. 🧱 Ghép câu</button>
-        <button class="btn-primary small" id="question-answer-mode-btn" type="button" aria-pressed="false">7. 💬 Hỏi đáp</button>
-        <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">8. 🎙️ Luyện nói</button>
+        <button class="btn-primary small" id="speaking-mode-btn" type="button" aria-pressed="false">7. 🎙️ Luyện nói</button>
       </nav>
     </header>
 
@@ -90,11 +89,10 @@
       <div class="matching-box">
         <div class="matching-header">
           <div>
-            <p class="matching-kicker">Nối đúng bộ ba</p>
-            <h2 id="matching-progress">0 / 6 cặp đúng</h2>
+            <p class="matching-kicker">Nối đúng cặp từ</p>
+            <h2 id="matching-progress">0 / 8 cặp đúng</h2>
           </div>
           <p id="matching-feedback" class="matching-feedback" aria-live="polite"></p>
-          <button class="btn pinyin-toggle" id="btn-toggle-matching-pinyin" type="button" aria-controls="matching-pinyin-column" aria-expanded="true">Ẩn pinyin</button>
         </div>
 
         <div class="matching-grid" id="matching-grid">
@@ -102,13 +100,9 @@
             <h3>Tiếng Trung</h3>
             <div id="matching-chinese" class="matching-options"></div>
           </section>
-          <section class="matching-column" id="matching-pinyin-column">
+          <section class="matching-column">
             <h3>Pinyin</h3>
             <div id="matching-pinyin" class="matching-options"></div>
-          </section>
-          <section class="matching-column">
-            <h3>Tiếng Việt</h3>
-            <div id="matching-vietnamese" class="matching-options"></div>
           </section>
         </div>
 
@@ -180,42 +174,6 @@
         <button class="btn btn-primary btn-full" id="btn-check-listening" type="button">Kiểm tra</button>
         <p id="listening-feedback" class="typing-feedback" aria-live="polite"></p>
         <div class="quiz-options hidden" id="listening-options"></div>
-      </div>
-    </div>
-
-    <div id="question-answer-screen" class="screen hidden">
-      <div class="quiz-box">
-        <div class="quiz-header">
-          <span>Điểm: <strong id="question-answer-score">0</strong></span>
-          <span id="question-answer-progress">Câu 1/5</span>
-        </div>
-        <p class="typing-label" id="question-answer-prompt">Nghe câu hỏi tiếng Trung rồi trả lời</p>
-        <div id="question-answer-review" class="question-answer-review hidden" aria-live="polite">
-          <section class="question-answer-review-item">
-            <h3 id="question-answer-review-label" class="question-answer-review-label">Câu hỏi</h3>
-            <p id="question-answer-question-text" class="quiz-question-word"></p>
-            <p id="question-answer-question-pinyin" class="quiz-phonetic"></p>
-            <p id="question-answer-question-meaning" class="quiz-meaning"></p>
-            <p id="question-answer-answer-meaning" class="quiz-meaning hidden"></p>
-          </section>
-        </div>
-        <div class="listening-icon" aria-hidden="true">🔊</div>
-        <button class="btn btn-primary btn-full" id="btn-replay-question-answer" type="button">🔊 Nghe lại câu hỏi</button>
-        <label class="typing-label" for="question-answer-mode">Kiểu trả lời</label>
-        <select id="question-answer-mode" class="typing-direction">
-          <option value="multiple-choice">Cơ bản: chọn nghĩa tiếng Việt</option>
-          <option value="chinese-choice">Trung cấp: chọn câu tiếng Trung</option>
-          <option value="chinese">Nâng cao: tự gõ câu tiếng Trung</option>
-        </select>
-        <button class="btn hidden" id="btn-toggle-question-answer-question" type="button" aria-controls="question-answer-review" aria-expanded="false">Hiển thị câu hỏi</button>
-        <button class="btn pinyin-toggle hidden" id="btn-toggle-question-answer-pinyin" type="button" aria-controls="question-answer-options question-answer-review" aria-pressed="true">Ẩn pinyin</button>
-        <div id="question-answer-typing-area" class="hidden">
-          <input id="question-answer-input" type="text" class="typing-input" placeholder="Nhập câu trả lời tiếng Trung..." autocomplete="off" />
-          <button class="btn btn-primary btn-full" id="btn-check-question-answer" type="button">Kiểm tra</button>
-        </div>
-        <div class="quiz-options" id="question-answer-options"></div>
-        <button class="btn btn-primary btn-full" id="btn-next-question-answer" type="button">Câu tiếp theo ➡</button>
-        <p id="question-answer-feedback" class="typing-feedback" aria-live="polite"></p>
       </div>
     </div>
 

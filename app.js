@@ -151,13 +151,11 @@ const matchingModeBtn = document.getElementById("matching-mode-btn");
 const quizModeBtn = document.getElementById("quiz-mode-btn");
 const typingModeBtn = document.getElementById("typing-mode-btn");
 const listeningModeBtn = document.getElementById("listening-mode-btn");
-const questionAnswerModeBtn = document.getElementById("question-answer-mode-btn");
 const readingModeBtn = document.getElementById("reading-mode-btn");
 const sentenceBuildModeBtn = document.getElementById("sentence-build-mode-btn");
 const matchingScreen = document.getElementById("matching-screen");
 const quizScreen = document.getElementById("quiz-screen");
 const listeningScreen = document.getElementById("listening-screen");
-const questionAnswerScreen = document.getElementById("question-answer-screen");
 const typingScreen = document.getElementById("typing-screen");
 const readingScreen = document.getElementById("reading-screen");
 const sentenceBuildScreen = document.getElementById("sentence-build-screen");
@@ -180,10 +178,6 @@ const matchingProgressEl = document.getElementById("matching-progress");
 const matchingFeedbackEl = document.getElementById("matching-feedback");
 const matchingChineseEl = document.getElementById("matching-chinese");
 const matchingPinyinEl = document.getElementById("matching-pinyin");
-const matchingVietnameseEl = document.getElementById("matching-vietnamese");
-const matchingPinyinColumnEl = document.getElementById("matching-pinyin-column");
-const matchingGridEl = document.getElementById("matching-grid");
-const btnToggleMatchingPinyin = document.getElementById("btn-toggle-matching-pinyin");
 const btnNextMatching = document.getElementById("btn-next-matching");
 
 // DOM Elements - Quiz
@@ -305,13 +299,12 @@ let questionAnswerAnswered = false;
 let questionAnswerShouldShuffle = false;
 
 // --- LOGIC MATCHING ---
-const MATCHING_SIZE = 6;
+const MATCHING_SIZE = 8;
 let matchingWords = [];
 let matchingSelections = {};
 let matchingCorrectIds = new Set();
 let matchingIsLocked = false;
 let matchingResetTimeout = null;
-let matchingPinyinVisible = true;
 let questionAnswerPinyinVisible = true;
 let questionAnswerQuestionVisible = false;
 let readingPinyinVisible = false;
@@ -374,13 +367,12 @@ function startMatching() {
   matchingWords = [];
   const usedValues = {
     word: new Set(),
-    pinyin: new Set(),
-    meaning: new Set()
+    pinyin: new Set()
   };
 
   for (const word of shuffleList(filteredWords)) {
-    const values = [word.word, word.pinyin, word.meaning];
-    const fields = ["word", "pinyin", "meaning"];
+    const values = [word.word, word.pinyin];
+    const fields = ["word", "pinyin"];
     if (fields.some((field, index) => usedValues[field].has(values[index]))) continue;
 
     matchingWords.push(word);
@@ -396,17 +388,13 @@ function startMatching() {
 function renderMatchingBoard() {
   const columns = [
     [matchingChineseEl, "word"],
-    [matchingPinyinEl, "pinyin"],
-    [matchingVietnameseEl, "meaning"]
+    [matchingPinyinEl, "pinyin"]
   ];
 
-  matchingProgressEl.textContent = `${matchingCorrectIds.size} / ${matchingWords.length} bộ đúng`;
+  matchingProgressEl.textContent = `${matchingCorrectIds.size} / ${matchingWords.length} cặp đúng`;
   matchingFeedbackEl.textContent = matchingWords.length
-    ? (matchingPinyinVisible ? "Chọn một ô ở mỗi cột" : "Chọn một ô ở mỗi cột đang hiện")
+    ? "Chọn một ô ở mỗi cột"
     : "Không có từ phù hợp";
-  matchingPinyinColumnEl.classList.toggle("hidden", !matchingPinyinVisible);
-  matchingGridEl.classList.toggle("matching-grid-without-pinyin", !matchingPinyinVisible);
-  btnToggleMatchingPinyin.textContent = matchingPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
   btnNextMatching.classList.toggle("hidden", matchingWords.length === 0 || matchingCorrectIds.size !== matchingWords.length);
 
   columns.forEach(([container, field]) => {
@@ -430,9 +418,7 @@ function selectMatchingOption(field, id, button) {
   button.parentElement.querySelectorAll(".matching-option").forEach(option => option.classList.remove("selected"));
   button.classList.add("selected");
 
-  const requiredFields = matchingPinyinVisible
-    ? ["word", "pinyin", "meaning"]
-    : ["word", "meaning"];
+  const requiredFields = ["word", "pinyin"];
   if (requiredFields.some(requiredField => !matchingSelections[requiredField])) return;
 
   const selectedIds = requiredFields.map(requiredField => matchingSelections[requiredField]);
@@ -457,13 +443,6 @@ function selectMatchingOption(field, id, button) {
 }
 
 btnNextMatching.addEventListener("click", startMatching);
-btnToggleMatchingPinyin.addEventListener("click", () => {
-  matchingPinyinVisible = !matchingPinyinVisible;
-  btnToggleMatchingPinyin.textContent = matchingPinyinVisible ? "Ẩn cột pinyin" : "Hiện cột pinyin";
-  btnToggleMatchingPinyin.setAttribute("aria-expanded", String(matchingPinyinVisible));
-  matchingSelections = {};
-  renderMatchingBoard();
-});
 
 // --- FILTERS & QUIZ ---
 const STUDY_TYPE_FILTERS = {
@@ -1230,27 +1209,6 @@ function selectQuestionAnswer(answer, selectedButton) {
   btnNextQuestionAnswer.classList.remove("hidden");
 }
 
-btnCheckQuestionAnswer.addEventListener("click", () => {
-  if (questionAnswerAnswered) {
-    advanceQuestionAnswer();
-    return;
-  }
-
-  const currentQuestion = questionAnswerQuestions[currentQuestionAnswerIndex];
-  if (!currentQuestion) return;
-
-  const expectedAnswer = normalizeChineseAnswer(currentQuestion.answerChinese);
-  const inputAnswer = normalizeChineseAnswer(questionAnswerInputEl.value);
-  recordQuestionAnswer(inputAnswer === expectedAnswer);
-  questionAnswerInputEl.disabled = true;
-  btnCheckQuestionAnswer.textContent = "Câu tiếp theo ➡";
-});
-
-btnReplayQuestionAnswer.addEventListener("click", () => {
-  const currentQuestion = questionAnswerQuestions[currentQuestionAnswerIndex];
-  if (currentQuestion) speakChinese(currentQuestion.question);
-});
-
 function advanceQuestionAnswer() {
   if (!questionAnswerAnswered) {
     const skippedQuestion = questionAnswerQuestions[currentQuestionAnswerIndex];
@@ -1262,54 +1220,6 @@ function advanceQuestionAnswer() {
   currentQuestionAnswerIndex++;
   loadQuestionAnswer();
 }
-
-btnNextQuestionAnswer.addEventListener("click", advanceQuestionAnswer);
-btnToggleQuestionAnswerQuestion.addEventListener("click", () => {
-  const currentQuestion = questionAnswerQuestions[currentQuestionAnswerIndex];
-  if (!currentQuestion || questionAnswerAnswered) return;
-
-  questionAnswerQuestionVisible = !questionAnswerQuestionVisible;
-  questionAnswerReviewEl.classList.toggle("hidden", !questionAnswerQuestionVisible);
-  if (questionAnswerModeEl.value === "chinese") {
-    questionAnswerReviewLabelEl.textContent = "Nghĩa tiếng Việt của câu trả lời";
-    questionAnswerQuestionTextEl.textContent = "";
-    questionAnswerQuestionPinyinEl.textContent = "";
-    questionAnswerQuestionMeaningEl.textContent = "";
-    questionAnswerAnswerMeaningEl.textContent = questionAnswerQuestionVisible ? currentQuestion.answerMeaning : "";
-    questionAnswerAnswerMeaningEl.classList.toggle("hidden", !questionAnswerQuestionVisible);
-    btnToggleQuestionAnswerQuestion.textContent = questionAnswerQuestionVisible
-      ? "Ẩn nghĩa tiếng Việt của câu trả lời"
-      : "Hiển thị nghĩa tiếng Việt của câu trả lời";
-    btnToggleQuestionAnswerQuestion.setAttribute("aria-expanded", String(questionAnswerQuestionVisible));
-    return;
-  }
-
-  questionAnswerReviewLabelEl.textContent = "Câu hỏi";
-  questionAnswerQuestionTextEl.textContent = questionAnswerQuestionVisible ? currentQuestion.question : "";
-  questionAnswerQuestionPinyinEl.textContent = questionAnswerQuestionVisible ? currentQuestion.questionPinyin : "";
-  questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
-  questionAnswerAnswerMeaningEl.textContent = "";
-  questionAnswerAnswerMeaningEl.classList.add("hidden");
-  btnToggleQuestionAnswerQuestion.textContent = questionAnswerQuestionVisible ? "Ẩn câu hỏi" : "Hiển thị câu hỏi";
-  btnToggleQuestionAnswerQuestion.setAttribute("aria-expanded", String(questionAnswerQuestionVisible));
-  btnToggleQuestionAnswerPinyin.classList.toggle("hidden", !questionAnswerQuestionVisible);
-});
-btnToggleQuestionAnswerPinyin.addEventListener("click", () => {
-  questionAnswerPinyinVisible = !questionAnswerPinyinVisible;
-  btnToggleQuestionAnswerPinyin.textContent = questionAnswerPinyinVisible ? "Ẩn pinyin" : "Hiện pinyin";
-  btnToggleQuestionAnswerPinyin.setAttribute("aria-pressed", String(questionAnswerPinyinVisible));
-  questionAnswerOptionsEl.querySelectorAll(".answer-option-pinyin").forEach(pinyin => {
-    pinyin.classList.toggle("hidden", !questionAnswerPinyinVisible);
-  });
-  questionAnswerQuestionPinyinEl.classList.toggle("hidden", !questionAnswerPinyinVisible);
-});
-questionAnswerModeEl.addEventListener("change", () => {
-  if (getFilteredQuestionAnswers().length < 4) {
-    startQuestionAnswerPractice(false, false);
-    return;
-  }
-  loadQuestionAnswer();
-});
 
 function updateTopicOptions() {
   const availableWords = getAvailableWords();
@@ -2462,7 +2372,6 @@ const studyScreens = [
   readingScreen,
   typingScreen,
   sentenceBuildScreen,
-  questionAnswerScreen,
   speakingScreen,
 ];
 const studyModeButtons = [
@@ -2472,7 +2381,6 @@ const studyModeButtons = [
   [readingModeBtn, "reading"],
   [typingModeBtn, "typing"],
   [sentenceBuildModeBtn, "sentence-build"],
-  [questionAnswerModeBtn, "question-answer"],
   [speakingModeBtn, "speaking"]
 ];
 
@@ -2537,16 +2445,6 @@ function showListeningScreen() {
   startListeningPractice();
 }
 
-function showQuestionAnswerScreen() {
-  if (getFilteredQuestionAnswers().length < 4) {
-    alert("Cần ít nhất 4 cặp hỏi đáp trong bộ lọc hiện tại để bắt đầu luyện hỏi đáp!");
-    return;
-  }
-
-  setActiveScreen(questionAnswerScreen, "question-answer");
-  startQuestionAnswerPractice();
-}
-
 function showTypingScreen() {
   const filteredWords = getFilteredWords();
   if (filteredWords.length === 0) {
@@ -2592,7 +2490,6 @@ matchingModeBtn.addEventListener("click", showMatchingScreen);
 quizModeBtn.addEventListener("click", showQuizScreen);
 typingModeBtn.addEventListener("click", showTypingScreen);
 listeningModeBtn.addEventListener("click", showListeningScreen);
-questionAnswerModeBtn.addEventListener("click", showQuestionAnswerScreen);
 readingModeBtn.addEventListener("click", showReadingScreen);
 speakingModeBtn.addEventListener("click", showSpeakingScreen);
 sentenceBuildModeBtn.addEventListener("click", showSentenceBuildScreen);
@@ -2612,9 +2509,6 @@ document.addEventListener("keydown", (event) => {
       if (currentWord) {
         speakChinese(listeningContentModeEl.value === "example" ? currentWord.chinese : currentWord.word);
       }
-    } else if (currentMode === "question-answer") {
-      const currentQuestion = questionAnswerQuestions[currentQuestionAnswerIndex];
-      if (currentQuestion) speakChinese(currentQuestion.question);
     } else if (currentMode === "reading") {
       const currentWord = readingQuestions[currentReadingIndex];
       if (currentWord) speakChinese(currentWord.sentence);
@@ -2669,27 +2563,6 @@ document.addEventListener("keydown", (event) => {
     if (!listeningInputEl.disabled) {
       requestAnimationFrame(() => listeningInputEl.focus());
     }
-  }
-
-  if (currentMode === "question-answer"
-    && document.activeElement === questionAnswerInputEl && !btnCheckQuestionAnswer.disabled) {
-    event.preventDefault();
-    btnCheckQuestionAnswer.click();
-    return;
-  }
-
-  if (currentMode === "question-answer" && questionAnswerAnswered
-    && ["multiple-choice", "chinese-choice"].includes(questionAnswerModeEl.value)) {
-    event.preventDefault();
-    btnNextQuestionAnswer.click();
-    return;
-  }
-
-  if (currentMode === "question-answer" && questionAnswerAnswered
-    && questionAnswerModeEl.value === "chinese") {
-    event.preventDefault();
-    btnCheckQuestionAnswer.click();
-    return;
   }
 
   if (currentMode === "reading" && readingAnswered && !btnCheckReading.disabled) {
