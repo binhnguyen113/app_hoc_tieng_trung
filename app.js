@@ -1,8 +1,8 @@
 const DATA_SOURCES = [
   { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk1.json" },
-  { id: "hsk1", label: "Tiếng Trung HSK1 3.0 (Nâng cao)", file: "./data-hsk1-pro.json" },
-  { id: "hsk2", label: "Tiếng Trung HSK2 3.0", file: "./data-hsk2.json" },
-  { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
+  // { id: "hsk1", label: "Tiếng Trung HSK1 3.0 (Nâng cao)", file: "./data-hsk1-pro.json" },
+  // { id: "hsk2", label: "Tiếng Trung HSK2 3.0", file: "./data-hsk2.json" },
+  // { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
 
 function normalizeWordRecord(item, topic, id) {
@@ -229,6 +229,8 @@ const btnNextQuestionAnswer = document.getElementById("btn-next-question-answer"
 const typingScoreEl = document.getElementById("typing-score");
 const typingProgressEl = document.getElementById("typing-progress");
 const typingContentModeEl = document.getElementById("typing-content-mode");
+const typingAnswerModeContainerEl = document.getElementById("typing-answer-mode-container");
+const typingAnswerModeEl = document.getElementById("typing-answer-mode");
 const typingPromptEl = document.getElementById("typing-prompt");
 const typingWordEl = document.getElementById("typing-word");
 const typingPhoneticEl = document.getElementById("typing-phonetic");
@@ -1402,18 +1404,28 @@ function renderTypingQuestion() {
 
   const isExampleMode = typingContentModeEl.value === "example";
   const vietnameseText = currentQuestion.meaning;
+  const isVietnameseAnswer = !isExampleMode && typingAnswerModeEl.value === "vietnamese";
+  const chineseText = getTypingChineseText(currentQuestion);
 
+  typingAnswerModeContainerEl.classList.toggle("hidden", isExampleMode);
   typingPromptEl.textContent = isExampleMode
     ? `Nhìn nghĩa tiếng Việt của ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"} rồi gõ câu đó bằng chữ Hán`
-    : "Nhìn nghĩa tiếng Việt rồi gõ từ bằng chữ Hán";
+    : isVietnameseAnswer
+      ? "Nhìn từ tiếng Trung rồi nhập nghĩa tiếng Việt"
+      : "Nhìn nghĩa tiếng Việt rồi gõ từ bằng chữ Hán";
   typingInputLabelEl.textContent = isExampleMode
     ? `Gõ chữ Hán của ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"}`
-    : "Gõ từ bằng chữ Hán";
-  typingWordEl.textContent = vietnameseText;
+    : isVietnameseAnswer
+      ? "Nhập nghĩa tiếng Việt của từ"
+      : "Gõ từ bằng chữ Hán";
+  typingWordEl.textContent = isVietnameseAnswer ? chineseText : vietnameseText;
   typingPhoneticEl.textContent = "";
   typingInputEl.placeholder = isExampleMode
     ? `Nhập ${currentQuestion.type === "question" ? "câu hỏi" : "câu trả lời"} bằng chữ Hán...`
-    : "Nhập từ bằng chữ Hán...";
+    : isVietnameseAnswer
+      ? "Nhập nghĩa tiếng Việt..."
+      : "Nhập từ bằng chữ Hán...";
+  typingInputEl.lang = isVietnameseAnswer ? "vi" : "zh";
   typingProgressEl.textContent = typingIsRetryRound
     ? `Còn sai: ${typingTotalQuestions - typingCorrectIds.size} câu`
     : `Câu ${currentTypingIndex + 1} / ${typingQuestions.length}`;
@@ -1453,21 +1465,28 @@ btnCheckTyping.addEventListener("click", () => {
   const isExampleMode = typingContentModeEl.value === "example";
   const chineseText = getTypingChineseText(currentQuestion);
   const phoneticText = currentQuestion.pinyin;
-  const correctValues = chineseText
-    .split(",")
-    .map(normalizeChineseAnswer);
-  const inputValue = normalizeChineseAnswer(typingInputEl.value);
+  const isVietnameseAnswer = !isExampleMode && typingAnswerModeEl.value === "vietnamese";
+  const expectedAnswer = isVietnameseAnswer ? currentQuestion.meaning : chineseText;
+  const correctValues = isVietnameseAnswer
+    ? [expectedAnswer, ...expectedAnswer.split(/[,，;；/]/)].map(normalizeAnswer).filter(Boolean)
+    : expectedAnswer.split(",").map(normalizeChineseAnswer);
+  const inputValue = isVietnameseAnswer
+    ? normalizeAnswer(typingInputEl.value)
+    : normalizeChineseAnswer(typingInputEl.value);
+  const displayedAnswer = isVietnameseAnswer
+    ? `${formatChineseAnswer(chineseText, phoneticText)} — ${currentQuestion.meaning}`
+    : formatChineseAnswer(chineseText, phoneticText);
 
   if (correctValues.includes(inputValue)) {
     typingCorrectIds.add(currentQuestion.id);
     typingScore = typingCorrectIds.size;
     typingScoreEl.textContent = typingScore;
-    setFeedback(typingFeedbackEl, `✅ Đúng! Đáp án: ${formatChineseAnswer(chineseText, phoneticText)}`, true);
+    setFeedback(typingFeedbackEl, `✅ Đúng! Đáp án: ${displayedAnswer}`, true);
   } else {
     addPracticeMistake(typingRoundMistakes, typingQuestions, currentQuestion);
     setFeedback(
       typingFeedbackEl,
-      `❌ Sai. Đáp án đúng là: ${formatChineseAnswer(chineseText, phoneticText)}`,
+      `❌ Sai. Đáp án đúng là: ${displayedAnswer}`,
       false
     );
   }
@@ -1558,6 +1577,7 @@ function advanceTypingQuestion() {
 }
 
 typingContentModeEl.addEventListener("change", () => startTypingPractice());
+typingAnswerModeEl.addEventListener("change", () => renderTypingQuestion());
 
 let readingQuestions = [];
 let currentReadingIndex = 0;
