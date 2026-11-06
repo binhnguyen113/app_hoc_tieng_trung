@@ -380,5 +380,178 @@
                 "answerMeaning": "Được, tôi qua ngay đây."
             }
         ]
+    },
+    {
+        "topic": "Lesson 3",
+        "words": [
+            {
+                "word": "回来",
+                "type": "verb",
+                "pinyin": "huílái",
+                "meaning": "trở về, về đây",
+                "example": "你什么时候能做完工作回来？",
+                "examplePinyin": "Nǐ shénme shíhou néng zuò wán gōngzuò huílái?",
+                "exampleMeaning": "Khi nào bạn có thể làm xong việc rồi trở về?",
+                "answerChinese": "我刚看了看时间，大概五点能回来。",
+                "answerPinyin": "Wǒ gāng kàn le kàn shíjiān, dàgài wǔ diǎn néng huílái.",
+                "answerMeaning": "Tôi vừa xem qua giờ một chút, khoảng năm giờ có thể về."
+            },
+            {
+                "word": "这么",
+                "type": "pronoun",
+                "pinyin": "zhème",
+                "meaning": "như thế này, thế này",
+                "example": "你怎么准备了这么多样水果？",
+                "examplePinyin": "Nǐ zěnme zhǔnbèi le zhème duō yàng shuǐguǒ?",
+                "exampleMeaning": "Sao bạn lại chuẩn bị nhiều loại hoa quả thế này?",
+                "answerChinese": "你尝一尝吧，我都洗干净了。",
+                "answerPinyin": "Nǐ cháng yi cháng ba, wǒ dōu xǐ gānjìng le.",
+                "answerMeaning": "Bạn nếm thử một chút đi, tôi đều đã rửa sạch cả rồi."
+            },
+            {
+                "word": "完",
+                "type": "verb",
+                "pinyin": "wán",
+                "meaning": "xong, hết",
+                "example": "你看完那本新书了吗？",
+                "examplePinyin": "Nǐ kàn wán nà běn xīn shū le ma?",
+                "exampleMeaning": "Bạn đã đọc xong cuốn sách mới đó chưa?",
+                "answerChinese": "我还没看完，打算周末再看一看。",
+                "answerPinyin": "Wǒ hái méi kàn wán, dǎsuàn zhōumò zài kàn yi kàn.",
+                "answerMeaning": "Tôi vẫn chưa đọc xong, định cuối tuần sẽ đọc thêm một chút."
+            },
+            {
+                "word": "一起",
+                "type": "adverb",
+                "pinyin": "yìqǐ",
+                "meaning": "cùng nhau",
+                "example": "听懂老师的要求以后，我们一起做练习好吗？",
+                "examplePinyin": "Tīng dǒng lǎoshī de yāoqiú yǐhòu, wǒmen yìqǐ zuò liànxí hǎo ma?",
+                "exampleMeaning": "Sau khi nghe hiểu yêu cầu của giáo viên, chúng mình cùng làm bài tập nhé?",
+                "answerChinese": "好，我刚才看了看这道题，我们一起想一想吧。",
+                "answerPinyin": "Hǎo, wǒ gāngcái kàn le kàn zhè dào tí, wǒmen yìqǐ xiǎng yi xiǎng ba.",
+                "answerMeaning": "Được, vừa rồi tôi có xem qua câu này, chúng mình cùng suy nghĩ xem sao."
+            },
+            {
+                "word": "出去",
+                "type": "verb",
+                "pinyin": "chūqù",
+                "meaning": "ra ngoài, đi ra ngoài",
+                "example": "你写完作业了没有？要不要出去散散步？",
+                "examplePinyin": "Nǐ xiě wán zuòyè le méiyǒu? Yào bu yào chūqù sànsanbù?",
+                "exampleMeaning": "Bạn đã viết xong bài tập chưa? Có muốn ra ngoài đi dạo một chút không?",
+                "answerChinese": "我做好了，等我收拾收拾就跟你出去。",
+                "answerPinyin": "Wǒ zuò hǎo le, děng wǒ shōushi shōushi jiù gēn nǐ chūqù.",
+                "answerMeaning": "Tôi làm xong rồi, đợi tôi thu dọn một chút rồi cùng bạn ra ngoài."
+            },
+            {
+                "word": "洗",
+                "type": "verb",
+                "pinyin": "xǐ",
+                "meaning": "rửa, giặt",
+                "example": "你能帮我把这些苹果洗一洗吗？",
+                "examplePinyin": "Nǐ néng bāng wǒ bǎ zhèxiē píngguǒ xǐ yi xǐ ma?",
+                "exampleMeaning": "Bạn có thể giúp tôi rửa qua mấy quả táo này được không?",
+                "answerChinese": "没问题，我已经洗干净了，你尝尝吧。",
+                "answerPinyin": "Méi wèntí, wǒ yǐjīng xǐ gānjìng le, nǐ chángchang ba.",
+                "answerMeaning": "Không vấn đề gì, tôi đã rửa sạch rồi, bạn ăn thử đi."
+            },
+            {
+                "word": "自己",
+                "type": "pronoun",
+                "pinyin": "zìjǐ",
+                "meaning": "tự mình, bản thân",
+                "example": "这道题你想一想，能自己做对吗？",
+                "examplePinyin": "Zhè dào tí nǐ xiǎng yi xiǎng, néng zìjǐ zuò duì ma?",
+                "exampleMeaning": "Câu này bạn suy nghĩ một chút, có thể tự làm đúng không?",
+                "answerChinese": "我刚才问了问老师，现在自己做好了。",
+                "answerPinyin": "Wǒ gāngcái wèn le wèn lǎoshī, xiànzài zìjǐ zuò hǎo le.",
+                "answerMeaning": "Vừa rồi tôi đã hỏi qua thầy giáo, bây giờ tự làm xong rồi."
+            },
+            {
+                "word": "拿",
+                "type": "verb",
+                "pinyin": "ná",
+                "meaning": "cầm, lấy, mang",
+                "example": "你拿到明天的电影票了吗？",
+                "examplePinyin": "Nǐ ná dào le míngtiān de diànyǐng piào le ma?",
+                "exampleMeaning": "Bạn đã lấy được vé xem phim ngày mai chưa?",
+                "answerChinese": "我拿到了，你快看一看。",
+                "answerPinyin": "Wǒ ná dào le, nǐ kuài kàn yi kàn.",
+                "answerMeaning": "Tôi lấy được rồi, bạn mau xem thử đi."
+            },
+            {
+                "word": "手",
+                "type": "noun",
+                "pinyin": "shǒu",
+                "meaning": "tay, bàn tay",
+                "example": "你的手洗干净了没有？快来吃水果。",
+                "examplePinyin": "Nǐ de shǒu xǐ gānjìng le méiyǒu? Kuài lái chī shuǐguǒ.",
+                "exampleMeaning": "Tay bạn đã rửa sạch chưa? Mau lại ăn hoa quả này.",
+                "answerChinese": "我洗好了，你摸一摸，手还是很热的。",
+                "answerPinyin": "Wǒ xǐ hǎo le, nǐ mō yi mō, shǒu hái shì hěn rè de.",
+                "answerMeaning": "Tôi rửa xong rồi, bạn sờ thử xem, tay vẫn còn rất ấm."
+            },
+            {
+                "word": "不错",
+                "type": "adjective",
+                "pinyin": "búcuò",
+                "meaning": "tốt, khá tốt, không tồi",
+                "example": "这篇课文你读懂了吗？写得怎么样？",
+                "examplePinyin": "Zhè piān kèwén nǐ dú dǒng le ma? Xiě de zěnmeyàng?",
+                "exampleMeaning": "Bài khóa này bạn đã đọc hiểu chưa? Viết thế nào?",
+                "answerChinese": "我看了看，觉得写得很不错。",
+                "answerPinyin": "Wǒ kàn le kàn, juéde xiě de hěn búcuò.",
+                "answerMeaning": "Tôi đã xem qua rồi, thấy viết rất hay."
+            },
+            {
+                "word": "送",
+                "type": "verb",
+                "pinyin": "sòng",
+                "meaning": "tặng, tiễn, đưa",
+                "example": "你买好送给朋友的生日礼物了吗？",
+                "examplePinyin": "Nǐ mǎi hǎo sòng gěi péngyou de shēngrì lǐwù le ma?",
+                "exampleMeaning": "Bạn đã mua xong quà sinh nhật tặng cho bạn chưa?",
+                "answerChinese": "我买好了，你帮我看看这个礼物好不好。",
+                "answerPinyin": "Wǒ mǎi hǎo le, nǐ bāng wǒ kànkan zhège lǐwù hǎo bu hǎo.",
+                "answerMeaning": "Tôi mua xong rồi, bạn xem giúp tôi món quà này có ổn không."
+            },
+            {
+                "word": "回去",
+                "type": "verb",
+                "pinyin": "huíqu",
+                "meaning": "về, quay về",
+                "example": "你想好了什么时候回去吗？",
+                "examplePinyin": "Nǐ xiǎng hǎo le shénme shíhou huíqu ma?",
+                "exampleMeaning": "Bạn đã tính kỹ khi nào quay về chưa?",
+                "answerChinese": "我找了找车票，买到了明天的票就回去。",
+                "answerPinyin": "Wǒ zhǎo le zhǎo chēpiào, mǎi dào le míngtiān de piào jiù huíqu.",
+                "answerMeaning": "Tôi đã tìm vé rồi, mua được vé ngày mai là tôi về."
+            },
+            {
+                "word": "每",
+                "type": "pronoun",
+                "pinyin": "měi",
+                "meaning": "mỗi",
+                "example": "你每天学完生词，都会复习复习吗？",
+                "examplePinyin": "Nǐ měitiān xué wán shēngcí, dōu huì fùxí fùxí ma?",
+                "exampleMeaning": "Mỗi ngày học xong từ mới, bạn đều ôn tập lại một chút chứ?",
+                "answerChinese": "对，我每天都读一读课文，做好了练习。",
+                "answerPinyin": "Duì, wǒ měitiān dōu dú yi dú kèwén, zuò hǎo le liànxí.",
+                "answerMeaning": "Đúng vậy, mỗi ngày tôi đều đọc qua bài khóa và làm xong bài tập."
+            },
+            {
+                "word": "累",
+                "type": "adjective",
+                "pinyin": "lèi",
+                "meaning": "mệt, mệt mỏi",
+                "example": "今天做完工作，你累不累？",
+                "examplePinyin": "Jīntiān zuò wán gōngzuò, nǐ lèi bu lèi?",
+                "exampleMeaning": "Hôm nay làm xong việc, bạn có mệt không?",
+                "answerChinese": "我真有点儿累，想坐下来休息休息。",
+                "answerPinyin": "Wǒ zhēn yǒudiǎnr lèi, xiǎng zuò xiàlai xiūxi xiūxi.",
+                "answerMeaning": "Tôi thật sự hơi mệt, muốn ngồi xuống nghỉ ngơi một chút."
+            }
+        ]
     }
 ]
