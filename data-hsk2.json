@@ -786,5 +786,214 @@
                 "answerMeaning": "Bởi vì đồ đạc ở đó cái gì cũng có, cho nên tôi từng đến rất nhiều lần."
             }
         ]
+    },
+    {
+        "topic": "Lesson 5",
+        "words": [
+            {
+                "word": "快",
+                "type": "adverb",
+                "pinyin": "kuài",
+                "meaning": "nhanh, mau",
+                "example": "都八点多了，你快下来吧！",
+                "examplePinyin": "Dōu bā diǎn duō le, nǐ kuài xiàlái ba!",
+                "exampleMeaning": "Đã hơn tám giờ rồi, bạn mau xuống đây đi!",
+                "answerChinese": "来了来了，我拿好礼物就下去。",
+                "answerPinyin": "Lái le lái le, wǒ ná hǎo lǐwù jiù xiàqu.",
+                "answerMeaning": "Xuống đây, xuống đây, tôi cầm xong quà là xuống ngay."
+            },
+            {
+                "word": "下来",
+                "type": "verb",
+                "pinyin": "xiàlái",
+                "meaning": "xuống, xuống đây",
+                "example": "都等了你十分钟了，你什么时候下来？",
+                "examplePinyin": "Dōu děng le nǐ shí fēnzhōng le, nǐ shénme shíhou xiàlái?",
+                "exampleMeaning": "Đã đợi bạn mười phút rồi, khi nào bạn mới xuống đây?",
+                "answerChinese": "我马上拿书包下来。",
+                "answerPinyin": "Wǒ mǎshàng ná shūbāo xiàlái.",
+                "answerMeaning": "Tôi mang cặp sách xuống ngay đây."
+            },
+            {
+                "word": "上来",
+                "type": "verb",
+                "pinyin": "shànglái",
+                "meaning": "lên, lên đây",
+                "example": "都中午十二点了，你怎么还不端菜上来？",
+                "examplePinyin": "Dōu zhōngwǔ shí'èr diǎn le, nǐ zěnme hái bù duān cài shànglái?",
+                "exampleMeaning": "Đã mười hai giờ trưa rồi, sao bạn vẫn chưa bưng thức ăn lên đây?",
+                "answerChinese": "菜刚做好，我这就拿上来。",
+                "answerPinyin": "Cài gāng zuò hǎo, wǒ zhè jiù ná shànglái.",
+                "answerMeaning": "Thức ăn vừa làm xong, tôi mang lên ngay đây."
+            },
+            {
+                "word": "上去",
+                "type": "verb",
+                "pinyin": "shàngqu",
+                "meaning": "lên, lên đó",
+                "example": "老师都进教室了，我们快上去吧？",
+                "examplePinyin": "Lǎoshī dōu jìn jiàoshì le, wǒmen kuài shàngqu ba?",
+                "exampleMeaning": "Giáo viên đã vào lớp rồi, chúng mình mau lên đó đi?",
+                "answerChinese": "好，我买两瓶水就上楼去。",
+                "answerPinyin": "Hǎo, wǒ mǎi liǎng píng shuǐ jiù shàng lóu qu.",
+                "answerMeaning": "Được, tôi mua hai chai nước rồi lên lầu ngay."
+            },
+            {
+                "word": "下面",
+                "type": "noun",
+                "pinyin": "xiàmiàn",
+                "meaning": "bên dưới, phía dưới",
+                "example": "都这么晚了，谁还在楼下面站着？",
+                "examplePinyin": "Dōu zhème wǎn le, shéi hái zài lóu xiàmiàn zhàn zhe?",
+                "exampleMeaning": "Đã muộn thế này rồi, ai vẫn còn đứng ở dưới lầu thế?",
+                "answerChinese": "是快递员，他给爷爷送来了一箱水果。",
+                "answerPinyin": "Shì kuàidìyuán, tā gěi yéye sòng lái le yì xiāng shuǐguǒ.",
+                "answerMeaning": "Là nhân viên giao hàng, anh ấy mang tới cho ông nội một thùng hoa quả."
+            },
+            {
+                "word": "等",
+                "type": "verb",
+                "pinyin": "děng",
+                "meaning": "đợi, chờ",
+                "example": "都快九点了，你在门口等谁呢？",
+                "examplePinyin": "Dōu kuài jiǔ diǎn le, nǐ zài ménkǒu děng shéi ne?",
+                "exampleMeaning": "Đã gần chín giờ rồi, bạn đang đợi ai ở cổng thế?",
+                "answerChinese": "我在等朋友送外卖过来。",
+                "answerPinyin": "Wǒ zài děng péngyou sòng wàimài guòlái.",
+                "answerMeaning": "Tôi đang đợi bạn mang đồ ăn ngoài qua đây."
+            },
+            {
+                "word": "一会儿",
+                "type": "noun",
+                "pinyin": "yíhuìr",
+                "meaning": "một lát, một chốc",
+                "example": "都下午两点了，你还要再睡一会儿吗？",
+                "examplePinyin": "Dōu xiàwǔ liǎng diǎn le, nǐ hái yào zài shuì yíhuìr ma?",
+                "exampleMeaning": "Đã hai giờ chiều rồi, bạn còn muốn ngủ thêm một lát nữa à?",
+                "answerChinese": "不睡了，我洗把脸就下楼去。",
+                "answerPinyin": "Bú shuì le, wǒ xǐ bǎ liǎn jiù xià lóu qu.",
+                "answerMeaning": "Không ngủ nữa, tôi rửa mặt một cái là xuống lầu ngay."
+            },
+            {
+                "word": "下去",
+                "type": "verb",
+                "pinyin": "xiàqu",
+                "meaning": "xuống, xuống đó",
+                "example": "朋友在楼下都等急了，你怎么还不下去？",
+                "examplePinyin": "Péngyou zài lóuxià dōu děng jí le, nǐ zěnme hái bú xiàqu?",
+                "exampleMeaning": "Bạn ở dưới lầu đợi sốt ruột cả rồi, sao cậu vẫn chưa xuống đó?",
+                "answerChinese": "我这就带雨伞下去。",
+                "answerPinyin": "Wǒ zhè jiù dài yǔsǎn xiàqu.",
+                "answerMeaning": "Tôi mang ô xuống ngay đây."
+            },
+            {
+                "word": "进来",
+                "type": "verb",
+                "pinyin": "jìnlái",
+                "meaning": "vào, vào đây",
+                "example": "都开始上课了，站在外面的同学快进来吧！",
+                "examplePinyin": "Dōu kāishǐ shàngkè le, zhàn zài wàimiàn de tóngxué kuài jìnlái ba!",
+                "exampleMeaning": "Đã bắt đầu vào học rồi, các bạn đứng ở bên ngoài mau vào đây đi!",
+                "answerChinese": "老师好，我拿作业本进来交。",
+                "answerPinyin": "Lǎoshī hǎo, wǒ ná zuòyèběn jìnlái jiāo.",
+                "answerMeaning": "Em chào thầy, em mang vở bài tập vào nộp ạ."
+            },
+            {
+                "word": "爷爷",
+                "type": "noun",
+                "pinyin": "yéye",
+                "meaning": "ông nội",
+                "example": "都六点半了，爷爷怎么还没散步回来？",
+                "examplePinyin": "Dōu liù diǎn bàn le, yéye zěnme hái méi sànbù huílái?",
+                "exampleMeaning": "Đã sáu giờ rưỡi rồi, sao ông nội vẫn chưa đi dạo về thế?",
+                "answerChinese": "爷爷刚进院子来，手里还提着菜呢。",
+                "answerPinyin": "Yéye gāng jìn yuànzi lái, shǒulǐ hái tí zhe cài ne.",
+                "answerMeaning": "Ông nội vừa bước vào sân rồi, trong tay còn đang xách rau nữa đấy."
+            },
+            {
+                "word": "奶奶",
+                "type": "noun",
+                "pinyin": "nǎinai",
+                "meaning": "bà nội",
+                "example": "奶奶都八十多岁了，还每天下楼去买菜吗？",
+                "examplePinyin": "Nǎinai dōu bāshí duō suì le, hái měitiān xià lóu qu mǎi cài ma?",
+                "exampleMeaning": "Bà nội đã hơn tám mươi tuổi rồi, vẫn mỗi ngày xuống lầu đi chợ à?",
+                "answerChinese": "是啊，她每次买完菜都自己提上来。",
+                "answerPinyin": "Shì a, tā měi cì mǎi wán cài dōu zìjǐ tí shànglái.",
+                "answerMeaning": "Đúng vậy, lần nào mua đồ ăn xong bà cũng tự xách lên."
+            },
+            {
+                "word": "礼物",
+                "type": "noun",
+                "pinyin": "lǐwù",
+                "meaning": "quà, quà tặng",
+                "example": "都到生日聚会的时间了，你带礼物来了吗？",
+                "examplePinyin": "Dōu dào shēngrì jùhuì de shíjiān le, nǐ dài lǐwù lái le ma?",
+                "exampleMeaning": "Đã đến giờ tiệc sinh nhật rồi, bạn đã mang quà tới chưa?",
+                "answerChinese": "带了，我从家里带来了一盒巧克力。",
+                "answerPinyin": "Dài le, wǒ cóng jiālǐ dài lái le yì hé qiǎokèlì.",
+                "answerMeaning": "Mang rồi, tôi mang từ nhà tới một hộp sô-cô-la."
+            },
+            {
+                "word": "准备",
+                "type": "verb",
+                "pinyin": "zhǔnbèi",
+                "meaning": "chuẩn bị",
+                "example": "客人都快到门口了，晚饭你准备好了吗？",
+                "examplePinyin": "Kèrén dōu kuài dào ménkǒu le, wǎnfàn nǐ zhǔnbèi hǎo le ma?",
+                "exampleMeaning": "Khách đã sắp tới cửa rồi, bữa tối bạn chuẩn bị xong chưa?",
+                "answerChinese": "准备好了，我马上端水果出去。",
+                "answerPinyin": "Zhǔnbèi hǎo le, wǒ mǎshàng duān shuǐguǒ chūqu.",
+                "answerMeaning": "Chuẩn bị xong rồi, tôi bưng hoa quả ra ngoài ngay đây."
+            },
+            {
+                "word": "奶茶",
+                "type": "noun",
+                "pinyin": "nǎichá",
+                "meaning": "trà sữa",
+                "example": "都下午四点了，要不要叫外卖送几杯奶茶来？",
+                "examplePinyin": "Dōu xiàwǔ sì diǎn le, yào bu yào jiào wàimài sòng jǐ bēi nǎichá lái?",
+                "exampleMeaning": "Đã bốn giờ chiều rồi, có muốn gọi giao hàng mang mấy cốc trà sữa tới không?",
+                "answerChinese": "太好了，我正好想喝一杯冰奶茶。",
+                "answerPinyin": "Tài hǎo le, wǒ zhènghǎo xiǎng hē yì bēi bīng nǎichá.",
+                "answerMeaning": "Tuyệt quá, tôi cũng đang muốn uống một cốc trà sữa đá."
+            },
+            {
+                "word": "跟",
+                "type": "preposition",
+                "pinyin": "gēn",
+                "meaning": "cùng, với",
+                "example": "都快迟到了，你还不跟我们一起进教室去？",
+                "examplePinyin": "Dōu kuài chídào le, nǐ hái bù gēn wǒmen yìqǐ jìn jiàoshì qu?",
+                "exampleMeaning": "Đã sắp muộn giờ rồi, sao bạn vẫn chưa cùng chúng mình vào lớp học?",
+                "answerChinese": "你们先进去吧，我拿本书就过去。",
+                "answerPinyin": "Nǐmen xiān jìnqu ba, wǒ ná běn shū jiù guòqu.",
+                "answerMeaning": "Các bạn vào trước đi, tôi lấy cuốn sách rồi qua ngay."
+            },
+            {
+                "word": "走",
+                "type": "verb",
+                "pinyin": "zǒu",
+                "meaning": "đi, bước đi, rời đi",
+                "example": "都十一点了，客人怎么还没有走？",
+                "examplePinyin": "Dōu shíyī diǎn le, kèrén zěnme hái méiyǒu zǒu?",
+                "exampleMeaning": "Đã mười một giờ rồi, sao khách vẫn chưa về thế?",
+                "answerChinese": "刚才他下楼去了，已经走远了。",
+                "answerPinyin": "Gāngcái tā xià lóu qu le, yǐjīng zǒu yuǎn le.",
+                "answerMeaning": "Vừa rồi anh ấy xuống lầu rồi, đã đi xa rồi."
+            },
+            {
+                "word": "酒店",
+                "type": "noun",
+                "pinyin": "jiǔdiàn",
+                "meaning": "khách sạn",
+                "example": "都晚上十点了，你们怎么还没回酒店去？",
+                "examplePinyin": "Dōu wǎnshang shí diǎn le, nǐmen zěnme hái méi huí jiǔdiàn qu?",
+                "exampleMeaning": "Đã mười giờ tối rồi, sao các bạn vẫn chưa quay về khách sạn?",
+                "answerChinese": "我们买完特产就打车回去。",
+                "answerPinyin": "Wǒmen mǎi wán tèchǎn jiù dǎchē huíqu.",
+                "answerMeaning": "Chúng tôi mua xong đặc sản là bắt taxi về ngay."
+            }
+        ]
     }
 ]
