@@ -995,5 +995,202 @@
                 "answerMeaning": "Chúng tôi mua xong đặc sản là bắt taxi về ngay."
             }
         ]
+    },
+    {
+        "topic": "Lesson 6",
+        "words": [
+            {
+                "word": "生日",
+                "type": "noun",
+                "pinyin": "shēngrì",
+                "meaning": "sinh nhật",
+                "example": "过生日的时候，你一般会买蛋糕、水果什么的吗？",
+                "examplePinyin": "Guò shēngrì de shíhou, nǐ yìbān huì mǎi dàngāo, shuǐguǒ shénme de ma?",
+                "exampleMeaning": "Khi đón sinh nhật, bạn thường mua bánh kem, hoa quả các thứ không?",
+                "answerChinese": "会啊，大家还会高高兴兴地一起唱生日歌。",
+                "answerPinyin": "Huì a, dàjiā hái huì gāogāoxìngxìng de yìqǐ chàng shēngrì gē.",
+                "answerMeaning": "Có chứ, mọi người còn vui vẻ cùng nhau hát bài hát chúc mừng sinh nhật nữa."
+            },
+            {
+                "word": "忘",
+                "type": "verb",
+                "pinyin": "wàng",
+                "meaning": "quên",
+                "example": "你怎么忘了买蜡烛、气球什么的？",
+                "examplePinyin": "Nǐ zěnme wàng le mǎi làzhú, qìqiú shénme de?",
+                "exampleMeaning": "Sao bạn lại quên mua nến, bóng bay các thứ thế?",
+                "answerChinese": "真不好意思，刚才太忙了，我马上去买一个大大的蛋糕和蜡烛。",
+                "answerPinyin": "Zhēn bù hǎoyìsi, gāngcái tài máng le, wǒ mǎshàng qù mǎi yí ge dàdà de dàngāo hé làzhú.",
+                "answerMeaning": "Thật ngại quá, vừa rồi bận quá, tôi đi mua ngay một chiếc bánh kem to bự và nến đây."
+            },
+            {
+                "word": "画",
+                "type": "verb",
+                "pinyin": "huà",
+                "meaning": "vẽ",
+                "example": "妹妹正在纸上认认真真地画什么呢？",
+                "examplePinyin": "Mèimei zhèngzài zhǐ shang rènrènzhēnzhēn de huà shénme ne?",
+                "exampleMeaning": "Em gái đang chăm chú vẽ gì trên giấy thế?",
+                "answerChinese": "她在画小猫、小狗什么的，画得漂漂亮亮的。",
+                "answerPinyin": "Tā zài huà xiǎomāo, xiǎogǒu shénme de, huà de piàopiàoliàngliàng de.",
+                "answerMeaning": "Con bé đang vẽ mèo con, chó con các thứ, vẽ xinh xắn lắm."
+            },
+            {
+                "word": "画笔",
+                "type": "noun",
+                "pinyin": "huàbǐ",
+                "meaning": "bút vẽ",
+                "example": "你买了一盒新的画笔和画纸什么的吗？",
+                "examplePinyin": "Nǐ mǎi le yì hé xīn de huàbǐ hé huàzhǐ shénme de ma?",
+                "exampleMeaning": "Bạn đã mua một hộp bút vẽ mới và giấy vẽ các thứ phải không?",
+                "answerChinese": "是的，弟弟正开开心心地用新画笔画画呢。",
+                "answerPinyin": "Shì de, dìdi zhèng kāikāixīnxīn de yòng xīn huàbǐ huàhuà ne.",
+                "answerMeaning": "Đúng vậy, em trai đang vui vẻ dùng bút vẽ mới để vẽ tranh đấy."
+            },
+            {
+                "word": "蛋糕",
+                "type": "noun",
+                "pinyin": "dàngāo",
+                "meaning": "bánh kem, bánh ngọt",
+                "example": "桌上那个圆圆的、大大的蛋糕是谁买的？",
+                "examplePinyin": "Zhuō shang nà ge yuányuán de, dàdà de dàngāo shì shéi mǎi de?",
+                "exampleMeaning": "Chiếc bánh kem tròn xoe, to bự trên bàn kia là ai mua thế?",
+                "answerChinese": "是妈妈买的，她还准备了水果、饮料什么的。",
+                "answerPinyin": "Shì māma mǎi de, tā hái zhǔnbèi le shuǐguǒ, yǐnliào shénme de.",
+                "answerMeaning": "Là mẹ mua đấy, mẹ còn chuẩn bị cả hoa quả, đồ uống các thứ nữa."
+            },
+            {
+                "word": "快乐",
+                "type": "adjective",
+                "pinyin": "kuàilè",
+                "meaning": "vui vẻ, hạnh phúc",
+                "example": "今天大家聚在一起，你过得快快乐乐的吗？",
+                "examplePinyin": "Jīntiān dàjiā jù zài yìqǐ, nǐ guò de kuàikuàilèlè de ma?",
+                "exampleMeaning": "Hôm nay mọi người tụ họp cùng nhau, bạn trải qua có vui vẻ không?",
+                "answerChinese": "非常快乐，我们快快乐乐地吃了一顿大餐。",
+                "answerPinyin": "Fēicháng kuàilè, wǒmen kuàikuàilèlè de chī le yí dùn dàcān.",
+                "answerMeaning": "Vô cùng vui vẻ, chúng tôi đã vui vẻ ăn một bữa thịnh soạn."
+            },
+            {
+                "word": "打开",
+                "type": "verb",
+                "pinyin": "dǎkāi",
+                "meaning": "mở, mở ra",
+                "example": "你快轻轻地打开那个红红的盒子看看里面是什么？",
+                "examplePinyin": "Nǐ kuài qīngqīng de dǎkāi nà ge hónghóng de hézi kànkan lǐmiàn shì shénme?",
+                "exampleMeaning": "Bạn mau nhẹ nhàng mở chiếc hộp đo đỏ kia ra xem bên trong là gì nào?",
+                "answerChinese": "哇，里面有一条漂亮的围巾、巧克力什么的！",
+                "answerPinyin": "Wā, lǐmiàn yǒu yì tiáo piàoliang de wéijīn, qiǎokèlì shénme de!",
+                "answerMeaning": "Oa, bên trong có một chiếc khăn quàng cổ đẹp, sô-cô-la các thứ này!"
+            },
+            {
+                "word": "长",
+                "type": "adjective",
+                "pinyin": "cháng",
+                "meaning": "dài",
+                "example": "那个长长的盒子里装的是画笔、尺子什么的吗？",
+                "examplePinyin": "Nà ge chángcháng de hézi lǐ zhuāng de shì huàbǐ, chǐzi shénme de ma?",
+                "exampleMeaning": "Thứ đựng trong chiếc hộp dài dài kia là bút vẽ, thước kẻ các thứ phải không?",
+                "answerChinese": "对，妹妹正高高兴兴地把它们拿出来呢。",
+                "answerPinyin": "Duì, mèimei zhèng gāogāoxìngxìng de bǎ tāmen ná chūlái ne.",
+                "answerMeaning": "Đúng rồi, em gái đang vui vẻ lấy chúng ra đấy."
+            },
+            {
+                "word": "鱼",
+                "type": "noun",
+                "pinyin": "yú",
+                "meaning": "cá",
+                "example": "妈妈今天做了一条大大的鱼，还做了什么菜？",
+                "examplePinyin": "Māma jīntiān zuò le yì tiáo dàdà de yú, hái zuò le shénme cài?",
+                "exampleMeaning": "Hôm nay mẹ làm một con cá to đùng, còn làm món gì nữa không?",
+                "answerChinese": "她还做了牛肉、青菜什么的，大家正香香地吃着呢。",
+                "answerPinyin": "Tā hái zuò le niúròu, qīngcài shénme de, dàjiā zhèng xiāngxiāng de chī zhe ne.",
+                "answerMeaning": "Mẹ còn làm thịt bò, rau xanh các thứ nữa, mọi người đang ăn ngon lành lắm."
+            },
+            {
+                "word": "肉",
+                "type": "noun",
+                "pinyin": "ròu",
+                "meaning": "thịt",
+                "example": "过节的时候，你们家会准备鱼、肉什么的吗？",
+                "examplePinyin": "Guòjié de shíhou, nǐmen jiā huì zhǔnbèi yú, ròu shénme de ma?",
+                "exampleMeaning": "Vào dịp lễ Tết, nhà bạn có chuẩn bị cá, thịt các thứ không?",
+                "answerChinese": "当然，爷爷奶奶总是热热闹闹地准备一桌子好菜。",
+                "answerPinyin": "Dāngrán, yéye nǎinai zǒngshì rèrènàonào de zhǔnbèi yì zhuōzi hǎo cài.",
+                "answerMeaning": "Đương nhiên rồi, ông bà nội luôn rộn ràng chuẩn bị cả một bàn thức ăn ngon."
+            },
+            {
+                "word": "过",
+                "type": "verb",
+                "pinyin": "guò",
+                "meaning": "đón, trải qua, ăn mừng",
+                "example": "周末你们打算怎么快快乐乐地过？",
+                "examplePinyin": "Zhōumò nǐmen dǎsuàn zěnme kuàikuàilèlè de guò?",
+                "exampleMeaning": "Cuối tuần các bạn dự định trải qua một cách vui vẻ như thế nào?",
+                "answerChinese": "我们想去公园散步、野餐什么的，舒舒服服地玩一天。",
+                "answerPinyin": "Wǒmen xiǎng qù gōngyuán sànbù, yěcān shénme de, shūshūfúfú de wán yì tiān.",
+                "answerMeaning": "Chúng tôi muốn đi công viên đi dạo, dã ngoại các thứ, thoải mái vui chơi cả ngày."
+            },
+            {
+                "word": "地",
+                "type": "particle",
+                "pinyin": "de",
+                "meaning": "một cách (trợ từ kết cấu)",
+                "example": "为什么大家都在客厅里静静地坐着？",
+                "examplePinyin": "Wèishénme dàjiā dōu zài kètīng lǐ jìngjìng de zuò zhe?",
+                "exampleMeaning": "Tại sao mọi người đều đang ngồi lặng lẽ ở trong phòng khách thế?",
+                "answerChinese": "因为我们在等寿星吹蜡烛、切蛋糕什么的。",
+                "answerPinyin": "Yīnwèi wǒmen zài děng shòuxīng chuī làzhú, qiē dàngāo shénme de.",
+                "answerMeaning": "Bởi vì chúng tôi đang đợi nhân vật chính của buổi sinh nhật thổi nến, cắt bánh kem các thứ."
+            },
+            {
+                "word": "床",
+                "type": "noun",
+                "pinyin": "chuáng",
+                "meaning": "giường",
+                "example": "你新买的这张宽宽的、大大的床怎么样？",
+                "examplePinyin": "Nǐ xīn mǎi de zhè zhāng kuānkuān de, dàdà de chuáng zěnmeyàng?",
+                "exampleMeaning": "Chiếc giường rộng rãi, to lớn bạn mới mua này thế nào?",
+                "answerChinese": "特别好，每天晚上我都能舒舒服服地睡个好觉。",
+                "answerPinyin": "Tèbié hǎo, měitiān wǎnshang wǒ dōu néng shūshūfúfú de shuì ge hǎojiào.",
+                "answerMeaning": "Cực kỳ tốt, mỗi tối tôi đều có thể thoải mái ngủ một giấc thật ngon."
+            },
+            {
+                "word": "舒服",
+                "type": "adjective",
+                "pinyin": "shūfu",
+                "meaning": "thoải mái, dễ chịu",
+                "example": "累了一整天，洗个热水澡后是不是觉得舒舒服服的？",
+                "examplePinyin": "Lèi le yì zhěng tiān, xǐ ge rèshuǐzǎo hòu shì bu shì juéde shūshūfúfú de?",
+                "exampleMeaning": "Mệt mỏi cả ngày trời, sau khi tắm nước nóng xong có phải thấy thoải mái dễ chịu hẳn không?",
+                "answerChinese": "是啊，我现在只想美美地躺在床上听音乐、看书什么的。",
+                "answerPinyin": "Shì a, wǒ xiànzài zhǐ xiǎng měiměi de tǎng zài chuáng shang tīng yīnyuè, kànshū shénme de.",
+                "answerMeaning": "Đúng vậy, bây giờ tôi chỉ muốn nằm khoan khoái trên giường nghe nhạc, đọc sách các thứ thôi."
+            },
+            {
+                "word": "过生日",
+                "type": "verb phrase",
+                "pinyin": "guò shēngrì",
+                "meaning": "đón sinh nhật, mừng sinh nhật",
+                "example": "明天小王过生日，我们给他买蛋糕、鲜花什么的吧？",
+                "examplePinyin": "Míngtiān Xiǎo Wáng guò shēngrì, wǒmen gěi tā mǎi dàngāo, xiānhuā shénme de ba?",
+                "exampleMeaning": "Ngày mai Tiểu Vương đón sinh nhật, chúng mình mua cho cậu ấy bánh kem, hoa tươi các thứ nhé?",
+                "answerChinese": "好主意，我们明天晚上热热闹闹地给他庆祝一下。",
+                "answerPinyin": "Hǎo zhǔyi, wǒmen míngtiān wǎnshang rèrènàonào de gěi tā qìngzhù yíxià.",
+                "answerMeaning": "Ý hay đấy, tối mai chúng mình tưng bừng chúc mừng cho cậu ấy một bữa."
+            },
+            {
+                "word": "打开礼物",
+                "type": "verb phrase",
+                "pinyin": "dǎkāi lǐwù",
+                "meaning": "mở quà",
+                "example": "朋友们送了你这么多漂漂亮亮的盒子，你什么时候打开礼物？",
+                "examplePinyin": "Péngyoumen sòng le nǐ zhème duō piàopiàoliàngliàng de hézi, nǐ shénme shíhou dǎkāi lǐwù?",
+                "exampleMeaning": "Bạn bè tặng bạn nhiều chiếc hộp xinh xắn thế này, khi nào bạn mở quà đây?",
+                "answerChinese": "我现在就迫不及待地打开礼物，看看有书、画笔什么的。",
+                "answerPinyin": "Wǒ xiànzài jiù pòbùjídài de dǎkāi lǐwù, kànkan yǒu shū, huàbǐ shénme de.",
+                "answerMeaning": "Bây giờ tôi nóng lòng mở quà ngay đây, xem xem có sách, bút vẽ các thứ gì nào."
+            }
+        ]
     }
 ]
