@@ -992,7 +992,7 @@ function getMandarinVoice() {
   }) || chineseVoices[0] || mandarinVoices[0];
 }
 
-function speakChinese(text, repeatCount = 1) {
+function speakChinese(text, repeatCount = 1, onEnd) {
   if (!('speechSynthesis' in window)) return;
 
   window.speechSynthesis.cancel();
@@ -1002,6 +1002,7 @@ function speakChinese(text, repeatCount = 1) {
     utterance.rate = repeatCount > 1 ? 0.9 : 0.8;
     const chineseVoice = getMandarinVoice();
     if (chineseVoice) utterance.voice = chineseVoice;
+    if (i === repeatCount - 1 && onEnd) utterance.addEventListener("end", onEnd, { once: true });
     window.speechSynthesis.speak(utterance);
   }
 }
@@ -1014,6 +1015,12 @@ function setFeedback(element, message, isCorrect) {
   element.textContent = message;
   element.classList.toggle("is-correct", isCorrect === true);
   element.classList.toggle("is-wrong", isCorrect === false);
+}
+
+function scrollToAnswerResult(result) {
+  requestAnimationFrame(() => {
+    result.scrollIntoView({ behavior: "smooth", block: "end" });
+  });
 }
 
 function startListeningPractice(shouldShuffle = false) {
@@ -1194,6 +1201,7 @@ btnCheckListening.addEventListener("click", () => {
       ? "Câu trả lời ➡"
       : "Câu tiếp theo ➡";
   updateListeningRetryCount();
+  scrollToAnswerResult(listeningFeedbackEl);
 });
 
 btnReplayListening.addEventListener("click", () => {
@@ -1739,6 +1747,7 @@ btnCheckTyping.addEventListener("click", () => {
     : isExampleMode && currentQuestion.type === "question"
       ? "Câu trả lời ➡"
       : "Câu tiếp theo ➡";
+  scrollToAnswerResult(typingFeedbackEl);
 });
 
 function finishTypingPractice() {
@@ -2672,6 +2681,25 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape") setHeaderMenuOpen(false);
 });
 
+window.addEventListener("keydown", event => {
+  const isTypingSpeakShortcut = currentMode === "typing"
+    && event.altKey
+    && (event.key === "." || event.code === "Period" || event.code === "NumpadDecimal");
+
+  if (!isTypingSpeakShortcut) return;
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  const currentQuestion = typingQuestions[currentTypingIndex];
+  if (currentQuestion) {
+    typingInputEl.focus();
+    speakChinese(getTypingChineseText(currentQuestion), 1, () => {
+      requestAnimationFrame(() => typingInputEl.focus());
+    });
+  }
+}, true);
+
 function setActiveScreen(activeScreen, mode) {
   if (currentMode === "speaking" && mode !== "speaking") stopSpeakingRecording();
   currentMode = mode;
@@ -2767,8 +2795,8 @@ sentenceBuildModeBtn.addEventListener("click", showSentenceBuildScreen);
 radicalModeBtn.addEventListener("click", showRadicalScreen);
 
 document.addEventListener("keydown", (event) => {
-  const isSpeakShortcut = (event.ctrlKey || event.metaKey)
-    && (event.key === "." || event.code === "Period");
+  const isSpeakShortcut = event.altKey
+    && (event.key === "." || event.code === "Period" || event.code === "NumpadDecimal");
 
   if (isSpeakShortcut) {
     event.preventDefault();
@@ -2784,8 +2812,6 @@ document.addEventListener("keydown", (event) => {
     } else if (currentMode === "reading") {
       const currentWord = readingQuestions[currentReadingIndex];
       if (currentWord) speakChinese(currentWord.sentence);
-    } else if (currentMode === "typing") {
-      btnSpeakTyping.click();
     } else if (currentMode === "sentence-build") {
       const currentQuestion = sentenceBuildQuestions[sentenceBuildCurrentIndex];
       if (currentQuestion) speakChinese(currentQuestion.sentence);
