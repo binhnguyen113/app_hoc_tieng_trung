@@ -2784,6 +2784,8 @@ document.addEventListener("keydown", (event) => {
     } else if (currentMode === "reading") {
       const currentWord = readingQuestions[currentReadingIndex];
       if (currentWord) speakChinese(currentWord.sentence);
+    } else if (currentMode === "typing") {
+      btnSpeakTyping.click();
     } else if (currentMode === "sentence-build") {
       const currentQuestion = sentenceBuildQuestions[sentenceBuildCurrentIndex];
       if (currentQuestion) speakChinese(currentQuestion.sentence);
