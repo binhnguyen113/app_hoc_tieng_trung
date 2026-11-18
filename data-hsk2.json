@@ -1083,7 +1083,7 @@
                 "answerPinyin": "Wā, lǐmiàn yǒu yì tiáo piàoliang de wéijīn, qiǎokèlì shénme de!",
                 "answerMeaning": "Oa, bên trong có một chiếc khăn quàng cổ đẹp, sô-cô-la các thứ này!"
             },
-            { 
+            {
                 "word": "长",
                 "type": "adjective",
                 "pinyin": "cháng",
@@ -1190,6 +1190,239 @@
                 "answerChinese": "我现在就迫不及待地打开礼物，看看有书、画笔什么的。",
                 "answerPinyin": "Wǒ xiànzài jiù pòbùjídài de dǎkāi lǐwù, kànkan yǒu shū, huàbǐ shénme de.",
                 "answerMeaning": "Bây giờ tôi nóng lòng mở quà ngay đây, xem xem có sách, bút vẽ các thứ gì nào."
+            }
+        ]
+    },
+    {
+        "topic": "Lesson 7",
+        "words": [
+            {
+                "word": "从",
+                "type": "preposition",
+                "pinyin": "cóng",
+                "meaning": "từ",
+                "example": "你每天一从图书馆出来就去操场跑步吗？",
+                "examplePinyin": "Nǐ měitiān yì cóng túshūguǎn chūlái jiù qù cāochǎng pǎobù ma?",
+                "exampleMeaning": "Mỗi ngày bạn hễ bước ra từ thư viện là đi ra sân vận động chạy bộ à?",
+                "answerChinese": "对，我跑步跑得很认真，每天都要跑半个小时。",
+                "answerPinyin": "Duì, wǒ pǎobù pǎo de hěn rènzhēn, měitiān dōu yào pǎo bàn ge xiǎoshí.",
+                "answerMeaning": "Đúng vậy, tôi chạy bộ rất nghiêm túc, mỗi ngày đều phải chạy nửa tiếng."
+            },
+            {
+                "word": "往",
+                "type": "preposition",
+                "pinyin": "wǎng",
+                "meaning": "về phía, hướng về",
+                "example": "你们一下课就往体育馆跑，要去做什么？",
+                "examplePinyin": "Nǐmen yí xiàkè jiù wǎng tǐyùguǎn pǎo, yào qù zuò shénme?",
+                "exampleMeaning": "Các bạn vừa tan học là chạy về phía nhà thi đấu, định đi làm gì thế?",
+                "answerChinese": "我们要去打篮球，大家打篮球都打得特别好。",
+                "answerPinyin": "Wǒmen yào qù dǎ lánqiú, dàjiā dǎ lánqiú dōu dǎ de tèbié hǎo.",
+                "answerMeaning": "Chúng tôi định đi chơi bóng rổ, mọi người chơi bóng rổ đều chơi cực kỳ giỏi."
+            },
+            {
+                "word": "跑",
+                "type": "verb",
+                "pinyin": "pǎo",
+                "meaning": "chạy",
+                "example": "他一看到公交车来了就往前跑，他跑得快不快？",
+                "examplePinyin": "Tā yí kàndào gōngjiāochē lái le jiù wǎng qián pǎo, tā pǎo de kuài bu kuài?",
+                "exampleMeaning": "Anh ấy vừa nhìn thấy xe buýt tới là chạy về phía trước, anh ấy chạy có nhanh không?",
+                "answerChinese": "他跑得非常快，一下子就追上了。",
+                "answerPinyin": "Tā pǎo de fēicháng kuài, yíxiàzi jiù zhuī shàng le.",
+                "answerMeaning": "Anh ấy chạy cực kỳ nhanh, thoáng cái đã đuổi kịp rồi."
+            },
+            {
+                "word": "打",
+                "type": "verb",
+                "pinyin": "dǎ",
+                "meaning": "đánh, chơi (các môn dùng tay)",
+                "example": "你平时一有空就跟朋友一起去打球吗？",
+                "examplePinyin": "Nǐ píngshí yì yǒu kòng jiù gēn péngyou yìqǐ qù dǎqiú ma?",
+                "exampleMeaning": "Ngày thường bạn hễ có thời gian rảnh là cùng bạn bè đi chơi bóng à?",
+                "answerChinese": "是的，我们常打羽毛球，我打得还可以。",
+                "answerPinyin": "Shì de, wǒmen cháng dǎ yǔmáoqiú, wǒ dǎ de hái kěyǐ.",
+                "answerMeaning": "Đúng vậy, chúng tôi thường chơi cầu lông, tôi đánh cũng tạm được."
+            },
+            {
+                "word": "篮球",
+                "type": "noun",
+                "pinyin": "lánqiú",
+                "meaning": "bóng rổ",
+                "example": "弟弟一放学就抱着篮球往外跑，他喜欢打篮球吗？",
+                "examplePinyin": "Dìdi yí fàngxué jiù bào zhe lánqiú wǎng wài pǎo, tā xǐhuan dǎ lánqiú ma?",
+                "exampleMeaning": "Em trai vừa tan học là ôm quả bóng rổ chạy ra ngoài, nó thích chơi bóng rổ lắm à?",
+                "answerChinese": "非常喜欢，他打篮球打得越来越好了。",
+                "answerPinyin": "Fēicháng xǐhuan, tā dǎ lánqiú dǎ de yuèláiyuè hǎo le.",
+                "answerMeaning": "Vô cùng thích, nó chơi bóng rổ ngày càng giỏi rồi."
+            },
+            {
+                "word": "运动",
+                "type": "noun",
+                "pinyin": "yùndòng",
+                "meaning": "thể thao, vận động",
+                "example": "你每天一下班就去做运动吗？你最擅长什么运动？",
+                "examplePinyin": "Nǐ měitiān yí xiàbān jiù qù zuò yùndòng ma? Nǐ zuì shàncháng shénme yùndòng?",
+                "exampleMeaning": "Mỗi ngày bạn vừa tan làm là đi tập thể thao à? Bạn giỏi môn thể thao nào nhất?",
+                "answerChinese": "我最喜欢跑步和游泳，尤其是游泳游得很不错。",
+                "answerPinyin": "Wǒ zuì xǐhuan pǎobù hé yóuyǒng, yóuqí shì yóuyǒng yóu de hěn búcuò.",
+                "answerMeaning": "Tôi thích nhất là chạy bộ và bơi lội, đặc biệt là bơi lội bơi rất khá."
+            },
+            {
+                "word": "踢",
+                "type": "verb",
+                "pinyin": "tī",
+                "meaning": "đá",
+                "example": "哥哥一到周末就约同学去操场踢球，他踢得怎么样？",
+                "examplePinyin": "Gēge yí dào zhōumò jiù yuē tóngxué qù cāochǎng tīqiú, tā tī de zěnmeyàng?",
+                "exampleMeaning": "Anh trai cứ đến cuối tuần là hẹn bạn học ra sân vận động đá bóng, anh ấy đá thế nào?",
+                "answerChinese": "他踢得特别棒，经常进球。",
+                "answerPinyin": "Tā tī de tèbié bàng, jīngcháng jìnqiú.",
+                "answerMeaning": "Anh ấy đá cực kỳ cừ, thường xuyên ghi bàn."
+            },
+            {
+                "word": "足球",
+                "type": "noun",
+                "pinyin": "zúqiú",
+                "meaning": "bóng đá",
+                "example": "你们班的男生是不是一有时间就去踢足球？",
+                "examplePinyin": "Nǐmen bān de nánshēng shì bu shì yì yǒu shíjiān jiù qù tī zúqiú?",
+                "exampleMeaning": "Con trai lớp các bạn có phải hễ có thời gian là đi đá bóng không?",
+                "answerChinese": "对，他们踢足球踢得非常起劲。",
+                "answerPinyin": "Duì, tāmen tī zúqiú tī de fēicháng qǐjìn.",
+                "answerMeaning": "Đúng vậy, họ đá bóng hăng say lắm."
+            },
+            {
+                "word": "球",
+                "type": "noun",
+                "pinyin": "qiú",
+                "meaning": "bóng, quả bóng",
+                "example": "大家一看到教练拿球过来就兴奋起来，你们打球打得累不累？",
+                "examplePinyin": "Dàjiā yí kàndào jiàoliàn ná qiú guòlái jiù xīngfèn qǐlái, nǐmen dǎqiú dǎ de lèi bu lèi?",
+                "exampleMeaning": "Mọi người vừa nhìn thấy huấn luyện viên mang bóng qua đây là phấn khích hẳn lên, các bạn chơi bóng có mệt không?",
+                "answerChinese": "一点儿也不累，大家都玩得很开心。",
+                "answerPinyin": "Yìdiǎnr yě bú lèi, dàjiā dōu wán de hěn kāixīn.",
+                "answerMeaning": "Chút nào cũng không mệt, mọi người đều chơi rất vui vẻ."
+            },
+            {
+                "word": "得",
+                "type": "particle",
+                "pinyin": "de",
+                "meaning": "được, đến mức (trợ từ kết cấu)",
+                "example": "小王一上场就连续投进好几个球，他打得真好啊！",
+                "examplePinyin": "Xiǎo Wáng yí shàngchǎng jiù liánxù tóu jìn hǎo jǐ ge qiú, tā dǎ de zhēn hǎo a!",
+                "exampleMeaning": "Tiểu Vương vừa lên sân là ném vào liên tiếp mấy quả liền, cậu ấy chơi giỏi thật đấy!",
+                "answerChinese": "是啊，他平时刻苦练习，所以投篮投得非常准。",
+                "answerPinyin": "Shì a, tā píngshí kèkǔ liànxí, suǒyǐ tóulán tóu de fēicháng zhǔn.",
+                "answerMeaning": "Đúng vậy, ngày thường cậu ấy chăm chỉ luyện tập, cho nên ném rổ cực kỳ chuẩn."
+            },
+            {
+                "word": "跑步",
+                "type": "verb",
+                "pinyin": "pǎobù",
+                "meaning": "chạy bộ",
+                "example": "你每天早上一起床就去公园跑步吗？",
+                "examplePinyin": "Nǐ měitiān zǎoshang yì qǐchuáng jiù qù gōngyuán pǎobù ma?",
+                "exampleMeaning": "Mỗi sáng bạn vừa thức dậy là đi công viên chạy bộ à?",
+                "answerChinese": "对，我坚持锻炼很久了，现在跑步跑得又快又轻松。",
+                "answerPinyin": "Duì, wǒ jiānchí duànliàn hěn jiǔ le, xiànzài pǎobù pǎo de yòu kuài yòu qīngsōng.",
+                "answerMeaning": "Đúng vậy, tôi kiên trì rèn luyện lâu rồi, bây giờ chạy bộ vừa nhanh vừa nhẹ nhàng."
+            },
+            {
+                "word": "游泳",
+                "type": "verb",
+                "pinyin": "yóuyǒng",
+                "meaning": "bơi, bơi lội",
+                "example": "夏天一到你就经常去游泳馆，你游泳游得快吗？",
+                "examplePinyin": "Xiàtiān yí dào nǐ jiù jīngcháng qù yóuyǒngguǎn, nǐ yóuyǒng yóu de kuài ma?",
+                "exampleMeaning": "Mùa hè vừa tới là bạn thường xuyên đến bể bơi, bạn bơi có nhanh không?",
+                "answerChinese": "我刚学会不久，所以游泳游得还不算快。",
+                "answerPinyin": "Wǒ gāng xuéhuì bù jiǔ, suǒyǐ yóuyǒng yóu de hái bú suàn kuài.",
+                "answerMeaning": "Tôi vừa mới học biết bơi chưa lâu, cho nên bơi vẫn chưa tính là nhanh."
+            },
+            {
+                "word": "游",
+                "type": "verb",
+                "pinyin": "yóu",
+                "meaning": "bơi",
+                "example": "孩子们一跳进水里就往那边游，他们游得怎么样？",
+                "examplePinyin": "Háizimen yí tiào jìn shuǐ lǐ jiù wǎng nàbiān yóu, tāmen yóu de zěnmeyàng?",
+                "exampleMeaning": "Bọn trẻ vừa nhảy xuống nước là bơi về phía bên kia, chúng bơi thế nào?",
+                "answerChinese": "他们像小鱼一样，游得又稳又好。",
+                "answerPinyin": "Tāmen xiàng xiǎoyú yíyàng, yóu de yòu wěn yòu hǎo.",
+                "answerMeaning": "Chúng giống như những chú cá nhỏ vậy, bơi vừa vững vừa giỏi."
+            },
+            {
+                "word": "爱好",
+                "type": "noun",
+                "pinyin": "àihào",
+                "meaning": "sở thích",
+                "example": "听说你的爱好很多，你是不是一有空就去锻炼？",
+                "examplePinyin": "Tīngshuō nǐ de àihào hěn duō, nǐ shì bu shì yì yǒu kòng jiù qù duànliàn?",
+                "exampleMeaning": "Nghe nói sở thích của bạn rất nhiều, có phải bạn hễ rảnh là đi tập luyện không?",
+                "answerChinese": "没错，我最大的爱好就是打网球，而且打网球打得挺不错。",
+                "answerPinyin": "Méicuò, wǒ zuì dà de àihào jiù shì dǎ wǎngqiú, érqiě dǎ wǎngqiú dǎ de tǐng búcuò.",
+                "answerMeaning": "Không sai, sở thích lớn nhất của tôi chính là chơi quần vợt, hơn nữa chơi quần vợt cũng khá ổn."
+            },
+            {
+                "word": "开始",
+                "type": "verb",
+                "pinyin": "kāishǐ",
+                "meaning": "bắt đầu",
+                "example": "比赛一开始双方队员就拼命往球门跑，他们踢得激烈吗？",
+                "examplePinyin": "Bǐsài yì kāishǐ shuāngfāng duìyuán jiù pīnmìng wǎng qiúmén pǎo, tāmen tī de jīliè ma?",
+                "exampleMeaning": "Trận đấu vừa bắt đầu là cầu thủ hai bên liền liều mạng chạy về phía khung thành, họ đá có quyết liệt không?",
+                "answerChinese": "非常激烈，两队踢得都很好看。",
+                "answerPinyin": "Fēicháng jīliè, liǎng duì tī de dōu hěn hǎokàn.",
+                "answerMeaning": "Vô cùng quyết liệt, cả hai đội đá đều rất hay."
+            },
+            {
+                "word": "打篮球",
+                "type": "verb phrase",
+                "pinyin": "dǎ lánqiú",
+                "meaning": "chơi bóng rổ",
+                "example": "你们周末是不是一吃完午饭就去打篮球？",
+                "examplePinyin": "Nǐmen zhōumò shì bu shì yì chī wán wǔfàn jiù qù dǎ lánqiú?",
+                "exampleMeaning": "Cuối tuần các bạn có phải cứ ăn xong bữa trưa là đi chơi bóng rổ không?",
+                "answerChinese": "是的，我们都很喜欢，尤其是李明打篮球打得最好。",
+                "answerPinyin": "Shì de, wǒmen dōu hěn xǐhuan, yóuqí shì Lǐ Míng dǎ lánqiú dǎ de zuì hǎo.",
+                "answerMeaning": "Đúng vậy, chúng tôi đều rất thích, đặc biệt là Lý Minh chơi bóng rổ giỏi nhất."
+            },
+            {
+                "word": "打网球",
+                "type": "verb phrase",
+                "pinyin": "dǎ wǎngqiú",
+                "meaning": "chơi quần vợt (tennis)",
+                "example": "你从什么时候开始学打网球的？打网球打得怎么样？",
+                "examplePinyin": "Nǐ cóng shénme shíhou kāishǐ xué dǎ wǎngqiú de? Dǎ wǎngqiú dǎ de zěnmeyàng?",
+                "exampleMeaning": "Bạn bắt đầu học chơi quần vợt từ khi nào thế? Chơi quần vợt thế nào?",
+                "answerChinese": "我从去年就开始练了，只要一有时间就去球场，现在打得还可以。",
+                "answerPinyin": "Wǒ cóng qùnián jiù kāishǐ liàn le, zhǐyào yì yǒu shíjiān jiù qù qiúchǎng, xiànzài dǎ de hái kěyǐ.",
+                "answerMeaning": "Tôi bắt đầu tập từ năm ngoái rồi, chỉ cần hễ có thời gian là ra sân, bây giờ đánh cũng tạm được."
+            },
+            {
+                "word": "打乒乓球",
+                "type": "verb phrase",
+                "pinyin": "dǎ pīngpāngqiú",
+                "meaning": "chơi bóng bàn",
+                "example": "中国朋友是不是一拿起球拍就很厉害，他们打乒乓球打得快吗？",
+                "examplePinyin": "Zhōngguó péngyou shì bu shì yì ná qǐ qiúpāi jiù hěn lìhai, tāmen dǎ pīngpāngqiú dǎ de kuài ma?",
+                "exampleMeaning": "Bạn bè Trung Quốc có phải hễ cầm vợt lên là rất lợi hại không, họ đánh bóng bàn có nhanh không?",
+                "answerChinese": "对，他们打乒乓球打得又快又准，我根本接不住。",
+                "answerPinyin": "Duì, tāmen dǎ pīngpāngqiú dǎ de yòu kuài yòu zhǔn, wǒ gēnběn jiē bu zhù.",
+                "answerMeaning": "Đúng vậy, họ đánh bóng bàn vừa nhanh vừa chuẩn, tôi hoàn toàn không đỡ nổi."
+            },
+            {
+                "word": "踢足球",
+                "type": "verb phrase",
+                "pinyin": "tī zúqiú",
+                "meaning": "đá bóng",
+                "example": "他一提到踢足球就特别兴奋，他踢足球踢得好吗？",
+                "examplePinyin": "Tā yì tí dào tī zúqiú jiù tèbié xīngfèn, tā tī zúqiú tī de hǎo ma?",
+                "exampleMeaning": "Cậu ấy hễ nhắc đến đá bóng là cực kỳ hào hứng, cậu ấy đá bóng có giỏi không?",
+                "answerChinese": "非常好，他从小学就开始练了，踢足球踢得像专业运动员一样。",
+                "answerPinyin": "Fēicháng hǎo, tā cóng xiǎoxué jiù kāishǐ liàn le, tī zúqiú tī de xiàng zhuānyè yùndòngyuán yíyàng.",
+                "answerMeaning": "Rất giỏi, cậu ấy bắt đầu tập từ hồi tiểu học rồi, đá bóng giỏi như vận động viên chuyên nghiệp vậy."
             }
         ]
     }
