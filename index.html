@@ -52,6 +52,12 @@
           <option value="all">Tất cả bộ từ</option>
         </select>
 
+        <label for="speech-rate">Tốc độ đọc</label>
+        <div class="speech-rate-control">
+          <input id="speech-rate" type="range" min="0.5" max="1.5" step="0.1" value="1" aria-describedby="speech-rate-value">
+          <output id="speech-rate-value" for="speech-rate">1.0×</output>
+        </div>
+
         <label for="study-mode">Ôn theo</label>
         <select id="study-mode">
           <option value="all">Ôn từ vựng</option>

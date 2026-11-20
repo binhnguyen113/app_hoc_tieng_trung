@@ -224,6 +224,14 @@ const topicFilterToggleEl = document.getElementById("topic-filter-toggle");
 const topicFilterSelectionEl = document.getElementById("topic-filter-selection");
 const topicFilterOptionsEl = document.getElementById("topic-filter-options");
 const dataSourceEl = document.getElementById("data-source");
+const speechRateEl = document.getElementById("speech-rate");
+const speechRateValueEl = document.getElementById("speech-rate-value");
+let speechRateMultiplier = Number(speechRateEl.value);
+
+speechRateEl.addEventListener("input", () => {
+  speechRateMultiplier = Number(speechRateEl.value);
+  speechRateValueEl.value = `${speechRateMultiplier.toFixed(1)}×`;
+});
 
 // DOM Elements - Matching
 const matchingProgressEl = document.getElementById("matching-progress");
@@ -999,7 +1007,7 @@ function speakChinese(text, repeatCount = 1, onEnd) {
   for (let i = 0; i < repeatCount; i++) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "zh-CN";
-    utterance.rate = repeatCount > 1 ? 0.9 : 0.8;
+    utterance.rate = (repeatCount > 1 ? 0.9 : 0.8) * speechRateMultiplier;
     const chineseVoice = getMandarinVoice();
     if (chineseVoice) utterance.voice = chineseVoice;
     if (i === repeatCount - 1 && onEnd) utterance.addEventListener("end", onEnd, { once: true });

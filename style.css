@@ -388,6 +388,27 @@ select:focus-visible {
   box-shadow: 0 0 0 4px rgba(23, 107, 87, 0.1);
 }
 
+.speech-rate-control {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.speech-rate-control input {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--green);
+}
+
+.speech-rate-control output {
+  min-width: 3.5em;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: right;
+}
+
 .matching-box {
   width: 100%;
   padding: 24px;
