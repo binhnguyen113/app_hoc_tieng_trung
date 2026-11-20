@@ -2689,10 +2689,13 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape") setHeaderMenuOpen(false);
 });
 
+function isSpeakShortcut(event) {
+  return event.altKey
+    && (event.key === "1" || event.code === "Digit1" || event.code === "Numpad1");
+}
+
 window.addEventListener("keydown", event => {
-  const isTypingSpeakShortcut = currentMode === "typing"
-    && event.altKey
-    && (event.key === "." || event.code === "Period" || event.code === "NumpadDecimal");
+  const isTypingSpeakShortcut = currentMode === "typing" && isSpeakShortcut(event);
 
   if (!isTypingSpeakShortcut) return;
 
@@ -2803,10 +2806,7 @@ sentenceBuildModeBtn.addEventListener("click", showSentenceBuildScreen);
 radicalModeBtn.addEventListener("click", showRadicalScreen);
 
 document.addEventListener("keydown", (event) => {
-  const isSpeakShortcut = event.altKey
-    && (event.key === "." || event.code === "Period" || event.code === "NumpadDecimal");
-
-  if (isSpeakShortcut) {
+  if (isSpeakShortcut(event)) {
     event.preventDefault();
 
     if (currentMode === "quiz") {
