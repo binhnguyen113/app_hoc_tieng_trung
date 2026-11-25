@@ -1425,5 +1425,339 @@
                 "answerMeaning": "Rất giỏi, cậu ấy bắt đầu tập từ hồi tiểu học rồi, đá bóng giỏi như vận động viên chuyên nghiệp vậy."
             }
         ]
+    },
+    {
+        "topic": "Lesson 8",
+        "words": [
+            {
+                "word": "手表",
+                "type": "noun",
+                "pinyin": "shǒubiǎo",
+                "meaning": "đồng hồ đeo tay",
+                "example": "这两块手表，左边的比右边的更贵吗？",
+                "examplePinyin": "Zhè liǎng kuài shǒubiǎo, zuǒbiān de bǐ yòubiān de gèng guì ma?",
+                "exampleMeaning": "Hai chiếc đồng hồ đeo tay này, chiếc bên trái đắt hơn chiếc bên phải à?",
+                "answerChinese": "虽然左边的比右边的贵一点儿，但是质量好得多。",
+                "answerPinyin": "Suīrán zuǒbiān de bǐ yòubiān de guì yìdiǎnr, dànshì zhìliàng hǎo de duō.",
+                "answerMeaning": "Tuy chiếc bên trái đắt hơn chiếc bên phải một chút, nhưng chất lượng tốt hơn nhiều."
+            },
+            {
+                "word": "左边",
+                "type": "noun",
+                "pinyin": "zuǒbiān",
+                "meaning": "bên trái",
+                "example": "桌子上放着两本书，你觉得左边的比右边的好看吗？",
+                "examplePinyin": "Zhuōzi shang fàng zhe liǎng běn shū, nǐ juéde zuǒbiān de bǐ yòubiān de hǎokàn ma?",
+                "exampleMeaning": "Trên bàn đặt hai quyển sách, bạn thấy quyển bên trái đẹp hơn quyển bên phải không?",
+                "answerChinese": "虽然右边的封面很漂亮，但是左边的比右边的内容更有意思。",
+                "answerPinyin": "Suīrán yòubiān de fēngmiàn hěn piàoliang, dànshì zuǒbiān de bǐ yòubiān de nèiróng gèng yǒu yìsi.",
+                "answerMeaning": "Tuy bìa của quyển bên phải rất đẹp, nhưng nội dung quyển bên trái thú vị hơn quyển bên phải."
+            },
+            {
+                "word": "比",
+                "type": "preposition",
+                "pinyin": "bǐ",
+                "meaning": "so với, hơn (dùng trong câu so sánh)",
+                "example": "今天的天气比昨天冷一点儿，你要多穿件衣服吗？",
+                "examplePinyin": "Jīntiān de tiānqì bǐ zuótiān lěng yìdiǎnr, nǐ yào duō chuān jiàn yīfu ma?",
+                "exampleMeaning": "Thời tiết hôm nay lạnh hơn hôm qua một chút, bạn có muốn mặc thêm chiếc áo không?",
+                "answerChinese": "虽然今天比昨天冷，但是出太阳了，我觉得还挺舒服的。",
+                "answerPinyin": "Suīrán jīntiān bǐ zuótiān lěng, dànshì chū tàiyáng le, wǒ juéde hái tǐng shūfu de.",
+                "answerMeaning": "Tuy hôm nay lạnh hơn hôm qua, nhưng trời hửng nắng rồi, tôi thấy vẫn khá thoải mái."
+            },
+            {
+                "word": "右边",
+                "type": "noun",
+                "pinyin": "yòubiān",
+                "meaning": "bên phải",
+                "example": "这两条裙子，右边的比左边的长吗？",
+                "examplePinyin": "Zhè liǎng tiáo qúnzi, yòubiān de bǐ zuǒbiān de cháng ma?",
+                "exampleMeaning": "Hai chiếc váy này, chiếc bên phải dài hơn chiếc bên trái à?",
+                "answerChinese": "对，虽然右边的比左边的长，但是穿起来更显高。",
+                "answerPinyin": "Duì, suīrán yòubiān de bǐ zuǒbiān de cháng, dànshì chuān qǐlái gèng xiǎn gāo.",
+                "answerMeaning": "Đúng vậy, tuy chiếc bên phải dài hơn chiếc bên trái, nhưng mặc lên trông càng cao hơn."
+            },
+            {
+                "word": "记得",
+                "type": "verb",
+                "pinyin": "jìde",
+                "meaning": "nhớ",
+                "example": "昨天的生词那么多，你还记得吗？",
+                "examplePinyin": "Zuótiān de shēngcí nàme duō, nǐ hái jìde ma?",
+                "exampleMeaning": "Từ mới hôm qua nhiều thế, bạn vẫn còn nhớ chứ?",
+                "answerChinese": "虽然昨天学得比前天多，但是我都记得清清楚楚。",
+                "answerPinyin": "Suīrán zuótiān xué de bǐ qiántiān duō, dànshì wǒ dōu jìde qīngqīngchǔchǔ.",
+                "answerMeaning": "Tuy hôm qua học nhiều hơn hôm kia, nhưng tôi đều nhớ rõ mồn một."
+            },
+            {
+                "word": "爱情片",
+                "type": "noun",
+                "pinyin": "àiqíngpiàn",
+                "meaning": "phim tình cảm",
+                "example": "你觉得这部爱情片比上一部更好看吗？",
+                "examplePinyin": "Nǐ juéde zhè bù àiqíngpiàn bǐ shàng yí bù gèng hǎokàn ma?",
+                "exampleMeaning": "Bạn thấy bộ phim tình cảm này hay hơn bộ trước không?",
+                "answerChinese": "虽然这部爱情片比上一部短，但是故事更感人。",
+                "answerPinyin": "Suīrán zhè bù àiqíngpiàn bǐ shàng yí bù duǎn, dànshì gùshi gèng gǎnrén.",
+                "answerMeaning": "Tuy bộ phim tình cảm này ngắn hơn bộ trước, nhưng câu chuyện cảm động hơn."
+            },
+            {
+                "word": "有意思",
+                "type": "adjective",
+                "pinyin": "yǒu yìsi",
+                "meaning": "thú vị, hay",
+                "example": "听说今天的新课比昨天的更有意思，是真的吗？",
+                "examplePinyin": "Tīngshuō jīntiān de xīnkè bǐ zuótiān de gèng yǒu yìsi, shì zhēn de ma?",
+                "exampleMeaning": "Nghe nói bài học mới hôm nay thú vị hơn bài hôm qua, có thật không?",
+                "answerChinese": "真的，虽然今天的生词比昨天难，但是课文内容有意思多了。",
+                "answerPinyin": "Zhēn de, suīrán jīntiān de shēngcí bǐ zuótiān nán, dànshì kèwén nèiróng yǒu yìsi duō le.",
+                "answerMeaning": "Thật đấy, tuy từ mới hôm nay khó hơn hôm qua, nhưng nội dung bài khóa thú vị hơn nhiều."
+            },
+            {
+                "word": "点",
+                "type": "verb",
+                "pinyin": "diǎn",
+                "meaning": "gọi (món ăn, đồ uống)",
+                "example": "这家店的菜看起来比那家还好吃，我们点几个菜吧？",
+                "examplePinyin": "Zhè jiā diàn de cài kàn qǐlái bǐ nà jiā hái hǎochī, wǒmen diǎn jǐ ge cài ba?",
+                "exampleMeaning": "Món ăn của quán này trông ngon hơn quán kia nữa, chúng mình gọi vài món nhé?",
+                "answerChinese": "好啊，虽然我们只有两个人，但是可以多点两道招牌菜尝尝。",
+                "answerPinyin": "Hǎo a, suīrán wǒmen zhǐ yǒu liǎng ge rén, dànshì kěyǐ duō diǎn liǎng dào zhāopáicài chángchang.",
+                "answerMeaning": "Được chứ, tuy chúng mình chỉ có hai người, nhưng có thể gọi thêm hai món đặc trưng ăn thử."
+            },
+            {
+                "word": "虽然",
+                "type": "conjunction",
+                "pinyin": "suīrán",
+                "meaning": "tuy, mặc dù",
+                "example": "虽然这家酒店比那家远一点儿，但是环境更安静，你想住这儿吗？",
+                "examplePinyin": "Suīrán zhè jiā jiǔdiàn bǐ nà jiā yuǎn yìdiǎnr, dànshì huánjìng gèng ānjìng, nǐ xiǎng zhù zhèr ma?",
+                "exampleMeaning": "Tuy khách sạn này xa hơn khách sạn kia một chút, nhưng không gian yên tĩnh hơn, bạn muốn ở đây không?",
+                "answerChinese": "想啊，我喜欢安静的地方，远一点儿没关系。",
+                "answerPinyin": "Xiǎng a, wǒ xǐhuan ānjìng de dìfang, yuǎn yìdiǎnr méi guānxi.",
+                "answerMeaning": "Muốn chứ, tôi thích nơi yên tĩnh, xa một chút không sao đâu."
+            },
+            {
+                "word": "但是",
+                "type": "conjunction",
+                "pinyin": "dànshì",
+                "meaning": "nhưng, nhưng mà",
+                "example": "这双鞋虽然比那双贵，但是穿起来是不是更舒服？",
+                "examplePinyin": "Zhè shuāng xié suīrán bǐ nà shuāng guì, dànshì chuān qǐlái shì bu shì gèng shūfu?",
+                "exampleMeaning": "Đôi giày này tuy đắt hơn đôi kia, nhưng đi vào có phải thoải mái hơn không?",
+                "answerChinese": "没错，虽然价格高了一点儿，但是走路比以前轻松多了。",
+                "answerPinyin": "Méicuò, suīrán jiàgé gāo le yìdiǎnr, dànshì zǒulù bǐ yǐqián qīngsōng duō le.",
+                "answerMeaning": "Không sai, tuy giá cao hơn một chút, nhưng đi bộ nhẹ nhàng hơn trước đây nhiều."
+            },
+            {
+                "word": "花",
+                "type": "noun",
+                "pinyin": "huā",
+                "meaning": "hoa, bông hoa",
+                "example": "花店里红色的花比白色的花更受欢迎吗？",
+                "examplePinyin": "Huādiàn lǐ hóngsè de huā bǐ báisè de huā gèng shòu huānyíng ma?",
+                "exampleMeaning": "Ở tiệm hoa, hoa màu đỏ được ưa chuộng hơn hoa màu trắng à?",
+                "answerChinese": "虽然红色的花卖得比白色的快，但是白色的花也很漂亮。",
+                "answerPinyin": "Suīrán hóngsè de huā mài de bǐ báisè de kuài, dànshì báisè de huā yě hěn piàoliang.",
+                "answerMeaning": "Tuy hoa màu đỏ bán nhanh hơn màu trắng, nhưng hoa màu trắng cũng rất đẹp."
+            },
+            {
+                "word": "妻子",
+                "type": "noun",
+                "pinyin": "qīzi",
+                "meaning": "vợ",
+                "example": "听说王老师的妻子比他小三岁，他们感情好吗？",
+                "examplePinyin": "Tīngshuō Wáng lǎoshī de qīzi bǐ tā xiǎo sān suì, tāmen gǎnqíng hǎo ma?",
+                "exampleMeaning": "Nghe nói vợ của thầy Vương nhỏ hơn thầy ấy ba tuổi, tình cảm của họ tốt không?",
+                "answerChinese": "特别好，虽然他妻子平时工作比他还忙，但是每天都会回家做晚饭。",
+                "answerPinyin": "Tèbié hǎo, suīrán tā qīzi píngshí gōngzuò bǐ tā hái máng, dànshì měitiān dōu huì huíjiā zuò wǎnfàn.",
+                "answerMeaning": "Cực kỳ tốt, tuy vợ thầy ấy ngày thường công việc còn bận hơn thầy ấy, nhưng mỗi ngày đều về nhà nấu cơm tối."
+            },
+            {
+                "word": "丈夫",
+                "type": "noun",
+                "pinyin": "zhàngfu",
+                "meaning": "chồng",
+                "example": "李姐的丈夫比她高得多吗？",
+                "examplePinyin": "Lǐ jiě de zhàngfu bǐ tā gāo de duō ma?",
+                "exampleMeaning": "Chồng của chị Lý cao hơn chị ấy nhiều không?",
+                "answerChinese": "是的，虽然她丈夫比她高，但是性格比她还温柔。",
+                "answerPinyin": "Shì de, suīrán tā zhàngfu bǐ tā gāo, dànshì xìnggé bǐ tā hái wēnróu.",
+                "answerMeaning": "Đúng vậy, tuy chồng chị ấy cao hơn chị ấy, nhưng tính cách còn dịu dàng hơn cả chị ấy."
+            },
+            {
+                "word": "饭馆",
+                "type": "noun",
+                "pinyin": "fànguǎn",
+                "meaning": "quán ăn, nhà hàng nhỏ",
+                "example": "学校门口那家新开的饭馆比老饭馆干净吗？",
+                "examplePinyin": "Xuéxiào ménkǒu nà jiā xīn kāi de fànguǎn bǐ lǎo fànguǎn gānjìng ma?",
+                "exampleMeaning": "Quán ăn mới mở ở cổng trường kia sạch sẽ hơn quán ăn cũ không?",
+                "answerChinese": "虽然新饭馆比老饭馆干净明亮，但是老饭馆的菜更便宜。",
+                "answerPinyin": "Suīrán xīn fànguǎn bǐ lǎo fànguǎn gānjìng míngliàng, dànshì lǎo fànguǎn de cài gèng piányi.",
+                "answerMeaning": "Tuy quán ăn mới sạch sẽ sáng sủa hơn quán cũ, nhưng món ăn ở quán cũ rẻ hơn."
+            }
+        ]
+    },
+    {
+        "topic": "Lesson 9",
+        "words": [
+            {
+                "word": "坏",
+                "type": "adjective",
+                "pinyin": "huài",
+                "meaning": "hỏng, xấu",
+                "example": "听说你的自行车坏了，修车店离学校远不远？",
+                "examplePinyin": "Tīngshuō nǐ de zìxíngchē huài le, xiūchēdiàn lí xuéxiào yuǎn bu yuǎn?",
+                "exampleMeaning": "Nghe nói xe đạp của bạn hỏng rồi, tiệm sửa xe cách trường học có xa không?",
+                "answerChinese": "不远，走五分钟就到了，而且情况没有我想的那么坏。",
+                "answerPinyin": "Bù yuǎn, zǒu wǔ fēnzhōng jiù dào le, érqiě qíngkuàng méiyǒu wǒ xiǎng de nàme huài.",
+                "answerMeaning": "Không xa, đi bộ năm phút là tới rồi, hơn nữa tình hình cũng không tệ như tôi nghĩ."
+            },
+            {
+                "word": "旁边",
+                "type": "noun",
+                "pinyin": "pángbiān",
+                "meaning": "bên cạnh",
+                "example": "图书馆旁边新开的书店离宿舍近吗？",
+                "examplePinyin": "Túshūguǎn pángbiān xīn kāi de shūdiàn lí sùshè jìn ma?",
+                "exampleMeaning": "Hiệu sách mới mở bên cạnh thư viện cách ký túc xá có gần không?",
+                "answerChinese": "很近，走十分钟就到了，不过里面没有图书馆那么安静。",
+                "answerPinyin": "Hěn jìn, zǒu shí fēnzhōng jiù dào le, búguò lǐmiàn méiyǒu túshūguǎn nàme ānjìng.",
+                "answerMeaning": "Rất gần, đi bộ mười phút là tới rồi, nhưng bên trong không yên tĩnh bằng thư viện."
+            },
+            {
+                "word": "男孩儿",
+                "type": "noun",
+                "pinyin": "nánháir",
+                "meaning": "cậu bé, bé trai",
+                "example": "站在门口的那个男孩儿每天都要练一个小时钢琴吗？",
+                "examplePinyin": "Zhàn zài ménkǒu de nà ge nánháir měitiān dōu yào liàn yí ge xiǎoshí gāngqín ma?",
+                "exampleMeaning": "Cậu bé đứng ở cổng kia mỗi ngày đều phải tập đàn piano một tiếng à?",
+                "answerChinese": "对，他每天练一个小时，不过水平还没有他姐姐那么高。",
+                "answerPinyin": "Duì, tā měitiān liàn yí ge xiǎoshí, búguò shuǐpíng hái méiyǒu tā jiějie nàme gāo.",
+                "answerMeaning": "Đúng vậy, cậu bé tập một tiếng mỗi ngày, nhưng trình độ vẫn chưa cao bằng chị gái cậu ấy."
+            },
+            {
+                "word": "这样",
+                "type": "pronoun",
+                "pinyin": "zhèyàng",
+                "meaning": "như thế này, thế này",
+                "example": "离考试只有三天了，每天只复习半个小时这样行吗？",
+                "examplePinyin": "Lí kǎoshì zhǐ yǒu sān tiān le, měitiān zhǐ fùxí bàn ge xiǎoshí zhèyàng xíng ma?",
+                "exampleMeaning": "Cách kỳ thi chỉ còn ba ngày nữa thôi, mỗi ngày chỉ ôn tập nửa tiếng như thế này có ổn không?",
+                "answerChinese": "这样肯定不行，你的基础没有他那么好，应该多花点儿时间。",
+                "answerPinyin": "Zhèyàng kěndìng bù xíng, nǐ de jīchǔ méiyǒu tā nàme hǎo, yīnggāi duō huā diǎnr shíjiān.",
+                "answerMeaning": "Như thế này chắc chắn không được rồi, nền tảng của bạn không tốt bằng cậu ấy, nên dành thêm chút thời gian đi."
+            },
+            {
+                "word": "个子",
+                "type": "noun",
+                "pinyin": "gèzi",
+                "meaning": "vóc dáng, chiều cao",
+                "example": "弟弟每天都打半个小时篮球，现在个子有哥哥那么高了吗？",
+                "examplePinyin": "Dìdi měitiān dōu dǎ bàn ge xiǎoshí lánqiú, xiànzài gèzi yǒu gēge nàme gāo le ma?",
+                "exampleMeaning": "Em trai mỗi ngày đều chơi bóng rổ nửa tiếng, bây giờ chiều cao đã cao bằng anh trai chưa?",
+                "answerChinese": "还没有呢，他今年才十二岁，个子没有哥哥那么高。",
+                "answerPinyin": "Hái méiyǒu ne, tā jīnnián cái shí'èr suì, gèzi méiyǒu gēge nàme gāo.",
+                "answerMeaning": "Vẫn chưa đâu, năm nay em ấy mới mười hai tuổi, vóc dáng chưa cao bằng anh trai."
+            },
+            {
+                "word": "那么",
+                "type": "pronoun",
+                "pinyin": "nàme",
+                "meaning": "như thế, thế",
+                "example": "体育馆离这儿有那么远吗？我们大概要走多长时间？",
+                "examplePinyin": "Tǐyùguǎn lí zhèr yǒu nàme yuǎn ma? Wǒmen dàgài yào zǒu duō cháng shíjiān?",
+                "exampleMeaning": "Nhà thi đấu cách đây có xa đến thế không? Chúng mình khoảng chừng phải đi bộ bao lâu?",
+                "answerChinese": "没有你说的那么远，我们走十五分钟就到了。",
+                "answerPinyin": "Méiyǒu nǐ shuō de nàme yuǎn, wǒmen zǒu shíwǔ fēnzhōng jiù dào le.",
+                "answerMeaning": "Không xa như bạn nói đâu, chúng mình đi bộ mười lăm phút là tới rồi."
+            },
+            {
+                "word": "高",
+                "type": "adjective",
+                "pinyin": "gāo",
+                "meaning": "cao",
+                "example": "听说你们学校新盖的教学楼离校门很近，它有图书馆那么高吗？",
+                "examplePinyin": "Tīngshuō nǐmen xuéxiào xīn gài de jiàoxuélóu lí xiàomén hěn jìn, tā yǒu túshūguǎn nàme gāo ma?",
+                "exampleMeaning": "Nghe nói tòa nhà giảng đường mới xây của trường bạn cách cổng trường rất gần, nó có cao bằng thư viện không?",
+                "answerChinese": "它没有图书馆那么高，不过我每天爬楼梯都要爬十分钟。",
+                "answerPinyin": "Tā méiyǒu túshūguǎn nàme gāo, búguò wǒ měitiān pá lóutī dōu yào pá shí fēnzhōng.",
+                "answerMeaning": "Nó không cao bằng thư viện, nhưng mỗi ngày tôi leo cầu thang bộ cũng mất mười phút."
+            },
+            {
+                "word": "门口",
+                "type": "noun",
+                "pinyin": "ménkǒu",
+                "meaning": "cửa, cổng",
+                "example": "我已经在饭馆门口等了二十分钟了，你离这儿还有多远？",
+                "examplePinyin": "Wǒ yǐjīng zài fànguǎn ménkǒu děng le èrshí fēnzhōng le, nǐ lí zhèr hái yǒu duō yuǎn?",
+                "exampleMeaning": "Tôi đã đợi ở cổng quán ăn hai mươi phút rồi, bạn còn cách đây bao xa nữa?",
+                "answerChinese": "不好意思，我离饭馆很近了，再走三分钟就到门口了。",
+                "answerPinyin": "Bù hǎoyìsi, wǒ lí fànguǎn hěn jìn le, zài zǒu sān fēnzhōng jiù dào ménkǒu le.",
+                "answerMeaning": "Ngại quá, tôi cách quán ăn rất gần rồi, đi thêm ba phút nữa là tới cửa rồi."
+            },
+            {
+                "word": "咖啡",
+                "type": "noun",
+                "pinyin": "kāfēi",
+                "meaning": "cà phê",
+                "example": "离上课还有半个小时，我们去旁边那家店喝杯咖啡吧？",
+                "examplePinyin": "Lí shàngkè hái yǒu bàn ge xiǎoshí, wǒmen qù pángbiān nà jiā diàn hē bēi kāfēi ba?",
+                "exampleMeaning": "Cách giờ vào lớp vẫn còn nửa tiếng nữa, chúng mình sang quán bên cạnh uống cốc cà phê nhé?",
+                "answerChinese": "好啊，那家店的咖啡没有星巴克那么贵，我们坐二十分钟就走。",
+                "answerPinyin": "Hǎo a, nà jiā diàn de kāfēi méiyǒu Xīngbākè nàme guì, wǒmen zuò èrshí fēnzhōng jiù zǒu.",
+                "answerMeaning": "Được chứ, cà phê của quán đó không đắt bằng Starbucks, chúng mình ngồi hai mươi phút rồi đi."
+            },
+            {
+                "word": "离",
+                "type": "preposition",
+                "pinyin": "lí",
+                "meaning": "cách (khoảng cách không gian, thời gian)",
+                "example": "你新租的房子离公司远不远？每天上班要花多长时间？",
+                "examplePinyin": "Nǐ xīn zū de fángzi lí gōngsī yuǎn bu yuǎn? Měitiān shàngbān yào huā duō cháng shíjiān?",
+                "exampleMeaning": "Căn nhà bạn mới thuê cách công ty có xa không? Mỗi ngày đi làm phải mất bao lâu?",
+                "answerChinese": "离公司很近，骑车骑十分钟就到了，没有以前那么累了。",
+                "answerPinyin": "Lí gōngsī hěn jìn, qíchē qí shí fēnzhōng jiù dào le, méiyǒu yǐqián nàme lèi le.",
+                "answerMeaning": "Cách công ty rất gần, đạp xe mười phút là tới rồi, không mệt như trước đây nữa."
+            },
+            {
+                "word": "近",
+                "type": "adjective",
+                "pinyin": "jìn",
+                "meaning": "gần",
+                "example": "地铁站离你家近吗？你每天走多长时间就能到？",
+                "examplePinyin": "Dìtiězhàn lí nǐ jiā jìn ma? Nǐ měitiān zǒu duō cháng shíjiān jiù néng dào?",
+                "exampleMeaning": "Trạm tàu điện ngầm cách nhà bạn có gần không? Mỗi ngày bạn đi bộ bao lâu thì tới?",
+                "answerChinese": "非常近，我走五分钟就到了，通勤时间没有同事们那么长。",
+                "answerPinyin": "Fēicháng jìn, wǒ zǒu wǔ fēnzhōng jiù dào le, tōngqín shíjiān méiyǒu tóngshìmen nàme cháng.",
+                "answerMeaning": "Vô cùng gần, tôi đi bộ năm phút là tới rồi, thời gian đi lại không dài bằng các đồng nghiệp."
+            },
+            {
+                "word": "走路",
+                "type": "verb",
+                "pinyin": "zǒulù",
+                "meaning": "đi bộ",
+                "example": "公园离这儿不太远，我们走路走半个多小时就能到吗？",
+                "examplePinyin": "Gōngyuán lí zhèr bú tài yuǎn, wǒmen zǒulù zǒu bàn ge duō xiǎoshí jiù néng dào ma?",
+                "exampleMeaning": "Công viên cách đây không xa lắm, chúng mình đi bộ hơn nửa tiếng là có thể tới đúng không?",
+                "answerChinese": "可以啊，走路没有坐公交车那么挤，还能顺便锻炼身体。",
+                "answerPinyin": "Kěyǐ a, zǒulù méiyǒu zuò gōngjiāochē nàme jǐ, hái néng shùnbiàn duànliàn shēntǐ.",
+                "answerMeaning": "Được chứ, đi bộ không chen chúc bằng đi xe buýt, lại còn tiện thể rèn luyện sức khỏe nữa."
+            },
+            {
+                "word": "周",
+                "type": "noun",
+                "pinyin": "zhōu",
+                "meaning": "tuần",
+                "example": "离放寒假还有两周，这周你每天都要学习十个小时吗？",
+                "examplePinyin": "Lí fàng hánjià hái yǒu liǎng zhōu, zhè zhōu nǐ měitiān dōu yào xuéxí shí ge xiǎoshí ma?",
+                "exampleMeaning": "Cách kỳ nghỉ đông vẫn còn hai tuần nữa, tuần này ngày nào bạn cũng phải học mười tiếng à?",
+                "answerChinese": "没那么夸张，我每天只学六个小时，压力没有上周那么大了。",
+                "answerPinyin": "Méi nàme kuāzhāng, wǒ měitiān zhǐ xué liù ge xiǎoshí, yālì méiyǒu shàng zhōu nàme dà le.",
+                "answerMeaning": "Không đến mức khoa trương thế đâu, mỗi ngày tôi chỉ học sáu tiếng thôi, áp lực không lớn bằng tuần trước nữa rồi."
+            }
+        ]
     }
 ]
