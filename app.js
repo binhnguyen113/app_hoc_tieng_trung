@@ -1,7 +1,8 @@
 const DATA_SOURCES = [
-  { id: "hsk", label: "Tiếng Trung HSK1 3.0", file: "./data-hsk1.json" },
-  { id: "hsk1", label: "Tiếng Trung HSK1 3.0 (Nâng cao)", file: "./data-hsk1-pro.json" },
-  { id: "hsk2", label: "Tiếng Trung HSK2 3.0", file: "./data-hsk2.json" },
+  { id: "hsk", label: "HSK1 3.0", file: "./data-hsk1.json" },
+  //{ id: "hsk1", label: "Tiếng Trung HSK1 3.0 (Nâng cao)", file: "./data-hsk1-pro.json" },
+  { id: "hsk2", label: "HSK2 3.0", file: "./data-hsk2.json" },
+  { id: "hskcongso", label: "Từ vựng công sở", file: "./data-tuvungcongso.json" },
   { id: "topic", label: "Ôn theo chủ đề", file: "./data-topic.json" }
 ];
 const RADICAL_DATA_FILE = "./data/data-214bothu.json";
