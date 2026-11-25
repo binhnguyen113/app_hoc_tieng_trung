@@ -1771,5 +1771,178 @@
                 "answerMeaning": "Không đến mức khoa trương thế đâu, tuần này chúng tôi mỗi ngày chỉ thảo luận nửa tiếng thôi, nhịp độ công việc không căng thẳng bằng tuần trước nữa rồi."
             }
         ]
+    },
+    {
+        "topic": "Lesson 10",
+        "words": [
+            {
+                "word": "开学",
+                "type": "verb",
+                "pinyin": "kāixué",
+                "meaning": "khai giảng, bắt đầu khóa học",
+                "example": "公司的商务汉语培训班下周就要开学了，是王经理去上课还是你去？",
+                "examplePinyin": "Gōngsī de shāngwù Hànyǔ péixùnbān xià zhōu jiù yào kāixué le, shì Wáng jīnglǐ qù shàngkè háishi nǐ qù?",
+                "exampleMeaning": "Lớp đào tạo tiếng Trung thương mại của công ty tuần sau sắp khai giảng rồi, là quản lý Vương đi học hay là bạn đi?",
+                "answerChinese": "我去，王经理最近工作压力太大，抽不出时间。",
+                "answerPinyin": "Wǒ qù, Wáng jīnglǐ zuìjìn gōngzuò yālì tài dà, chōu bu chū shíjiān.",
+                "answerMeaning": "Tôi đi, quản lý Vương dạo này áp lực công việc quá lớn, không thu xếp ra thời gian được."
+            },
+            {
+                "word": "门",
+                "type": "noun",
+                "pinyin": "mén",
+                "meaning": "cửa",
+                "example": "小会议室门太窄了，我们是开着门讨论还是关上门开会？",
+                "examplePinyin": "Xiǎo huìyìshì mén tài zhǎi le, wǒmen shì kāi zhe mén tǎolùn háishi guān shang mén kāihuì?",
+                "exampleMeaning": "Cửa phòng họp nhỏ hẹp quá, chúng mình mở cửa thảo luận hay là đóng cửa họp?",
+                "answerChinese": "关上门吧，总监快要过来听汇报了，外面太吵。",
+                "answerPinyin": "Guān shang mén ba, zǒngjiān kuàiyào guòlái tīng huìbào le, wàimiàn tài chǎo.",
+                "answerMeaning": "Đóng cửa lại đi, giám đốc sắp qua đây nghe báo cáo rồi, bên ngoài ồn quá."
+            },
+            {
+                "word": "后面",
+                "type": "noun",
+                "pinyin": "hòumiàn",
+                "meaning": "phía sau, đằng sau",
+                "example": "客户代表团快要到了，他们是坐在会议室前面还是后面？",
+                "examplePinyin": "Kèhù dàibiǎotuán kuàiyào dào le, tāmen shì zuò zài huìyìshì qiánmiàn háishi hòumiàn?",
+                "exampleMeaning": "Đoàn đại biểu khách hàng sắp tới rồi, họ ngồi ở phía trước hay phía sau phòng họp?",
+                "answerChinese": "坐在前面，后面位置光线不太好，看不清投影屏幕。",
+                "answerPinyin": "Zuò zài qiánmiàn, hòumiàn wèizhi guāngxiàn bú tài hǎo, kàn bu qīng tóuyǐng píngmù.",
+                "answerMeaning": "Ngồi ở phía trước, vị trí phía sau ánh sáng không tốt lắm, nhìn không rõ màn hình máy chiếu."
+            },
+            {
+                "word": "笔",
+                "type": "noun",
+                "pinyin": "bǐ",
+                "meaning": "bút",
+                "example": "这支钢笔外观很精致，签合同时是用黑色的笔还是蓝色的笔？",
+                "examplePinyin": "Zhè zhī gāngbǐ wàiguān hěn jīngzhì, qiān hétong shí shì yòng hēisè de bǐ háishi lánsè de bǐ?",
+                "exampleMeaning": "Chiếc bút máy này vẻ ngoài rất tinh xảo, lúc ký hợp đồng thì dùng bút màu đen hay bút màu xanh?",
+                "answerChinese": "必须用黑色的，双方代表快要签字了，你快递过去吧。",
+                "answerPinyin": "Bìxū yòng hēisè de, shuāngfāng dàibiǎo kuàiyào qiānzì le, nǐ kuài dì guòqu ba.",
+                "answerMeaning": "Bắt buộc phải dùng màu đen, đại diện hai bên sắp ký tên rồi, bạn mau đưa qua đó đi."
+            },
+            {
+                "word": "帮",
+                "type": "verb",
+                "pinyin": "bāng",
+                "meaning": "giúp, giúp đỡ",
+                "example": "培训部的考核资料快要印完了，是行政部去帮他们整理还是我们去？",
+                "examplePinyin": "Péixùnbù de kǎohé zīliào kuàiyào yìn wán le, shì xíngzhèngbù qù bāng tāmen zhěnglǐ háishi wǒmen qù?",
+                "exampleMeaning": "Tài liệu sát hạch của phòng đào tạo sắp in xong rồi, là phòng hành chính đi giúp họ sắp xếp hay là chúng ta đi?",
+                "answerChinese": "我们去吧，行政部今天人手不够，根本忙不过来。",
+                "answerPinyin": "Wǒmen qù ba, xíngzhèngbù jīntiān rénshǒu bú gòu, gēnběn máng bu guòlái.",
+                "answerMeaning": "Chúng ta đi đi, phòng hành chính hôm nay nhân lực không đủ, hoàn toàn xoay xở không kịp."
+            },
+            {
+                "word": "考试",
+                "type": "noun",
+                "pinyin": "kǎoshì",
+                "meaning": "kỳ thi, bài kiểm tra",
+                "example": "公司的晋升考试下个月就要开始了，你是参加笔试还是面试？",
+                "examplePinyin": "Gōngsī de jìnshēng kǎoshì xià ge yuè jiù yào kāishǐ le, nǐ shì cānjiā bǐshì háishi miànshì?",
+                "exampleMeaning": "Kỳ thi thăng chức của công ty tháng sau sắp bắt đầu rồi, bạn tham gia thi viết hay là phỏng vấn?",
+                "answerChinese": "两个都要参加，听说这次考试难度非常大。",
+                "answerPinyin": "Liǎng ge dōu yào cānjiā, tīngshuō zhè cì kǎoshì nándù fēicháng dà.",
+                "answerMeaning": "Cả hai đều phải tham gia, nghe nói độ khó của kỳ thi lần này rất lớn."
+            },
+            {
+                "word": "词",
+                "type": "noun",
+                "pinyin": "cí",
+                "meaning": "từ, từ ngữ",
+                "example": "这份外文合同专业词太多了，是用软件查还是请教法务部？",
+                "examplePinyin": "Zhè fèn wàiwén hétong zhuānyè cí tài duō le, shì yòng ruǎnjiàn chá háishi qǐngjiào fǎwùbù?",
+                "exampleMeaning": "Bản hợp đồng tiếng nước ngoài này từ chuyên ngành nhiều quá, dùng phần mềm tra hay là hỏi ý kiến phòng pháp chế?",
+                "answerChinese": "还是请教法务部吧，我们下午三点就要发给客户了。",
+                "answerPinyin": "Háishi qǐngjiào fǎwùbù ba, wǒmen xiàwǔ sān diǎn jiù yào fā gěi kèhù le.",
+                "answerMeaning": "Hay là hỏi ý kiến phòng pháp chế đi, 3 giờ chiều nay chúng ta sắp phải gửi cho khách hàng rồi."
+            },
+            {
+                "word": "本子",
+                "type": "noun",
+                "pinyin": "běnzi",
+                "meaning": "quyển vở, sổ tay",
+                "example": "部门例会快要开始了，你开会是用本子记笔记还是用电脑？",
+                "examplePinyin": "Bùmén lìhuì kuàiyào kāishǐ le, nǐ kāihuì shì yòng běnzi jì bǐjì háishi yòng diànnǎo?",
+                "exampleMeaning": "Cuộc họp định kỳ của bộ phận sắp bắt đầu rồi, bạn họp thì dùng sổ tay ghi chép hay dùng máy tính?",
+                "answerChinese": "我用公司发的本子，这个本子纸张质量特别好。",
+                "answerPinyin": "Wǒ yòng gōngsī fā de běnzi, zhège běnzi zhǐzhāng zhìliàng tèbié hǎo.",
+                "answerMeaning": "Tôi dùng sổ tay công ty phát, chất lượng giấy của quyển sổ này đặc biệt tốt."
+            },
+            {
+                "word": "错",
+                "type": "adjective",
+                "pinyin": "cuò",
+                "meaning": "sai, nhầm lẫn",
+                "example": "这张财务报表数据好像算错了，是小刘算错了还是系统出问题了？",
+                "examplePinyin": "Zhè zhāng cáiwù bàobiǎo shùjù hǎoxiàng suàn cuò le, shì Xiǎo Liú suàn cuò le háishi xìtǒng chū wèntí le?",
+                "exampleMeaning": "Số liệu bảng báo cáo tài chính này hình như tính sai rồi, là Tiểu Lưu tính sai hay là hệ thống gặp sự cố?",
+                "answerChinese": "是小刘算错了，财务总监快要审阅了，我让他马上改过来。",
+                "answerPinyin": "Shì Xiǎo Liú suàn cuò le, cáiwù zǒngjiān kuàiyào shěnyuè le, wǒ ràng tā mǎshàng gǎi guòlái.",
+                "answerMeaning": "Là Tiểu Lưu tính sai rồi, giám đốc tài chính sắp duyệt rồi, tôi bảo cậu ấy sửa lại ngay đây."
+            },
+            {
+                "word": "题",
+                "type": "noun",
+                "pinyin": "tí",
+                "meaning": "câu hỏi, đề bài",
+                "example": "新员工入职测试的题快要出好了，是出选择题还是简答题？",
+                "examplePinyin": "Xīn yuángōng rùzhí cèshì de tí kuàiyào chū hǎo le, shì chū xuǎnzétí háishi jiǎndátí?",
+                "exampleMeaning": "Đề kiểm tra đầu vào cho nhân viên mới sắp ra xong rồi, ra câu hỏi trắc nghiệm hay câu hỏi tự luận ngắn?",
+                "answerChinese": "都出一点儿吧，但是题量不要太大，半小时能做完就行。",
+                "answerPinyin": "Dōu chū yìdiǎnr ba, dànshì tíliàng bú yào tài dà, bàn xiǎoshí néng zuò wán jiù xíng.",
+                "answerMeaning": "Ra mỗi loại một ít đi, nhưng lượng câu hỏi đừng lớn quá, làm xong trong nửa tiếng là được."
+            },
+            {
+                "word": "还是",
+                "type": "conjunction",
+                "pinyin": "háishi",
+                "meaning": "hay là",
+                "example": "离项目汇报只剩十分钟，会议就要开始了，是你先发言还是我先发言？",
+                "examplePinyin": "Lí xiàngmù huìbào zhǐ shèng shí fēnzhōng, huìyì jiù yào kāishǐ le, shì nǐ xiān fāyán háishi wǒ xiān fāyán?",
+                "exampleMeaning": "Cách buổi báo cáo dự án chỉ còn mười phút, cuộc họp sắp bắt đầu rồi, là bạn phát biểu trước hay tôi phát biểu trước?",
+                "answerChinese": "你先发言吧，你口才比我好，能把气氛带动起来。",
+                "answerPinyin": "Nǐ xiān fāyán ba, nǐ kǒucái bǐ wǒ hǎo, néng bǎ qìfēn dàidòng qǐlái.",
+                "answerMeaning": "Bạn phát biểu trước đi, khả năng ăn nói của bạn tốt hơn tôi, có thể khuấy động bầu không khí lên."
+            },
+            {
+                "word": "考",
+                "type": "verb",
+                "pinyin": "kǎo",
+                "meaning": "thi, kiểm tra",
+                "example": "听说明年公司就要考行业资格证了，你是打算自己复习还是报培训班？",
+                "examplePinyin": "Tīngshuō míngnián gōngsī jiù yào kǎo hángyè zīgézhèng le, nǐ shì dǎsuàn zìjǐ fùxí háishi bào péixùnbān?",
+                "exampleMeaning": "Nghe nói năm sau công ty sắp thi chứng chỉ hành nghề rồi, bạn định tự ôn tập hay đăng ký lớp đào tạo?",
+                "answerChinese": "我打算报培训班，自己复习效率太低了。",
+                "answerPinyin": "Wǒ dǎsuàn bào péixùnbān, zìjǐ fùxí xiàolǜ tài dī le.",
+                "answerMeaning": "Tôi định đăng ký lớp đào tạo, tự ôn tập hiệu suất thấp quá."
+            },
+            {
+                "word": "快要",
+                "type": "adverb",
+                "pinyin": "kuàiyào",
+                "meaning": "sắp, sắp sửa",
+                "example": "年度总结报告快要截止提交了，你的部分写完了吗？",
+                "examplePinyin": "Niándù zǒngjié bàogào kuàiyào jiézhǐ tíjiāo le, nǐ de bùfen xiě wán le ma?",
+                "exampleMeaning": "Báo cáo tổng kết năm sắp hết hạn nộp rồi, phần của bạn đã viết xong chưa?",
+                "answerChinese": "写完了，不过不知道是直接发给主管还是先发在工作群里？",
+                "answerPinyin": "Xiě wán le, búguò bù zhīdào shì zhíjiē fā gěi zhǔguǎn háishi xiān fā zài gōngzuòqún lǐ?",
+                "answerMeaning": "Viết xong rồi, nhưng không biết là gửi trực tiếp cho trưởng nhóm hay gửi vào nhóm làm việc trước?"
+            },
+            {
+                "word": "笑",
+                "type": "verb",
+                "pinyin": "xiào",
+                "meaning": "cười",
+                "example": "王总今天心情特别好，一直笑眯眯的，是签了大单还是团队获奖了？",
+                "examplePinyin": "Wáng zǒng jīntiān xīnqíng tèbié hǎo, yìzhí xiàomīmī de, shì qiān le dàdān háishi tuánduì huòjiǎng le?",
+                "exampleMeaning": "Tổng giám đốc Vương hôm nay tâm trạng đặc biệt tốt, cứ cười tủm tỉm mãi, là ký được đơn hàng lớn hay nhóm đoạt giải thưởng thế?",
+                "answerChinese": "听说公司下个月就要发年终奖了，大家都很高兴。",
+                "answerPinyin": "Tīngshuō gōngsī xià ge yuè jiù yào fā niánzhōngjiǎng le, dàjiā dōu hěn gāoxìng.",
+                "answerMeaning": "Nghe nói tháng sau công ty sắp phát thưởng cuối năm rồi, mọi người đều rất vui."
+            }
+        ]
     }
 ]
